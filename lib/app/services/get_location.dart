@@ -1,5 +1,5 @@
 import 'package:geolocator/geolocator.dart';
-import 'package:geolocator_platform_interface/geolocator_platform_interface.dart';
+//import 'package:geolocator_platform_interface/geolocator_platform_interface.dart';
 
 
 Future<Position> _getCurLoc()async{
