@@ -12,3 +12,5 @@ class AppRoutes {
     GetPage(name: publicHome, page: () => PublicHomePage()),
   ];
 }
+
+
