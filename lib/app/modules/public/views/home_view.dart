@@ -16,7 +16,7 @@ class PublicHomePage extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Get.toNamed('/public/catalog');
+                Get.toNamed('/public/homepage_cust_view');
               },
               child: Text('Browse Catalog'),
             ),
