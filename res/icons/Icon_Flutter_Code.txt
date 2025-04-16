@@ -1,0 +1,53 @@
+//Icon Home
+Icon(
+  Icons.home,
+),
+//Icon Profile Account
+Icon(
+  Icons.account_circle,
+),
+//Icon Visibility
+Icon(
+  Icons.visibility,
+),
+//Icon Logout
+Icon(
+  Icons.logout,
+),
+//Icon Message/Contact Support
+Icon(
+  Icons.contact_support,
+),
+//Icon Share
+Icon(
+  Icons.share,
+),
+//Icon Notifications
+Icon(
+  Icons.notifications,
+),
+//Icon Circle Notification
+Icon(
+  Icons.circle_notifications,
+),
+//Icon Close for Notification
+Icon(
+  Icons.close,
+),
+
+//Icon Menu List
+Icon(
+  Icons.menu,
+),
+//Icon Groups
+Icon(
+  Icons.groups,
+),
+//Icons Arrow back Ios
+Icon(
+  Icons.arrow_back_ios,
+),
+//Icon About 
+Icon(
+  Icons.perm_device_information,
+),
