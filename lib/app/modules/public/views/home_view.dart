@@ -17,7 +17,6 @@ class _PublicHomePageState extends State<PublicHomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    const HomeContent(),
     const Center(child: Text('Produk')),
     const Center(child: Text('Chat')),
     const Center(child: Text('Akun')),
@@ -26,7 +25,6 @@ class _PublicHomePageState extends State<PublicHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(title: Text('Welcome to SuperApp')),
       body: Center(
         child: Column(
@@ -49,7 +47,6 @@ class _PublicHomePageState extends State<PublicHomePage> {
             ),
           ],
         ),
-
       ),
     );
   }
