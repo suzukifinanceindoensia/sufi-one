@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'app/routes/app_routes.dart';
-
-import 'app/theme/fontstyle.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'app/theme/fontstyle.dart';
 
 void main() {
-
   runApp(MyApp());
   OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
   OneSignal.initialize("INI KODE DARI ONESIGNAL");
@@ -31,13 +29,13 @@ class MyApp extends StatelessWidget {
           displaySmall: AppTextStyles.smallDisplay,
           displayMedium: AppTextStyles.medDisplay,
           displayLarge: AppTextStyles.bigDisplay,
-          labelSmall: AppTextStyles.smallLabel, 
+          labelSmall: AppTextStyles.smallLabel,
           labelMedium: AppTextStyles.medLabel,
           labelLarge: AppTextStyles.bigLabel,
           headlineSmall: AppTextStyles.smallHeadline,
           headlineMedium: AppTextStyles.medHeadline,
           headlineLarge: AppTextStyles.bigHeadline,
-        )
+        ),
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.splash,

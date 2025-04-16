@@ -3,15 +3,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTextStyles {
   static final TextStyle smallBody = GoogleFonts.outfit(
-    fontSize: 12,
+    fontSize: 10,
     color: Colors.black,
   );
   static final TextStyle medBody = GoogleFonts.outfit(
-    fontSize: 18,
+    fontSize: 14,
     color: Colors.black,
   );
   static final TextStyle bigBody = GoogleFonts.outfit(
-    fontSize: 24,
+    fontSize: 18,
     color: Colors.black,
   );
   static final TextStyle smallTitle = GoogleFonts.bebasNeue(
@@ -19,11 +19,11 @@ class AppTextStyles {
     color: Colors.red,
   );
   static final TextStyle medTitle = GoogleFonts.bebasNeue(
-    fontSize: 20,
+    fontSize: 30,
     color: Colors.red,
   );
   static final TextStyle bigTitle = GoogleFonts.bebasNeue(
-    fontSize: 30,
+    fontSize: 50,
     color: Colors.red,
   );
   static final TextStyle smallDisplay = GoogleFonts.emilysCandy(

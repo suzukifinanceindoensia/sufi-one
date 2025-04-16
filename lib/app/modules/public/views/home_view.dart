@@ -20,6 +20,13 @@ class PublicHomePage extends StatelessWidget {
               },
               child: Text('Browse Catalog'),
             ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Get.toNamed('/public/login');
+              },
+              child: Text('Cobain Login'),
+            ),
           ],
         ),
       ),
