@@ -53,3 +53,9 @@ windows/flutter/generated_plugin_registrant.cc
 windows/flutter/generated_plugins.cmake
 macos/Flutter/GeneratedPluginRegistrant.swift
 pubspec.lock
+
+# Ignore unused platforms
+windows/
+macos/
+linux/
+web/
