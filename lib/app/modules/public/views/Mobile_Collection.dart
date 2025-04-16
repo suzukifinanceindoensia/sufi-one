@@ -240,7 +240,7 @@ class _MobileCollectionState extends State<MobileCollection> {
           ),
           SizedBox(height: 8),
           Image.asset(
-            'assets/images/lokasi_foto.jpg',
+            'res/images/lokasi_foto.jpg',
             height: 200,
             width: double.infinity,
             fit: BoxFit.cover,
