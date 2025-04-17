@@ -6,6 +6,11 @@ class AppTextStyles {
     fontSize: 10,
     color: Colors.black,
   );
+  static final TextStyle smallBodyBold = GoogleFonts.outfit(
+    fontSize: 10,
+    color: Colors.black,
+    fontWeight: FontWeight.bold
+  );
   static final TextStyle medBody = GoogleFonts.outfit(
     fontSize: 14,
     color: Colors.black,
