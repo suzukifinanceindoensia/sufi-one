@@ -17,7 +17,6 @@ class _PublicHomePageState extends State<PublicHomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    const HomeContent(),
     const Center(child: Text('Produk')),
     const Center(child: Text('Chat')),
     const Center(child: Text('Akun')),
