@@ -26,67 +26,70 @@ class LoginPage extends GetView<LoginController> {
                 ),
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 350,
-                    height: 70,
-                    child: TextFormField(
-                      controller: controller.emailController,
-                      decoration: InputDecoration(
-                          labelText: 'Email', border: OutlineInputBorder()),
-                      validator: controller.validateEmail,
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  SizedBox(
-                    width: 350,
-                    height: 70,
-                    child: TextFormField(
-                      controller: controller.passwordController,
-                      decoration: InputDecoration(
-                          labelText: 'Password', border: OutlineInputBorder()),
-                      obscureText: true,
-                      validator: controller.validatePassword,
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  normalButton(
-                    onPressed: () {
-                      controller.login();
-                    },
-                    child: Text("Login"),
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text('Forget Password?'),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: TextButton(
-                      onPressed: () {
-                        Get.toNamed('/public/register');
-                      },
-                      child: RichText(
-                        text: TextSpan(
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'Belum punya akun? ',
-                            ),
-                            TextSpan(
-                              text: 'Daftar sekarang',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ],
+              child: SingleChildScrollView(
+                child: 
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: 350,
+                        height: 70,
+                        child: TextFormField(
+                          controller: controller.emailController,
+                          decoration: InputDecoration(
+                              labelText: 'Email', border: OutlineInputBorder()),
+                          validator: controller.validateEmail,
                         ),
                       ),
-                    ),
+                      SizedBox(height: 20),
+                      SizedBox(
+                        width: 350,
+                        height: 70,
+                        child: TextFormField(
+                          controller: controller.passwordController,
+                          decoration: InputDecoration(
+                              labelText: 'Password', border: OutlineInputBorder()),
+                          obscureText: true,
+                          validator: controller.validatePassword,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      normalButton(
+                        onPressed: () {
+                          controller.login();
+                        },
+                        child: Text("Login"),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Text('Forget Password?'),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: TextButton(
+                          onPressed: () {
+                            Get.toNamed('/public/register');
+                          },
+                          child: RichText(
+                            text: TextSpan(
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: 'Belum punya akun? ',
+                                ),
+                                TextSpan(
+                                  text: 'Daftar sekarang',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
               ),
             ),
           ),
