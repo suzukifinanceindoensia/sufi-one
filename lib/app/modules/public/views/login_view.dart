@@ -64,7 +64,9 @@ class LoginPage extends GetView<LoginController> {
                       Align(
                         alignment: Alignment.centerLeft,
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed('public/forgot_password');
+                          },
                           child: Text('Forget Password?'),
                         ),
                       ),
