@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sufi_one/app/modules/public/controllers/login_controller.dart';
 import 'package:sufi_one/app/modules/public/widgets/button.dart';
 import 'package:get/get.dart';
+import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class LoginPage extends GetView<LoginController> {
   // Use GetView<LoginController>
@@ -78,10 +79,11 @@ class LoginPage extends GetView<LoginController> {
                               children: <TextSpan>[
                                 TextSpan(
                                   text: 'Belum punya akun? ',
+                                  style: AppTextStyles.smallBody
                                 ),
                                 TextSpan(
                                   text: 'Daftar sekarang',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: AppTextStyles.smallBodyBold,
                                 ),
                               ],
                             ),

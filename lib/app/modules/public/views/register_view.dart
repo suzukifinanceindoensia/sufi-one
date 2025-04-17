@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:sufi_one/app/modules/public/controllers/register_controller.dart';
 import 'package:sufi_one/app/modules/public/widgets/button.dart'; 
 import 'package:get/get.dart';
+import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class RegisterPage extends GetView<RegisterController> {
   @override
@@ -108,7 +109,7 @@ class RegisterPage extends GetView<RegisterController> {
                           },
                         ),
                       ),
-                      Text("I agree to the terms and conditions"),
+                      Text("I agree to the terms and conditions", style: AppTextStyles.smallBody,),
                     ],
                   ),
                   SizedBox(height: 10),
