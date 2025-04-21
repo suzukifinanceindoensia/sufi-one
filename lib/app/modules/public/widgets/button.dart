@@ -35,4 +35,3 @@ class normalButton extends StatelessWidget {
   }
 }
 
-
