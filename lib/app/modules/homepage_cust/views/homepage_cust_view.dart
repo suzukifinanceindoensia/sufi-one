@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/routes/app_routes.dart';
+import 'package:sufi_one/app/theme/color_constant.dart';
 
-class HomepageCust extends StatelessWidget {
-  const HomepageCust({super.key});
+class HomepageCustView extends StatelessWidget {
+  const HomepageCustView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: AppColors.bg1,
       appBar: AppBar(
-        backgroundColor: Colors.blue[600],
+        backgroundColor: AppColors.snack,
         centerTitle: false,
         toolbarHeight: 50,
         automaticallyImplyLeading: false,
@@ -18,7 +19,7 @@ class HomepageCust extends StatelessWidget {
           children: [
             // Dropdown menu
             PopupMenuButton<String>(
-              icon: Icon(Icons.menu, color: Colors.white),
+              icon: Icon(Icons.menu, color: AppColors.bg1),
               onSelected: (value) {
                 print('Menu dipilih: $value');
                 // Tambahkan aksi berdasarkan menu yang dipilih
@@ -83,7 +84,7 @@ class HomepageCust extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: AppColors.bg1,
                   ),
                 ),
                 Text(
@@ -99,19 +100,19 @@ class HomepageCust extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              color: Colors.white,
+              color: AppColors.bg1,
               padding: EdgeInsets.all(16.0),
               child: Image.asset('res/images/baleno.jpg', height: 150),
             ),
             Container(
-              color: Colors.white,
+              color: AppColors.bg1,
               padding: EdgeInsets.all(16.0),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
                     _buildIconColumn(Icons.directions_car, 'Opsi Pembiayaan'),
-                    SizedBox(width: 16),
+                    SizedBox(width: 8),
                     _buildIconColumn(Icons.local_offer, 'Promo'),
                     SizedBox(width: 16),
                     _buildIconColumn(Icons.category, 'Produk'),
@@ -124,7 +125,7 @@ class HomepageCust extends StatelessWidget {
               ),
             ),
             Container(
-              color: Colors.white,
+              color: AppColors.bg1,
               padding: EdgeInsets.all(16.0),
               margin: EdgeInsets.only(top: 16.0),
               child: Column(
@@ -145,7 +146,8 @@ class HomepageCust extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue[600],
+                        backgroundColor: AppColors.snack,
+                        foregroundColor: AppColors.bg1,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
@@ -157,9 +159,8 @@ class HomepageCust extends StatelessWidget {
               ),
             ),
             Container(
-              color: Colors.white,
+              color: AppColors.bg1,
               padding: EdgeInsets.all(16.0),
-              margin: EdgeInsets.only(top: 16.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(
                   8.0,
@@ -176,10 +177,8 @@ class HomepageCust extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // Tambahkan ini!
-        backgroundColor: Color(
-          0xFF0071C5,
-        ), // Biru Suzuki, bisa diubah sesuai preferensi
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: AppColors.snack,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white70,
         showSelectedLabels: true,
@@ -202,7 +201,7 @@ class HomepageCust extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 255, 255, 255),
+            color: AppColors.bg1,
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
