@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+
+final logger = Logger();
 
 class MobileCollection extends StatefulWidget {
   const MobileCollection({super.key});
 
   @override
-  _MobileCollectionState createState() => _MobileCollectionState();
+  MobileCollectionState createState() => MobileCollectionState();
 }
 
-class _MobileCollectionState extends State<MobileCollection> {
+class MobileCollectionState extends State<MobileCollection> {
   bool showCustomerInfo = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey.withAlpha(
+        (0.2 * 255).toInt(),
+      ), // Ganti dari withOpacity(0.2)
       appBar: AppBar(
         backgroundColor: Colors.blue[600],
         centerTitle: false,
@@ -21,14 +26,8 @@ class _MobileCollectionState extends State<MobileCollection> {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            // Logo Suzuki
-            Image.asset(
-              'res/images/logo_suzuki.png', // Ganti dengan logo Suzuki kamu
-              height: 40,
-            ),
-            SizedBox(width: 12),
-
-            // Judul
+            Image.asset('res/images/logo_suzuki.png', height: 40),
+            const SizedBox(width: 12),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
@@ -52,7 +51,6 @@ class _MobileCollectionState extends State<MobileCollection> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -70,9 +68,9 @@ class _MobileCollectionState extends State<MobileCollection> {
                     foregroundColor:
                         showCustomerInfo ? Colors.white : Colors.black,
                   ),
-                  child: Text('Customer Info'),
+                  child: const Text('Customer Info'),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
@@ -87,19 +85,18 @@ class _MobileCollectionState extends State<MobileCollection> {
                     foregroundColor:
                         !showCustomerInfo ? Colors.white : Colors.black,
                   ),
-                  child: Text('Collection Form'),
+                  child: const Text('Collection Form'),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
               ],
             ),
-            // Content
             showCustomerInfo ? buildCustomerInfo() : buildCollectionForm(),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Color(0xFF0071C5),
+        backgroundColor: const Color(0xFF0071C5),
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white70,
         showSelectedLabels: true,
@@ -119,44 +116,42 @@ class _MobileCollectionState extends State<MobileCollection> {
 
   Widget buildCustomerInfo() {
     return Container(
-      margin: EdgeInsets.all(16),
-      padding: EdgeInsets.all(16),
+      margin: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
+            color: Colors.grey.withAlpha((0.5 * 255).toInt()),
             spreadRadius: 5,
             blurRadius: 7,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: Column(
         children: [
-          Text(
+          const Text(
             'Customer Info',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.blue[100],
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
               children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    'https://placehold.co/50x50',
-                  ), // Placeholder image
+                const CircleAvatar(
+                  backgroundImage: NetworkImage('https://placehold.co/50x50'),
                   radius: 25,
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: const [
                     Text(
                       'Jajang Nurjaman',
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -167,24 +162,23 @@ class _MobileCollectionState extends State<MobileCollection> {
               ],
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           buildTextField('Alamat', 'Value'),
           buildTextField('No Telepon', 'Value'),
           buildTextField('Tanggal Janji Tempo', 'Value'),
           buildTextField('Angsuran Ke', 'Value'),
           buildTextField('Keterangan', 'Value'),
           buildTextField('Deskripsi Keterlambatan', 'Value'),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           ElevatedButton(
             onPressed: () {
-              // Handle submit action
-              print('Customer Info Submitted');
+              logger.i('Customer Info Submitted');
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blue[600],
-              foregroundColor: !showCustomerInfo ? Colors.white : Colors.black,
+              foregroundColor: Colors.white,
             ),
-            child: Text('Submit'),
+            child: const Text('Submit'),
           ),
         ],
       ),
@@ -193,44 +187,42 @@ class _MobileCollectionState extends State<MobileCollection> {
 
   Widget buildCollectionForm() {
     return Container(
-      margin: EdgeInsets.all(16),
-      padding: EdgeInsets.all(16),
+      margin: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
+            color: Colors.grey.withAlpha((0.5 * 255).toInt()),
             spreadRadius: 5,
             blurRadius: 7,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: Column(
         children: [
-          Text(
+          const Text(
             'Mobile Collection System',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.blue[100],
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
               children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    'https://placehold.co/50x50',
-                  ), // Placeholder image
+                const CircleAvatar(
+                  backgroundImage: NetworkImage('https://placehold.co/50x50'),
                   radius: 25,
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: const [
                     Text(
                       'Jajang Nurjaman',
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -241,19 +233,19 @@ class _MobileCollectionState extends State<MobileCollection> {
               ],
             ),
           ),
-          SizedBox(height: 16),
-          Text(
+          const SizedBox(height: 16),
+          const Text(
             'Foto Lokasi',
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Image.asset(
             'res/images/lokasi_foto.jpg',
             height: 200,
             width: double.infinity,
             fit: BoxFit.cover,
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           buildDropdown('Apakah Bertemu Dengan Customer?', ['Ya', 'Tidak']),
           buildDropdown('Alamat yang Dikunjungi?', [
             'Alamat KTP',
@@ -262,9 +254,9 @@ class _MobileCollectionState extends State<MobileCollection> {
           buildDropdown('Apakah Alamat Berubah', ['Tidak', 'Ya']),
           buildDropdown('Apakah Unit Ada?', ['Ya', 'Tidak']),
           buildDropdown('Apakah Customer Akan Membayar?', ['Ya', 'Tidak']),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.blue[100],
               borderRadius: BorderRadius.circular(8),
@@ -280,17 +272,16 @@ class _MobileCollectionState extends State<MobileCollection> {
               ],
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           ElevatedButton(
             onPressed: () {
-              // Handle submit action
-              print('Collection Form Submitted');
+              logger.i('Collection Form Submitted');
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blue[600],
-              foregroundColor: !showCustomerInfo ? Colors.white : Colors.black,
+              foregroundColor: Colors.white,
             ),
-            child: Text('Submit'),
+            child: const Text('Submit'),
           ),
         ],
       ),
@@ -303,16 +294,16 @@ class _MobileCollectionState extends State<MobileCollection> {
       children: [
         Text(
           label,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         TextField(
           decoration: InputDecoration(
-            border: OutlineInputBorder(),
+            border: const OutlineInputBorder(),
             hintText: placeholder,
           ),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
       ],
     );
   }
@@ -323,21 +314,23 @@ class _MobileCollectionState extends State<MobileCollection> {
       children: [
         Text(
           label,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         DropdownButtonFormField<String>(
-          decoration: InputDecoration(border: OutlineInputBorder()),
+          decoration: const InputDecoration(border: OutlineInputBorder()),
           items:
-              options.map((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+              options
+                  .map(
+                    (value) => DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    ),
+                  )
+                  .toList(),
           onChanged: (_) {},
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
       ],
     );
   }
@@ -348,10 +341,10 @@ class _MobileCollectionState extends State<MobileCollection> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label, style: TextStyle(fontSize: 16)),
+          Text(label, style: const TextStyle(fontSize: 16)),
           Text(
             value,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ],
       ),
