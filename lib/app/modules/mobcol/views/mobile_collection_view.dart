@@ -1,26 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
+import 'package:get/get.dart';
+import 'package:sufi_one/app/modules/mobcol/controllers/mobile_collection_controller.dart';
+import 'package:sufi_one/app/theme/color_constant.dart';
 
-final logger = Logger();
-
-class MobileCollection extends StatefulWidget {
+class MobileCollection extends StatelessWidget {
   const MobileCollection({super.key});
 
   @override
-  MobileCollectionState createState() => MobileCollectionState();
-}
-
-class MobileCollectionState extends State<MobileCollection> {
-  bool showCustomerInfo = true;
-
-  @override
   Widget build(BuildContext context) {
+    final controller = Get.put(MobileCollectionController());
+
     return Scaffold(
-      backgroundColor: Colors.grey.withAlpha(
-        (0.2 * 255).toInt(),
-      ), // Ganti dari withOpacity(0.2)
+      backgroundColor: AppColors.bg1,
       appBar: AppBar(
-        backgroundColor: Colors.blue[600],
+        backgroundColor: AppColors.snack,
         centerTitle: false,
         toolbarHeight: 50,
         automaticallyImplyLeading: false,
@@ -36,12 +29,12 @@ class MobileCollectionState extends State<MobileCollection> {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: AppColors.bg1,
                   ),
                 ),
                 Text(
                   'Kredit Resmi Suzuki',
-                  style: TextStyle(fontSize: 14, color: Colors.white70),
+                  style: TextStyle(fontSize: 14, color: AppColors.bg1),
                 ),
               ],
             ),
@@ -54,53 +47,56 @@ class MobileCollectionState extends State<MobileCollection> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      showCustomerInfo = true;
-                    });
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        showCustomerInfo
-                            ? const Color.fromARGB(255, 53, 138, 235)
-                            : const Color.fromARGB(255, 255, 255, 255),
-                    foregroundColor:
-                        showCustomerInfo ? Colors.white : Colors.black,
+                Obx(
+                  () => ElevatedButton(
+                    onPressed: () => controller.toggleView(true),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          controller.showCustomerInfo.value
+                              ? AppColors.snack
+                              : AppColors.bg1,
+                      foregroundColor:
+                          controller.showCustomerInfo.value
+                              ? AppColors.bg1
+                              : AppColors.iconDefault,
+                    ),
+                    child: const Text('Customer Info'),
                   ),
-                  child: const Text('Customer Info'),
                 ),
                 const SizedBox(width: 8),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      showCustomerInfo = false;
-                    });
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        !showCustomerInfo
-                            ? const Color.fromARGB(255, 53, 138, 235)
-                            : const Color.fromARGB(255, 255, 255, 255),
-                    foregroundColor:
-                        !showCustomerInfo ? Colors.white : Colors.black,
+                Obx(
+                  () => ElevatedButton(
+                    onPressed: () => controller.toggleView(false),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          !controller.showCustomerInfo.value
+                              ? AppColors.snack
+                              : AppColors.bg1,
+                      foregroundColor:
+                          !controller.showCustomerInfo.value
+                              ? AppColors.bg1
+                              : AppColors.iconDefault,
+                    ),
+                    child: const Text('Collection Form'),
                   ),
-                  child: const Text('Collection Form'),
                 ),
-                const SizedBox(width: 8),
               ],
             ),
-            showCustomerInfo ? buildCustomerInfo() : buildCollectionForm(),
+            const SizedBox(height: 16),
+            Obx(
+              () =>
+                  controller.showCustomerInfo.value
+                      ? buildCustomerInfo(controller)
+                      : buildCollectionForm(controller),
+            ),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color(0xFF0071C5),
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white70,
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
+        backgroundColor: AppColors.snack,
+        selectedItemColor: AppColors.bg1,
+        unselectedItemColor: AppColors.bg1,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
@@ -114,17 +110,17 @@ class MobileCollectionState extends State<MobileCollection> {
     );
   }
 
-  Widget buildCustomerInfo() {
+  Widget buildCustomerInfo(MobileCollectionController controller) {
     return Container(
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.bg1,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withAlpha((0.5 * 255).toInt()),
-            spreadRadius: 5,
-            blurRadius: 7,
+            color: AppColors.bg3,
+            spreadRadius: 2,
+            blurRadius: 8,
             offset: const Offset(0, 3),
           ),
         ],
@@ -136,32 +132,7 @@ class MobileCollectionState extends State<MobileCollection> {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.blue[100],
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Row(
-              children: [
-                const CircleAvatar(
-                  backgroundImage: NetworkImage('https://placehold.co/50x50'),
-                  radius: 25,
-                ),
-                const SizedBox(width: 16),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Jajang Nurjaman',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Text('Customer'),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          buildCustomerCard(),
           const SizedBox(height: 16),
           buildTextField('Alamat', 'Value'),
           buildTextField('No Telepon', 'Value'),
@@ -171,12 +142,10 @@ class MobileCollectionState extends State<MobileCollection> {
           buildTextField('Deskripsi Keterlambatan', 'Value'),
           const SizedBox(height: 16),
           ElevatedButton(
-            onPressed: () {
-              logger.i('Customer Info Submitted');
-            },
+            onPressed: controller.submitCustomerInfo,
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue[600],
-              foregroundColor: Colors.white,
+              backgroundColor: AppColors.button,
+              foregroundColor: AppColors.bg1,
             ),
             child: const Text('Submit'),
           ),
@@ -185,17 +154,17 @@ class MobileCollectionState extends State<MobileCollection> {
     );
   }
 
-  Widget buildCollectionForm() {
+  Widget buildCollectionForm(MobileCollectionController controller) {
     return Container(
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.bg1,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withAlpha((0.5 * 255).toInt()),
-            spreadRadius: 5,
-            blurRadius: 7,
+            color: AppColors.bg3,
+            spreadRadius: 2,
+            blurRadius: 8,
             offset: const Offset(0, 3),
           ),
         ],
@@ -207,32 +176,7 @@ class MobileCollectionState extends State<MobileCollection> {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.blue[100],
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Row(
-              children: [
-                const CircleAvatar(
-                  backgroundImage: NetworkImage('https://placehold.co/50x50'),
-                  radius: 25,
-                ),
-                const SizedBox(width: 16),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Jajang Nurjaman',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Text('Customer'),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          buildCustomerCard(),
           const SizedBox(height: 16),
           const Text(
             'Foto Lokasi',
@@ -246,19 +190,41 @@ class MobileCollectionState extends State<MobileCollection> {
             fit: BoxFit.cover,
           ),
           const SizedBox(height: 16),
-          buildDropdown('Apakah Bertemu Dengan Customer?', ['Ya', 'Tidak']),
-          buildDropdown('Alamat yang Dikunjungi?', [
-            'Alamat KTP',
-            'Alamat Rumah',
-          ]),
-          buildDropdown('Apakah Alamat Berubah', ['Tidak', 'Ya']),
-          buildDropdown('Apakah Unit Ada?', ['Ya', 'Tidak']),
-          buildDropdown('Apakah Customer Akan Membayar?', ['Ya', 'Tidak']),
+          buildDropdown(
+            'Apakah Bertemu Dengan Customer?',
+            ['Ya', 'Tidak'],
+            controller.isMeetCustomer,
+            (value) => controller.updateDropdownValue('meetCustomer', value),
+          ),
+          buildDropdown(
+            'Alamat yang Dikunjungi?',
+            ['Alamat KTP', 'Alamat Rumah'],
+            controller.visitedAddress,
+            (value) => controller.updateDropdownValue('visitedAddress', value),
+          ),
+          buildDropdown(
+            'Apakah Alamat Berubah',
+            ['Tidak', 'Ya'],
+            controller.isAddressChanged,
+            (value) => controller.updateDropdownValue('addressChanged', value),
+          ),
+          buildDropdown(
+            'Apakah Unit Ada?',
+            ['Ya', 'Tidak'],
+            controller.isUnitAvailable,
+            (value) => controller.updateDropdownValue('unitAvailable', value),
+          ),
+          buildDropdown(
+            'Apakah Customer Akan Membayar?',
+            ['Ya', 'Tidak'],
+            controller.willCustomerPay,
+            (value) => controller.updateDropdownValue('customerWillPay', value),
+          ),
           const SizedBox(height: 16),
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Colors.blue[100],
+              color: AppColors.bg2,
               borderRadius: BorderRadius.circular(8),
             ),
             child: Column(
@@ -274,14 +240,41 @@ class MobileCollectionState extends State<MobileCollection> {
           ),
           const SizedBox(height: 16),
           ElevatedButton(
-            onPressed: () {
-              logger.i('Collection Form Submitted');
-            },
+            onPressed: controller.submitCollectionForm,
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue[600],
-              foregroundColor: Colors.white,
+              backgroundColor: AppColors.bg3,
+              foregroundColor: AppColors.bg1,
             ),
             child: const Text('Submit'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildCustomerCard() {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppColors.bg2,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        children: [
+          const CircleAvatar(
+            backgroundImage: NetworkImage('https://placehold.co/50x50'),
+            radius: 25,
+          ),
+          const SizedBox(width: 16),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                'Jajang Nurjaman',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Text('Customer'),
+            ],
           ),
         ],
       ),
@@ -308,7 +301,12 @@ class MobileCollectionState extends State<MobileCollection> {
     );
   }
 
-  Widget buildDropdown(String label, List<String> options) {
+  Widget buildDropdown(
+    String label,
+    List<String> options,
+    RxString selected,
+    void Function(String) onChanged,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -317,18 +315,20 @@ class MobileCollectionState extends State<MobileCollection> {
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),
-        DropdownButtonFormField<String>(
-          decoration: const InputDecoration(border: OutlineInputBorder()),
-          items:
-              options
-                  .map(
-                    (value) => DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    ),
-                  )
-                  .toList(),
-          onChanged: (_) {},
+        Obx(
+          () => DropdownButtonFormField<String>(
+            value: selected.value.isEmpty ? null : selected.value,
+            decoration: const InputDecoration(border: OutlineInputBorder()),
+            items:
+                options
+                    .map(
+                      (val) => DropdownMenuItem(value: val, child: Text(val)),
+                    )
+                    .toList(),
+            onChanged: (value) {
+              if (value != null) onChanged(value);
+            },
+          ),
         ),
         const SizedBox(height: 16),
       ],
