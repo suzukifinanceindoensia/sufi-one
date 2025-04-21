@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sufi_one/app/modules/public/controllers/register_controller.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
+import 'package:sufi_one/app/modules/public/widgets/button.dart'; 
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class RegisterPage extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SuzukiFinanceAppBarWObutton(),
+      appBar: AppBar(
+        title: Text('Register'),
+        automaticallyImplyLeading: false,
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.arrow_back),
+        onPressed: () {
+          Get.toNamed('/public/login');
+        },
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(50.0),
@@ -90,7 +98,7 @@ class RegisterPage extends GetView<RegisterController> {
                       validator: controller.validateConfirmPassword,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10),
                   Row(
                     children: [
                       Obx(
@@ -104,13 +112,12 @@ class RegisterPage extends GetView<RegisterController> {
                       Text("I agree to the terms and conditions", style: AppTextStyles.smallBody,),
                     ],
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10),
                   Obx(() =>  ElevatedButton( //wrap with obx
                     onPressed: controller.isChecked.value ? () {  // Access the value here
                       controller.register();
                     } : null,
-                    child: Text('Register',style: AppTextStyles.button),
-                    style: Button.elevbutton,
+                    child: Text('Register'),
                   ),
                   ),
                 ],

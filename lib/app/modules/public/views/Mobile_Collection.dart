@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbar.dart';
 
 class MobileCollection extends StatefulWidget {
   const MobileCollection({super.key});
@@ -15,7 +14,41 @@ class _MobileCollectionState extends State<MobileCollection> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: SuzukiFinanceAppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.blue[600],
+        centerTitle: false,
+        toolbarHeight: 50,
+        automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            // Logo Suzuki
+            Image.asset(
+              'res/images/logo_suzuki.png', // Ganti dengan logo Suzuki kamu
+              height: 40,
+            ),
+            SizedBox(width: 12),
+
+            // Judul
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text(
+                  'Suzuki Finance',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  'Kredit Resmi Suzuki',
+                  style: TextStyle(fontSize: 14, color: Colors.white70),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -37,7 +70,7 @@ class _MobileCollectionState extends State<MobileCollection> {
                   ),
                   child: Text('Customer Info'),
                 ),
-                const SizedBox(width: 8),
+                SizedBox(width: 8),
                 ElevatedButton(
                   onPressed: () {
                     setState(() {

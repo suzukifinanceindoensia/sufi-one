@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/theme/color_constant.dart';
 import '../../../routes/app_routes.dart';
 import 'dart:async';
 
@@ -27,10 +26,8 @@ class _SplashPageState extends State<SplashPage> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              //const Color.fromARGB(255, 25, 10, 240),
-              //const Color.fromARGB(255, 112, 190, 236),
-              AppColors.bg2,
-              AppColors.bg1,
+              const Color.fromARGB(255, 25, 10, 240),
+              const Color.fromARGB(255, 112, 190, 236),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -40,28 +37,19 @@ class _SplashPageState extends State<SplashPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: SizedBox(),
-                )
+              Icon(Icons.local_mall_rounded, size: 64, color: Colors.white),
+              SizedBox(height: 20),
+              Text(
+                'SuperApp',
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  letterSpacing: 2,
+                ),
               ),
-              FractionallySizedBox(
-                widthFactor: 0.8,
-                child: Image.asset('res/images/splashscreen.png'),
-              ),
-              const SizedBox(height: 30),
-              CircularProgressIndicator(color: AppColors.button),
-              Expanded(
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: FractionallySizedBox(
-                    widthFactor: 0.6,
-                    child: Image.asset('res/images/ojk1.png'),
-                  ),
-                )
-              ),
-              const SizedBox(height: 10,)
+              SizedBox(height: 10),
+              CircularProgressIndicator(color: Colors.white),
             ],
           ),
         ),

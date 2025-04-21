@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:sufi_one/app/theme/color_constant.dart';
 
 class normalButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Widget child;
+  final Color? color;
   final double tinggi;
   final double lebar;
 
   normalButton({
     required this.onPressed,
     required this.child,
+    this.color,
     this.lebar= 300,
-    this.tinggi = 45,
+    this.tinggi = 35,
   });
 
   @override
@@ -22,7 +23,7 @@ class normalButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.button,
+          backgroundColor: color,
           padding: EdgeInsets.zero, // Remove default padding
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(5)), // Make corners square
@@ -34,12 +35,4 @@ class normalButton extends StatelessWidget {
   }
 }
 
-class Button {
-  static final ButtonStyle elevbutton = ElevatedButton.styleFrom(
-          backgroundColor: AppColors.button,
-          padding: EdgeInsets.zero, // Remove default padding
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(5)), // Make corners square
-          ),
-        );
-}
+
