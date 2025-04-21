@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/controllers/forgot_password.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/modules/public/widgets/button.dart';
+import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
 
@@ -10,10 +11,10 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SuzukiFinanceAppBar(),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: Padding(
         padding: const EdgeInsets.all(35),
-        child : Center(
+        child : SingleChildScrollView(
           child: Form(
             key: controller.formKey,
             child: Column(
@@ -36,7 +37,7 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                           style: AppTextStyles.bigBody,
                           textAlign: TextAlign.center,
                           ),),
-                          SizedBox(height: 100),
+                          const SizedBox(height: 100),
                           TextFormField(
                             controller: controller.emailController,
                             keyboardType: TextInputType.emailAddress,
@@ -46,7 +47,7 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                             ),
                             validator: controller.validateEmail,
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           Obx(
                             () => ElevatedButton(
                               style: Button.elevbutton,

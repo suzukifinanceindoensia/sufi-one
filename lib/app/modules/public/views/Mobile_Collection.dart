@@ -37,7 +37,7 @@ class _MobileCollectionState extends State<MobileCollection> {
                   ),
                   child: Text('Customer Info'),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 ElevatedButton(
                   onPressed: () {
                     setState(() {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sufi_one/app/modules/public/controllers/login_controller.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/modules/public/widgets/button.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
@@ -22,7 +22,7 @@ class LoginPage extends GetView<LoginController> {
               Center(
                 child: Text("Masukan Email dan Kata Sandi Anda yang Terdaftar di SUFIONE", style: AppTextStyles.bigBody,textAlign: TextAlign.center,),
               ),
-              SizedBox(height: 60,),
+              const SizedBox(height: 60,),
               Form(
                 key: controller.formKey,
                 child: Container(
@@ -49,7 +49,7 @@ class LoginPage extends GetView<LoginController> {
                               validator: controller.validateEmail,
                             ),
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           SizedBox(
                             width: 350,
                             height: 70,
@@ -61,7 +61,7 @@ class LoginPage extends GetView<LoginController> {
                               validator: controller.validatePassword,
                             ),
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           normalButton(
                             onPressed: () {
                               controller.login();

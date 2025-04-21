@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sufi_one/app/modules/public/controllers/register_controller.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbar.dart';
-import 'package:sufi_one/app/modules/public/widgets/button.dart'; 
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:get/get.dart';
+import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class RegisterPage extends GetView<RegisterController> {
@@ -90,7 +90,7 @@ class RegisterPage extends GetView<RegisterController> {
                       validator: controller.validateConfirmPassword,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Row(
                     children: [
                       Obx(
@@ -104,7 +104,7 @@ class RegisterPage extends GetView<RegisterController> {
                       Text("I agree to the terms and conditions", style: AppTextStyles.smallBody,),
                     ],
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Obx(() =>  ElevatedButton( //wrap with obx
                     onPressed: controller.isChecked.value ? () {  // Access the value here
                       controller.register();

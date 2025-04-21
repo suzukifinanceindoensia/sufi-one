@@ -27,13 +27,13 @@ class HomepageCust extends StatelessWidget {
                 child: Row(
                   children: [
                     _buildIconColumn(Icons.directions_car, 'Opsi Pembiayaan'),
-                    SizedBox(width: 16),
+                    const SizedBox(width: 16),
                     _buildIconColumn(Icons.local_offer, 'Promo'),
-                    SizedBox(width: 16),
+                    const SizedBox(width: 16),
                     _buildIconColumn(Icons.category, 'Produk'),
-                    SizedBox(width: 16),
+                    const SizedBox(width: 16),
                     _buildIconColumn(Icons.location_on, 'Cabang'),
-                    SizedBox(width: 16),
+                    const SizedBox(width: 16),
                     _buildIconColumn(Icons.calculate, 'Simulasi Kredit'),
                   ],
                 ),

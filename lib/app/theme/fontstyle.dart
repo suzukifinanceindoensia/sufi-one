@@ -34,12 +34,12 @@ class AppTextStyles {
     color: Colors.black,
     fontWeight: FontWeight.bold
   );
-  static final TextStyle appBar = GoogleFonts.bebasNeue(
+  static final TextStyle appBar = GoogleFonts.bigshotOne(
     fontSize: 18,
     fontWeight: FontWeight.bold,
-    color: Colors.white,
+    color: Colors.black,
   );
-  static final TextStyle appBarSmall = GoogleFonts.bebasNeue(
+  static final TextStyle appBarSmall = GoogleFonts.bigshotOne(
     fontSize: 14,
     fontWeight: FontWeight.bold,
     color: Colors.white70,
