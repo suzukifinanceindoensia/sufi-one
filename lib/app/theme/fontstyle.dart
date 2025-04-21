@@ -37,7 +37,7 @@ class AppTextStyles {
   static final TextStyle appBar = GoogleFonts.bigshotOne(
     fontSize: 18,
     fontWeight: FontWeight.bold,
-    color: Colors.black,
+    color: Colors.white,
   );
   static final TextStyle appBarSmall = GoogleFonts.bigshotOne(
     fontSize: 14,

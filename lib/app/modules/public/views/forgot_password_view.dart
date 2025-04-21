@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/controllers/forgot_password.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
-import 'package:sufi_one/app/modules/public/widgets/button.dart';
 import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
