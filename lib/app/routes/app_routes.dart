@@ -6,9 +6,9 @@ import 'package:sufi_one/app/modules/public/views/forgot_password_view.dart';
 import '../modules/public/views/splash_view.dart';
 import '../modules/public/views/home_view.dart';
 import '../modules/public/views/homepage_cust_view.dart';
-import '../modules/public/views/Mobile_collection.dart'; // Ensure MobileCollection is correctly imported
 import '../modules/public/views/login_view.dart';
 import '../modules/public/views/register_view.dart';
+import '../modules/mobcol/views/mobile_collection_view.dart';
 
 class AppRoutes {
   static const splash = '/';
@@ -36,5 +36,6 @@ class AppRoutes {
       page: () => ForgotPasswordPage(),
       binding: ForgotPasswordBinding(),
     ),
+    GetPage(name: mobileCollection, page: () => MobileCollection()),
   ];
 }
