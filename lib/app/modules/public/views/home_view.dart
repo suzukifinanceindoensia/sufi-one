@@ -31,19 +31,26 @@ class _PublicHomePageState extends State<PublicHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Public Home - No Login Required'),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Get.toNamed('/public/homepage_cust_view');
               },
               child: Text('Browse Catalog'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Get.toNamed('/public/login');
               },
               child: Text('Cobain Login'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Get.toNamed('/');
+              },
+              child: Text('cek splash'),
             ),
           ],
         ),
