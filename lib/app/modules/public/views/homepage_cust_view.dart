@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/routes/app_routes.dart';
+import 'package:sufi_one/app/theme/color_constant.dart';
 
 class HomepageCust extends StatelessWidget {
   const HomepageCust({super.key});
@@ -8,20 +9,19 @@ class HomepageCust extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: AppColors.bg1,
       appBar: AppBar(
-        backgroundColor: Colors.blue[600],
+        backgroundColor: AppColors.snack,
         centerTitle: false,
         toolbarHeight: 50,
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            // Dropdown menu
             PopupMenuButton<String>(
-              icon: Icon(Icons.menu, color: Colors.white),
+              icon: Icon(Icons.menu, color: AppColors.bg1),
+              color: AppColors.bg1,
               onSelected: (value) {
                 print('Menu dipilih: $value');
-                // Tambahkan aksi berdasarkan menu yang dipilih
                 if (value == 'Mobile Collection') {
                   print('Navigating to Mobile Collection');
                   Get.toNamed(AppRoutes.mobileCollection);
@@ -68,10 +68,7 @@ class HomepageCust extends StatelessWidget {
             SizedBox(width: 12),
 
             // Logo Suzuki
-            Image.asset(
-              'res/images/logo_suzuki.png', // Ganti dengan logo Suzuki kamu
-              height: 40,
-            ),
+            Image.asset('res/images/logo_suzuki.png', height: 40),
             SizedBox(width: 12),
 
             // Judul
@@ -83,12 +80,12 @@ class HomepageCust extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: AppColors.bg1,
                   ),
                 ),
                 Text(
                   'Kredit Resmi Suzuki',
-                  style: TextStyle(fontSize: 14, color: Colors.white70),
+                  style: TextStyle(fontSize: 14, color: AppColors.bg1),
                 ),
               ],
             ),
@@ -99,25 +96,24 @@ class HomepageCust extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              color: Colors.white,
+              color: AppColors.bg1,
               padding: EdgeInsets.all(16.0),
               child: Image.asset('res/images/baleno.jpg', height: 150),
             ),
             Container(
-              color: Colors.white,
-              padding: EdgeInsets.all(16.0),
+              color: AppColors.bg1,
+              padding: EdgeInsets.all(16),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Row(
+                child: Wrap(
+                  spacing: 24,
+                  runSpacing: 16,
+                  alignment: WrapAlignment.center,
                   children: [
                     _buildIconColumn(Icons.directions_car, 'Opsi Pembiayaan'),
-                    SizedBox(width: 16),
                     _buildIconColumn(Icons.local_offer, 'Promo'),
-                    SizedBox(width: 16),
                     _buildIconColumn(Icons.category, 'Produk'),
-                    SizedBox(width: 16),
                     _buildIconColumn(Icons.location_on, 'Cabang'),
-                    SizedBox(width: 16),
                     _buildIconColumn(Icons.calculate, 'Simulasi Kredit'),
                   ],
                 ),
@@ -145,7 +141,8 @@ class HomepageCust extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue[600],
+                        backgroundColor: AppColors.button,
+                        foregroundColor: AppColors.bg1,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
@@ -161,12 +158,10 @@ class HomepageCust extends StatelessWidget {
               padding: EdgeInsets.all(16.0),
               margin: EdgeInsets.only(top: 16.0),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(
-                  8.0,
-                ), // opsional: sudut membulat
+                borderRadius: BorderRadius.circular(8.0),
                 child: Image.asset(
-                  'res/images/baleno.jpg', // bisa diganti dengan iklan suzuki
-                  height: 100, // lebih ramping dari katalog
+                  'res/images/baleno.jpg',
+                  height: 100,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
@@ -176,12 +171,10 @@ class HomepageCust extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // Tambahkan ini!
-        backgroundColor: Color(
-          0xFF0071C5,
-        ), // Biru Suzuki, bisa diubah sesuai preferensi
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white70,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: AppColors.snack,
+        selectedItemColor: AppColors.bg1,
+        unselectedItemColor: AppColors.bg1,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         items: const [
@@ -201,20 +194,21 @@ class HomepageCust extends StatelessWidget {
     return Column(
       children: [
         Container(
+          width: 60,
+          height: 60,
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 255, 255, 255),
+            color: AppColors.bg1,
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
+                color: AppColors.iconDefault,
                 spreadRadius: 2,
                 blurRadius: 5,
                 offset: Offset(0, 3),
               ),
             ],
           ),
-          padding: EdgeInsets.all(16.0),
-          child: Icon(icon, color: Colors.blue[600], size: 30),
+          child: Center(child: Icon(icon, color: AppColors.snack, size: 28)),
         ),
         SizedBox(height: 8.0),
         Text(label),
