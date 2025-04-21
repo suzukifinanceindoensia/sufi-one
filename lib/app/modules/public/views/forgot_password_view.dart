@@ -6,68 +6,62 @@ import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
 
+
 class ForgotPasswordPage extends GetView<ForgotPasswordController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SuzukiFinanceAppBarWObutton(),
+      appBar: AppBar(title: Text('Forgot Password')),
       body: Padding(
         padding: const EdgeInsets.all(35),
-        child : SingleChildScrollView(
+        child : Center(
           child: Form(
             key: controller.formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(25),
-                  height: 400,
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 1),
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+            child: Container(
+              padding: const EdgeInsets.all(25),
+              height: 500,
+              decoration: BoxDecoration(
+                border: Border.all(width: 1),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Text(
+                    'Enter your email address to receive a password reset link.',
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.center,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: Text(
-                          'Enter your email address to receive a password reset link.',
-                          style: AppTextStyles.bigBody,
-                          textAlign: TextAlign.center,
-                          ),),
-                          const SizedBox(height: 100),
-                          TextFormField(
-                            controller: controller.emailController,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                              labelText: 'Email',
-                              border: OutlineInputBorder(),
-                            ),
-                            validator: controller.validateEmail,
-                          ),
-                          const SizedBox(height: 20),
-                          Obx(
-                            () => ElevatedButton(
-                              style: Button.elevbutton,
-                              onPressed: controller.isButtonEnabled.value
-                                  ? () {
-                                      controller.resetPassword();
-                                    }
-                                  : null, // disable kalo logo load
-                              child: controller.isButtonEnabled.value
-                                  ? Text('Reset Password', style: AppTextStyles.button,)
-                                  : CircularProgressIndicator(), 
-                            ),
-                          ),
-                        ],
-                      ),
+                  SizedBox(height: 20),
+                  TextFormField(
+                    controller: controller.emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      border: OutlineInputBorder(),
+                    ),
+                    validator: controller.validateEmail,
                   ),
-              ],
-            )
+                  SizedBox(height: 20),
+                  Obx(
+                    () => ElevatedButton(
+                      onPressed: controller.isButtonEnabled.value
+                          ? () {
+                              controller.resetPassword();
+                            }
+                          : null, // disable kalo lago load
+                      child: controller.isButtonEnabled.value
+                          ? Text('Reset Password')
+                          : CircularProgressIndicator(), 
+                    ),
+                  ),
+                ],
+              ),
             )
           ),
         )
-      );
+      ),
+    );
   }
 }

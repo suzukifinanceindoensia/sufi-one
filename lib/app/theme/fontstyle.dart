@@ -11,40 +11,30 @@ class AppTextStyles {
     color: Colors.black,
     fontWeight: FontWeight.bold
   );
-  static final TextStyle button = GoogleFonts.outfit(
-    fontSize: 12,
-    color: Colors.white,
-    fontWeight: FontWeight.bold
-  );
   static final TextStyle medBody = GoogleFonts.outfit(
     fontSize: 14,
     color: Colors.black,
-  );
-  static final TextStyle medBodyBold = GoogleFonts.outfit(
-    fontSize: 14,
-    color: Colors.black,
-    fontWeight: FontWeight.bold
   );
   static final TextStyle bigBody = GoogleFonts.outfit(
     fontSize: 18,
     color: Colors.black,
   );
-  static final TextStyle bigBodyBold = GoogleFonts.outfit(
-    fontSize: 18,
-    color: Colors.black,
-    fontWeight: FontWeight.bold
+  static final TextStyle smallTitle = GoogleFonts.bebasNeue(
+    fontSize: 10,
+    color: Colors.red,
   );
-  static final TextStyle appBar = GoogleFonts.bigshotOne(
+ static final TextStyle appBar = GoogleFonts.bigshotOne(
     fontSize: 18,
     fontWeight: FontWeight.bold,
     color: Colors.white,
+ static final TextStyle medTitle = GoogleFonts.bebasNeue(
+    fontSize: 30,
+    color: Colors.red,
   );
-  static final TextStyle appBarSmall = GoogleFonts.bigshotOne(
-    fontSize: 14,
-    fontWeight: FontWeight.bold,
-    color: Colors.white70,
+  static final TextStyle bigTitle = GoogleFonts.bebasNeue(
+    fontSize: 50,
+    color: Colors.red,
   );
-
   static final TextStyle smallDisplay = GoogleFonts.emilysCandy(
     fontSize: 16,
     color: const Color.fromARGB(255, 54, 244, 70),
@@ -82,4 +72,3 @@ class AppTextStyles {
     color: Colors.red,
   );
 }
-

@@ -25,37 +25,28 @@ class _PublicHomePageState extends State<PublicHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(title: Text('Welcome to SuperApp')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Public Home - No Login Required'),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Get.toNamed('/public/homepage_cust_view');
               },
               child: Text('Browse Catalog'),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Get.toNamed('/public/login');
               },
               child: Text('Cobain Login'),
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Get.toNamed('/');
-              },
-              child: Text('cek splash'),
-            ),
           ],
         ),
-
       ),
     );
   }
