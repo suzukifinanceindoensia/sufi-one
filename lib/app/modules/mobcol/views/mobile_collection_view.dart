@@ -65,8 +65,10 @@ class _MobileCollectionState extends State<MobileCollection> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor:
                         showCustomerInfo
-                            ? const Color.fromARGB(255, 0, 0, 0)
-                            : const Color.fromARGB(255, 233, 233, 233),
+                            ? const Color.fromARGB(255, 53, 138, 235)
+                            : const Color.fromARGB(255, 255, 255, 255),
+                    foregroundColor:
+                        showCustomerInfo ? Colors.white : Colors.black,
                   ),
                   child: Text('Customer Info'),
                 ),
@@ -80,11 +82,14 @@ class _MobileCollectionState extends State<MobileCollection> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor:
                         !showCustomerInfo
-                            ? const Color.fromARGB(255, 0, 0, 0)
-                            : Colors.grey,
+                            ? const Color.fromARGB(255, 53, 138, 235)
+                            : const Color.fromARGB(255, 255, 255, 255),
+                    foregroundColor:
+                        !showCustomerInfo ? Colors.white : Colors.black,
                   ),
                   child: Text('Collection Form'),
                 ),
+                SizedBox(width: 8),
               ],
             ),
             // Content
@@ -175,7 +180,10 @@ class _MobileCollectionState extends State<MobileCollection> {
               // Handle submit action
               print('Customer Info Submitted');
             },
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.blue[600]),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue[600],
+              foregroundColor: !showCustomerInfo ? Colors.white : Colors.black,
+            ),
             child: Text('Submit'),
           ),
         ],
@@ -278,7 +286,10 @@ class _MobileCollectionState extends State<MobileCollection> {
               // Handle submit action
               print('Collection Form Submitted');
             },
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.blue[600]),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue[600],
+              foregroundColor: !showCustomerInfo ? Colors.white : Colors.black,
+            ),
             child: Text('Submit'),
           ),
         ],
