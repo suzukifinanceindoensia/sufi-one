@@ -147,7 +147,7 @@ class HomepageCust extends StatelessWidget {
               ),
             ),
             Container(
-              color: Colors.white,
+              color: AppColors.bg1,
               padding: const EdgeInsets.all(16.0),
               margin: const EdgeInsets.only(top: 16.0),
               child: ClipRRect(
