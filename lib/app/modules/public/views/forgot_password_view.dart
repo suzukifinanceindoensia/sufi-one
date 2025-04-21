@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/controllers/forgot_password.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
-import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
+// import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
+// import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
-
-
 
 class ForgotPasswordPage extends GetView<ForgotPasswordController> {
   @override
@@ -14,7 +12,7 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
       appBar: AppBar(title: Text('Forgot Password')),
       body: Padding(
         padding: const EdgeInsets.all(35),
-        child : Center(
+        child: Center(
           child: Form(
             key: controller.formKey,
             child: Container(
@@ -46,21 +44,23 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                   SizedBox(height: 20),
                   Obx(
                     () => ElevatedButton(
-                      onPressed: controller.isButtonEnabled.value
-                          ? () {
-                              controller.resetPassword();
-                            }
-                          : null, // disable kalo lago load
-                      child: controller.isButtonEnabled.value
-                          ? Text('Reset Password')
-                          : CircularProgressIndicator(), 
+                      onPressed:
+                          controller.isButtonEnabled.value
+                              ? () {
+                                controller.resetPassword();
+                              }
+                              : null, // disable kalo lago load
+                      child:
+                          controller.isButtonEnabled.value
+                              ? Text('Reset Password')
+                              : CircularProgressIndicator(),
                     ),
                   ),
                 ],
               ),
-            )
+            ),
           ),
-        )
+        ),
       ),
     );
   }
