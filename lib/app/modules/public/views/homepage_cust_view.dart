@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/routes/app_routes.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
+import 'package:sufi_one/app/modules/public/controllers/homepage_cust_controllers.dart';
 
 class HomepageCust extends StatelessWidget {
   const HomepageCust({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(HomepageCustControllers());
+
     return Scaffold(
       backgroundColor: AppColors.bg1,
       appBar: AppBar(
@@ -20,15 +22,9 @@ class HomepageCust extends StatelessWidget {
             PopupMenuButton<String>(
               icon: Icon(Icons.menu, color: AppColors.bg1),
               color: AppColors.bg1,
-              onSelected: (value) {
-                print('Menu dipilih: $value');
-                if (value == 'Mobile Collection') {
-                  print('Navigating to Mobile Collection');
-                  Get.toNamed(AppRoutes.mobileCollection);
-                }
-              },
+              onSelected: controller.onMenuSelected,
               itemBuilder:
-                  (BuildContext context) => [
+                  (BuildContext context) => const [
                     PopupMenuItem(value: 'Zeus', child: Text('Zeus')),
                     PopupMenuItem(
                       value: 'Mobile Collection',
@@ -65,13 +61,9 @@ class HomepageCust extends StatelessWidget {
                     ),
                   ],
             ),
-            SizedBox(width: 12),
-
-            // Logo Suzuki
+            const SizedBox(width: 12),
             Image.asset('res/images/logo_suzuki.png', height: 40),
-            SizedBox(width: 12),
-
-            // Judul
+            const SizedBox(width: 12),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
@@ -97,12 +89,12 @@ class HomepageCust extends StatelessWidget {
           children: [
             Container(
               color: AppColors.bg1,
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Image.asset('res/images/baleno.jpg', height: 150),
             ),
             Container(
               color: AppColors.bg1,
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Wrap(
@@ -121,22 +113,23 @@ class HomepageCust extends StatelessWidget {
             ),
             Container(
               color: Colors.white,
-              padding: EdgeInsets.all(16.0),
-              margin: EdgeInsets.only(top: 16.0),
+              padding: const EdgeInsets.all(16.0),
+              margin: const EdgeInsets.only(top: 16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Katalog Produk',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Center(
                     child: Image.asset('res/images/baleno.jpg', height: 150),
                   ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
                   Center(
                     child: Image.asset('res/images/baleno.jpg', height: 150),
                   ),
+                  const SizedBox(height: 16.0),
                   Center(
                     child: ElevatedButton(
                       onPressed: () {},
@@ -147,7 +140,7 @@ class HomepageCust extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
-                      child: Text('Order Kendaraan'),
+                      child: const Text('Order Kendaraan'),
                     ),
                   ),
                 ],
@@ -155,8 +148,8 @@ class HomepageCust extends StatelessWidget {
             ),
             Container(
               color: Colors.white,
-              padding: EdgeInsets.all(16.0),
-              margin: EdgeInsets.only(top: 16.0),
+              padding: const EdgeInsets.all(16.0),
+              margin: const EdgeInsets.only(top: 16.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.asset(
@@ -204,13 +197,13 @@ class HomepageCust extends StatelessWidget {
                 color: AppColors.iconDefault,
                 spreadRadius: 2,
                 blurRadius: 5,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
               ),
             ],
           ),
           child: Center(child: Icon(icon, color: AppColors.snack, size: 28)),
         ),
-        SizedBox(height: 8.0),
+        const SizedBox(height: 8.0),
         Text(label),
       ],
     );
