@@ -12,22 +12,29 @@ import 'package:sufi_one/app/modules/public/views/register_view.dart';
 import 'package:sufi_one/app/modules/public/views/splash_view.dart';
 import 'package:sufi_one/app/modules/mobcol/views/mobile_collection_view.dart';
 import 'package:sufi_one/app/modules/mobcol/bindings/mobile_collection_binding.dart';
+import 'package:sufi_one/app/modules/zeus/views/zeus_view.dart';
+import 'package:sufi_one/app/modules/zeus/views/zeus_detail_view.dart';
+import 'package:sufi_one/app/modules/zeus/bindings/zeus_binding.dart';
 
 class AppRoutes {
   static const splash = '/';
   static const publicHome = '/public/home';
   static const homepageCust = '/public/homepage_cust_view';
   static const mobileCollection = '/public/mobile_collection';
-  static const mobileSurvey= '/public/mobile_survey';
+  static const mobileSurvey = '/public/mobile_survey';
   static const catalog = '/public/catalog';
   static const login = '/public/login';
   static const register = '/public/register';
   static const forgotPassword = '/public/forgot_password';
+  static const zeus = '/public/zeus';
+  static const zeusDetail = '/public/zeus_detail_view';
 
   static final pages = [
     GetPage(name: splash, page: () => SplashPage()),
     GetPage(name: publicHome, page: () => PublicHomePage()),
     GetPage(name: homepageCust, page: () => HomepageCust()),
+    GetPage(name: zeus, page: () => ZeusView(), binding: ZeusBinding()),
+    GetPage(name: zeusDetail, page: () => const ZeusDetailView(), binding: ZeusBinding()),
     GetPage(name: mobileCollection, page: () => MobileCollection()), 
     GetPage(name: mobileSurvey, page: () => MobileSurveyPage(), binding: MobileSurveyBinding()),
     GetPage(name: login, page: () => LoginPage(),binding: LoginBinding()),

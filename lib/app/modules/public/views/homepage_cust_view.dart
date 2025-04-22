@@ -77,12 +77,10 @@ class HomepageCust extends StatelessWidget {
               padding: EdgeInsets.all(16.0),
               margin: EdgeInsets.only(top: 16.0),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(
-                  8.0,
-                ), // opsional: sudut membulat
+                borderRadius: BorderRadius.circular(8.0),
                 child: Image.asset(
-                  'res/images/baleno.jpg', // bisa diganti dengan iklan suzuki
-                  height: 100, // lebih ramping dari katalog
+                  'res/images/baleno.jpg',
+                  height: 100,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
@@ -91,11 +89,11 @@ class HomepageCust extends StatelessWidget {
           ],
         ),
       ),
+
+      // Bottom Navigation
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // Tambahkan ini!
-        backgroundColor: Color(
-          0xFF0071C5,
-        ), // Biru Suzuki, bisa diubah sesuai preferensi
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Color(0xFF0071C5),
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white70,
         showSelectedLabels: true,
@@ -113,12 +111,13 @@ class HomepageCust extends StatelessWidget {
     );
   }
 
+  // Widget builder untuk ikon shortcut horizontal
   Column _buildIconColumn(IconData icon, String label) {
     return Column(
       children: [
         Container(
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 255, 255, 255),
+            color: Colors.white,
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
