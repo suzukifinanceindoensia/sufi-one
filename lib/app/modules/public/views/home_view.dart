@@ -45,6 +45,13 @@ class _PublicHomePageState extends State<PublicHomePage> {
               },
               child: Text('Cobain Login'),
             ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Get.toNamed('/');
+              },
+              child: Text('Cobain SplashScreen'),
+            ),
           ],
         ),
       ),

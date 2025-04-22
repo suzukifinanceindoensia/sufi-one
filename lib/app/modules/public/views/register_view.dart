@@ -1,24 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sufi_one/app/modules/public/controllers/register_controller.dart';
-import 'package:sufi_one/app/modules/public/widgets/button.dart'; 
 import 'package:get/get.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
+import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class RegisterPage extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Register'),
-        automaticallyImplyLeading: false,
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.arrow_back),
-        onPressed: () {
-          Get.toNamed('/public/login');
-        },
-      ),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(50.0),
@@ -114,10 +106,11 @@ class RegisterPage extends GetView<RegisterController> {
                   ),
                   SizedBox(height: 10),
                   Obx(() =>  ElevatedButton( //wrap with obx
+                    style: AppButtonStyle.primaryButtonStyle(),
                     onPressed: controller.isChecked.value ? () {  // Access the value here
                       controller.register();
                     } : null,
-                    child: Text('Register'),
+                    child: Text('Register', style : AppTextStyles.buttonFont),
                   ),
                   ),
                 ],

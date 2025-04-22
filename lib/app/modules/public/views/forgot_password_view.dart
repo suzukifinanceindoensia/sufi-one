@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/public/controllers/forgot_password.dart';
-// import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
-// import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
+import 'package:sufi_one/app/modules/public/controllers/forgot_password_controller.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
+import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class ForgotPasswordPage extends GetView<ForgotPasswordController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Forgot Password')),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: Padding(
         padding: const EdgeInsets.all(35),
         child: Center(
@@ -26,12 +26,13 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
+                  SizedBox(height: 20),
                   Text(
                     'Enter your email address to receive a password reset link.',
-                    style: TextStyle(fontSize: 16),
+                    style: AppTextStyles.bigBody,
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 20),
+                  Expanded(child: SizedBox()),
                   TextFormField(
                     controller: controller.emailController,
                     keyboardType: TextInputType.emailAddress,
@@ -44,6 +45,7 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                   SizedBox(height: 20),
                   Obx(
                     () => ElevatedButton(
+                      style: AppButtonStyle.primaryButtonStyle(),
                       onPressed:
                           controller.isButtonEnabled.value
                               ? () {
@@ -52,10 +54,11 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                               : null, // disable kalo lago load
                       child:
                           controller.isButtonEnabled.value
-                              ? Text('Reset Password')
+                              ? Text('Reset Password', style: AppTextStyles.buttonFont,)
                               : CircularProgressIndicator(),
                     ),
                   ),
+                  Expanded(child: SizedBox())
                 ],
               ),
             ),

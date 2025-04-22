@@ -6,6 +6,10 @@ class AppTextStyles {
     fontSize: 10,
     color: Colors.black,
   );
+  static final TextStyle buttonFont = GoogleFonts.outfit(
+    fontSize: 14,
+    color: Colors.white,
+  );
   static final TextStyle smallBodyBold = GoogleFonts.outfit(
     fontSize: 10,
     color: Colors.black,
@@ -27,6 +31,11 @@ class AppTextStyles {
     fontSize: 18,
     fontWeight: FontWeight.bold,
     color: Colors.white,
+  );
+  static final TextStyle appBarSmall = GoogleFonts.bigshotOne(
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+    color: Colors.white70,
   );
   static final TextStyle medTitle = GoogleFonts.bebasNeue(
     fontSize: 30,
