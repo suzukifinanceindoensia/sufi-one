@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sufi_one/app/modules/public/controllers/login_controller.dart';
-import 'package:sufi_one/app/modules/public/widgets/button.dart';
 import 'package:get/get.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
+import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class LoginPage extends GetView<LoginController> {
@@ -9,13 +10,10 @@ class LoginPage extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'),
-        automaticallyImplyLeading: false,
-      ),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(50.0),
+          padding: const EdgeInsets.fromLTRB(50,200,50,50),
           child: Form(
             key: controller.formKey,
             child: Container(
@@ -55,43 +53,53 @@ class LoginPage extends GetView<LoginController> {
                         ),
                       ),
                       SizedBox(height: 20),
-                      normalButton(
-                        onPressed: () {
-                          controller.login();
-                        },
-                        child: Text("Login"),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: TextButton(
+                      FractionallySizedBox(
+                        widthFactor: 1,
+                        child : ElevatedButton(
+                          style: AppButtonStyle.primaryButtonStyle(),
                           onPressed: () {
-                            Get.toNamed('public/forgot_password');
+                            controller.login();
                           },
-                          child: Text('Forget Password?'),
+                          child: Text("Login",style: AppTextStyles.buttonFont,),
                         ),
                       ),
                       Align(
-                        alignment: Alignment.centerLeft,
-                        child: TextButton(
-                          onPressed: () {
-                            Get.toNamed('/public/register');
-                          },
-                          child: RichText(
-                            text: TextSpan(
-                              children: <TextSpan>[
-                                TextSpan(
-                                  text: 'Belum punya akun? ',
-                                  style: AppTextStyles.smallBody
+                        alignment: Alignment.topLeft,
+                        child: SizedBox(
+                                    height: 30,
+                                    child: TextButton(
+                                      onPressed: () {
+                                        Get.toNamed('public/forgot_password');
+                                      },
+                                      child: Text('Forget Password?', style: AppTextStyles.smallBody,),
+                                    ),
+                                  ),
+                        ),
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: SizedBox(
+                              height: 30,
+                              child: TextButton(
+                                onPressed: () {
+                                  Get.toNamed('/public/register');
+                                },
+                                child: RichText(
+                                  text: TextSpan(
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                        text: 'Belum punya akun? ',
+                                        style: AppTextStyles.smallBody
+                                      ),
+                                      TextSpan(
+                                        text: 'Daftar sekarang',
+                                        style: AppTextStyles.smallBodyBold,
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                TextSpan(
-                                  text: 'Daftar sekarang',
-                                  style: AppTextStyles.smallBodyBold,
-                                ),
-                              ],
+                              ),
                             ),
-                          ),
-                        ),
-                      ),
+                        )
                     ],
                   ),
               ),
