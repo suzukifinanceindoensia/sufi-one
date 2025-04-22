@@ -28,6 +28,11 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
+  static final TextStyle appBarSmall = GoogleFonts.bigshotOne(
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+  );
   static final TextStyle medTitle = GoogleFonts.bebasNeue(
     fontSize: 30,
     color: Colors.red,
