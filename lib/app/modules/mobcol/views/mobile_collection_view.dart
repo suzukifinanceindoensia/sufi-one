@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/controllers/mobile_collection_controller.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 
 class MobileCollection extends StatelessWidget {
@@ -12,35 +13,7 @@ class MobileCollection extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.bg1,
-      appBar: AppBar(
-        backgroundColor: AppColors.snack,
-        centerTitle: false,
-        toolbarHeight: 50,
-        automaticallyImplyLeading: false,
-        title: Row(
-          children: [
-            Image.asset('res/images/logo_suzuki.png', height: 40),
-            const SizedBox(width: 12),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  'Suzuki Finance',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.bg1,
-                  ),
-                ),
-                Text(
-                  'Kredit Resmi Suzuki',
-                  style: TextStyle(fontSize: 14, color: AppColors.bg1),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+      appBar: SuzukiFinanceAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [

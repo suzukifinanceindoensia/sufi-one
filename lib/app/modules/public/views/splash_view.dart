@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sufi_one/app/theme/color_constant.dart';
 import '../../../routes/app_routes.dart';
 import 'dart:async';
 
@@ -15,7 +16,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 2), () {
-      Get.offNamed(AppRoutes.publicHome);
+      Get.offNamed("/public/home");
     });
   }
 
@@ -26,8 +27,8 @@ class _SplashPageState extends State<SplashPage> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              const Color.fromARGB(255, 25, 10, 240),
-              const Color.fromARGB(255, 112, 190, 236),
+              AppColors.splashStart ,
+              AppColors.splashEnd,
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -37,19 +38,19 @@ class _SplashPageState extends State<SplashPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.local_mall_rounded, size: 64, color: Colors.white),
-              SizedBox(height: 20),
-              Text(
-                'SuperApp',
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  letterSpacing: 2,
-                ),
+              Expanded(child: SizedBox()),
+              FractionallySizedBox(
+                child: Image.asset('res/images/splashscreen.png',),
+                widthFactor: 0.8,
               ),
-              SizedBox(height: 10),
+              SizedBox(height:50,),
               CircularProgressIndicator(color: Colors.white),
+              Expanded(child: SizedBox()),
+              FractionallySizedBox(
+                child: Image.asset('res/images/ojk1.png',),
+                widthFactor: 0.6,
+              ),
+              SizedBox(height:30,),
             ],
           ),
         ),

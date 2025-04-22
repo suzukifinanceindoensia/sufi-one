@@ -3,6 +3,7 @@ import 'package:sufi_one/app/modules/public/bindings/forgot_password_binding.dar
 import 'package:sufi_one/app/modules/public/bindings/login_binding.dart';
 import 'package:sufi_one/app/modules/public/bindings/register_binding.dart';
 import 'package:sufi_one/app/modules/public/views/forgot_password_view.dart';
+import 'package:sufi_one/app/modules/survey/bindings/mobile_survey_binding.dart';
 import 'package:sufi_one/app/modules/survey/views/mobile_survey_view.dart';
 import 'package:sufi_one/app/modules/public/views/home_view.dart';
 import 'package:sufi_one/app/modules/public/views/homepage_cust_view.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbar.dart';
 import 'package:sufi_one/app/routes/app_routes.dart';
 
 class HomepageCust extends StatelessWidget {
