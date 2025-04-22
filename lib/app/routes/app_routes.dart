@@ -33,31 +33,12 @@ class AppRoutes {
     GetPage(name: splash, page: () => SplashPage()),
     GetPage(name: publicHome, page: () => PublicHomePage()),
     GetPage(name: homepageCust, page: () => HomepageCust()),
-    GetPage(
-      name: mobileCollection,
-      page: () => MobileCollection(),
-      binding: MobileCollectionBinding(),
-    ),
-    GetPage(name: login, page: () => LoginPage(), binding: LoginBinding()),
-    GetPage(
-      name: register,
-      page: () => RegisterPage(),
-      binding: RegisterBinding(),
-    ),
-    GetPage(
-      name: forgotPassword,
-      page: () => ForgotPasswordPage(),
-      binding: ForgotPasswordBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.zeus,
-      page: () => ZeusView(),
-      binding: ZeusBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.zeusDetail,
-      page: () => const ZeusDetailView(),
-      binding: ZeusBinding(),
-    ),
+    GetPage(name: zeus, page: () => ZeusView(), binding: ZeusBinding()),
+    GetPage(name: zeusDetail, page: () => const ZeusDetailView(), binding: ZeusBinding()),
+    GetPage(name: mobileCollection, page: () => MobileCollection()), 
+    GetPage(name: mobileSurvey, page: () => MobileSurveyPage(), binding: MobileSurveyBinding()),
+    GetPage(name: login, page: () => LoginPage(),binding: LoginBinding()),
+    GetPage(name: register, page: () => RegisterPage(),binding: RegisterBinding()),
+    GetPage(name: forgotPassword, page: () => ForgotPasswordPage(),binding: ForgotPasswordBinding()),
   ];
 }
