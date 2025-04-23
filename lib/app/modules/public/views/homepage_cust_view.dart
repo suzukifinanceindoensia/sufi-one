@@ -1,48 +1,91 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sufi_one/app/modules/public/controllers/homepage_cust_controller.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbar.dart';
-import 'package:sufi_one/app/routes/app_routes.dart';
+import 'package:sufi_one/app/theme/color_constant.dart';
+import 'package:sufi_one/app/theme/fontstyle.dart';
 
-class HomepageCust extends StatelessWidget {
-  const HomepageCust({super.key});
+class HomepageCustView extends GetView<HomepageCustController> {
+  const HomepageCustView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: AppColors.bg1,
       appBar: SuzukiFinanceAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              color: Colors.white,
-              padding: EdgeInsets.all(16.0),
-              child: Image.asset('res/images/baleno.jpg', height: 150),
-            ),
-            Container(
-              color: Colors.white,
-              padding: EdgeInsets.all(16.0),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    _buildIconColumn(Icons.directions_car, 'Opsi Pembiayaan'),
-                    SizedBox(width: 16),
-                    _buildIconColumn(Icons.local_offer, 'Promo'),
-                    SizedBox(width: 16),
-                    _buildIconColumn(Icons.category, 'Produk'),
-                    SizedBox(width: 16),
-                    _buildIconColumn(Icons.location_on, 'Cabang'),
-                    SizedBox(width: 16),
-                    _buildIconColumn(Icons.calculate, 'Simulasi Kredit'),
-                  ],
-                ),
+            Obx(
+              () => Column(
+                children: [
+                  SizedBox(
+                    height: 240,
+                    child: PageView.builder(
+                      controller: controller.pageController,
+                      onPageChanged: controller.onPageChanged,
+                      itemCount: 4,
+                      itemBuilder: (context, index) {
+                        final images = [
+                          'res/images/iklan_suzuki1.jpg',
+                          'res/images/iklan_suzuki2.jpg',
+                          'res/images/iklan_suzuki3.jpg',
+                          'res/images/iklan_suzuki4.jpg',
+                        ];
+                        return Image.asset(
+                          images[index],
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      4,
+                      (index) => Container(
+                        margin: EdgeInsets.symmetric(horizontal: 4.0),
+                        width: 8.0,
+                        height: 8.0,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color:
+                              controller.currentPage.value == index
+                                  ? AppColors.snack
+                                  : Colors.grey,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Container(
-              color: Colors.white,
+              color: AppColors.bg1,
               padding: EdgeInsets.all(16.0),
-              margin: EdgeInsets.only(top: 16.0),
+              margin: EdgeInsets.only(bottom: 0.0),
+              child: GridView.count(
+                crossAxisCount: 3,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                crossAxisSpacing: 3.0,
+                mainAxisSpacing: 3.0,
+                children: [
+                  _buildIconColumn(Icons.directions_car, 'Opsi Pembayaran'),
+                  _buildIconColumn(Icons.local_offer, 'Promo'),
+                  _buildIconColumn(Icons.category, 'Produk'),
+                  _buildIconColumn(Icons.location_on, 'Cabang'),
+                  _buildIconColumn(Icons.calculate, 'Simulasi Kredit'),
+                  _buildIconColumn(Icons.assignment, 'Fasilitas'),
+                ],
+              ),
+            ),
+            Container(
+              color: AppColors.bg1,
+              padding: EdgeInsets.all(16.0),
+              margin: EdgeInsets.only(top: 4.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -55,31 +98,39 @@ class HomepageCust extends StatelessWidget {
                   ),
                   SizedBox(height: 16.0),
                   Center(
-                    child: Image.asset('res/images/baleno.jpg', height: 150),
+                    child: Image.asset(
+                      'res/images/suzuki_iklan5.jpg',
+                      height: 150,
+                      width: 270,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   Center(
                     child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue[600],
+                        backgroundColor: AppColors.snack,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
-                      child: Text('Order Kendaraan'),
+                      child: Text(
+                        'Order Sekarang',
+                        style: TextStyle(color: AppColors.bg1),
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             Container(
-              color: Colors.white,
+              color: AppColors.bg1,
               padding: EdgeInsets.all(16.0),
               margin: EdgeInsets.only(top: 16.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.asset(
-                  'res/images/baleno.jpg',
+                  'res/images/suzuki_iklan6.jpg',
                   height: 100,
                   width: double.infinity,
                   fit: BoxFit.cover,
@@ -89,13 +140,11 @@ class HomepageCust extends StatelessWidget {
           ],
         ),
       ),
-
-      // Bottom Navigation
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Color(0xFF0071C5),
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white70,
+        backgroundColor: AppColors.snack,
+        selectedItemColor: AppColors.bg1,
+        unselectedItemColor: AppColors.bg2,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         items: const [
@@ -111,28 +160,32 @@ class HomepageCust extends StatelessWidget {
     );
   }
 
-  // Widget builder untuk ikon shortcut horizontal
   Column _buildIconColumn(IconData icon, String label) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.bg1,
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 2,
-                blurRadius: 5,
-                offset: Offset(0, 3),
+                spreadRadius: 1,
+                blurRadius: 3,
+                offset: Offset(0, 2),
               ),
             ],
           ),
-          padding: EdgeInsets.all(16.0),
-          child: Icon(icon, color: Colors.blue[600], size: 30),
+          padding: EdgeInsets.all(10.0),
+          child: Icon(icon, color: AppColors.snack, size: 24),
         ),
-        SizedBox(height: 8.0),
-        Text(label),
+        SizedBox(height: 6.0),
+        Text(
+          label,
+          textAlign: TextAlign.center,
+          style: AppTextStyles.smallBody, // Menggunakan AppTextStyles
+        ),
       ],
     );
   }
