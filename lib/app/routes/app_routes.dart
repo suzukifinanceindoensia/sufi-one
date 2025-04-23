@@ -17,6 +17,9 @@ import 'package:sufi_one/app/modules/mobcol/bindings/mobile_collection_binding.d
 import 'package:sufi_one/app/modules/survey/views/newtask_confirm_view.dart';
 import 'package:sufi_one/app/modules/survey/views/upload_checking_view.dart';
 import 'package:sufi_one/app/modules/survey/views/process_survey_view.dart';
+import 'package:sufi_one/app/modules/zeus/views/zeus_view.dart';
+import 'package:sufi_one/app/modules/zeus/views/zeus_detail_view.dart';
+import 'package:sufi_one/app/modules/zeus/bindings/zeus_binding.dart';
 
 class AppRoutes {
   static const splash = '/';
@@ -32,11 +35,15 @@ class AppRoutes {
   static const login = '/public/login';
   static const register = '/public/register';
   static const forgotPassword = '/public/forgot_password';
+  static const zeus = '/public/zeus';
+  static const zeusDetail = '/public/zeus_detail_view';
 
   static final pages = [
     GetPage(name: splash, page: () => SplashPage()),
     GetPage(name: publicHome, page: () => PublicHomePage()),
     GetPage(name: homepageCust, page: () => HomepageCust()),
+    GetPage(name: zeus, page: () => ZeusView(), binding: ZeusBinding()),
+    GetPage(name: zeusDetail, page: () => const ZeusDetailView(), binding: ZeusBinding()),
     GetPage(name: mobileCollection, page: () => MobileCollection()), 
     GetPage(name: mobileSurvey, page: () => MobileSurveyPage(), binding: MobileSurveyBinding()),
     GetPage(name: newtaskConfirm, page: () => NewtaskConfirmView()),
