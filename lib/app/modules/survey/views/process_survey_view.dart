@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 import 'package:sufi_one/app/modules/survey/controllers/process_survey_controller.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
@@ -13,7 +12,9 @@ class ProcessSurveyView extends GetView<ProcessSurveyController> {
     final formKey = GlobalKey<FormState>();
 
     return Scaffold(
-      appBar: SuzukiFinanceAppBarWObutton(),
+      appBar: AppBar(
+        title: const Text('Process Survey'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -22,9 +23,10 @@ class ProcessSurveyView extends GetView<ProcessSurveyController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
+                // Text Form Fields
                 TextFormField(
                   controller: controller.nameController,
-                  decoration: const InputDecoration(labelText: 'Input String'),
+                  decoration: const InputDecoration(labelText: 'Name'),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your name';
@@ -34,7 +36,7 @@ class ProcessSurveyView extends GetView<ProcessSurveyController> {
                 ),
                 TextFormField(
                   controller: controller.addressController,
-                  decoration: const InputDecoration(labelText: 'Input String'),
+                  decoration: const InputDecoration(labelText: 'Address'),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your address';
@@ -44,7 +46,7 @@ class ProcessSurveyView extends GetView<ProcessSurveyController> {
                 ),
                 TextFormField(
                   controller: controller.notesController,
-                  decoration: const InputDecoration(labelText: 'Input Long String'),
+                  decoration: const InputDecoration(labelText: 'Notes'),
                   maxLines: 3,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -55,7 +57,8 @@ class ProcessSurveyView extends GetView<ProcessSurveyController> {
                 ),
                 const SizedBox(height: 20),
 
-                const Text('Pilihan Ganda 1', style: TextStyle(fontWeight: FontWeight.bold)),
+                // Multiple Choice 1
+                Text('Multiple Choice 1', style: AppTextStyles.medBodyBold),
                 Obx(
                   () => DropdownButtonFormField<String>(
                     value: controller.selectedOption1.value,
@@ -68,7 +71,7 @@ class ProcessSurveyView extends GetView<ProcessSurveyController> {
                         child: Text(value),
                       );
                     }).toList(),
-                    decoration: const InputDecoration(labelText: 'Pilih salah satu'),
+                    decoration: const InputDecoration(labelText: 'Select Option 1'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please select an option';
@@ -79,7 +82,8 @@ class ProcessSurveyView extends GetView<ProcessSurveyController> {
                 ),
                 const SizedBox(height: 20),
 
-                const Text('Pilihan Ganda 2', style: TextStyle(fontWeight: FontWeight.bold)),
+                // Multiple Choice 2
+                Text('Multiple Choice 2', style: AppTextStyles.medBodyBold),
                 Obx(
                   () => DropdownButtonFormField<String>(
                     value: controller.selectedOption2.value,
@@ -92,7 +96,7 @@ class ProcessSurveyView extends GetView<ProcessSurveyController> {
                         child: Text(value),
                       );
                     }).toList(),
-                    decoration: const InputDecoration(labelText: 'Pilih salah satu'),
+                    decoration: const InputDecoration(labelText: 'Select Option 2'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please select an option';
@@ -103,7 +107,8 @@ class ProcessSurveyView extends GetView<ProcessSurveyController> {
                 ),
                 const SizedBox(height: 20),
 
-                const Text('Pilihan Ganda 3', style: TextStyle(fontWeight: FontWeight.bold)),
+                // Multiple Choice 3
+                Text('Multiple Choice 3', style: AppTextStyles.medBodyBold),
                 Obx(
                   () => DropdownButtonFormField<String>(
                     value: controller.selectedOption3.value,
@@ -116,7 +121,7 @@ class ProcessSurveyView extends GetView<ProcessSurveyController> {
                         child: Text(value),
                       );
                     }).toList(),
-                    decoration: const InputDecoration(labelText: 'Pilih salah satu'),
+                    decoration: const InputDecoration(labelText: 'Select Option 3'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please select an option';
@@ -128,10 +133,10 @@ class ProcessSurveyView extends GetView<ProcessSurveyController> {
                 const SizedBox(height: 20),
 
                 // Photo Upload
-                const Text('Upload Photo', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('Upload Photo', style: AppTextStyles.medBodyBold),
                 ElevatedButton(
-                  onPressed: controller.pickImage,
                   style: AppButtonStyle.primaryButtonStyle(),
+                  onPressed: controller.pickImage,
                   child: Text('Pick Image',style: AppTextStyles.buttonFont,),
                 ),
                 Obx(
@@ -141,7 +146,7 @@ class ProcessSurveyView extends GetView<ProcessSurveyController> {
                             const SizedBox(height: 10),
                             Image.file(
                               controller.selectedImage.value!,
-                              height: 100,
+                              height: 300,
                             ),
                           ],
                         )
@@ -149,8 +154,8 @@ class ProcessSurveyView extends GetView<ProcessSurveyController> {
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: controller.submitForm,
                   style: AppButtonStyle.primaryButtonStyle(),
+                  onPressed: controller.submitForm,
                   child: Text('Submit',style: AppTextStyles.buttonFont,),
                 ),
               ],

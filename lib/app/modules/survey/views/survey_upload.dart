@@ -11,7 +11,7 @@ class SurveyUpload extends StatelessWidget {
     return Padding(padding: EdgeInsets.all(20),
       child: GestureDetector(
         onTap: (){
-          Get.toNamed(AppRoutes.processSurvey);
+          Get.toNamed(AppRoutes.uploadChecking);
         },
         child: Center(
           child: FractionallySizedBox(

@@ -6,6 +6,8 @@ import 'dart:io';
 import 'package:sufi_one/app/routes/app_routes.dart';
 
 class ProcessSurveyController extends GetxController {
+  final _processKey = GlobalKey<FormState>();
+  GlobalKey<FormState> get processKey => _processKey;
   // Form Controllers for Text Fields
   final TextEditingController nameController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
@@ -37,7 +39,7 @@ class ProcessSurveyController extends GetxController {
   // Function to handle form submission
   void submitForm() {
     Get.toNamed(AppRoutes.mobileSurvey);
-    if (Get.find<GlobalKey<FormState>>().currentState!.validate()) {
+    if (processKey.currentState!.validate()) {
       print('Name: ${nameController.text}');
       print('Address: ${addressController.text}');
       print('Notes: ${notesController.text}');
@@ -56,7 +58,6 @@ class ProcessSurveyController extends GetxController {
 
   @override
   void onClose() {
-    // Dispose the controllers when the controller is closed
     nameController.dispose();
     addressController.dispose();
     notesController.dispose();

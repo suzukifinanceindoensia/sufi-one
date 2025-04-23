@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sufi_one/app/routes/app_routes.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class SurveyFinish extends StatelessWidget {
@@ -9,7 +11,7 @@ class SurveyFinish extends StatelessWidget {
     return Padding(padding: EdgeInsets.all(20),
       child: GestureDetector(
         onTap: (){
-          print("SUCCESS");
+          Get.toNamed(AppRoutes.finishChecking);
         },
         child: Center(
           child: FractionallySizedBox(
