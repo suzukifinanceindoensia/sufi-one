@@ -96,7 +96,7 @@ class MobileSurveyPage extends GetView<MobileSurveyController> {
                 }).toList(),
               ),
             ),
-            SingleChildScrollView(
+            Container(
               child: Center(
                 child: Obx(() => controller.pages[controller.selectedIndex.value]),
               ),

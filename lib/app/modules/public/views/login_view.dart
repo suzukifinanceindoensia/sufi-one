@@ -15,7 +15,7 @@ class LoginPage extends GetView<LoginController> {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(50,200,50,50),
           child: Form(
-            key: controller.formKey,
+            key: controller.loginKey,
             child: Container(
               padding: EdgeInsets.all(15),
               height: 400,

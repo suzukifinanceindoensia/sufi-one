@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sufi_one/app/routes/app_routes.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
+import 'package:get/get.dart';
 
 class SurveyUpload extends StatelessWidget {
   const SurveyUpload({super.key});
@@ -9,7 +11,7 @@ class SurveyUpload extends StatelessWidget {
     return Padding(padding: EdgeInsets.all(20),
       child: GestureDetector(
         onTap: (){
-          print("SUCCESS");
+          Get.toNamed(AppRoutes.uploadChecking);
         },
         child: Center(
           child: FractionallySizedBox(

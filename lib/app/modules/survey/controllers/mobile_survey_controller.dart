@@ -5,6 +5,8 @@ import 'package:sufi_one/app/modules/survey/views/survey_process.dart';
 import 'package:sufi_one/app/modules/survey/views/survey_upload.dart';
 import 'package:flutter/material.dart';
 
+final List list = [1,2,3,4,5];
+
 class MobileSurveyController extends GetxController {
   final selectedIndex = 0.obs;
   final buttonLabels = ['New Task', 'Process', 'Upload', 'Finish'];

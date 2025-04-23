@@ -7,11 +7,11 @@ final List<Map<String, String>> users = [
 ];
 
 class LoginController extends GetxController {
-  final _formKey = GlobalKey<FormState>();
+  final _loginKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  GlobalKey<FormState> get formKey => _formKey; // Expose the form key
+  GlobalKey<FormState> get loginKey => _loginKey; // Expose the form key
 
   String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
@@ -28,7 +28,7 @@ class LoginController extends GetxController {
   }
 
   void login() {
-    if (_formKey.currentState!.validate()) {
+    if (_loginKey.currentState!.validate()) {
       final email = emailController.text;
       final password = passwordController.text;
 

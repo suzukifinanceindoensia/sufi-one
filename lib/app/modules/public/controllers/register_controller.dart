@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends GetxController {
-  final _formKey = GlobalKey<FormState>();
+  final _registerKey = GlobalKey<FormState>();
   final fullNameController = TextEditingController();
   final usernameController = TextEditingController();
   final emailController = TextEditingController();
@@ -11,7 +11,7 @@ class RegisterController extends GetxController {
   final confirmPasswordController = TextEditingController();
   final isChecked = false.obs;
 
-  GlobalKey<FormState> get formKey => _formKey;
+  GlobalKey<FormState> get registKey => _registerKey;
 
   void toggleChecked(value) {
     if (value != null) {
@@ -83,7 +83,7 @@ class RegisterController extends GetxController {
   }
 
   void register() {
-    if (_formKey.currentState!.validate()) { //check the checkbox
+    if (_registerKey.currentState!.validate()) { //check the checkbox
       //entar masukin disini bagian databse
       String fullName = fullNameController.text;
       String username = usernameController.text;

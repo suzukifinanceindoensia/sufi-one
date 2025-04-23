@@ -15,7 +15,7 @@ class RegisterPage extends GetView<RegisterController> {
         child: Padding(
           padding: const EdgeInsets.all(50.0),
           child: Form(
-            key: controller.formKey, //formKey from controller
+            key: controller.registKey, //formKey from controller
             child: Container(
               padding: EdgeInsets.all(15),
               decoration: BoxDecoration(

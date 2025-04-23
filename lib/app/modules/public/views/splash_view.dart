@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
-import '../../../routes/app_routes.dart';
 import 'dart:async';
 
 class SplashPage extends StatefulWidget {

@@ -19,6 +19,11 @@ class AppTextStyles {
     fontSize: 14,
     color: Colors.black,
   );
+  static final TextStyle medBodyBold = GoogleFonts.outfit(
+    fontSize: 14,
+    color: Colors.black,
+    fontWeight: FontWeight.bold,
+  );
   static final TextStyle bigBody = GoogleFonts.outfit(
     fontSize: 18,
     color: Colors.black,
