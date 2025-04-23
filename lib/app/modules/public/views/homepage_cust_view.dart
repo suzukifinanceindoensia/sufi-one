@@ -27,10 +27,10 @@ class HomepageCustView extends GetView<HomepageCustController> {
                       itemCount: 4,
                       itemBuilder: (context, index) {
                         final images = [
-                          'res/images/iklan_suzuki1.jpg',
-                          'res/images/iklan_suzuki2.jpg',
-                          'res/images/iklan_suzuki3.jpg',
-                          'res/images/iklan_suzuki4.jpg',
+                          'res/images/suzuki_iklan1.jpg',
+                          'res/images/suzuki_iklan2.jpg',
+                          'res/images/suzuki_iklan3.jpg',
+                          'res/images/suzuki_iklan4.jpg',
                         ];
                         return Image.asset(
                           images[index],
