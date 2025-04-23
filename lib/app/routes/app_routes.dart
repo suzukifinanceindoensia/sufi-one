@@ -20,17 +20,18 @@ import 'package:sufi_one/app/modules/survey/views/process_survey_view.dart';
 import 'package:sufi_one/app/modules/zeus/views/zeus_view.dart';
 import 'package:sufi_one/app/modules/zeus/views/zeus_detail_view.dart';
 import 'package:sufi_one/app/modules/zeus/bindings/zeus_binding.dart';
+import 'package:sufi_one/app/modules/public/bindings/homepage_cust_binding.dart';
 
 class AppRoutes {
   static const splash = '/';
   static const publicHome = '/public/home';
   static const homepageCust = '/public/homepage_cust_view';
   static const mobileCollection = '/public/mobile_collection';
-  static const mobileSurvey= '/public/mobile_survey';
-  static const newtaskConfirm= '/public/mobile_survey/newtask';
-  static const uploadChecking= '/public/mobile_survey/upload';
-  static const finishChecking= '/public/mobile_survey/finish';
-  static const processSurvey= '/public/mobile_survey/process';
+  static const mobileSurvey = '/public/mobile_survey';
+  static const newtaskConfirm = '/public/mobile_survey/newtask';
+  static const uploadChecking = '/public/mobile_survey/upload';
+  static const finishChecking = '/public/mobile_survey/finish';
+  static const processSurvey = '/public/mobile_survey/process';
   static const catalog = '/public/catalog';
   static const login = '/public/login';
   static const register = '/public/register';
@@ -41,17 +42,41 @@ class AppRoutes {
   static final pages = [
     GetPage(name: splash, page: () => SplashPage()),
     GetPage(name: publicHome, page: () => PublicHomePage()),
-    GetPage(name: homepageCust, page: () => HomepageCust()),
+    GetPage(
+      name: homepageCust,
+      page: () => const HomepageCustView(),
+      binding: HomepageCustBinding(),
+    ),
     GetPage(name: zeus, page: () => ZeusView(), binding: ZeusBinding()),
-    GetPage(name: zeusDetail, page: () => const ZeusDetailView(), binding: ZeusBinding()),
-    GetPage(name: mobileCollection, page: () => MobileCollection()), 
-    GetPage(name: mobileSurvey, page: () => MobileSurveyPage(), binding: MobileSurveyBinding()),
+    GetPage(
+      name: zeusDetail,
+      page: () => const ZeusDetailView(),
+      binding: ZeusBinding(),
+    ),
+    GetPage(name: mobileCollection, page: () => MobileCollection()),
+    GetPage(
+      name: mobileSurvey,
+      page: () => MobileSurveyPage(),
+      binding: MobileSurveyBinding(),
+    ),
     GetPage(name: newtaskConfirm, page: () => NewtaskConfirmView()),
     GetPage(name: uploadChecking, page: () => UploadCheckingView()),
     GetPage(name: finishChecking, page: () => FinishCheckingView()),
-    GetPage(name: processSurvey, page: () => ProcessSurveyView(),binding: ProcessSurveyBinding()),
-    GetPage(name: login, page: () => LoginPage(),binding: LoginBinding()),
-    GetPage(name: register, page: () => RegisterPage(),binding: RegisterBinding()),
-    GetPage(name: forgotPassword, page: () => ForgotPasswordPage(),binding: ForgotPasswordBinding()),
+    GetPage(
+      name: processSurvey,
+      page: () => ProcessSurveyView(),
+      binding: ProcessSurveyBinding(),
+    ),
+    GetPage(name: login, page: () => LoginPage(), binding: LoginBinding()),
+    GetPage(
+      name: register,
+      page: () => RegisterPage(),
+      binding: RegisterBinding(),
+    ),
+    GetPage(
+      name: forgotPassword,
+      page: () => ForgotPasswordPage(),
+      binding: ForgotPasswordBinding(),
+    ),
   ];
 }
