@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sufi_one/app/routes/app_routes.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
+import 'package:get/get.dart';
+
 
 class SurveyProcess extends StatelessWidget {
   const SurveyProcess({super.key});
@@ -9,7 +12,7 @@ class SurveyProcess extends StatelessWidget {
     return Padding(padding: EdgeInsets.all(20),
       child: GestureDetector(
         onTap: (){
-          print("SUCCESS");
+          Get.toNamed(AppRoutes.processSurvey);
         },
         child: Center(
           child: FractionallySizedBox(

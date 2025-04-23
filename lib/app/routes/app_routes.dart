@@ -4,6 +4,7 @@ import 'package:sufi_one/app/modules/public/bindings/login_binding.dart';
 import 'package:sufi_one/app/modules/public/bindings/register_binding.dart';
 import 'package:sufi_one/app/modules/public/views/forgot_password_view.dart';
 import 'package:sufi_one/app/modules/survey/bindings/mobile_survey_binding.dart';
+import 'package:sufi_one/app/modules/survey/bindings/process_survey_binding.dart';
 import 'package:sufi_one/app/modules/survey/views/mobile_survey_view.dart';
 import 'package:sufi_one/app/modules/public/views/home_view.dart';
 import 'package:sufi_one/app/modules/public/views/homepage_cust_view.dart';
@@ -12,6 +13,8 @@ import 'package:sufi_one/app/modules/public/views/register_view.dart';
 import 'package:sufi_one/app/modules/public/views/splash_view.dart';
 import 'package:sufi_one/app/modules/mobcol/views/mobile_collection_view.dart';
 import 'package:sufi_one/app/modules/mobcol/bindings/mobile_collection_binding.dart';
+import 'package:sufi_one/app/modules/survey/views/newtask_confirm_view.dart';
+import 'package:sufi_one/app/modules/survey/views/process_survey_view.dart';
 
 class AppRoutes {
   static const splash = '/';
@@ -19,6 +22,8 @@ class AppRoutes {
   static const homepageCust = '/public/homepage_cust_view';
   static const mobileCollection = '/public/mobile_collection';
   static const mobileSurvey= '/public/mobile_survey';
+  static const newtaskConfirm= '/public/mobile_survey/newtask';
+  static const processSurvey= '/public/mobile_survey/process';
   static const catalog = '/public/catalog';
   static const login = '/public/login';
   static const register = '/public/register';
@@ -30,6 +35,8 @@ class AppRoutes {
     GetPage(name: homepageCust, page: () => HomepageCust()),
     GetPage(name: mobileCollection, page: () => MobileCollection()), 
     GetPage(name: mobileSurvey, page: () => MobileSurveyPage(), binding: MobileSurveyBinding()),
+    GetPage(name: newtaskConfirm, page: () => NewtaskConfirmView()),
+    GetPage(name: processSurvey, page: () => ProcessSurveyView(),binding: ProcessSurveyBinding()),
     GetPage(name: login, page: () => LoginPage(),binding: LoginBinding()),
     GetPage(name: register, page: () => RegisterPage(),binding: RegisterBinding()),
     GetPage(name: forgotPassword, page: () => ForgotPasswordPage(),binding: ForgotPasswordBinding()),

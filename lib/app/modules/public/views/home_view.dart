@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sufi_one/app/routes/app_routes.dart';
 
 class NavBarColor {
   static const Color background = Color.fromRGBO(245, 245, 245, 1);
@@ -51,6 +52,13 @@ class _PublicHomePageState extends State<PublicHomePage> {
                 Get.toNamed('/');
               },
               child: Text('Cobain SplashScreen'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Get.toNamed(AppRoutes.mobileSurvey);
+              },
+              child: Text('Cobain survey'),
             ),
           ],
         ),
