@@ -18,9 +18,29 @@ class MobileSurveyPage extends GetView<MobileSurveyController> {
             FractionallySizedBox(
               widthFactor: 1,
               child: Container(
-                height: 200,
-                padding: const EdgeInsets.all(30),
-                color: AppColors.splashStart,
+                height: 150,
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: AppColors.splashStart,
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10),
+                  ),
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Colors.black26,
+                      width: 1,
+                    ),
+                    left: BorderSide(
+                      color: Colors.black26,
+                      width: 1,
+                    ),
+                    right: BorderSide(
+                      color: Colors.black26,
+                      width: 1,
+                    ),
+                  ),
+                ),
                 child: Row(
                   children: [
                     const CircleAvatar(
