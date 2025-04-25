@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sufi_one/app/routes/app_routes.dart';
+import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:get/get.dart';
 
@@ -12,7 +13,7 @@ class SuzukiFinanceAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.blue[600],
+      backgroundColor: AppColors.splashStart,
       centerTitle: false,
       toolbarHeight: 50,
       automaticallyImplyLeading: false,

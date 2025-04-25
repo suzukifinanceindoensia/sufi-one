@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 import 'package:sufi_one/app/modules/survey/controllers/process_survey_controller.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
@@ -12,9 +13,7 @@ class ProcessSurveyView extends GetView<ProcessSurveyController> {
     final formKey = GlobalKey<FormState>();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Process Survey'),
-      ),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(

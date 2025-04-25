@@ -38,7 +38,7 @@ class ProcessSurveyController extends GetxController {
 
   // Function to handle form submission
   void submitForm() {
-    Get.toNamed(AppRoutes.mobileSurvey);
+    
     if (processKey.currentState!.validate()) {
       print('Name: ${nameController.text}');
       print('Address: ${addressController.text}');
@@ -47,7 +47,7 @@ class ProcessSurveyController extends GetxController {
       print('Option 2: ${selectedOption2.value}');
       print('Option 3: ${selectedOption3.value}');
       print('Image Path: ${selectedImage.value?.path}');
-
+      Get.toNamed(AppRoutes.mobileSurvey);
       Get.snackbar(
         'Success',
         'Form submitted successfully!',
