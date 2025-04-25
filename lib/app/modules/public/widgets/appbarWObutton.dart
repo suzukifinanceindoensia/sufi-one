@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class SuzukiFinanceAppBarWObutton extends StatelessWidget implements PreferredSizeWidget{
@@ -9,7 +10,7 @@ class SuzukiFinanceAppBarWObutton extends StatelessWidget implements PreferredSi
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.blue[600],
+      backgroundColor: AppColors.splashStart,
       centerTitle: false,
       toolbarHeight: 50,
       automaticallyImplyLeading: false,

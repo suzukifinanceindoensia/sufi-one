@@ -37,7 +37,7 @@ class SurveyNewtask extends StatelessWidget {
                         children: [
                           Text("NEWTASK #${item['id']}", textAlign: TextAlign.center, style: AppTextStyles.bigBody,),
                           Text("Nama Pemohon : ${item['name']}", textAlign: TextAlign.center, style: AppTextStyles.medBody,),
-                          Text("Tanggal Permohonan ${item['date']}", textAlign: TextAlign.center, style: AppTextStyles.medBody,),
+                          Text("Tanggal Permohonan ${item['date'].day}-${item['date'].month}-${item['date'].year}", textAlign: TextAlign.center, style: AppTextStyles.medBody,),
                           Text("${now.difference(item['date']).inDays} days ago", textAlign: TextAlign.center, style: AppTextStyles.medBody,),
                         ],
                       )

@@ -13,11 +13,11 @@ class LoginPage extends GetView<LoginController> {
       appBar: SuzukiFinanceAppBarWObutton(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(50,200,50,50),
+          padding: const EdgeInsets.fromLTRB(50,100,50,50),
           child: Form(
             key: controller.loginKey,
             child: Container(
-              padding: EdgeInsets.all(15),
+              padding: EdgeInsets.fromLTRB(15,30,15,10),
               height: 400,
               decoration: BoxDecoration(
                 border: Border.all(
@@ -25,83 +25,80 @@ class LoginPage extends GetView<LoginController> {
                 ),
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
-              child: SingleChildScrollView(
-                child: 
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 350,
-                        height: 70,
-                        child: TextFormField(
-                          controller: controller.emailController,
-                          decoration: InputDecoration(
-                              labelText: 'Email', border: OutlineInputBorder()),
-                          validator: controller.validateEmail,
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      SizedBox(
-                        width: 350,
-                        height: 70,
-                        child: TextFormField(
-                          controller: controller.passwordController,
-                          decoration: InputDecoration(
-                              labelText: 'Password', border: OutlineInputBorder()),
-                          obscureText: true,
-                          validator: controller.validatePassword,
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      FractionallySizedBox(
-                        widthFactor: 1,
-                        child : ElevatedButton(
-                          style: AppButtonStyle.primaryButtonStyle(),
-                          onPressed: () {
-                            controller.login();
-                          },
-                          child: Text("Login",style: AppTextStyles.buttonFont,),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: SizedBox(
-                                    height: 30,
-                                    child: TextButton(
-                                      onPressed: () {
-                                        Get.toNamed('public/forgot_password');
-                                      },
-                                      child: Text('Forget Password?', style: AppTextStyles.smallBody,),
-                                    ),
-                                  ),
-                        ),
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: SizedBox(
-                              height: 30,
-                              child: TextButton(
-                                onPressed: () {
-                                  Get.toNamed('/public/register');
-                                },
-                                child: RichText(
-                                  text: TextSpan(
-                                    children: <TextSpan>[
-                                      TextSpan(
-                                        text: 'Belum punya akun? ',
-                                        style: AppTextStyles.smallBody
-                                      ),
-                                      TextSpan(
-                                        text: 'Daftar sekarang',
-                                        style: AppTextStyles.smallBodyBold,
-                                      ),
-                                    ],
-                                  ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 350,
+                    height: 70,
+                    child: TextFormField(
+                      controller: controller.emailController,
+                      decoration: InputDecoration(
+                          labelText: 'Email', border: OutlineInputBorder()),
+                      validator: controller.validateEmail,
+                    ),
+                  ),
+                  //SizedBox(height: 10),
+                  SizedBox(
+                    width: 350,
+                    height: 70,
+                    child: TextFormField(
+                      controller: controller.passwordController,
+                      decoration: InputDecoration(
+                          labelText: 'Password', border: OutlineInputBorder()),
+                      obscureText: true,
+                      validator: controller.validatePassword,
+                    ),
+                  ),
+                  Expanded(child: SizedBox(height: 20)),
+                  FractionallySizedBox(
+                    widthFactor: 1,
+                    child : ElevatedButton(
+                      style: AppButtonStyle.primaryButtonStyle(),
+                      onPressed: () {
+                        controller.login();
+                      },
+                      child: Text("Login",style: AppTextStyles.buttonFont,),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: SizedBox(
+                                height: 30,
+                                child: TextButton(
+                                  onPressed: () {
+                                    Get.toNamed('public/forgot_password');
+                                  },
+                                  child: Text('Forget Password?', style: AppTextStyles.smallBody,),
                                 ),
                               ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: SizedBox(
+                          height: 30,
+                          child: TextButton(
+                            onPressed: () {
+                              Get.toNamed('/public/register');
+                            },
+                            child: RichText(
+                              text: TextSpan(
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: 'Belum punya akun? ',
+                                    style: AppTextStyles.smallBody
+                                  ),
+                                  TextSpan(
+                                    text: 'Daftar sekarang',
+                                    style: AppTextStyles.smallBodyBold,
+                                  ),
+                                ],
+                              ),
                             ),
-                        )
-                    ],
-                  ),
+                          ),
+                        ),
+                    )
+                ],
               ),
             ),
           ),
