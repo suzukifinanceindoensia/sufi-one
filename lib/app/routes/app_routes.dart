@@ -21,6 +21,10 @@ import 'package:sufi_one/app/modules/zeus/views/zeus_view.dart';
 import 'package:sufi_one/app/modules/zeus/views/zeus_detail_view.dart';
 import 'package:sufi_one/app/modules/zeus/bindings/zeus_binding.dart';
 import 'package:sufi_one/app/modules/public/bindings/homepage_cust_binding.dart';
+import 'package:sufi_one/app/modules/public/views/profile_page_view.dart';
+import 'package:sufi_one/app/modules/public/bindings/profile_page_binding.dart';
+import 'package:sufi_one/app/modules/public/views/profile_edit_view.dart';
+import 'package:sufi_one/app/modules/public/bindings/profile_edit_binding.dart';
 
 class AppRoutes {
   static const splash = '/';
@@ -38,6 +42,9 @@ class AppRoutes {
   static const forgotPassword = '/public/forgot_password';
   static const zeus = '/public/zeus';
   static const zeusDetail = '/public/zeus_detail_view';
+  static const profilePage = '/public/profile_page_view';
+  static const profileEdit =
+      '/public/profile_edit_view'; // Add Profile Edit route
 
   static final pages = [
     GetPage(name: splash, page: () => SplashPage()),
@@ -77,6 +84,16 @@ class AppRoutes {
       name: forgotPassword,
       page: () => ForgotPasswordPage(),
       binding: ForgotPasswordBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.profilePage,
+      page: () => ProfilePageView(),
+      binding: ProfilePageBinding(),
+    ),
+    GetPage(
+      name: profileEdit,
+      page: () => ProfileEditView(),
+      binding: ProfileEditBinding(),
     ),
   ];
 }

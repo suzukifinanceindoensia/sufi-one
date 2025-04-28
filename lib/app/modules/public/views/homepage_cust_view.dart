@@ -4,6 +4,7 @@ import 'package:sufi_one/app/modules/public/controllers/homepage_cust_controller
 import 'package:sufi_one/app/modules/public/widgets/appbar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
+import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 
 class HomepageCustView extends GetView<HomepageCustController> {
   const HomepageCustView({super.key});
@@ -140,23 +141,7 @@ class HomepageCustView extends GetView<HomepageCustController> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: AppColors.snack,
-        selectedItemColor: AppColors.bg1,
-        unselectedItemColor: AppColors.bg2,
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.perm_device_information),
-            label: 'About',
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Support'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
-      ),
+      bottomNavigationBar: BottomNavbar(selectedIndex: 0),
     );
   }
 
@@ -184,7 +169,7 @@ class HomepageCustView extends GetView<HomepageCustController> {
         Text(
           label,
           textAlign: TextAlign.center,
-          style: AppTextStyles.smallBody, // Menggunakan AppTextStyles
+          style: AppTextStyles.smallBody,
         ),
       ],
     );
