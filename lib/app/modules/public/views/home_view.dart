@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/routes/app_routes.dart';
@@ -25,13 +24,10 @@ class _PublicHomePageState extends State<PublicHomePage> {
     const Center(child: Text('Chat')),
     const Center(child: Text('Akun')),
   ];
-  final GlobalKey<ScaffoldState> _scaffoldKey =
-      GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key:  _scaffoldKey,
       appBar: SuzukiFinanceAppBarWsidebar(),
       drawer: Drawer(
         child: AppSidebar(),

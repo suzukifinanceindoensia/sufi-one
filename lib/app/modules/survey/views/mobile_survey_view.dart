@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/modules/survey/widgets/profile_card_survey.dart';
 import 'package:sufi_one/app/modules/survey/controllers/mobile_survey_controller.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
@@ -50,7 +51,10 @@ class MobileSurveyPage extends GetView<MobileSurveyController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SuzukiFinanceAppBar(),
+      appBar: SuzukiFinanceAppBarWsidebar(),
+      drawer: Drawer(
+        child: AppSidebar(),
+      ), 
       body: Stack(
         children: [
           const ProfileCard(),

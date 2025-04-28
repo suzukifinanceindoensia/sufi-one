@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/controllers/homepage_cust_controller.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
@@ -12,7 +13,10 @@ class HomepageCustView extends GetView<HomepageCustController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bg1,
-      appBar: SuzukiFinanceAppBar(),
+      appBar: SuzukiFinanceAppBarWsidebar(),
+      drawer: Drawer(
+        child: AppSidebar(),
+      ), 
       body: SingleChildScrollView(
         child: Column(
           children: [

@@ -41,6 +41,7 @@ class SuzukiFinanceAppBarWsidebar extends StatelessWidget
       leading: IconButton(
         //  Add the menu icon button here
         icon: const Icon(Icons.menu),
+        color: AppColors.bg1,
         onPressed: () {
           // Use the Scaffold's key to open the drawer
           Scaffold.of(context).openDrawer();
