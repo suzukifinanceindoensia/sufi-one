@@ -23,8 +23,6 @@ import 'package:sufi_one/app/modules/zeus/bindings/zeus_binding.dart';
 import 'package:sufi_one/app/modules/public/bindings/homepage_cust_binding.dart';
 import 'package:sufi_one/app/modules/public/views/profile_page_view.dart';
 import 'package:sufi_one/app/modules/public/bindings/profile_page_binding.dart';
-import 'package:sufi_one/app/modules/public/views/profile_edit_view.dart';
-import 'package:sufi_one/app/modules/public/bindings/profile_edit_binding.dart';
 
 class AppRoutes {
   static const splash = '/';
@@ -89,11 +87,6 @@ class AppRoutes {
       name: AppRoutes.profilePage,
       page: () => ProfilePageView(),
       binding: ProfilePageBinding(),
-    ),
-    GetPage(
-      name: profileEdit,
-      page: () => ProfileEditView(),
-      binding: ProfileEditBinding(),
     ),
   ];
 }
