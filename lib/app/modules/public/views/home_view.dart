@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/routes/app_routes.dart';
 
 class NavBarColor {
@@ -22,11 +25,17 @@ class _PublicHomePageState extends State<PublicHomePage> {
     const Center(child: Text('Chat')),
     const Center(child: Text('Akun')),
   ];
+  final GlobalKey<ScaffoldState> _scaffoldKey =
+      GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Welcome to SuperApp')),
+      key:  _scaffoldKey,
+      appBar: SuzukiFinanceAppBarWsidebar(),
+      drawer: Drawer(
+        child: AppSidebar(),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
