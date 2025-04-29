@@ -35,7 +35,7 @@ class ProfilePageView extends StatelessWidget {
                   const SizedBox(height: 8),
                   Obx(
                     () => Text(
-                      'Hello, ${controller.username.value}',
+                      'Hello, ${controller.user.value.username}',
                       style: AppTextStyles.medBody.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -48,12 +48,17 @@ class ProfilePageView extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Role', style: AppTextStyles.smallBody),
-                          Obx(
-                            () => Text(
-                              controller.role.value,
-                              style: AppTextStyles.smallBody,
-                            ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Role', style: AppTextStyles.smallBody),
+                              Obx(
+                                () => Text(
+                                  controller.user.value.role,
+                                  style: AppTextStyles.smallBody,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -70,12 +75,17 @@ class ProfilePageView extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Cabang', style: AppTextStyles.smallBody),
-                          Obx(
-                            () => Text(
-                              controller.cabang.value,
-                              style: AppTextStyles.smallBody,
-                            ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Cabang', style: AppTextStyles.smallBody),
+                              Obx(
+                                () => Text(
+                                  controller.user.value.cabang,
+                                  style: AppTextStyles.smallBody,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

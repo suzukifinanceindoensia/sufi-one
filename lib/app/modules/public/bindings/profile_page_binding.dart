@@ -4,7 +4,6 @@ import 'package:sufi_one/app/modules/public/controllers/profile_page_controller.
 class ProfilePageBinding extends Bindings {
   @override
   void dependencies() {
-    // Binding the ProfilePageController to be used in ProfilePageView
     Get.lazyPut<ProfilePageController>(() => ProfilePageController());
   }
 }
