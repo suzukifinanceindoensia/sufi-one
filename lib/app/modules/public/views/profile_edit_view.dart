@@ -1,146 +1,251 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbar.dart';
-import 'package:sufi_one/app/modules/public/controllers/profile_edit_controller.dart';
+import 'package:sufi_one/app/modules/public/controllers/profile_page_controller.dart';
 
 class ProfileEditView extends StatelessWidget {
   ProfileEditView({super.key});
+  final controller = Get.find<ProfilePageController>();
+
+  void _showEditDialog({
+    required BuildContext context,
+    required String title,
+    required String initialValue,
+    required Function(String) onSave,
+  }) {
+    final tempController = TextEditingController(text: initialValue);
+
+    showDialog(
+      context: context,
+      builder:
+          (_) => AlertDialog(
+            title: Text('Edit $title'),
+            content: TextField(
+              controller: tempController,
+              decoration: InputDecoration(
+                labelText: title,
+                border: OutlineInputBorder(),
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Cancel'),
+              ),
+              TextButton(
+                onPressed: () {
+                  onSave(tempController.text);
+                  Navigator.pop(context);
+                },
+                child: const Text('Save'),
+              ),
+            ],
+          ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    final ProfileEditController controller = Get.find();
-
     return Scaffold(
       backgroundColor: AppColors.bg1,
-      appBar: SuzukiFinanceAppBar(),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: SingleChildScrollView(
-        // Add this to make the body scrollable
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            TextFormField(
-              onChanged: (value) => controller.name.value = value,
-              decoration: InputDecoration(
-                labelText: 'Name',
-                border: OutlineInputBorder(),
-                filled: true,
-                fillColor: AppColors.navBackground,
+            Center(
+              child: Column(
+                children: [
+                  const CircleAvatar(
+                    radius: 50,
+                    backgroundImage: AssetImage('res/images/sufismart.png'),
+                  ),
+                  const SizedBox(height: 8),
+                  Obx(
+                    () => Text(
+                      controller.user.value.username,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                ],
               ),
             ),
-
-            // Phone TextFormField
-            TextFormField(
-              onChanged: (value) => controller.phone.value = value,
-              decoration: InputDecoration(
-                labelText: 'Phone',
-                border: OutlineInputBorder(),
-                filled: true,
-                fillColor: AppColors.navBackground,
+            Obx(
+              () => Column(
+                children: [
+                  _buildEditItem(
+                    context,
+                    title: 'Name',
+                    value: controller.user.value.name,
+                    onEdit: (val) {
+                      controller.nameController.text = val;
+                      controller.user.update((u) => u?.name = val);
+                    },
+                  ),
+                  _buildEditItem(
+                    context,
+                    title: 'Email',
+                    value: controller.user.value.email,
+                    onEdit: (val) {
+                      controller.emailController.text = val;
+                      controller.user.update((u) => u?.email = val);
+                    },
+                  ),
+                  _buildEditItem(
+                    context,
+                    title: 'Phone',
+                    value: controller.user.value.phone,
+                    onEdit: (val) {
+                      controller.phoneController.text = val;
+                      controller.user.update((u) => u?.phone = val);
+                    },
+                  ),
+                  _buildEditItem(
+                    context,
+                    title: 'Address',
+                    value: controller.user.value.address,
+                    onEdit: (val) {
+                      controller.addressController.text = val;
+                      controller.user.update((u) => u?.address = val);
+                    },
+                  ),
+                ],
               ),
             ),
-
-            // Email TextFormField
-            TextFormField(
-              onChanged: (value) => controller.email.value = value,
-              decoration: InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
-                filled: true,
-                fillColor: AppColors.navBackground,
-              ),
+            const SizedBox(height: 20),
+            ListTile(
+              title: const Text('Change Password'),
+              trailing: const Icon(Icons.arrow_forward_ios),
+              onTap: controller.togglePasswordChange,
             ),
-
-            // Address TextFormField
-            TextFormField(
-              onChanged: (value) => controller.address.value = value,
-              decoration: InputDecoration(
-                labelText: 'Address',
-                border: OutlineInputBorder(),
-                filled: true,
-                fillColor: AppColors.navBackground,
-              ),
-            ),
-
-            // Toggle button for password change
-            ElevatedButton(
-              onPressed: () {
-                controller.togglePasswordChange();
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.button,
-                foregroundColor: AppColors.bg1,
-              ),
-              child: Obx(() {
-                return Text(
-                  controller.isPasswordChange.value
-                      ? 'Cancel Password Change'
-                      : 'Change Password',
-                );
-              }),
-            ),
-
-            // Conditional password fields based on toggle
             Obx(() {
-              if (controller.isPasswordChange.value) {
-                return Column(
-                  children: [
-                    // Current Password
-                    TextFormField(
-                      obscureText: true,
-                      onChanged:
-                          (value) => controller.currentPassword.value = value,
-                      decoration: InputDecoration(
-                        labelText: 'Current Password',
-                        border: OutlineInputBorder(),
-                        filled: true,
-                        fillColor: AppColors.navBackground,
+              if (!controller.isPasswordChange.value) return const SizedBox();
+              return Column(
+                children: [
+                  _buildPasswordField(
+                    'Current Password',
+                    controller.currentPasswordController,
+                    controller.isPasswordVisible,
+                  ),
+                  _buildPasswordField(
+                    'New Password',
+                    controller.newPasswordController,
+                    controller.isPasswordVisible,
+                  ),
+                  _buildPasswordField(
+                    'Confirm Password',
+                    controller.confirmPasswordController,
+                    controller.isPasswordVisible,
+                  ),
+                  const SizedBox(height: 12),
+                  ElevatedButton(
+                    onPressed: controller.changePassword,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.button,
+                      foregroundColor: AppColors.bg1,
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 12,
+                        horizontal: 24,
                       ),
                     ),
-
-                    // New Password
-                    TextFormField(
-                      obscureText: true,
-                      onChanged:
-                          (value) => controller.newPassword.value = value,
-                      decoration: InputDecoration(
-                        labelText: 'New Password',
-                        border: OutlineInputBorder(),
-                        filled: true,
-                        fillColor: AppColors.navBackground,
-                      ),
-                    ),
-
-                    // Confirm Password
-                    TextFormField(
-                      obscureText: true,
-                      onChanged:
-                          (value) => controller.confirmPassword.value = value,
-                      decoration: InputDecoration(
-                        labelText: 'Confirm Password',
-                        border: OutlineInputBorder(),
-                        filled: true,
-                        fillColor: AppColors.navBackground,
-                      ),
-                    ),
-                  ],
-                );
-              }
-              return const SizedBox();
+                    child: const Text('Submit'),
+                  ),
+                ],
+              );
             }),
 
-            // Save button
-            ElevatedButton(
-              onPressed: () {
-                controller.saveProfile();
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.button,
-                foregroundColor: AppColors.bg1,
-              ),
-              child: const Text('Save'),
+            const SizedBox(height: 24),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () => Get.back(),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey,
+                      foregroundColor: AppColors.bg1,
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                    ),
+                    child: const Text('Cancel'),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      controller.saveProfile();
+                      Get.back();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      foregroundColor: AppColors.bg1,
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                    ),
+                    child: const Text('Save'),
+                  ),
+                ),
+              ],
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildEditItem(
+    BuildContext context, {
+    required String title,
+    required String value,
+    required Function(String) onEdit,
+  }) {
+    return ListTile(
+      title: Text(
+        title.toUpperCase(),
+        style: const TextStyle(fontSize: 12, color: Colors.grey),
+      ),
+      subtitle: Text(value, style: const TextStyle(fontSize: 16)),
+      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+      onTap:
+          () => _showEditDialog(
+            context: context,
+            title: title,
+            initialValue: value,
+            onSave: onEdit,
+          ),
+    );
+  }
+
+  Widget _buildPasswordField(
+    String label,
+    TextEditingController controller,
+    RxBool isPasswordVisible,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Obx(
+        () => TextField(
+          controller: controller,
+          obscureText: !isPasswordVisible.value, // Ambil dari RxBool
+          decoration: InputDecoration(
+            labelText: label,
+            border: const OutlineInputBorder(),
+            filled: true,
+            fillColor: AppColors.bg1,
+            suffixIcon: IconButton(
+              icon: Icon(
+                isPasswordVisible.value
+                    ? Icons.visibility
+                    : Icons.visibility_off,
+              ),
+              onPressed: () {
+                isPasswordVisible.value = !isPasswordVisible.value;
+              },
+            ),
+          ),
         ),
       ),
     );
