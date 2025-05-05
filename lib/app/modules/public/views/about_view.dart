@@ -5,6 +5,7 @@ import 'package:sufi_one/app/modules/public/controllers/about_controller.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbar.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 
 class AboutView extends StatefulWidget {
   const AboutView({super.key});
@@ -106,6 +107,7 @@ class _AboutViewState extends State<AboutView> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavbar(selectedIndex: 1),
     );
   }
 
