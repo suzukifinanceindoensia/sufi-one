@@ -33,6 +33,7 @@ class _AboutViewState extends State<AboutView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.bg1,
       appBar: SuzukiFinanceAppBar(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
