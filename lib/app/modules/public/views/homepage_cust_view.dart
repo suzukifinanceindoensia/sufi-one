@@ -138,10 +138,12 @@ class _HomepageCustViewState extends State<HomepageCustView> {
                 menuItems.map((item) {
                   return InkWell(
                     onTap: () {
-                      if (item['label'] == 'Promo') {
+                      final label = item['label'];
+                      if (label == 'Promo') {
                         Get.toNamed(AppRoutes.promo);
+                      } else if (label == 'Produk') {
+                        Get.toNamed(AppRoutes.produkList);
                       }
-                      // tambahkan else if lain jika butuh navigasi ke fitur lain
                     },
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -182,7 +184,7 @@ class _HomepageCustViewState extends State<HomepageCustView> {
           const SizedBox(height: 8.0),
           ElevatedButton(
             onPressed: () {
-              // Handle apply press
+              Get.toNamed(AppRoutes.pengajuanKredit);
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.button,
