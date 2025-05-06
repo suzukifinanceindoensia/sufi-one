@@ -1,49 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sufi_one/app/modules/public/controllers/profile_page_controller.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
-import 'package:sufi_one/app/modules/public/controllers/profile_page_controller.dart';
 
 class ProfileEditView extends StatelessWidget {
   ProfileEditView({super.key});
   final controller = Get.find<ProfilePageController>();
 
-  void _showEditDialog({
-    required BuildContext context,
-    required String title,
-    required String initialValue,
-    required Function(String) onSave,
-  }) {
-    final tempController = TextEditingController(text: initialValue);
-
-    showDialog(
-      context: context,
-      builder:
-          (_) => AlertDialog(
-            title: Text('Edit $title'),
-            content: TextField(
-              controller: tempController,
-              decoration: InputDecoration(
-                labelText: title,
-                border: OutlineInputBorder(),
-              ),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('Cancel'),
-              ),
-              TextButton(
-                onPressed: () {
-                  onSave(tempController.text);
-                  Navigator.pop(context);
-                },
-                child: const Text('Save'),
-              ),
-            ],
-          ),
-    );
-  }
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -52,201 +17,168 @@ class ProfileEditView extends StatelessWidget {
       appBar: SuzukiFinanceAppBarWObutton(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Center(
-              child: Column(
-                children: [
-                  const CircleAvatar(
-                    radius: 50,
-                    backgroundImage: AssetImage('res/images/sufismart.png'),
-                  ),
-                  const SizedBox(height: 8),
-                  Obx(
-                    () => Text(
-                      controller.user.value.username,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                ],
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Ubah Profil',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-            ),
-            Obx(
-              () => Column(
-                children: [
-                  _buildEditItem(
-                    context,
-                    title: 'Name',
-                    value: controller.user.value.name,
-                    onEdit: (val) {
-                      controller.nameController.text = val;
-                      controller.user.update((u) => u?.name = val);
-                    },
-                  ),
-                  _buildEditItem(
-                    context,
-                    title: 'Email',
-                    value: controller.user.value.email,
-                    onEdit: (val) {
-                      controller.emailController.text = val;
-                      controller.user.update((u) => u?.email = val);
-                    },
-                  ),
-                  _buildEditItem(
-                    context,
-                    title: 'Phone',
-                    value: controller.user.value.phone,
-                    onEdit: (val) {
-                      controller.phoneController.text = val;
-                      controller.user.update((u) => u?.phone = val);
-                    },
-                  ),
-                  _buildEditItem(
-                    context,
-                    title: 'Address',
-                    value: controller.user.value.address,
-                    onEdit: (val) {
-                      controller.addressController.text = val;
-                      controller.user.update((u) => u?.address = val);
-                    },
-                  ),
-                ],
+              const SizedBox(height: 8),
+              const Text(
+                'Terimakasih sudah bergabung dan menjadi bagian dari Suzuki Finance dan aplikasi Sufi Smart',
               ),
-            ),
-            const SizedBox(height: 20),
-            ListTile(
-              title: const Text('Change Password'),
-              trailing: const Icon(Icons.arrow_forward_ios),
-              onTap: controller.togglePasswordChange,
-            ),
-            Obx(() {
-              if (!controller.isPasswordChange.value) return const SizedBox();
-              return Column(
-                children: [
-                  _buildPasswordField(
-                    'Current Password',
-                    controller.currentPasswordController,
-                    controller.isPasswordVisible,
+              const SizedBox(height: 24),
+              _buildTextField(
+                label: 'Nama Lengkap',
+                controller: controller.nameController,
+              ),
+              _buildTextField(
+                label: 'Nomor Telepon',
+                controller: controller.phoneController,
+                keyboardType: TextInputType.phone,
+              ),
+              _buildTextField(
+                label: 'Tanggal Lahir',
+                controller: controller.birthDateController,
+                hint: 'YYYY-MM-DD',
+              ),
+              _buildDropdownField(
+                label: 'Gender',
+                value: controller.gender.value,
+                items: ['male', 'female'],
+                onChanged: (val) => controller.gender.value = val ?? '',
+              ),
+              _buildDropdownField(
+                label: 'Pekerjaan',
+                value: controller.job.value,
+                items: ['pegawai swasta', 'wiraswasta', 'mahasiswa', 'lainnya'],
+                onChanged: (val) => controller.job.value = val ?? '',
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Isi informasi No KTP dan nomor kontrak jika anda nasabah Suzuki Finance',
+                style: TextStyle(fontStyle: FontStyle.italic),
+              ),
+              const SizedBox(height: 8),
+              _buildTextField(
+                label: 'No KTP',
+                controller: controller.ktpController,
+                keyboardType: TextInputType.number,
+              ),
+              _buildTextField(
+                label: 'Nomor Kontrak 1',
+                controller: controller.kontrak1Controller,
+                keyboardType: TextInputType.number,
+                validator: controller.validateOptionalContract,
+              ),
+              _buildTextField(
+                label: 'Nomor Kontrak 2',
+                controller: controller.kontrak1Controller,
+                keyboardType: TextInputType.number,
+                validator: controller.validateOptionalContract,
+              ),
+              _buildTextField(
+                label: 'Nomor Kontrak 3',
+                controller: controller.kontrak1Controller,
+                keyboardType: TextInputType.number,
+                validator: controller.validateOptionalContract,
+              ),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.button,
+                    foregroundColor: AppColors.bg1,
+                    padding: const EdgeInsets.symmetric(vertical: 14),
                   ),
-                  _buildPasswordField(
-                    'New Password',
-                    controller.newPasswordController,
-                    controller.isPasswordVisible,
-                  ),
-                  _buildPasswordField(
-                    'Confirm Password',
-                    controller.confirmPasswordController,
-                    controller.isPasswordVisible,
-                  ),
-                  const SizedBox(height: 12),
-                  ElevatedButton(
-                    onPressed: controller.changePassword,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.button,
-                      foregroundColor: AppColors.bg1,
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 12,
-                        horizontal: 24,
-                      ),
-                    ),
-                    child: const Text('Submit'),
-                  ),
-                ],
-              );
-            }),
-
-            const SizedBox(height: 24),
-            Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () => Get.back(),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey,
-                      foregroundColor: AppColors.bg1,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                    ),
-                    child: const Text('Cancel'),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
                       controller.saveProfile();
                       Get.back();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      foregroundColor: AppColors.bg1,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                    ),
-                    child: const Text('Save'),
-                  ),
+                    }
+                  },
+                  child: const Text('Simpan'),
                 ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildEditItem(
-    BuildContext context, {
-    required String title,
-    required String value,
-    required Function(String) onEdit,
-  }) {
-    return ListTile(
-      title: Text(
-        title.toUpperCase(),
-        style: const TextStyle(fontSize: 12, color: Colors.grey),
-      ),
-      subtitle: Text(value, style: const TextStyle(fontSize: 16)),
-      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-      onTap:
-          () => _showEditDialog(
-            context: context,
-            title: title,
-            initialValue: value,
-            onSave: onEdit,
-          ),
-    );
-  }
-
-  Widget _buildPasswordField(
-    String label,
-    TextEditingController controller,
-    RxBool isPasswordVisible,
-  ) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Obx(
-        () => TextField(
-          controller: controller,
-          obscureText: !isPasswordVisible.value, // Ambil dari RxBool
-          decoration: InputDecoration(
-            labelText: label,
-            border: const OutlineInputBorder(),
-            filled: true,
-            fillColor: AppColors.bg1,
-            suffixIcon: IconButton(
-              icon: Icon(
-                isPasswordVisible.value
-                    ? Icons.visibility
-                    : Icons.visibility_off,
               ),
-              onPressed: () {
-                isPasswordVisible.value = !isPasswordVisible.value;
-              },
-            ),
+            ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildTextField({
+    required String label,
+    required TextEditingController controller,
+    TextInputType keyboardType = TextInputType.text,
+    String? hint,
+    String? Function(String?)? validator,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: TextFormField(
+        controller: controller,
+        keyboardType: keyboardType,
+        decoration: InputDecoration(
+          labelText: label,
+          hintText: hint,
+          border: const UnderlineInputBorder(),
+          enabledBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey),
+          ),
+          focusedBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.blue),
+          ),
+        ),
+        validator:
+            validator ??
+            (value) =>
+                (value == null || value.isEmpty)
+                    ? 'Field tidak boleh kosong'
+                    : null,
+      ),
+    );
+  }
+
+  Widget _buildDropdownField({
+    required String label,
+    required String value,
+    required List<String> items,
+    required ValueChanged<String?> onChanged,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: DropdownButtonFormField<String>(
+        value: value.isNotEmpty ? value : null,
+        decoration: InputDecoration(
+          labelText: label,
+          border: const UnderlineInputBorder(),
+          enabledBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey),
+          ),
+          focusedBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.blue),
+          ),
+        ),
+        items:
+            items
+                .map(
+                  (item) => DropdownMenuItem(
+                    value: item,
+                    child: Text(item.toUpperCase()),
+                  ),
+                )
+                .toList(),
+        onChanged: onChanged,
+        validator:
+            (value) =>
+                (value == null || value.isEmpty)
+                    ? 'Pilih $label terlebih dahulu'
+                    : null,
       ),
     );
   }
