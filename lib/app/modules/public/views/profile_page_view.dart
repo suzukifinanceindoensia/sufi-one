@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/theme/color_constant.dart';
-import 'package:sufi_one/app/theme/fontstyle.dart';
+import 'package:sufi_one/app/modules/public/controllers/profile_page_controller.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbar.dart';
 import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
-import 'package:sufi_one/app/modules/public/controllers/profile_page_controller.dart';
 import 'package:sufi_one/app/routes/app_routes.dart';
+import 'package:sufi_one/app/theme/color_constant.dart';
+import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class ProfilePageView extends StatelessWidget {
   const ProfilePageView({Key? key}) : super(key: key);
@@ -20,125 +20,10 @@ class ProfilePageView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              color: AppColors.bg1,
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundImage: const AssetImage(
-                      'res/images/sufismart.png',
-                    ),
-                    backgroundColor: AppColors.bg2,
-                  ),
-                  const SizedBox(height: 8),
-                  Obx(
-                    () => Text(
-                      'Hello, ${controller.user.value.username}',
-                      style: AppTextStyles.medBody.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('Role', style: AppTextStyles.smallBody),
-                              Obx(
-                                () => Text(
-                                  controller.user.value.role,
-                                  style: AppTextStyles.smallBody,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-
-                      Container(
-                        height: 24,
-                        child: const VerticalDivider(
-                          color: Colors.grey,
-                          thickness: 1,
-                          width: 32,
-                        ),
-                      ),
-
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('Cabang', style: AppTextStyles.smallBody),
-                              Obx(
-                                () => Text(
-                                  controller.user.value.cabang,
-                                  style: AppTextStyles.smallBody,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
             const SizedBox(height: 16),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 16.0),
-              padding: const EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                color: AppColors.bg1,
-                borderRadius: BorderRadius.circular(8.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 1,
-                    blurRadius: 5,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Account', style: AppTextStyles.smallBody),
-                  const SizedBox(height: 8),
-                  _buildProfileMenuItem(
-                    'Edit Profile',
-                    Icons.arrow_forward_ios,
-                  ),
-                  _buildProfileMenuItem(
-                    'Pesanan Saya',
-                    Icons.arrow_forward_ios,
-                  ),
-                  _buildProfileMenuItem('Bantuan', Icons.arrow_forward_ios),
-                  const Divider(),
-                  Text('General', style: AppTextStyles.smallBody),
-                  const SizedBox(height: 8),
-                  _buildProfileMenuItem(
-                    'Privacy & Policy',
-                    Icons.arrow_forward_ios,
-                  ),
-                  _buildProfileMenuItem(
-                    'Term of Service',
-                    Icons.arrow_forward_ios,
-                  ),
-                  _buildProfileMenuItem('Rate App', Icons.arrow_forward_ios),
-                ],
-              ),
-            ),
+            _buildHeader(controller),
+            const SizedBox(height: 16),
+            _buildMenuSection(),
             const SizedBox(height: 32),
           ],
         ),
@@ -147,19 +32,103 @@ class ProfilePageView extends StatelessWidget {
     );
   }
 
-  Widget _buildProfileMenuItem(String title, IconData icon) {
+  Widget _buildHeader(ProfilePageController controller) {
+    return Column(
+      children: [
+        const CircleAvatar(
+          radius: 40,
+          backgroundColor: Colors.blueGrey,
+          child: Icon(Icons.person, size: 48, color: Colors.white),
+        ),
+        const SizedBox(height: 8),
+        Obx(
+          () => Text(
+            controller.user.value.username,
+            style: AppTextStyles.bigBody,
+          ),
+        ),
+        Obx(
+          () =>
+              Text(controller.user.value.email, style: AppTextStyles.smallBody),
+        ),
+        const SizedBox(height: 12),
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 6,
+                offset: Offset(0, 2),
+              ),
+            ],
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildInfoTile('Points', '5.000', Icons.monetization_on),
+              Container(height: 32, width: 1, color: Colors.grey[300]),
+              _buildInfoTile('Sobat Sufi', 'DF9A549', Icons.card_membership),
+              Container(height: 32, width: 1, color: Colors.grey[300]),
+              _buildInfoTile('Level', 'Silver', Icons.military_tech),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildInfoTile(String label, String value, IconData icon) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Icon(icon, color: Colors.orange, size: 18),
+            const SizedBox(width: 4),
+            Text(
+              value,
+              style: AppTextStyles.medBody.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+        Text(label, style: AppTextStyles.smallBody),
+      ],
+    );
+  }
+
+  Widget _buildMenuSection() {
+    return Column(
+      children: [
+        _buildMenuItem('Pengajuan kendaraan saya', Icons.directions_car, () {}),
+        _buildMenuItem('Riwayat Transaksi Point', Icons.history, () {
+          Get.toNamed(AppRoutes.transaksiPoint);
+        }),
+        _buildMenuItem('Ubah Profil', Icons.person, () {
+          Get.toNamed(AppRoutes.profileEdit);
+        }),
+        _buildMenuItem('Atur Ulang Kata Sandi', Icons.lock_reset, () {
+          Get.toNamed(AppRoutes.ubahPassword);
+        }),
+        _buildMenuItem('Keluar', Icons.logout, () {}),
+      ],
+    );
+  }
+
+  Widget _buildMenuItem(String title, IconData icon, VoidCallback onTap) {
     return ListTile(
-      dense: true,
-      visualDensity: VisualDensity.compact,
-      contentPadding: EdgeInsets.zero,
+      leading: Icon(icon, color: Colors.blue),
       title: Text(title, style: AppTextStyles.medBody),
-      trailing: Icon(icon, size: 16, color: Colors.grey),
-      onTap: () {
-        // Menavigasi ke halaman edit profil
-        if (title == 'Edit Profile') {
-          Get.toNamed(AppRoutes.profileEdit); // Arahkan ke profileEditView
-        }
-      },
+      trailing: const Icon(
+        Icons.arrow_forward_ios,
+        size: 16,
+        color: Colors.grey,
+      ),
+      onTap: onTap,
     );
   }
 }
