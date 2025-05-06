@@ -24,6 +24,11 @@ import 'package:sufi_one/app/modules/public/bindings/homepage_cust_binding.dart'
 import 'package:sufi_one/app/modules/public/views/profile_page_view.dart';
 import 'package:sufi_one/app/modules/public/bindings/profile_page_binding.dart';
 import 'package:sufi_one/app/modules/public/views/profile_edit_view.dart';
+import 'package:sufi_one/app/modules/public/views/promo_view.dart';
+import 'package:sufi_one/app/modules/public/views/about_view.dart';
+import 'package:sufi_one/app/modules/public/bindings/about_binding.dart';
+import 'package:sufi_one/app/modules/public/views/contact_view.dart';
+import 'package:sufi_one/app/modules/public/bindings/contact_binding.dart';
 
 class AppRoutes {
   static const splash = '/';
@@ -42,8 +47,10 @@ class AppRoutes {
   static const zeus = '/public/zeus';
   static const zeusDetail = '/public/zeus_detail_view';
   static const profilePage = '/public/profile_page_view';
-  static const profileEdit =
-      '/public/profile_edit_view'; // Add Profile Edit route
+  static const profileEdit = '/public/profile_edit_view';
+  static const promo = '/public/promo';
+  static const about = '/public/about';
+  static const contact = '/public/contact';
 
   static final pages = [
     GetPage(name: splash, page: () => SplashPage()),
@@ -93,6 +100,17 @@ class AppRoutes {
       name: AppRoutes.profileEdit,
       page: () => ProfileEditView(),
       binding: ProfilePageBinding(),
+    ),
+    GetPage(name: AppRoutes.promo, page: () => const PromoView()),
+    GetPage(
+      name: AppRoutes.about,
+      page: () => const AboutView(),
+      binding: AboutBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.contact,
+      page: () => const ContactView(),
+      binding: ContactBinding(),
     ),
   ];
 }
