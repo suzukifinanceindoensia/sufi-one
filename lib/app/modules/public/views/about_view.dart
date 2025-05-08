@@ -21,7 +21,7 @@ class _AboutViewState extends State<AboutView> {
   Future<void> getPackageInfo() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     strVersion = packageInfo.version;
-    setState(() {}); // update UI ketika versi sudah didapat
+    setState(() {});
   }
 
   @override
@@ -39,11 +39,7 @@ class _AboutViewState extends State<AboutView> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            Image.asset(
-              'res/images/sufismart.png', // ganti sesuai logo kamu
-              height: 100,
-              width: 100,
-            ),
+            Image.asset('res/images/sufismart.png', height: 100, width: 100),
             const SizedBox(height: 10),
             Text(
               'Sufi-One',
@@ -57,7 +53,6 @@ class _AboutViewState extends State<AboutView> {
               'Versi: ${strVersion ?? "-"}',
               style: TextStyle(fontSize: 14, color: Colors.grey[700]),
             ),
-
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -103,7 +98,10 @@ class _AboutViewState extends State<AboutView> {
               controller.launchUrlExternal('https://komunitas.example.com');
             }),
             _infoTileWithIcon('FAQ', FontAwesomeIcons.chevronRight, () {
-              controller.launchUrlExternal('https://faq.example.com');
+              controller.launchUrlExternal(
+                'https://faq.example.com',
+                isFaq: true,
+              );
             }),
           ],
         ),
