@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/survey/controllers/survey_splash_controller.dart';
+import '../controllers/splash_controller.dart';
 
 class SurveySplashView extends GetView<SurveySplashController> {
   const SurveySplashView({Key? key}) : super(key: key);

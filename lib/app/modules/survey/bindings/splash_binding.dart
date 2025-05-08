@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/survey/controllers/survey_splash_controller.dart';
+import 'package:sufi_one/app/modules/survey/controllers/splash_controller.dart';
 
 class SurveySplashBinding extends Bindings {
   @override
