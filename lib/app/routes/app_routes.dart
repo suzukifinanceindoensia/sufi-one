@@ -5,7 +5,6 @@ import 'package:sufi_one/app/modules/public/bindings/register_binding.dart';
 import 'package:sufi_one/app/modules/public/views/forgot_password_view.dart';
 // import 'package:sufi_one/app/modules/survey/bindings/mobile_survey_binding.dart';
 // import 'package:sufi_one/app/modules/survey/bindings/process_survey_binding.dart';
-// import 'package:sufi_one/app/modules/survey/bindings/survey_splash_binding.dart';
 // import 'package:sufi_one/app/modules/survey/views/finish_checking_view.dart';
 // import 'package:sufi_one/app/modules/survey/views/mobile_survey_view.dart';
 import 'package:sufi_one/app/modules/public/views/home_view.dart';
@@ -15,6 +14,7 @@ import 'package:sufi_one/app/modules/public/views/register_view.dart';
 import 'package:sufi_one/app/modules/public/views/splash_view.dart';
 import 'package:sufi_one/app/modules/mobcol/views/mobile_collection_view.dart';
 // import 'package:sufi_one/app/modules/survey/views/newtask_confirm_view.dart';
+import 'package:sufi_one/app/modules/survey/bindings/survey_splash_binding.dart';
 import 'package:sufi_one/app/modules/survey/views/splash_screen_view.dart';
 // import 'package:sufi_one/app/modules/survey/views/upload_checking_view.dart';
 // import 'package:sufi_one/app/modules/survey/views/process_survey_view.dart';
@@ -65,7 +65,7 @@ class AppRoutes {
     GetPage(
       name: survey,
       page: () => SurveySplashView(),
-      // binding: SplashScreenBinding(),
+      binding: SurveySplashBinding(),
     ),
     // GetPage(
     //   name: survey,
