@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/survey/models/splash_model.dart';
+import 'package:sufi_one/app/modules/survey/services/collection_service.dart';
 
 class SurveySplashController extends GetxController {
   var loading = true.obs;
   var loadingMessage = "".obs;
 
-  final SurveySplashModel _model = SurveySplashModel();
+  final SurveyCollectionService _collectionService = Get.put(
+    SurveyCollectionService(),
+  );
 
   @override
   void onInit() {
@@ -15,11 +17,9 @@ class SurveySplashController extends GetxController {
   }
 
   void synchronize() async {
-    await _model.synchronizeMasterData(
-      onMessageUpdate: (msg) => loadingMessage.value = msg,
+    await _collectionService.syncCollections(
+      onSync: (msg) => loadingMessage.value = msg,
+      onDone: (isDone) => loading.value = !isDone ? true : false,
     );
-
-    await Future.delayed(Duration(seconds: 1));
-    loading.value = false;
   }
 }
