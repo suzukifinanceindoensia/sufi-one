@@ -28,10 +28,6 @@ class AppTextStyles {
     fontSize: 18,
     color: Colors.black,
   );
-  static final TextStyle smallTitle = GoogleFonts.bebasNeue(
-    fontSize: 10,
-    color: Colors.red,
-  );
   static final TextStyle appBar = GoogleFonts.bigshotOne(
     fontSize: 18,
     fontWeight: FontWeight.bold,
@@ -42,48 +38,24 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
     color: Colors.white70,
   );
-  static final TextStyle medTitle = GoogleFonts.bebasNeue(
-    fontSize: 30,
-    color: Colors.red,
-  );
-  static final TextStyle bigTitle = GoogleFonts.bebasNeue(
-    fontSize: 50,
-    color: Colors.red,
-  );
-  static final TextStyle smallDisplay = GoogleFonts.emilysCandy(
+    static final TextStyle sidebar = GoogleFonts.outfit(
     fontSize: 16,
-    color: const Color.fromARGB(255, 54, 244, 70),
+    fontWeight: FontWeight.bold,
+    color: Colors.white70,
   );
-  static final TextStyle medDisplay = GoogleFonts.emilysCandy(
+  static final TextStyle medTitle = GoogleFonts.bigshotOne(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    color: Colors.white70,
+  );
+  static final TextStyle MobcolNum = GoogleFonts.inter(
+    fontSize: 45,
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+  );
+  static final TextStyle Navybodymed = GoogleFonts.outfit(
     fontSize: 16,
-    color: const Color.fromARGB(255, 54, 244, 70),
-  );
-  static final TextStyle bigDisplay = GoogleFonts.emilysCandy(
-    fontSize: 16,
-    color: const Color.fromARGB(255, 54, 244, 70),
-  );
-  static final TextStyle smallLabel = GoogleFonts.outfit(
-    fontSize: 10,
-    color: Colors.red,
-  );
-  static final TextStyle medLabel = GoogleFonts.outfit(
-    fontSize: 12,
-    color: Colors.red,
-  );
-  static final TextStyle bigLabel = GoogleFonts.outfit(
-    fontSize: 14,
-    color: Colors.red,
-  );
-  static final TextStyle smallHeadline = GoogleFonts.outfit(
-    fontSize: 14,
-    color: Colors.red,
-  );
-  static final TextStyle medHeadline = GoogleFonts.outfit(
-    fontSize: 14,
-    color: Colors.red,
-  );
-  static final TextStyle bigHeadline = GoogleFonts.outfit(
-    fontSize: 14,
-    color: Colors.red,
+    fontWeight: FontWeight.bold,
+    color: Colors.indigo.shade900,
   );
 }
