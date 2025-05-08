@@ -27,7 +27,9 @@ class ProcessSurveyController extends GetxController {
 
   // Function to pick image
   Future<void> pickImage() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.camera); // Or use .gallery
+    final pickedFile = await picker.pickImage(
+      source: ImageSource.camera,
+    ); // Or use .gallery
 
     if (pickedFile != null) {
       selectedImage.value = File(pickedFile.path);
@@ -38,7 +40,6 @@ class ProcessSurveyController extends GetxController {
 
   // Function to handle form submission
   void submitForm() {
-    
     if (processKey.currentState!.validate()) {
       print('Name: ${nameController.text}');
       print('Address: ${addressController.text}');
@@ -47,7 +48,7 @@ class ProcessSurveyController extends GetxController {
       print('Option 2: ${selectedOption2.value}');
       print('Option 3: ${selectedOption3.value}');
       print('Image Path: ${selectedImage.value?.path}');
-      Get.toNamed(AppRoutes.mobileSurvey);
+      Get.toNamed(AppRoutes.survey);
       Get.snackbar(
         'Success',
         'Form submitted successfully!',
