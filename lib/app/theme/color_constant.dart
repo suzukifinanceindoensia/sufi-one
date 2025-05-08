@@ -20,4 +20,5 @@ class AppColors {
 
   // Button Colors
   static const Color button = Color.fromRGBO(43, 70, 125, 1);
+  static const Color button2 = Color.fromRGBO(172, 45, 45, 1);
 }

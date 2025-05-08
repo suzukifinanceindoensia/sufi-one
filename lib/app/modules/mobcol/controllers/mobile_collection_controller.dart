@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:sufi_one/app/modules/mobcol/controllers/mobcol_tugasbaru_controller.dart';
 
 class MobileCollectionController extends GetxController {
   final logger = Logger();
-
+  
   // Observable state
   var showCustomerInfo = true.obs;
 
