@@ -47,6 +47,7 @@ dependencies:
   installed_apps: ^1.6.0
   image_picker: ^1.1.2
   url_launcher: ^6.2.5
+  webview_flutter: ^4.3.1
   
   google_maps_flutter: ^2.12.1
   image: ^4.5.4
@@ -74,6 +75,7 @@ flutter:
   uses-material-design: true
   assets:
     - res/images/
+    - res/images/produk/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
