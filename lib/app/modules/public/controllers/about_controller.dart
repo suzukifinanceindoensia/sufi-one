@@ -1,14 +1,20 @@
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:sufi_one/app/modules/public/views/faq_view.dart';
 
 class AboutController extends GetxController {
-  // Method untuk membuka URL eksternal
-  void launchUrlExternal(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+  // Method untuk membuka URL eksternal atau halaman WebView jika URL FAQ
+  void launchUrlExternal(String url, {bool isFaq = false}) async {
+    if (isFaq) {
+      // Navigasi ke WebView untuk FAQ
+      Get.to(() => FaqWebView());
     } else {
-      Get.snackbar('Error', 'Tidak bisa membuka tautan: $url');
+      final Uri uri = Uri.parse(url);
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri, mode: LaunchMode.externalApplication);
+      } else {
+        Get.snackbar('Error', 'Tidak bisa membuka tautan: $url');
+      }
     }
   }
 
