@@ -4,7 +4,6 @@ import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:get/get.dart';
 
 class AppSidebar extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     final effectiveBackgroundColor = AppColors.splashStart;
@@ -39,7 +38,7 @@ class AppSidebar extends StatelessWidget {
                       icon: const Icon(Icons.info),
                       title: 'Mobile Survey',
                       onTap: () {
-                        Get.toNamed(AppRoutes.mobileSurvey);
+                        Get.toNamed(AppRoutes.survey);
                       },
                     ),
                   ],
@@ -71,32 +70,20 @@ class SidebarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle = TextStyle(
-        color:
-            titleColor ?? Theme.of(context).textTheme.bodyLarge?.color);
+      color: titleColor ?? Theme.of(context).textTheme.bodyLarge?.color,
+    );
     return InkWell(
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
         child: Row(
           children: [
-            if (icon != null) ...[
-              icon!,
-              const SizedBox(width: 12.0),
-            ],
-            Expanded(
-              child: Text(
-                title,
-                style: textStyle,
-              ),
-            ),
-            if (trailing != null) ...[
-              const SizedBox(width: 12.0),
-              trailing!,
-            ],
+            if (icon != null) ...[icon!, const SizedBox(width: 12.0)],
+            Expanded(child: Text(title, style: textStyle)),
+            if (trailing != null) ...[const SizedBox(width: 12.0), trailing!],
           ],
         ),
       ),
     );
   }
 }
-
