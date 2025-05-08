@@ -15,7 +15,8 @@ import 'package:sufi_one/app/modules/public/views/splash_view.dart';
 import 'package:sufi_one/app/modules/mobcol/views/mobile_collection_view.dart';
 // import 'package:sufi_one/app/modules/survey/views/newtask_confirm_view.dart';
 import 'package:sufi_one/app/modules/survey/bindings/splash_binding.dart';
-import 'package:sufi_one/app/modules/survey/views/splash_screen_view.dart';
+import 'package:sufi_one/app/modules/survey/views/home_view.dart';
+import 'package:sufi_one/app/modules/survey/views/splash_view.dart';
 // import 'package:sufi_one/app/modules/survey/views/upload_checking_view.dart';
 // import 'package:sufi_one/app/modules/survey/views/process_survey_view.dart';
 import 'package:sufi_one/app/modules/zeus/views/zeus_view.dart';
@@ -32,6 +33,7 @@ class AppRoutes {
   static const homepageCust = '/public/homepage_cust_view';
   static const mobileCollection = '/public/mobile_collection';
   static const survey = '/survey/splash';
+  static const surveyHome = '/survey/home';
   static const newtaskConfirm = '/public/mobile_survey/newtask';
   static const uploadChecking = '/public/mobile_survey/upload';
   static const finishChecking = '/public/mobile_survey/finish';
@@ -67,6 +69,7 @@ class AppRoutes {
       page: () => SurveySplashView(),
       binding: SurveySplashBinding(),
     ),
+    GetPage(name: surveyHome, page: () => SurveyHome()),
     // GetPage(
     //   name: survey,
     //   page: () => MobileSurveyPage(),
