@@ -29,6 +29,20 @@ import 'package:sufi_one/app/modules/public/views/about_view.dart';
 import 'package:sufi_one/app/modules/public/bindings/about_binding.dart';
 import 'package:sufi_one/app/modules/public/views/contact_view.dart';
 import 'package:sufi_one/app/modules/public/bindings/contact_binding.dart';
+import 'package:sufi_one/app/modules/public/views/ubah_password_view.dart';
+import 'package:sufi_one/app/modules/public/views/transaksi_point_view.dart';
+import 'package:sufi_one/app/modules/public/views/produk_kategori_view.dart';
+import 'package:sufi_one/app/modules/public/bindings/produk_binding.dart';
+import 'package:sufi_one/app/modules/public/views/produk_tipe_view.dart';
+import 'package:sufi_one/app/modules/public/views/produk_harga_view.dart';
+import 'package:sufi_one/app/modules/public/views/produk_detail_view.dart';
+import 'package:sufi_one/app/modules/public/views/pengajuan_kredit_view.dart';
+import 'package:sufi_one/app/modules/public/bindings/pengajuan_kredit_binding.dart';
+import 'package:sufi_one/app/modules/public/views/cabang_view.dart';
+import 'package:sufi_one/app/modules/public/bindings/cabang_binding.dart';
+import 'package:sufi_one/app/modules/public/views/simulasi_kredit_view.dart';
+import 'package:sufi_one/app/modules/public/views/opsi_pembayaran_view.dart';
+import 'package:sufi_one/app/modules/public/views/fasilitas_view.dart';
 
 class AppRoutes {
   static const splash = '/';
@@ -48,9 +62,20 @@ class AppRoutes {
   static const zeusDetail = '/public/zeus_detail_view';
   static const profilePage = '/public/profile_page_view';
   static const profileEdit = '/public/profile_edit_view';
-  static const promo = '/public/promo';
-  static const about = '/public/about';
-  static const contact = '/public/contact';
+  static const promo = '/public/public/promo';
+  static const about = '/public/public/about';
+  static const contact = '/public/public/contact';
+  static const ubahPassword = '/public/ubah-password';
+  static const transaksiPoint = '/public/public/transaksi-point';
+  static const pengajuanKredit = '/public/pengajuan-kredit';
+  static const cabang = '/public/cabang';
+  static const produkKategori = '/public/public/produk_kategori';
+  static const produkTipe = '/public/public/produk_tipe';
+  static const produkHarga = '/public/public/produk_harga';
+  static const produkDetail = '/public/public/produk_detail';
+  static const simulasiKredit = '/public/simulasi-kredit';
+  static const opsiPembayaranAsuransi = '/public/opsi-pembayaran-asuransi';
+  static const String fasilitasWebView = '/public/fasilitas-webview';
 
   static final pages = [
     GetPage(name: splash, page: () => SplashPage()),
@@ -111,6 +136,58 @@ class AppRoutes {
       name: AppRoutes.contact,
       page: () => const ContactView(),
       binding: ContactBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.ubahPassword,
+      page: () => const UbahPasswordView(),
+      binding: ProfilePageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.transaksiPoint,
+      page: () => TransaksiPointView(),
+      binding: ProfilePageBinding(),
+    ),
+    GetPage(
+      name: produkKategori,
+      page: () => ProdukKategoriView(),
+      binding: ProdukBinding(),
+    ),
+    GetPage(
+      name: produkTipe,
+      page: () => ProdukTipeView(),
+      binding: ProdukBinding(),
+    ),
+    GetPage(
+      name: produkHarga,
+      page: () => ProdukHargaView(),
+      binding: ProdukBinding(),
+    ),
+    GetPage(
+      name: produkDetail,
+      page: () => ProdukDetailView(),
+      binding: ProdukBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.pengajuanKredit,
+      page: () => PengajuanKreditView(),
+      binding: PengajuanKreditBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.cabang,
+      page: () => CabangView(),
+      binding: CabangBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.simulasiKredit,
+      page: () => const SimulasiKreditView(),
+    ),
+    GetPage(
+      name: AppRoutes.opsiPembayaranAsuransi,
+      page: () => const OpsiPembayaranAsuransiView(),
+    ),
+    GetPage(
+      name: AppRoutes.fasilitasWebView,
+      page: () => const FasilitasWebView(),
     ),
   ];
 }
