@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/survey/splashscreen/splash_binding.dart';
 import 'package:sufi_one/app/modules/survey/splashscreen/splash_view.dart';
-import 'package:sufi_one/app/modules/survey/home/home_view.dart';
+import 'package:sufi_one/app/modules/survey/home/views/home_view.dart';
 
 class SurveyRoutes {
   static const survey = '/survey/splash';
