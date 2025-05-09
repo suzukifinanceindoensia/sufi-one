@@ -3,22 +3,13 @@ import 'package:sufi_one/app/modules/public/bindings/forgot_password_binding.dar
 import 'package:sufi_one/app/modules/public/bindings/login_binding.dart';
 import 'package:sufi_one/app/modules/public/bindings/register_binding.dart';
 import 'package:sufi_one/app/modules/public/views/forgot_password_view.dart';
-// import 'package:sufi_one/app/modules/survey/bindings/mobile_survey_binding.dart';
-// import 'package:sufi_one/app/modules/survey/bindings/process_survey_binding.dart';
-// import 'package:sufi_one/app/modules/survey/views/finish_checking_view.dart';
-// import 'package:sufi_one/app/modules/survey/views/mobile_survey_view.dart';
 import 'package:sufi_one/app/modules/public/views/home_view.dart';
 import 'package:sufi_one/app/modules/public/views/homepage_cust_view.dart';
 import 'package:sufi_one/app/modules/public/views/login_view.dart';
 import 'package:sufi_one/app/modules/public/views/register_view.dart';
 import 'package:sufi_one/app/modules/public/views/splash_view.dart';
 import 'package:sufi_one/app/modules/mobcol/views/mobile_collection_view.dart';
-// import 'package:sufi_one/app/modules/survey/views/newtask_confirm_view.dart';
-import 'package:sufi_one/app/modules/survey/bindings/splash_binding.dart';
-import 'package:sufi_one/app/modules/survey/views/home_view.dart';
-import 'package:sufi_one/app/modules/survey/views/splash_view.dart';
-// import 'package:sufi_one/app/modules/survey/views/upload_checking_view.dart';
-// import 'package:sufi_one/app/modules/survey/views/process_survey_view.dart';
+import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/modules/zeus/views/zeus_view.dart';
 import 'package:sufi_one/app/modules/zeus/views/zeus_detail_view.dart';
 import 'package:sufi_one/app/modules/zeus/bindings/zeus_binding.dart';
@@ -63,26 +54,6 @@ class AppRoutes {
       binding: ZeusBinding(),
     ),
     GetPage(name: mobileCollection, page: () => MobileCollection()),
-    // =================== Mos Survey Route ===================== //
-    GetPage(
-      name: survey,
-      page: () => SurveySplashView(),
-      binding: SurveySplashBinding(),
-    ),
-    GetPage(name: surveyHome, page: () => SurveyHome()),
-    // GetPage(
-    //   name: survey,
-    //   page: () => MobileSurveyPage(),
-    //   binding: MobileSurveyBinding(),
-    // ),
-    // GetPage(name: newtaskConfirm, page: () => NewtaskConfirmView()),
-    // GetPage(name: uploadChecking, page: () => UploadCheckingView()),
-    // GetPage(name: finishChecking, page: () => FinishCheckingView()),
-    // GetPage(
-    //   name: processSurvey,
-    //   page: () => ProcessSurveyView(),
-    //   binding: ProcessSurveyBinding(),
-    // ),
     GetPage(name: login, page: () => LoginPage(), binding: LoginBinding()),
     GetPage(
       name: register,
@@ -104,5 +75,6 @@ class AppRoutes {
       page: () => ProfileEditView(),
       binding: ProfilePageBinding(),
     ),
+    ...SurveyRoutes.routes,
   ];
 }
