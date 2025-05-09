@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 Widget avatar({double? size, VoidCallback? onTap}) {
   return Container(
@@ -12,8 +11,8 @@ Widget avatar({double? size, VoidCallback? onTap}) {
       ),
       borderRadius: const BorderRadius.all(Radius.circular(50)),
     ),
-    height: size ?? 80,
-    width: size ?? 80,
+    height: size ?? 30,
+    width: size ?? 30,
     child: GestureDetector(
       onTap: onTap,
       child: ClipRRect(

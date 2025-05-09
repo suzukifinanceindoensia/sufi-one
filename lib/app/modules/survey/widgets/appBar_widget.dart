@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
 import 'package:sufi_one/app/modules/survey/widgets/avatar_widget.dart';
 
 class SurveyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double extraHeight;
   final Widget? child;
-  // final List<MenuModel> menus;
-  final List menus;
+  final List<SurveyMenuModel> menus;
   final VoidCallback? onTapAvatar;
 
   const SurveyAppBar({
@@ -87,6 +87,7 @@ class SurveyAppBar extends StatelessWidget implements PreferredSizeWidget {
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 25,
                                               ),
+                                              softWrap: true,
                                               // "${System.data.global.user?.name}",
                                               // style: System.data.textStyles!
                                               //     .boldTitleLightLabel
@@ -100,7 +101,7 @@ class SurveyAppBar extends StatelessWidget implements PreferredSizeWidget {
                                             width: double.infinity,
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                              "DANU.PRAKARSA#CMO",
+                                              "DANU.PRAKARSA#CMO".toLowerCase(),
                                               style: TextStyle(
                                                 color: const Color(0XFFEEEEEE),
                                                 fontWeight: FontWeight.bold,
