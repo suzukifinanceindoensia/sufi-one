@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/survey/splashscreen/bindings/splash_binding.dart';
-import 'package:sufi_one/app/modules/survey/splashscreen/views/splash_view.dart';
+import 'package:sufi_one/app/modules/survey/splashscreen/splash_binding.dart';
+import 'package:sufi_one/app/modules/survey/splashscreen/splash_view.dart';
 import 'package:sufi_one/app/modules/survey/home/home_view.dart';
 
 class SurveyRoutes {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/splash_controller.dart';
+import 'splash_controller.dart';
 
 class SurveySplashView extends GetView<SurveySplashController> {
-  const SurveySplashView({Key? key}) : super(key: key);
+  const SurveySplashView({super.key});
 
   @override
   Widget build(BuildContext context) {
