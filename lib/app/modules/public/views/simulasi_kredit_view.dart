@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 
-class PengajuanKreditView extends StatefulWidget {
-  const PengajuanKreditView({super.key});
+class SimulasiKreditView extends StatefulWidget {
+  const SimulasiKreditView({Key? key}) : super(key: key);
 
   @override
-  PengajuanKreditViewState createState() => PengajuanKreditViewState();
+  State<SimulasiKreditView> createState() => _SimulasiKreditViewState();
 }
 
-class PengajuanKreditViewState extends State<PengajuanKreditView> {
+class _SimulasiKreditViewState extends State<SimulasiKreditView> {
   late final WebViewController _controller;
   bool isLoading = true;
   bool hasError = false;
@@ -42,6 +41,7 @@ class PengajuanKreditViewState extends State<PengajuanKreditView> {
         },
       ),
     );
+
     _clearCacheAndLoadPage();
   }
 
@@ -50,7 +50,7 @@ class PengajuanKreditViewState extends State<PengajuanKreditView> {
       await _controller.clearCache();
       _controller.loadRequest(
         Uri.parse(
-          "https://sufismart.sfi.co.id/sufismart/api/credit_simulation_apply_all.php?userid=",
+          "https://sufismart.sfi.co.id/sufismart/api/simulasi_page_sufismart.php",
         ),
       );
     } catch (e) {
@@ -58,6 +58,14 @@ class PengajuanKreditViewState extends State<PengajuanKreditView> {
       setState(() {
         hasError = true;
       });
+    }
+  }
+
+  Future<void> _goBack() async {
+    if (await _controller.canGoBack()) {
+      _controller.goBack();
+    } else {
+      Navigator.pop(context);
     }
   }
 
@@ -72,8 +80,16 @@ class PengajuanKreditViewState extends State<PengajuanKreditView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.bg1,
-      appBar: SuzukiFinanceAppBarWObutton(),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: _goBack,
+        ),
+        title: const Text("Simulasi Kredit"),
+        backgroundColor: AppColors.splashEnd,
+        foregroundColor: Colors.black,
+        elevation: 1,
+      ),
       body: Stack(
         children: [
           if (!hasError) WebViewWidget(controller: _controller),

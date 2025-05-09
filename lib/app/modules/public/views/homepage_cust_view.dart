@@ -50,9 +50,29 @@ class _HomepageCustViewState extends State<HomepageCustView> {
         child: Column(
           children: [
             _buildBanner(),
+            // const Divider(
+            //   height: 20,
+            //   thickness: 12,
+            //   color: AppColors.splashStart,
+            // ),
             _buildMenuGrid(),
+            const Divider(
+              height: 20,
+              thickness: 9,
+              color: AppColors.splashStart,
+            ),
             _OrderSection(),
+            const Divider(
+              height: 20,
+              thickness: 9,
+              color: AppColors.splashStart,
+            ),
             _NewsCarousel(),
+            // const Divider(
+            //   height: 20,
+            //   thickness: 12,
+            //   color: AppColors.splashStart,
+            // ),
           ],
         ),
       ),
@@ -142,9 +162,18 @@ class _HomepageCustViewState extends State<HomepageCustView> {
                       if (label == 'Promo') {
                         Get.toNamed(AppRoutes.promo);
                       } else if (label == 'Produk') {
-                        Get.toNamed(AppRoutes.produkList);
+                        Get.toNamed(AppRoutes.produkKategori);
+                      } else if (label == 'Simulasi Kredit') {
+                        Get.toNamed(AppRoutes.simulasiKredit);
+                      } else if (label == 'Cabang') {
+                        Get.toNamed(AppRoutes.cabang);
+                      } else if (label == 'Opsi Pembayaran & Asuransi') {
+                        Get.toNamed(AppRoutes.opsiPembayaranAsuransi);
+                      } else if (label == 'Fasilitas') {
+                        Get.toNamed(AppRoutes.fasilitasWebView);
                       }
                     },
+
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -217,9 +246,12 @@ class _HomepageCustViewState extends State<HomepageCustView> {
               itemCount: newsImages.length,
               itemBuilder:
                   (context, index) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 7.0),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0,
+                      vertical: 8.0,
+                    ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(6.0),
+                      borderRadius: BorderRadius.circular(8.0),
                       child: Image.asset(newsImages[index], fit: BoxFit.fill),
                     ),
                   ),

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 
-class PengajuanKreditView extends StatefulWidget {
-  const PengajuanKreditView({super.key});
+class OpsiPembayaranAsuransiView extends StatefulWidget {
+  const OpsiPembayaranAsuransiView({Key? key}) : super(key: key);
 
   @override
-  PengajuanKreditViewState createState() => PengajuanKreditViewState();
+  State<OpsiPembayaranAsuransiView> createState() =>
+      _OpsiPembayaranAsuransiViewState();
 }
 
-class PengajuanKreditViewState extends State<PengajuanKreditView> {
+class _OpsiPembayaranAsuransiViewState
+    extends State<OpsiPembayaranAsuransiView> {
   late final WebViewController _controller;
   bool isLoading = true;
   bool hasError = false;
@@ -49,9 +50,7 @@ class PengajuanKreditViewState extends State<PengajuanKreditView> {
     try {
       await _controller.clearCache();
       _controller.loadRequest(
-        Uri.parse(
-          "https://sufismart.sfi.co.id/sufismart/api/credit_simulation_apply_all.php?userid=",
-        ),
+        Uri.parse("https://sufismart.sfi.co.id/sufismart/api/layanan_2.php"),
       );
     } catch (e) {
       print("Error clearing cache: $e");
@@ -61,19 +60,27 @@ class PengajuanKreditViewState extends State<PengajuanKreditView> {
     }
   }
 
-  Future<void> _reloadPage() async {
-    setState(() {
-      isLoading = true;
-      hasError = false;
-    });
-    _clearCacheAndLoadPage();
+  Future<void> _goBack() async {
+    if (await _controller.canGoBack()) {
+      _controller.goBack();
+    } else {
+      Navigator.pop(context);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.bg1,
-      appBar: SuzukiFinanceAppBarWObutton(),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: _goBack,
+        ),
+        title: const Text("Opsi Pembayaran & Asuransi"),
+        backgroundColor: AppColors.splashEnd,
+        foregroundColor: AppColors.iconDefault,
+        elevation: 1,
+      ),
       body: Stack(
         children: [
           if (!hasError) WebViewWidget(controller: _controller),
@@ -91,7 +98,13 @@ class PengajuanKreditViewState extends State<PengajuanKreditView> {
                   ),
                   const SizedBox(height: 8),
                   ElevatedButton(
-                    onPressed: _reloadPage,
+                    onPressed: () {
+                      setState(() {
+                        isLoading = true;
+                        hasError = false;
+                      });
+                      _clearCacheAndLoadPage();
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.splashEnd,
                     ),
