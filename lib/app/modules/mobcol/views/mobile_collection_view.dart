@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/controllers/mobcol_tugasbaru_controller.dart';
 import 'package:sufi_one/app/modules/mobcol/controllers/mobcol_tugasbelumselesai_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/controllers/mobcol_tugasselesai_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/controllers/mobcol_uploadbukti_view.dart';
 import 'package:sufi_one/app/modules/mobcol/controllers/mobile_collection_controller.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/menu_creator_mobcol.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/profile_card_mobcol.dart';
@@ -65,22 +67,22 @@ class MobileCollection extends StatelessWidget {
                   const SizedBox(height: 20),
                   GestureDetector(
                     onTap: (){
-                      Get.toNamed(AppRoutes.mobileSurvey);
+                      Get.toNamed(AppRoutes.mobileCollectionUploadBukti);
                     },
                     child: MenuCreatorMobcol(
                       imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
-                      number: "1",
+                      number: "${alluploadbukti.length}",
                       title: "Upload Bukti\nPembayaran",
                     ),
                   ),
                   const SizedBox(height: 20),
                   GestureDetector(
                     onTap: (){
-                      Get.toNamed(AppRoutes.mobileSurvey);
+                      Get.toNamed(AppRoutes.mobileCollectionTugasSelesai);
                     },
                     child: MenuCreatorMobcol(
                       imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
-                      number: "1",
+                      number: "${alltugasselesai.length}",
                       title: "Tugas Selesai",
                     ),
                   ),
