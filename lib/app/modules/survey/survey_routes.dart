@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:sufi_one/app/modules/survey/home/bindings/home_binding.dart';
 import 'package:sufi_one/app/modules/survey/splashscreen/splash_binding.dart';
 import 'package:sufi_one/app/modules/survey/splashscreen/splash_view.dart';
 import 'package:sufi_one/app/modules/survey/home/views/home_view.dart';
@@ -13,6 +14,10 @@ class SurveyRoutes {
       page: () => SurveySplashView(),
       binding: SurveySplashBinding(),
     ),
-    GetPage(name: surveyHome, page: () => SurveyHome()),
+    GetPage(
+      name: surveyHome,
+      page: () => SurveyHomeView(),
+      binding: SurveyHomeBinding(),
+    ),
   ];
 }
