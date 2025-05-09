@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
 import 'package:sufi_one/app/modules/survey/widgets/appBar_widget.dart';
 
 class SurveyHome extends StatelessWidget {
@@ -11,15 +13,14 @@ class SurveyHome extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       appBar: SurveyAppBar(
         menus: [
-          // menus(
-          //   title: "Refresh",
-          //   iconData: FontAwesomeIcons.sync,
-          //   onTap: () {
-          //     refresh();
-          //   },
-          // ),
+          SurveyMenuModel(
+            title: "Refresh",
+            iconData: FontAwesomeIcons.arrowsRotate,
+            onTap: () {},
+          ),
         ],
       ),
+      backgroundColor: const Color(0xFFF5F4F4),
     );
   }
 }

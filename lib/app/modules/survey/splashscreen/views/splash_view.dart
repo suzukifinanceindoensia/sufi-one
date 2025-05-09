@@ -32,6 +32,7 @@ class SurveySplashView extends GetView<SurveySplashController> {
                             controller.loadingMessage.value,
                             style: TextStyle(color: Colors.white),
                           ),
+                          SizedBox(height: 50),
                         ],
                       ),
                     )
