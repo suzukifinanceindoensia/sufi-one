@@ -44,18 +44,29 @@ class CabangView extends StatelessWidget {
                     controller.updateSelectedCabang(value);
                   }
                 },
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: AppColors.bg1,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: AppColors.iconDefault),
+                  ),
+                ),
               ),
             ),
             SizedBox(height: 20),
             Obx(() {
               if (controller.selectedCabang.value.isEmpty) {
-                return SizedBox();
+                return Text(
+                  'Pilih cabang untuk melihat detail lokasi',
+                  style: TextStyle(color: AppColors.iconDefault, fontSize: 14),
+                );
               }
               final selectedCabang = controller.cabangList.firstWhere(
                 (cabang) => cabang['name'] == controller.selectedCabang.value,
                 orElse:
                     () => {
-                      'address': 'Pilih cabang untuk melihat alamat',
+                      'address': 'Alamat tidak tersedia',
                       'distance': '0 km',
                     },
               );
@@ -63,7 +74,7 @@ class CabangView extends StatelessWidget {
                 color: AppColors.bg1,
                 margin: EdgeInsets.symmetric(vertical: 10),
                 child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -104,7 +115,7 @@ class CabangView extends StatelessWidget {
                                   'Lihat Lokasi',
                                   style: TextStyle(
                                     fontSize: 14,
-                                    color: AppColors.iconDefault,
+                                    color: AppColors.splashEnd,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
