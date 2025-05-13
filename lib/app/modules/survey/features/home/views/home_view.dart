@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
-import 'package:sufi_one/app/modules/survey/home/controllers/home_controller.dart';
+import 'package:sufi_one/app/modules/survey/features/home/controllers/home_controller.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
+import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/modules/survey/widgets/appBar_widget.dart';
 
 class SurveyHomeView extends GetView<SurveyHomeController> {
@@ -36,13 +37,13 @@ class SurveyHomeView extends GetView<SurveyHomeController> {
                     TabMenu(
                       icon: Icons.assignment,
                       label: 'New',
-                      route: '/survey/new-task',
+                      route: SurveyRoutes.surveyHome,
                       isSelected: true,
                     ),
                     TabMenu(
                       icon: Icons.playlist_add_check,
                       label: 'Process',
-                      route: '/survey/process',
+                      route: SurveyRoutes.surveyProcess,
                     ),
                     TabMenu(
                       icon: Icons.cloud_upload,
@@ -105,7 +106,7 @@ class TabMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: GestureDetector(
-        onTap: () => Get.toNamed(route),
+        onTap: () => Get.offNamed(route),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 12),
           decoration: BoxDecoration(
@@ -185,7 +186,7 @@ Widget listItem({
                             style: TextStyle(
                               color: Colors.black,
                               fontFamily: "Roboto",
-                              fontSize: 14,
+                              fontSize: 12,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -194,7 +195,7 @@ Widget listItem({
                             style: TextStyle(
                               color: Colors.black,
                               fontFamily: "Roboto",
-                              fontSize: 14,
+                              fontSize: 12,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -216,7 +217,7 @@ Widget listItem({
                             style: TextStyle(
                               color: Colors.black,
                               fontFamily: "Roboto",
-                              fontSize: 14,
+                              fontSize: 12,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -225,7 +226,7 @@ Widget listItem({
                             style: TextStyle(
                               color: Colors.black,
                               fontFamily: "Roboto",
-                              fontSize: 14,
+                              fontSize: 12,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -274,7 +275,7 @@ Widget deviceHandles({String? deviceHandlesPrefix}) {
           style: TextStyle(
             color: Colors.black,
             fontFamily: "Roboto",
-            fontSize: 14,
+            fontSize: 12,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -284,7 +285,7 @@ Widget deviceHandles({String? deviceHandlesPrefix}) {
           style: TextStyle(
             color: Colors.black,
             fontFamily: "Roboto",
-            fontSize: 14,
+            fontSize: 12,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -349,7 +350,7 @@ Widget consumerData() {
                   style: TextStyle(
                     color: Colors.black,
                     fontFamily: 'roboto',
-                    fontSize: 14,
+                    fontSize: 12,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

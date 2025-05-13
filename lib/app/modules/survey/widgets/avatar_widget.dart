@@ -16,16 +16,20 @@ Widget avatar({double? size, VoidCallback? onTap}) {
     child: GestureDetector(
       onTap: onTap,
       child: ClipRRect(
-        borderRadius: const BorderRadius.all(Radius.circular(50)),
-        child: Image.network(
-          "",
-          fit: BoxFit.fitHeight,
-          errorBuilder:
-              (bb, o, st) => Container(
-                color: Colors.transparent,
-                child: Image.asset("res/images/survey/avatar.png"),
-              ),
+        child: Container(
+          color: Colors.transparent,
+          child: Image.asset("res/images/survey/avatar.png"),
         ),
+        borderRadius: const BorderRadius.all(Radius.circular(50)),
+        // child: Image.network(
+        //   "",
+        //   fit: BoxFit.fitHeight,
+        //   errorBuilder:
+        //       (bb, o, st) => Container(
+        //         color: Colors.transparent,
+        //         child: Image.asset("res/images/survey/avatar.png"),
+        //       ),
+        // ),
       ),
     ),
   );
