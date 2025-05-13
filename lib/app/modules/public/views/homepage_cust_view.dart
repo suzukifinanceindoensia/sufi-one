@@ -2,12 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/controllers/homepage_cust_controller.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbar.dart';
+import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
-import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
+import 'package:sufi_one/app/routes/app_routes.dart';
 
-class HomepageCustView extends GetView<HomepageCustController> {
-  const HomepageCustView({super.key});
+class HomepageCustView extends StatefulWidget {
+  const HomepageCustView({Key? key}) : super(key: key);
+
+  @override
+  State<HomepageCustView> createState() => _HomepageCustViewState();
+}
+
+class _HomepageCustViewState extends State<HomepageCustView> {
+  final HomepageCustController controller = Get.find<HomepageCustController>();
+  final PageController _newsPageController = PageController(
+    viewportFraction: 0.7,
+  );
+
+  final List<String> bannerImages = [
+    'res/images/suzuki_iklan1.jpg',
+    'res/images/suzuki_iklan2.jpg',
+    'res/images/suzuki_iklan3.jpg',
+    'res/images/suzuki_iklan4.jpg',
+  ];
+
+  final List<String> newsImages = [
+    'res/images/suzuki_iklan1.jpg',
+    'res/images/suzuki_iklan4.jpg',
+    'res/images/suzuki_iklan2.jpg',
+    'res/images/suzuki_iklan5.jpg',
+    'res/images/suzuki_iklan3.jpg',
+  ];
+
+  @override
+  void dispose() {
+    _newsPageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,127 +49,30 @@ class HomepageCustView extends GetView<HomepageCustController> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Obx(
-              () => Column(
-                children: [
-                  SizedBox(
-                    height: 240,
-                    child: PageView.builder(
-                      controller: controller.pageController,
-                      onPageChanged: controller.onPageChanged,
-                      itemCount: 4,
-                      itemBuilder: (context, index) {
-                        final images = [
-                          'res/images/suzuki_iklan1.jpg',
-                          'res/images/suzuki_iklan2.jpg',
-                          'res/images/suzuki_iklan3.jpg',
-                          'res/images/suzuki_iklan4.jpg',
-                        ];
-                        return Image.asset(
-                          images[index],
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        );
-                      },
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      4,
-                      (index) => Container(
-                        margin: EdgeInsets.symmetric(horizontal: 4.0),
-                        width: 8.0,
-                        height: 8.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color:
-                              controller.currentPage.value == index
-                                  ? AppColors.snack
-                                  : Colors.grey,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            _buildBanner(),
+            // const Divider(
+            //   height: 20,
+            //   thickness: 12,
+            //   color: AppColors.splashStart,
+            // ),
+            _buildMenuGrid(),
+            const Divider(
+              height: 20,
+              thickness: 9,
+              color: AppColors.splashStart,
             ),
-            Container(
-              color: AppColors.bg1,
-              padding: EdgeInsets.all(16.0),
-              margin: EdgeInsets.only(bottom: 0.0),
-              child: GridView.count(
-                crossAxisCount: 3,
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                crossAxisSpacing: 3.0,
-                mainAxisSpacing: 3.0,
-                children: [
-                  _buildIconColumn(Icons.directions_car, 'Opsi Pembayaran'),
-                  _buildIconColumn(Icons.local_offer, 'Promo'),
-                  _buildIconColumn(Icons.category, 'Produk'),
-                  _buildIconColumn(Icons.location_on, 'Cabang'),
-                  _buildIconColumn(Icons.calculate, 'Simulasi Kredit'),
-                  _buildIconColumn(Icons.assignment, 'Fasilitas'),
-                ],
-              ),
+            _OrderSection(),
+            const Divider(
+              height: 20,
+              thickness: 9,
+              color: AppColors.splashStart,
             ),
-            Container(
-              color: AppColors.bg1,
-              padding: EdgeInsets.all(16.0),
-              margin: EdgeInsets.only(top: 4.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Katalog Produk',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  Center(
-                    child: Image.asset('res/images/baleno.jpg', height: 150),
-                  ),
-                  SizedBox(height: 16.0),
-                  Center(
-                    child: Image.asset(
-                      'res/images/suzuki_iklan5.jpg',
-                      height: 150,
-                      width: 270,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Center(
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.snack,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                      ),
-                      child: Text(
-                        'Order Sekarang',
-                        style: TextStyle(color: AppColors.bg1),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              color: AppColors.bg1,
-              padding: EdgeInsets.all(16.0),
-              margin: EdgeInsets.only(top: 16.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Image.asset(
-                  'res/images/suzuki_iklan6.jpg',
-                  height: 100,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+            _NewsCarousel(),
+            // const Divider(
+            //   height: 20,
+            //   thickness: 12,
+            //   color: AppColors.splashStart,
+            // ),
           ],
         ),
       ),
@@ -145,33 +80,185 @@ class HomepageCustView extends GetView<HomepageCustController> {
     );
   }
 
-  Column _buildIconColumn(IconData icon, String label) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: AppColors.bg1,
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 1,
-                blurRadius: 3,
-                offset: Offset(0, 2),
-              ),
-            ],
+  Widget _buildBanner() {
+    return Obx(
+      () => Column(
+        children: [
+          SizedBox(
+            height: 240,
+            child: PageView.builder(
+              controller: controller.pageController,
+              onPageChanged: controller.onPageChanged,
+              itemCount: bannerImages.length,
+              itemBuilder:
+                  (context, index) => Image.asset(
+                    bannerImages[index],
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+            ),
           ),
-          padding: EdgeInsets.all(10.0),
-          child: Icon(icon, color: AppColors.snack, size: 24),
-        ),
-        SizedBox(height: 6.0),
-        Text(
-          label,
-          textAlign: TextAlign.center,
-          style: AppTextStyles.smallBody,
-        ),
-      ],
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              bannerImages.length,
+              (index) => Container(
+                margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                width: 8.0,
+                height: 8.0,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color:
+                      controller.currentPage.value == index
+                          ? AppColors.snack
+                          : Colors.grey,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMenuGrid() {
+    final List<Map<String, String>> menuItems = [
+      {'icon': 'res/images/ic_icon_wop.png', 'label': 'Promo'},
+      {'icon': 'res/images/ic_icon_product.png', 'label': 'Produk'},
+      {
+        'icon': 'res/images/ic_icon_credit_simulation.png',
+        'label': 'Simulasi Kredit',
+      },
+      {'icon': 'res/images/ic_icon_promo.png', 'label': 'Fasilitas'},
+      {'icon': 'res/images/ic_icon_branch.png', 'label': 'Cabang'},
+      {
+        'icon': 'res/images/ic_icon_installment_status.png',
+        'label': 'Opsi Pembayaran & Asuransi',
+      },
+    ];
+
+    return Container(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Fitur',
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 12.0),
+          GridView.count(
+            crossAxisCount: 3,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            crossAxisSpacing: 3.0,
+            mainAxisSpacing: 3.0,
+            children:
+                menuItems.map((item) {
+                  return InkWell(
+                    onTap: () {
+                      final label = item['label'];
+                      if (label == 'Promo') {
+                        Get.toNamed(AppRoutes.promo);
+                      } else if (label == 'Produk') {
+                        Get.toNamed(AppRoutes.produkKategori);
+                      } else if (label == 'Simulasi Kredit') {
+                        Get.toNamed(AppRoutes.simulasiKredit);
+                      } else if (label == 'Cabang') {
+                        Get.toNamed(AppRoutes.cabang);
+                      } else if (label == 'Opsi Pembayaran & Asuransi') {
+                        Get.toNamed(AppRoutes.opsiPembayaranAsuransi);
+                      } else if (label == 'Fasilitas') {
+                        Get.toNamed(AppRoutes.fasilitasWebView);
+                      }
+                    },
+
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(10.0),
+                          child: SizedBox(
+                            width: 54,
+                            height: 54,
+                            child: Image.asset(item['icon']!),
+                          ),
+                        ),
+                        const SizedBox(height: 6.0),
+                        Text(
+                          item['label']!,
+                          textAlign: TextAlign.center,
+                          style: AppTextStyles.smallBody,
+                        ),
+                      ],
+                    ),
+                  );
+                }).toList(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _OrderSection() {
+    return Container(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          const Text(
+            'Ayo, Order Kendaraan Suzuki',
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+          ),
+          const SizedBox(height: 8.0),
+          ElevatedButton(
+            onPressed: () {
+              Get.toNamed(AppRoutes.pengajuanKredit);
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.button,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+            ),
+            child: Text('Apply', style: TextStyle(color: AppColors.bg1)),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _NewsCarousel() {
+    return Container(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Berita Terbaru',
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 12.0),
+          SizedBox(
+            height: 180,
+            child: PageView.builder(
+              controller: _newsPageController,
+              itemCount: newsImages.length,
+              itemBuilder:
+                  (context, index) => Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0,
+                      vertical: 8.0,
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset(newsImages[index], fit: BoxFit.fill),
+                    ),
+                  ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
