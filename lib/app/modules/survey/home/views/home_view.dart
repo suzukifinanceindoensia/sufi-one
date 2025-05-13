@@ -142,50 +142,6 @@ Widget listItem({
   String? deviceHandlesPrefix,
   bool? enableTap = true,
 }) {
-  final List<Map<String, dynamic>> dummyData = [
-    {
-      "submission_id": 9851,
-      "submission_number": "154822062011",
-      "application_id": 201,
-      "application_code": "SFI_SURVEY",
-      "application_name": "SFI_SURVEY",
-      "submission_date": "2022-11-07 08:03:10.093",
-      "submission_lat": 0,
-      "submission_lon": 0,
-      "state_id": 101,
-      "state_name": "ASSIGNED",
-      "state_status": "PROCESSED",
-      "user_id": 9,
-      "user_name": "DANU PRAKARSA",
-      "organitation_id": 302,
-      "organitaion_name": "CMO",
-      "device_id": "RP1A.200720.012",
-      "device_model": "SM-A105G A10",
-      "submit_message": "Customer_bisa_dihubungi",
-      "totalData": 3,
-      "data": [
-        {
-          "id": 113,
-          "code": "CUST_NAME",
-          "label": "NAMA LENGKAP PEMOHON",
-          "value": "JONI",
-        },
-        {
-          "id": 118,
-          "code": "MOBILE_PHN_NO_1",
-          "label": "NOMOR TELEPON/WHATSAPP PEMOHON",
-          "value": "08677777888",
-        },
-        {
-          "id": 131,
-          "code": "QMH0002",
-          "label": "CEK JARAK ALAMAT DOMISILI",
-          "value": "8.5400",
-        },
-      ],
-    },
-  ];
-
   return GestureDetector(
     onTap: () {},
     child: Container(
