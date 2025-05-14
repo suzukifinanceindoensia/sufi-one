@@ -28,7 +28,7 @@ class SuzukiFinanceAppBar extends StatelessWidget
                   Get.toNamed(AppRoutes.mobileCollection);
                   break;
                 case 'Mobile Survey':
-                  Get.toNamed(AppRoutes.mobileSurvey);
+                  Get.toNamed(AppRoutes.survey);
                   break;
                 case 'Zeus':
                   Get.toNamed(AppRoutes.zeus);
