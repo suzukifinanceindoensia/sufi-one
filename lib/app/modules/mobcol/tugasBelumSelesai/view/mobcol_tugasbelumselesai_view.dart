@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/mobcol/controllers/mobcol_tugasbelumselesai_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/tugasBelumSelesai/controller/mobcol_tugasbelumselesai_controller.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
@@ -79,7 +79,7 @@ class MobcolTugasbelumselesaiView extends GetView<MobcolTugasbelumselesaiControl
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  SizedBox(
+                                  Container(
                                     width: 240,
                                     child: Row(
                                       children: [
@@ -94,19 +94,27 @@ class MobcolTugasbelumselesaiView extends GetView<MobcolTugasbelumselesaiControl
                                   ),
                                   Text('id: ${tugas['id']}', style: AppTextStyles.medBody),
                                   Text('Rp. ${tugas['money']}', style: AppTextStyles.medBody),
-                                  SizedBox(
-                                    width: 240,
-                                    child: Row(
+                                  Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("kel. ${tugas['kelurahan']}", style: AppTextStyles.medBody),
-                                        const Expanded(child: SizedBox()),
-                                        Text("kec. ${tugas['kecamatan']}", style: AppTextStyles.medBody),
+                                        Container(
+                                          width: 100,
+                                          child: Text("kel. ${tugas['kelurahan']}", 
+                                            style: AppTextStyles.medBody, 
+                                            softWrap: true,
+                                            textAlign: TextAlign.left,),
+                                        ),
+                                        Container(
+                                          width: 100,
+                                          child: Text("kel. ${tugas['kecamatan']}", 
+                                            style: AppTextStyles.medBody, 
+                                            softWrap: true,
+                                            textAlign: TextAlign.right,),
+                                        ),
                                       ],
                                     ),
-                                  ),
                                 ],
                               ),
-                              const Expanded(child: SizedBox())
                             ],
                           ),
                         ]

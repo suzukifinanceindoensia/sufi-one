@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/mobcol/controllers/mobcol_uploadbukti_detail_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/uploadBukti/controller/mobcol_uploadbukti_detail_controller.dart';
 
 class MobcolUploadbuktiDetailBinding extends Bindings {
   @override

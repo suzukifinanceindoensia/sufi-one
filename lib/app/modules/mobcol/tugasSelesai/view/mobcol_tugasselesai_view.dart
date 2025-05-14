@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/mobcol/controllers/mobcol_tugasselesai_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/tugasSelesai/controller/mobcol_tugasselesai_controller.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
@@ -64,23 +64,31 @@ class MobcolTugasSelesaiView extends GetView<MobcolTugasSelesaiController> {
                                     Text("${tugas['name']}", style: AppTextStyles.medBody),
                                     Text('id: ${tugas['id']}', style: AppTextStyles.medBody),
                                     Text('Rp. ${tugas['money']}', style: AppTextStyles.medBody),
-                                    SizedBox(
-                                      width: 240,
-                                      child: Row(
-                                        children: [
-                                          Text("kel. ${tugas['kelurahan']}", style: AppTextStyles.medBody),
-                                          Expanded(child: SizedBox()),
-                                          Text("kec. ${tugas['kecamatan']}", style: AppTextStyles.medBody),
-                                        ],
-                                      ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          width: 100,
+                                          child: Text("kel. ${tugas['kelurahan']}", 
+                                            style: AppTextStyles.medBody, 
+                                            softWrap: true,
+                                            textAlign: TextAlign.left,),
+                                        ),
+                                        Container(
+                                          width: 100,
+                                          child: Text("kel. ${tugas['kecamatan']}", 
+                                            style: AppTextStyles.medBody, 
+                                            softWrap: true,
+                                            textAlign: TextAlign.left,),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                                Expanded(child: SizedBox())
-                              ],
-                            ),
+                              ]
+                            )
                           ]
-                        )
+                        ),
                       ),
                     );
                   },
