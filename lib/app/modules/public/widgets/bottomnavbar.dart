@@ -16,18 +16,10 @@ class BottomNavbar extends StatelessWidget {
         Get.offAllNamed(AppRoutes.homepageCust); // Home Page
         break;
       case 1:
-        Get.snackbar(
-          'Info',
-          'About Page belum tersedia',
-          snackPosition: SnackPosition.BOTTOM,
-        );
+        Get.offAllNamed(AppRoutes.about); // About Page
         break;
       case 2:
-        Get.snackbar(
-          'Info',
-          'Support Page belum tersedia',
-          snackPosition: SnackPosition.BOTTOM,
-        );
+        Get.offAllNamed(AppRoutes.contact); // contact Page
         break;
       case 3:
         Get.offAllNamed(AppRoutes.profilePage); // Profile Page

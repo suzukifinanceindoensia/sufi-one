@@ -3,7 +3,7 @@ import 'package:logger/logger.dart';
 
 class MobileCollectionController extends GetxController {
   final logger = Logger();
-
+  
   // Observable state
   var showCustomerInfo = true.obs;
 

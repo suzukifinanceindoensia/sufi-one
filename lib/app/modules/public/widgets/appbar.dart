@@ -85,19 +85,19 @@ class SuzukiFinanceAppBar extends StatelessWidget
 
           // Logo Suzuki
           Image.asset(
-            'res/images/logo_suzuki.png', // Ganti dengan logo Suzuki kamu
-            height: 40,
+            'res/images/splashscreen2.png', // Ganti dengan logo Suzuki kamu
+            height: 35,
           ),
-          SizedBox(width: 12),
+          // SizedBox(width: 12),
 
-          // Judul
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("Suzuki Finance", style: AppTextStyles.appBar),
-              Text('Kredit Resmi Suzuki', style: AppTextStyles.appBarSmall),
-            ],
-          ),
+          // // Judul
+          // Column(
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   children: [
+          //     Text("Suzuki Finance", style: AppTextStyles.appBar),
+          //     Text('Kredit Resmi Suzuki', style: AppTextStyles.appBarSmall),
+          //   ],
+          // ),
         ],
       ),
     );
