@@ -21,10 +21,9 @@ class AppSidebar extends StatelessWidget {
               Expanded(
                 child: ListView.separated(
                   itemCount: _sidebarItems.length,
-                  separatorBuilder: (BuildContext context, int index) => const Divider(
-                    color: Colors.white60,
-                    thickness: 0.8,
-                  ),
+                  separatorBuilder:
+                      (BuildContext context, int index) =>
+                          const Divider(color: Colors.white60, thickness: 0.8),
                   itemBuilder: (BuildContext context, int index) {
                     final item = _sidebarItems[index];
                     return SidebarItem(
@@ -70,7 +69,7 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.info, color: Colors.white),
     title: 'Mobile Survey',
     onTap: () {
-      Get.toNamed(AppRoutes.mobileSurvey);
+      Get.toNamed(AppRoutes.survey);
     },
   ),
   SidebarItemData(
@@ -104,20 +103,9 @@ class SidebarItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
         child: Row(
           children: [
-            if (icon != null) ...[
-              icon!,
-              const SizedBox(width: 12.0),
-            ],
-            Expanded(
-              child: Text(
-                title,
-                style: textStyle,
-              ),
-            ),
-            if (trailing != null) ...[
-              const SizedBox(width: 12.0),
-              trailing!,
-            ],
+            if (icon != null) ...[icon!, const SizedBox(width: 12.0)],
+            Expanded(child: Text(title, style: textStyle)),
+            if (trailing != null) ...[const SizedBox(width: 12.0), trailing!],
           ],
         ),
       ),

@@ -1,0 +1,6 @@
+[
+  { "id": 1, "name": "Jenis Kelamin", "hash": "abc123" },
+  { "id": 2, "name": "Konfirmasi", "hash": "def456" },
+  { "id": 3, "name": "Pekerjaan", "hash": "def456" },
+  { "id": 4, "name": "Cust Model", "hash": "def456" }
+]
