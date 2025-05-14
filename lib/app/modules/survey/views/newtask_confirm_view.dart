@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 class NewtaskConfirmView extends StatelessWidget {
   const NewtaskConfirmView({super.key});
 
-@override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: SuzukiFinanceAppBarWObutton(),
@@ -17,22 +17,29 @@ class NewtaskConfirmView extends StatelessWidget {
           padding: EdgeInsets.all(20),
           child: Column(
             children: [
-              Text("Informasi Pemohon",style: AppTextStyles.bigBody,),
-              Table(border: TableBorder.all(), 
+              Text("Informasi Pemohon", style: AppTextStyles.bigBody),
+              Table(
+                border: TableBorder.all(),
                 columnWidths: const {
                   0: FixedColumnWidth(150),
-                  1: FlexColumnWidth(),       
+                  1: FlexColumnWidth(),
                 },
                 children: const [
                   TableRow(
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('Tipe Pemohon', style: TextStyle(fontWeight: FontWeight.bold)),
+                        child: Text(
+                          'Tipe Pemohon',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('Personal', style: TextStyle(fontWeight: FontWeight.bold)),
+                        child: Text(
+                          'Personal',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ],
                   ),
@@ -50,23 +57,30 @@ class NewtaskConfirmView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 20,),
-              Text("MH Personal",style: AppTextStyles.bigBody,),
-              Table(border: TableBorder.all(), 
+              SizedBox(height: 20),
+              Text("MH Personal", style: AppTextStyles.bigBody),
+              Table(
+                border: TableBorder.all(),
                 columnWidths: const {
                   0: FixedColumnWidth(150),
-                  1: FlexColumnWidth(),       
+                  1: FlexColumnWidth(),
                 },
                 children: const [
                   TableRow(
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('Dealer', style: TextStyle(fontWeight: FontWeight.bold)),
+                        child: Text(
+                          'Dealer',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('PT JON SUKUZI INDONESIA', style: TextStyle(fontWeight: FontWeight.bold)),
+                        child: Text(
+                          'PT JON SUKUZI INDONESIA',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ],
                   ),
@@ -96,22 +110,26 @@ class NewtaskConfirmView extends StatelessWidget {
                   ),
                 ],
               ),
-              Text("Score Pemohon",style: AppTextStyles.bigBody,),
-              Table(border: TableBorder.all(), 
+              Text("Score Pemohon", style: AppTextStyles.bigBody),
+              Table(
+                border: TableBorder.all(),
                 columnWidths: const {
                   0: FixedColumnWidth(200),
-                  1: FlexColumnWidth(),       
+                  1: FlexColumnWidth(),
                 },
                 children: [
                   TableRow(
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('DUKCAPIL Pemohon', style: AppTextStyles.medBodyBold),
+                        child: Text(
+                          'DUKCAPIL Pemohon',
+                          style: AppTextStyles.medBodyBold,
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('value', style: AppTextStyles.medBodyBold)
+                        child: Text('value', style: AppTextStyles.medBodyBold),
                       ),
                     ],
                   ),
@@ -123,7 +141,7 @@ class NewtaskConfirmView extends StatelessWidget {
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('value',style: AppTextStyles.medBody,),
+                        child: Text('value', style: AppTextStyles.medBody),
                       ),
                     ],
                   ),
@@ -131,7 +149,10 @@ class NewtaskConfirmView extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('OD Tertinggi Pemohon', style: AppTextStyles.medBodyBold),
+                        child: Text(
+                          'OD Tertinggi Pemohon',
+                          style: AppTextStyles.medBodyBold,
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
@@ -143,7 +164,10 @@ class NewtaskConfirmView extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('Restruktur Pemohon', style: AppTextStyles.medBody),
+                        child: Text(
+                          'Restruktur Pemohon',
+                          style: AppTextStyles.medBody,
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
@@ -155,7 +179,10 @@ class NewtaskConfirmView extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('SLIK Pemohon', style: AppTextStyles.medBodyBold),
+                        child: Text(
+                          'SLIK Pemohon',
+                          style: AppTextStyles.medBodyBold,
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
@@ -165,22 +192,26 @@ class NewtaskConfirmView extends StatelessWidget {
                   ),
                 ],
               ),
-              Text("Score Pasangan",style: AppTextStyles.bigBody,),
-              Table(border: TableBorder.all(), 
+              Text("Score Pasangan", style: AppTextStyles.bigBody),
+              Table(
+                border: TableBorder.all(),
                 columnWidths: const {
                   0: FixedColumnWidth(200),
-                  1: FlexColumnWidth(),       
+                  1: FlexColumnWidth(),
                 },
                 children: [
                   TableRow(
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('DUKCAPIL Pemohon', style: AppTextStyles.medBodyBold),
+                        child: Text(
+                          'DUKCAPIL Pemohon',
+                          style: AppTextStyles.medBodyBold,
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('value', style: AppTextStyles.medBodyBold)
+                        child: Text('value', style: AppTextStyles.medBodyBold),
                       ),
                     ],
                   ),
@@ -192,7 +223,7 @@ class NewtaskConfirmView extends StatelessWidget {
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('value',style: AppTextStyles.medBody,),
+                        child: Text('value', style: AppTextStyles.medBody),
                       ),
                     ],
                   ),
@@ -200,7 +231,10 @@ class NewtaskConfirmView extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('OD Tertinggi Pemohon', style: AppTextStyles.medBodyBold),
+                        child: Text(
+                          'OD Tertinggi Pemohon',
+                          style: AppTextStyles.medBodyBold,
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
@@ -212,7 +246,10 @@ class NewtaskConfirmView extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('Restruktur Pemohon', style: AppTextStyles.medBody),
+                        child: Text(
+                          'Restruktur Pemohon',
+                          style: AppTextStyles.medBody,
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
@@ -224,7 +261,10 @@ class NewtaskConfirmView extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('SLIK Pemohon', style: AppTextStyles.medBodyBold),
+                        child: Text(
+                          'SLIK Pemohon',
+                          style: AppTextStyles.medBodyBold,
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
@@ -234,34 +274,34 @@ class NewtaskConfirmView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 15,),
+              SizedBox(height: 15),
               Row(
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: (){
-                        Get.toNamed(AppRoutes.mobileSurvey);
-                      }, 
+                      onPressed: () {
+                        Get.toNamed(AppRoutes.survey);
+                      },
                       style: AppButtonStyle.primaryButtonStyle(),
-                      child: Text("Ignore",style: AppTextStyles.buttonFont,)
+                      child: Text("Ignore", style: AppTextStyles.buttonFont),
                     ),
                   ),
-                  SizedBox(width: 15,),
+                  SizedBox(width: 15),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: (){
-                        Get.toNamed(AppRoutes.mobileSurvey);
-                      }, 
+                      onPressed: () {
+                        Get.toNamed(AppRoutes.survey);
+                      },
                       style: AppButtonStyle.primaryButtonStyle(),
-                      child: Text("Process",style: AppTextStyles.buttonFont,)
+                      child: Text("Process", style: AppTextStyles.buttonFont),
                     ),
-                  )
+                  ),
                 ],
-              )
-            ]
-          )
+              ),
+            ],
+          ),
         ),
-      )
+      ),
     );
   }
 }
