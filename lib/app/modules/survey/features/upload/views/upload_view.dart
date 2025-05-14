@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
-import 'package:sufi_one/app/modules/survey/features/home/controllers/home_controller.dart';
+import 'package:sufi_one/app/modules/survey/features/upload/controllers/upload_controller.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
 import 'package:sufi_one/app/modules/survey/widgets/appBar_widget.dart';
 import 'package:sufi_one/app/modules/survey/widgets/tab_bar_widget.dart';
 
-class SurveyHomeView extends GetView<SurveyHomeController> {
-  const SurveyHomeView({super.key});
+class SurveyUploadView extends GetView<SurveyUploadController> {
+  const SurveyUploadView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SurveyHomeController>(
+    return GetBuilder<SurveyUploadController>(
       init:
-          SurveyHomeController(), // Temporary for direct injection (we'll move this to bindings)
+          SurveyUploadController(), // Temporary for direct injection (we'll move this to bindings)
       builder: (controller) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
@@ -79,7 +79,7 @@ class TabMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: GestureDetector(
-        onTap: () => Get.offNamed(route),
+        onTap: () => Get.toNamed(route),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 12),
           decoration: BoxDecoration(

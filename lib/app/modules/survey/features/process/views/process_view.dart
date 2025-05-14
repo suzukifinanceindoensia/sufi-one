@@ -7,15 +7,16 @@ import 'package:sufi_one/app/modules/survey/features/process/controllers/process
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
 import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/modules/survey/widgets/appBar_widget.dart';
+import 'package:sufi_one/app/modules/survey/widgets/tab_bar_widget.dart';
 
 class SurveyProcessView extends GetView<SurveyProcessController> {
   const SurveyProcessView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SurveyHomeController>(
+    return GetBuilder<SurveyProcessController>(
       init:
-          SurveyHomeController(), // Temporary for direct injection (we'll move this to bindings)
+          SurveyProcessController(), // Temporary for direct injection (we'll move this to bindings)
       builder: (controller) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
@@ -31,34 +32,7 @@ class SurveyProcessView extends GetView<SurveyProcessController> {
           backgroundColor: const Color(0xFFF5F4F4),
           body: Column(
             children: [
-              Container(
-                color: Colors.white,
-                child: Row(
-                  children: const [
-                    TabMenu(
-                      icon: Icons.assignment,
-                      label: 'New',
-                      route: SurveyRoutes.surveyHome,
-                    ),
-                    TabMenu(
-                      icon: Icons.playlist_add_check,
-                      label: 'Process',
-                      route: '/survey/process',
-                      isSelected: true,
-                    ),
-                    TabMenu(
-                      icon: Icons.cloud_upload,
-                      label: 'Upload',
-                      route: '/survey/upload',
-                    ),
-                    TabMenu(
-                      icon: Icons.check_circle,
-                      label: 'Finish',
-                      route: '/survey/finish',
-                    ),
-                  ],
-                ),
-              ),
+              TabBarWidget.tabBar(controller.selectedTabIndex),
               // Page content area
               Expanded(
                 child: RefreshIndicator(
