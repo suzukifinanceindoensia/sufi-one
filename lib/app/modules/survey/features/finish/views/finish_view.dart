@@ -30,7 +30,7 @@ class SurveyFinishView extends GetView<SurveyFinishController> {
           backgroundColor: const Color(0xFFF5F4F4),
           body: Column(
             children: [
-              TabBarWidget.tabBar(controller.selectedTabIndex),
+              TabBarWidget.buildTabBar(controller.selectedTabIndex),
               // Page content area
               Expanded(
                 child: RefreshIndicator(

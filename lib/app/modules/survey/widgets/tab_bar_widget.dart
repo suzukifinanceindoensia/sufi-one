@@ -4,7 +4,7 @@ import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/modules/survey/widgets/tab_menu_widget.dart';
 
 class TabBarWidget {
-  static Widget tabBar(RxInt selectedIndex) {
+  static Widget buildTabBar(RxInt selectedIndex) {
     final tabs = [
       {
         'icon': Icons.assignment,

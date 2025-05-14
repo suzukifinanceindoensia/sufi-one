@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
-import 'package:sufi_one/app/modules/survey/features/home/controllers/home_controller.dart';
 import 'package:sufi_one/app/modules/survey/features/process/controllers/process_controller.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
-import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/modules/survey/widgets/appBar_widget.dart';
 import 'package:sufi_one/app/modules/survey/widgets/tab_bar_widget.dart';
 
@@ -32,7 +30,7 @@ class SurveyProcessView extends GetView<SurveyProcessController> {
           backgroundColor: const Color(0xFFF5F4F4),
           body: Column(
             children: [
-              TabBarWidget.tabBar(controller.selectedTabIndex),
+              TabBarWidget.buildTabBar(controller.selectedTabIndex),
               // Page content area
               Expanded(
                 child: RefreshIndicator(
