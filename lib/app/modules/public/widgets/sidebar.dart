@@ -6,6 +6,7 @@ import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class AppSidebar extends StatelessWidget {
   const AppSidebar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,10 +21,9 @@ class AppSidebar extends StatelessWidget {
               Expanded(
                 child: ListView.separated(
                   itemCount: _sidebarItems.length,
-                  separatorBuilder: (BuildContext context, int index) => const Divider(
-                    color: Colors.white60,
-                    thickness: 0.8,
-                  ),
+                  separatorBuilder:
+                      (BuildContext context, int index) =>
+                          const Divider(color: Colors.white60, thickness: 0.8),
                   itemBuilder: (BuildContext context, int index) {
                     final item = _sidebarItems[index];
                     return SidebarItem(
@@ -95,6 +95,7 @@ class SidebarItem extends StatelessWidget {
   });
 
   @override
+  Widget build(BuildContext context) {
     final textStyle = AppTextStyles.sidebar;
     return InkWell(
       onTap: onTap,
