@@ -5,6 +5,7 @@ import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/modules/public/controllers/produk_controller.dart';
 import 'package:sufi_one/app/routes/app_routes.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProdukDetailView extends StatefulWidget {
   @override
@@ -53,10 +54,25 @@ class _ProdukDetailViewState extends State<ProdukDetailView> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Expanded(
-                  child: Text(
-                    'Silahkan kunjungi https://www.sfi.co.id untuk detail lebih lanjut.',
-                    style: TextStyle(fontSize: 16),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () async {
+                      final url = Uri.parse('https://www.sfi.co.id');
+                      if (await canLaunchUrl(url)) {
+                        await launchUrl(
+                          url,
+                          mode: LaunchMode.externalApplication,
+                        );
+                      }
+                    },
+                    child: const Text(
+                      'Silahkan kunjungi www.sfi.co.id untuk detail lebih lanjut.',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: AppColors.iconDefault,
+                        decoration: TextDecoration.none,
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(width: 16),
