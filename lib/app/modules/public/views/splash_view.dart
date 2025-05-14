@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sufi_one/app/routes/app_routes.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'dart:async';
 
@@ -15,7 +16,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 2), () {
-      Get.offNamed("/public/home");
+      Get.offNamed(AppRoutes.homepageCust);
     });
   }
 
@@ -25,10 +26,7 @@ class _SplashPageState extends State<SplashPage> {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              AppColors.splashStart ,
-              AppColors.splashEnd,
-            ],
+            colors: [AppColors.splashStart, AppColors.splashEnd],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -39,17 +37,17 @@ class _SplashPageState extends State<SplashPage> {
             children: [
               Expanded(child: SizedBox()),
               FractionallySizedBox(
-                child: Image.asset('res/images/splashscreen.png',),
+                child: Image.asset('res/images/splashscreen.png'),
                 widthFactor: 0.8,
               ),
-              SizedBox(height:50,),
+              SizedBox(height: 50),
               CircularProgressIndicator(color: Colors.white),
               Expanded(child: SizedBox()),
               FractionallySizedBox(
-                child: Image.asset('res/images/ojk1.png',),
+                child: Image.asset('res/images/ojk1.png'),
                 widthFactor: 0.6,
               ),
-              SizedBox(height:30,),
+              SizedBox(height: 30),
             ],
           ),
         ),

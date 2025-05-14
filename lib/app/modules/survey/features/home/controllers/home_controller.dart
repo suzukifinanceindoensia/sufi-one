@@ -2,6 +2,7 @@
 import 'package:get/get.dart';
 
 class SurveyHomeController extends GetxController {
+  RxInt selectedTabIndex = 0.obs;
   // For now it's empty — just to confirm binding works
   void refreshData() {
     print("Refreshing data...");
