@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/controllers/homepage_cust_controller.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
@@ -45,7 +46,8 @@ class _HomepageCustViewState extends State<HomepageCustView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bg1,
-      appBar: SuzukiFinanceAppBar(),
+      appBar: SuzukiFinanceAppBarWsidebar(),
+      drawer: Drawer(child: AppSidebar()),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -230,7 +232,7 @@ class _HomepageCustViewState extends State<HomepageCustView> {
 
   Widget _NewsCarousel() {
     return Container(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -239,16 +241,17 @@ class _HomepageCustViewState extends State<HomepageCustView> {
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12.0),
-          SizedBox(
+          Container(
             height: 180,
+            alignment: Alignment.centerLeft,
             child: PageView.builder(
-              controller: _newsPageController,
+              controller: PageController(viewportFraction: 0.9),
               itemCount: newsImages.length,
               itemBuilder:
                   (context, index) => Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 12.0,
                       vertical: 8.0,
+                      horizontal: 8.0,
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
