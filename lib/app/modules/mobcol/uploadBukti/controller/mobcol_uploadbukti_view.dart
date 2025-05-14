@@ -10,7 +10,7 @@ final List<Map<String, dynamic>> alluploadbukti = [
     'coordinate': const {'latitude': -6.2140, 'longitude': 106.8320},
     'email': 'eve@example.com',
     'phoneNumber': '081345678901',
-    'kelurahan': 'Kebon Sirih',
+    'kelurahan': 'Kebon Sirih KEBON SIRIH KEBON SIRIH',
     'kecamatan': 'Menteng',
     'alamatLengkap': 'Jl. Sabang No. 78, Kebon Sirih, Jakarta Pusat',
     'typeUnit': 'Toyota Calya',

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/mobcol/controllers/mobcol_tugasbaru_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/tugasBaru/controller/mobcol_tugasbaru_controller.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_button_style.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/profile_card_mobcol.dart';

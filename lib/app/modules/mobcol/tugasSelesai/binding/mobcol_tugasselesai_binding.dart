@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/mobcol/controllers/mobcol_tugasselesai_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/tugasSelesai/controller/mobcol_tugasselesai_controller.dart';
 
 
 class MobcolTugasSelesaiBinding extends Bindings {

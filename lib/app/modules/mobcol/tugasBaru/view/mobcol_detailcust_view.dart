@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/mobcol/controllers/mobcol_detailcust_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/tugasBaru/controller/mobcol_detailcust_controller.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/foto_dan_label_mobcol.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';

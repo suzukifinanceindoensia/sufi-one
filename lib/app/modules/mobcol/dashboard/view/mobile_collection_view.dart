@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/mobcol/controllers/mobcol_tugasbaru_controller.dart';
-import 'package:sufi_one/app/modules/mobcol/controllers/mobcol_tugasbelumselesai_controller.dart';
-import 'package:sufi_one/app/modules/mobcol/controllers/mobcol_tugasselesai_controller.dart';
-import 'package:sufi_one/app/modules/mobcol/controllers/mobcol_uploadbukti_view.dart';
-import 'package:sufi_one/app/modules/mobcol/controllers/mobile_collection_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/tugasBaru/controller/mobcol_tugasbaru_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/tugasBelumSelesai/controller/mobcol_tugasbelumselesai_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/tugasSelesai/controller/mobcol_tugasselesai_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/uploadBukti/controller/mobcol_uploadbukti_view.dart';
+import 'package:sufi_one/app/modules/mobcol/dashboard/controllers/mobile_collection_controller.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/menu_creator_mobcol.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/profile_card_mobcol.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
@@ -17,7 +17,6 @@ class MobileCollection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(MobileCollectionController());
-
     return Scaffold(
       appBar: SuzukiFinanceAppBarWsidebar(),
       drawer: Drawer(

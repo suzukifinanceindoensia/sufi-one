@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/mobcol/controllers/mobcol_detailcust_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/tugasBaru/controller/mobcol_detailcust_controller.dart';
 
 class MobcolDetailCustBinding extends Bindings {
   @override
