@@ -6,6 +6,7 @@ import 'package:sufi_one/app/modules/mobcol/bindings/mobcol_tugasbelumselesai_bi
 import 'package:sufi_one/app/modules/mobcol/bindings/mobcol_tugasselesai_binding.dart';
 import 'package:sufi_one/app/modules/mobcol/bindings/mobcol_uploadbukti_binding.dart';
 import 'package:sufi_one/app/modules/mobcol/bindings/mobcol_uploadbukti_detail_binding.dart';
+import 'package:sufi_one/app/modules/mobcol/bindings/mobile_collection_binding.dart';
 import 'package:sufi_one/app/modules/mobcol/views/mobcol_detailcust_view.dart';
 import 'package:sufi_one/app/modules/mobcol/views/mobcol_kunjungan_view.dart';
 import 'package:sufi_one/app/modules/mobcol/views/mobcol_tugasbaru_detail_view.dart';
@@ -62,16 +63,24 @@ class AppRoutes {
   static const mobileCollection = '/public/mobile_collection';
   static const survey = '/survey/splash';
   static const surveyHome = '/survey/home';
-  static const mobileCollectionTugasBaru = '/mobile_collection/tugas_baru'; 
-  static const mobileCollectionTugasBaruDetail = '/mobile_collection/tugas_baru/detail'; 
-  static const mobileCollectionDetailCust = '/mobile_collection/tugas_baru/detail/customer';
-  static const mobileCollectionKunjungan = '/mobile_collection/tugas_baru/kunjungan';
-  static const mobileCollectionTugasBelumSelesai = '/mobile_collection/tugas_belum_selesai';
-  static const mobileCollectionTugasBelumSelesaiDetail = '/mobile_collection/tugas_belum_selesai/detail';
+  static const mobileCollectionTugasBaru = '/mobile_collection/tugas_baru';
+  static const mobileCollectionTugasBaruDetail =
+      '/mobile_collection/tugas_baru/detail';
+  static const mobileCollectionDetailCust =
+      '/mobile_collection/tugas_baru/detail/customer';
+  static const mobileCollectionKunjungan =
+      '/mobile_collection/tugas_baru/kunjungan';
+  static const mobileCollectionTugasBelumSelesai =
+      '/mobile_collection/tugas_belum_selesai';
+  static const mobileCollectionTugasBelumSelesaiDetail =
+      '/mobile_collection/tugas_belum_selesai/detail';
   static const mobileCollectionUploadBukti = '/mobile_collection/upload_bukti';
-  static const mobileCollectionUploadBuktiDetail = '/mobile_collection/upload_bukti/detail';
-  static const mobileCollectionTugasSelesai = '/mobile_collection/tugas_selesai';
-  static const mobileCollectionTugasSelesaiDetail = '/mobile_collection/tugas_selesai/detail';
+  static const mobileCollectionUploadBuktiDetail =
+      '/mobile_collection/upload_bukti/detail';
+  static const mobileCollectionTugasSelesai =
+      '/mobile_collection/tugas_selesai';
+  static const mobileCollectionTugasSelesaiDetail =
+      '/mobile_collection/tugas_selesai/detail';
   static const newtaskConfirm = '/public/mobile_survey/newtask';
   static const uploadChecking = '/public/mobile_survey/upload';
   static const finishChecking = '/public/mobile_survey/finish';
@@ -114,18 +123,59 @@ class AppRoutes {
       binding: ZeusBinding(),
     ),
     GetPage(name: mobileCollection, page: () => MobileCollection()),
-   // MOBILE COLLECTION
-    GetPage(name: mobileCollection, page: () => MobileCollection(), binding: MobileCollectionBinding()),
-    GetPage(name: mobileCollectionTugasBaru, page: () => MobcolTugasbaruView(),binding: MobcolTugasbaruBinding()),
-    GetPage(name: mobileCollectionTugasBaruDetail, page: () => MobcolTugasbaruDetailView()),
-    GetPage(name: mobileCollectionDetailCust, page: () => MobcolDetailCustView(), binding: MobcolDetailCustBinding()),
-    GetPage(name: mobileCollectionKunjungan, page: () => MobcolKunjunganView(), binding: KunjunganBinding()),
-    GetPage(name: mobileCollectionTugasBelumSelesai, page: () => MobcolTugasbelumselesaiView(), binding: MobcolTugasbelumselesaiBinding()),
-    GetPage(name: mobileCollectionTugasBelumSelesaiDetail, page: () => MobcolTugasBelumSelesaiDetailView()),
-    GetPage(name: mobileCollectionUploadBukti, page: () => MobcolUploadBuktiView(), binding: MobcolUploadbuktiBinding()),
-    GetPage(name: mobileCollectionUploadBuktiDetail, page: () => MobcolUploadbuktiDetailView(), binding: MobcolUploadbuktiDetailBinding()),
-    GetPage(name: mobileCollectionTugasSelesai, page: () => MobcolTugasSelesaiView(), binding: MobcolTugasSelesaiBinding()),
-    GetPage(name: mobileCollectionTugasSelesaiDetail, page: () => MobcolTugasselesaiDetailView()),
+    // MOBILE COLLECTION
+    GetPage(
+      name: mobileCollection,
+      page: () => MobileCollection(),
+      binding: MobileCollectionBinding(),
+    ),
+    GetPage(
+      name: mobileCollectionTugasBaru,
+      page: () => MobcolTugasbaruView(),
+      binding: MobcolTugasbaruBinding(),
+    ),
+    GetPage(
+      name: mobileCollectionTugasBaruDetail,
+      page: () => MobcolTugasbaruDetailView(),
+    ),
+    GetPage(
+      name: mobileCollectionDetailCust,
+      page: () => MobcolDetailCustView(),
+      binding: MobcolDetailCustBinding(),
+    ),
+    GetPage(
+      name: mobileCollectionKunjungan,
+      page: () => MobcolKunjunganView(),
+      binding: KunjunganBinding(),
+    ),
+    GetPage(
+      name: mobileCollectionTugasBelumSelesai,
+      page: () => MobcolTugasbelumselesaiView(),
+      binding: MobcolTugasbelumselesaiBinding(),
+    ),
+    GetPage(
+      name: mobileCollectionTugasBelumSelesaiDetail,
+      page: () => MobcolTugasBelumSelesaiDetailView(),
+    ),
+    GetPage(
+      name: mobileCollectionUploadBukti,
+      page: () => MobcolUploadBuktiView(),
+      binding: MobcolUploadbuktiBinding(),
+    ),
+    GetPage(
+      name: mobileCollectionUploadBuktiDetail,
+      page: () => MobcolUploadbuktiDetailView(),
+      binding: MobcolUploadbuktiDetailBinding(),
+    ),
+    GetPage(
+      name: mobileCollectionTugasSelesai,
+      page: () => MobcolTugasSelesaiView(),
+      binding: MobcolTugasSelesaiBinding(),
+    ),
+    GetPage(
+      name: mobileCollectionTugasSelesaiDetail,
+      page: () => MobcolTugasselesaiDetailView(),
+    ),
     // --------------------------------------------------------------------------------------------------------------------------------//
     GetPage(name: login, page: () => LoginPage(), binding: LoginBinding()),
     GetPage(
@@ -211,6 +261,6 @@ class AppRoutes {
       name: AppRoutes.fasilitasWebView,
       page: () => const FasilitasWebView(),
     ),
-   ...SurveyRoutes.routes,
+    ...SurveyRoutes.routes,
   ];
 }
