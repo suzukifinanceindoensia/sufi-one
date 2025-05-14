@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 class FinishCheckingView extends StatelessWidget {
   const FinishCheckingView({super.key});
 
-  @override
+@override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: SuzukiFinanceAppBarWObutton(),
@@ -17,29 +17,22 @@ class FinishCheckingView extends StatelessWidget {
           padding: EdgeInsets.all(20),
           child: Column(
             children: [
-              Text("Informasi Pemohon", style: AppTextStyles.bigBody),
-              Table(
-                border: TableBorder.all(),
+              Text("Informasi Pemohon",style: AppTextStyles.bigBody,),
+              Table(border: TableBorder.all(), 
                 columnWidths: const {
                   0: FixedColumnWidth(150),
-                  1: FlexColumnWidth(),
+                  1: FlexColumnWidth(),       
                 },
                 children: const [
                   TableRow(
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'Tipe Pemohon',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
+                        child: Text('Tipe Pemohon', style: TextStyle(fontWeight: FontWeight.bold)),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'Personal',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
+                        child: Text('Personal', style: TextStyle(fontWeight: FontWeight.bold)),
                       ),
                     ],
                   ),
@@ -57,30 +50,23 @@ class FinishCheckingView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
-              Text("MH Personal", style: AppTextStyles.bigBody),
-              Table(
-                border: TableBorder.all(),
+              SizedBox(height: 20,),
+              Text("MH Personal",style: AppTextStyles.bigBody,),
+              Table(border: TableBorder.all(), 
                 columnWidths: const {
                   0: FixedColumnWidth(150),
-                  1: FlexColumnWidth(),
+                  1: FlexColumnWidth(),       
                 },
                 children: const [
                   TableRow(
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'Dealer',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
+                        child: Text('Dealer', style: TextStyle(fontWeight: FontWeight.bold)),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'PT JON SUKUZI INDONESIA',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
+                        child: Text('PT JON SUKUZI INDONESIA', style: TextStyle(fontWeight: FontWeight.bold)),
                       ),
                     ],
                   ),
@@ -110,26 +96,22 @@ class FinishCheckingView extends StatelessWidget {
                   ),
                 ],
               ),
-              Text("Hasil Survey", style: AppTextStyles.bigBody),
-              Table(
-                border: TableBorder.all(),
+              Text("Hasil Survey",style: AppTextStyles.bigBody,),
+              Table(border: TableBorder.all(), 
                 columnWidths: const {
                   0: FixedColumnWidth(200),
-                  1: FlexColumnWidth(),
+                  1: FlexColumnWidth(),       
                 },
                 children: [
                   TableRow(
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'Pertanyaan 1',
-                          style: AppTextStyles.medBodyBold,
-                        ),
+                        child: Text('Pertanyaan 1', style: AppTextStyles.medBodyBold),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('value', style: AppTextStyles.medBodyBold),
+                        child: Text('value', style: AppTextStyles.medBodyBold)
                       ),
                     ],
                   ),
@@ -137,14 +119,11 @@ class FinishCheckingView extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'Pertanyaan 2',
-                          style: AppTextStyles.medBody,
-                        ),
+                        child: Text('Pertanyaan 2', style: AppTextStyles.medBody),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text('value', style: AppTextStyles.medBody),
+                        child: Text('value',style: AppTextStyles.medBody,),
                       ),
                     ],
                   ),
@@ -152,10 +131,7 @@ class FinishCheckingView extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'Pilihan ganda 1',
-                          style: AppTextStyles.medBodyBold,
-                        ),
+                        child: Text('Pilihan ganda 1', style: AppTextStyles.medBodyBold),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
@@ -167,10 +143,7 @@ class FinishCheckingView extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'Pilihan ganda 2',
-                          style: AppTextStyles.medBody,
-                        ),
+                        child: Text('Pilihan ganda 2', style: AppTextStyles.medBody),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
@@ -192,21 +165,21 @@ class FinishCheckingView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 15),
+              SizedBox(height: 15,),
               FractionallySizedBox(
                 widthFactor: 1,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Get.toNamed(AppRoutes.survey);
-                  },
-                  style: AppButtonStyle.primaryButtonStyle(),
-                  child: Text("Back", style: AppTextStyles.buttonFont),
-                ),
-              ),
-            ],
-          ),
+                    child: ElevatedButton(
+                      onPressed: (){
+                        Get.toNamed(AppRoutes.mobileSurvey);
+                      }, 
+                      style: AppButtonStyle.primaryButtonStyle(),
+                      child: Text("Back",style: AppTextStyles.buttonFont,)
+                    ),
+                  ),
+            ]
+          )
         ),
-      ),
+      )
     );
   }
 }

@@ -25,14 +25,17 @@ class _PublicHomePageState extends State<PublicHomePage> {
     const Center(child: Text('Chat')),
     const Center(child: Text('Akun')),
   ];
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey =
+      GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
+      key:  _scaffoldKey,
       appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: Drawer(child: AppSidebar()),
+      drawer: Drawer(
+        child: AppSidebar(),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -62,7 +65,7 @@ class _PublicHomePageState extends State<PublicHomePage> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Get.toNamed(AppRoutes.survey);
+                Get.toNamed(AppRoutes.mobileSurvey);
               },
               child: Text('Cobain survey'),
             ),

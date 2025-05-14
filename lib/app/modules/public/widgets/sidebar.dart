@@ -6,6 +6,7 @@ import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class AppSidebar extends StatelessWidget {
   const AppSidebar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -69,7 +70,7 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.info, color: Colors.white),
     title: 'Mobile Survey',
     onTap: () {
-      Get.toNamed(AppRoutes.survey);
+      Get.toNamed(AppRoutes.mobileSurvey);
     },
   ),
   SidebarItemData(
@@ -95,6 +96,7 @@ class SidebarItem extends StatelessWidget {
   });
 
   @override
+  Widget build(BuildContext context) {
     final textStyle = AppTextStyles.sidebar;
     return InkWell(
       onTap: onTap,
@@ -102,9 +104,20 @@ class SidebarItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
         child: Row(
           children: [
-            if (icon != null) ...[icon!, const SizedBox(width: 12.0)],
-            Expanded(child: Text(title, style: textStyle)),
-            if (trailing != null) ...[const SizedBox(width: 12.0), trailing!],
+            if (icon != null) ...[
+              icon!,
+              const SizedBox(width: 12.0),
+            ],
+            Expanded(
+              child: Text(
+                title,
+                style: textStyle,
+              ),
+            ),
+            if (trailing != null) ...[
+              const SizedBox(width: 12.0),
+              trailing!,
+            ],
           ],
         ),
       ),
