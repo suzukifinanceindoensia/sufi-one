@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/routes/app_routes.dart';
+import 'package:sufi_one/app/modules/public/home_routes.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 
 class BottomNavbar extends StatelessWidget {
@@ -13,16 +13,16 @@ class BottomNavbar extends StatelessWidget {
 
     switch (index) {
       case 0:
-        Get.offAllNamed(AppRoutes.homepageCust); // Home Page
+        Get.offAllNamed(HomeRoutes.homepageCust); // Home Page
         break;
       case 1:
-        Get.offAllNamed(AppRoutes.about); // About Page
+        Get.offAllNamed(HomeRoutes.about); // About Page
         break;
       case 2:
-        Get.offAllNamed(AppRoutes.contact); // contact Page
+        Get.offAllNamed(HomeRoutes.contact); // contact Page
         break;
       case 3:
-        Get.offAllNamed(AppRoutes.profilePage); // Profile Page
+        Get.offAllNamed(HomeRoutes.profilePage); // Profile Page
         break;
     }
   }

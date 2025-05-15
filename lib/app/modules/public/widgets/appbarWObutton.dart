@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
-import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class SuzukiFinanceAppBarWObutton extends StatelessWidget
     implements PreferredSizeWidget {
