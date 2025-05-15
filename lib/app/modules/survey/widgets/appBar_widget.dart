@@ -20,11 +20,12 @@ class SurveyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: const Color(0xFF003399),
       toolbarHeight: 120 + extraHeight,
       automaticallyImplyLeading: false,
       flexibleSpace: SafeArea(
         child: Container(
-          color: const Color(0xFF003399), // make global later
+          // make global later
           child: Column(
             children: [
               Expanded(
