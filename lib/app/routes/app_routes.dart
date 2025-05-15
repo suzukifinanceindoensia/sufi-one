@@ -22,7 +22,7 @@ import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/modules/zeus/views/zeus_view.dart';
 import 'package:sufi_one/app/modules/zeus/views/zeus_detail_view.dart';
 import 'package:sufi_one/app/modules/zeus/bindings/zeus_binding.dart';
-import 'package:sufi_one/app/modules/public/homepage_public/widgets/home_routes.dart';
+import 'package:sufi_one/app/modules/public/home_routes.dart';
 
 class AppRoutes {
   //MOBCOL

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/public/homepage_public/widgets/home_routes.dart';
+import 'package:sufi_one/app/modules/public/home_routes.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 
 class BottomNavbar extends StatelessWidget {
