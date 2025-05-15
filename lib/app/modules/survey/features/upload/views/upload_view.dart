@@ -43,11 +43,13 @@ class SurveyUploadView extends GetView<SurveyUploadController> {
                   child: ListView(
                     physics: const AlwaysScrollableScrollPhysics(),
                     children: [
-                      listItem(),
-                      listItem(),
-                      listItem(),
-                      listItem(),
-                      // SizedBox(height: 250),
+                      // listItem(),
+                      // listItem(),
+                      // listItem(),
+                      // listItem(),
+                      SizedBox(height: 250),
+
+                      Center(child: Text('UPLOAD TAB - ON PROGRESS DEVELOP')),
                       // Center(child: Text('Pull down to refresh')),
                     ],
                   ),

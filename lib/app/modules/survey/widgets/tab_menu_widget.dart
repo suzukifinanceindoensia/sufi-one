@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sufi_one/app/modules/survey/utils/color.dart';
 
 class TabMenu extends StatelessWidget {
   final IconData icon;
@@ -26,7 +27,8 @@ class TabMenu extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border(
               bottom: BorderSide(
-                color: isSelected ? Colors.blue : Colors.transparent,
+                color:
+                    isSelected ? SurveyColor.primaryColor : Colors.transparent,
                 width: 2,
               ),
             ),
@@ -40,14 +42,17 @@ class TabMenu extends StatelessWidget {
                   Icon(
                     icon,
                     size: 20,
-                    color: isSelected ? Colors.blue : Colors.black,
+                    color: isSelected ? SurveyColor.primaryColor : Colors.black,
                   ),
                   const SizedBox(width: 6),
                   Text(
                     label,
                     style: TextStyle(
                       fontSize: 13,
-                      color: isSelected ? Colors.blue : Colors.black87,
+                      color:
+                          isSelected
+                              ? SurveyColor.primaryColor
+                              : Colors.black87,
                       fontWeight:
                           isSelected ? FontWeight.bold : FontWeight.normal,
                     ),
