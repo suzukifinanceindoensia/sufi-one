@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:sufi_one/app/modules/survey/features/home/controllers/home_controller.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
-import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/modules/survey/widgets/appBar_widget.dart';
+import 'package:sufi_one/app/modules/survey/widgets/tab_bar_widget.dart';
 
 class SurveyHomeView extends GetView<SurveyHomeController> {
   const SurveyHomeView({super.key});
@@ -30,34 +30,7 @@ class SurveyHomeView extends GetView<SurveyHomeController> {
           backgroundColor: const Color(0xFFF5F4F4),
           body: Column(
             children: [
-              Container(
-                color: Colors.white,
-                child: Row(
-                  children: const [
-                    TabMenu(
-                      icon: Icons.assignment,
-                      label: 'New',
-                      route: SurveyRoutes.surveyHome,
-                      isSelected: true,
-                    ),
-                    TabMenu(
-                      icon: Icons.playlist_add_check,
-                      label: 'Process',
-                      route: SurveyRoutes.surveyProcess,
-                    ),
-                    TabMenu(
-                      icon: Icons.cloud_upload,
-                      label: 'Upload',
-                      route: '/survey/upload',
-                    ),
-                    TabMenu(
-                      icon: Icons.check_circle,
-                      label: 'Finish',
-                      route: '/survey/finish',
-                    ),
-                  ],
-                ),
-              ),
+              TabBarWidget.buildTabBar(controller.selectedTabIndex),
               // Page content area
               Expanded(
                 child: RefreshIndicator(
@@ -84,56 +57,6 @@ class SurveyHomeView extends GetView<SurveyHomeController> {
           ),
         );
       },
-    );
-  }
-}
-
-class TabMenu extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final String route;
-  final bool isSelected;
-
-  const TabMenu({
-    super.key,
-    required this.icon,
-    required this.label,
-    required this.route,
-    this.isSelected = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: GestureDetector(
-        onTap: () => Get.offNamed(route),
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: isSelected ? Colors.blue : Colors.black,
-              ),
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(icon, size: 20, color: Colors.black),
-                  SizedBox(width: 10),
-                  Text(
-                    label,
-                    style: const TextStyle(fontSize: 13, color: Colors.black87),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }

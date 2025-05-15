@@ -1,8 +1,8 @@
 // lib/app/modules/survey/home/controllers/survey_home_controller.dart
 import 'package:get/get.dart';
 
-class SurveyProcessController extends GetxController {
-  RxInt selectedTabIndex = 1.obs;
+class SurveyFinishController extends GetxController {
+  RxInt selectedTabIndex = 3.obs;
 
   // For now it's empty — just to confirm binding works
   void refreshData() {
