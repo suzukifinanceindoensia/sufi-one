@@ -17,7 +17,7 @@ class SurveyFormDetailController extends GetxController
   final tabs =
       [
         {'id': 1, 'name': 'ORDERIN'},
-        {'id': 1, 'name': 'SURVEY'},
+        // {'id': 1, 'name': 'SURVEY'},
       ].obs;
 
   @override
