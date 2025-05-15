@@ -58,7 +58,7 @@ class MobcolDashboardView extends StatelessWidget {
                     },
                     child: MenuCreatorMobcol(
                       imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
-                      number: "${alltugasbelumselesai.length}",
+                      number: "${controller.listTugasBelumSelesai.length}",
                       title: "Tugas Belum\nSelesai",
                     ),
                   ),
@@ -69,7 +69,7 @@ class MobcolDashboardView extends StatelessWidget {
                     },
                     child: MenuCreatorMobcol(
                       imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
-                      number: "${alluploadbukti.length}",
+                      number: "${controller.listUploadBukti.length}",
                       title: "Upload Bukti\nPembayaran",
                     ),
                   ),
@@ -80,7 +80,7 @@ class MobcolDashboardView extends StatelessWidget {
                     },
                     child: MenuCreatorMobcol(
                       imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
-                      number: "${alltugasselesai.length}",
+                      number: "${controller.listTugasSelesai.length}",
                       title: "Tugas Selesai",
                     ),
                   ),

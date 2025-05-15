@@ -7,7 +7,6 @@ class MobcolDetailCustController extends GetxController
     with SingleGetTickerProviderMixin {
   late TabController tabController;
   final RxInt _selectedIndex = 0.obs;
-  final Map<String, dynamic> tugas = Get.arguments;
 
   final List<String> _tabLabels = [
     'Geotagging',

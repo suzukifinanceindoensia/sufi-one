@@ -13,7 +13,7 @@ class MobcolUploadbuktiDetailView extends GetView<MobcolUploadbuktiDetailControl
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, dynamic> tugas = Get.arguments;
+    final dynamic tugas = Get.arguments;
 
     return Scaffold(
       appBar: SuzukiFinanceAppBarWsidebar(),
@@ -26,9 +26,9 @@ class MobcolUploadbuktiDetailView extends GetView<MobcolUploadbuktiDetailControl
           children: [
             ProfileCardMobcol(
               image: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
-              name: "${tugas['name']}",
-              username: "${tugas['email']}",
-              profession: "Id : ${tugas['id']}",
+              name: "${tugas.name}",
+              username: "${tugas.email}",
+              profession: "Id : ${tugas.id}",
               borders: 10,
             ),
             const SizedBox(height: 20),
@@ -37,10 +37,10 @@ class MobcolUploadbuktiDetailView extends GetView<MobcolUploadbuktiDetailControl
                 Text("Upload Bukti Pembayaran", style: AppTextStyles.Navybodymed),
                 const Divider(color: Colors.black54),
                 Text("Nomor Bp", style: AppTextStyles.Navybodymed),
-                Text("${tugas['id']}", style: AppTextStyles.bigBody),
+                Text("${tugas.id}", style: AppTextStyles.bigBody),
                 const Divider(color: Colors.black54),
                 Text("Tanggal Pembayaran", style: AppTextStyles.Navybodymed),
-                Text("${tugas['dateTime'].year}-${tugas['dateTime'].month}-${tugas['dateTime'].day}", style: AppTextStyles.bigBody),
+                Text("${tugas.dateTime.year}-${tugas.dateTime.month}-${tugas.dateTime.day}", style: AppTextStyles.bigBody),
                 const Divider(color: Colors.black54),
                 Text("Upload Bukti Pembayaran", style: AppTextStyles.Navybodymed),
                 const SizedBox(height: 10),

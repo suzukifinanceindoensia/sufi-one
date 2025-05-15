@@ -1,21 +1,5 @@
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/binding/mobcol_detailcust_controller.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/binding/mobcol_kunjungan_binding.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/binding/mobcol_tugasbaru_binding.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/view/mobcol_detailcust_view.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/view/mobcol_kunjungan_view.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/view/mobcol_tugasbaru_detail_view.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/view/mobcol_tugasbaru_view.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/tugasBelumSelesai/binding/mobcol_tugasbelumselesai_bindings.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/tugasSelesai/binding/mobcol_tugasselesai_binding.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/uploadBukti/binding/mobcol_uploadbukti_binding.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/uploadBukti/binding/mobcol_uploadbukti_detail_binding.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/tugasBelumSelesai/view/mobcol_tugasbelumselesai_detail_view.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/tugasBelumSelesai/view/mobcol_tugasbelumselesai_view.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/tugasSelesai/view/mobcol_tugasselesai_detail_view.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/uploadBukti/view/mobcol_uploadbukti_detail_view.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/uploadBukti/view/mobcol_uploadbukti_view.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/tugasSelesai/view/mobcol_tugasselesai_view.dart';
+import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/public/bindings/forgot_password_binding.dart';
 import 'package:sufi_one/app/modules/public/bindings/login_binding.dart';
 import 'package:sufi_one/app/modules/public/bindings/register_binding.dart';
@@ -25,8 +9,6 @@ import 'package:sufi_one/app/modules/public/views/homepage_cust_view.dart';
 import 'package:sufi_one/app/modules/public/views/login_view.dart';
 import 'package:sufi_one/app/modules/public/views/register_view.dart';
 import 'package:sufi_one/app/modules/public/views/splash_view.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/dashboard/view/mobile_collection_view.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/dashboard/binding/mobile_collection_binding.dart';
 import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/modules/zeus/views/zeus_view.dart';
 import 'package:sufi_one/app/modules/zeus/views/zeus_detail_view.dart';
@@ -60,7 +42,7 @@ class AppRoutes {
   static const publicHome = '/public/home';
   static const homepageCust = '/public/homepage_cust_view';
   //MOBCOL
-  static const mobileCollection = '/public/mobile_collection';
+  static const mobileCollection = '/mobile_collection';
   static const survey = '/survey/splash';
   static const surveyHome = '/survey/home';
   static const mobileCollectionTugasBaru = '/mobile_collection/tugas_baru';
@@ -122,60 +104,6 @@ class AppRoutes {
       page: () => const ZeusDetailView(),
       binding: ZeusBinding(),
     ),
-    // MOBILE COLLECTION
-    GetPage(
-      name: mobileCollection,
-      page: () => MobcolDashboardView(),
-      binding: MobcolDashboardBinding(),
-    ),
-    GetPage(
-      name: mobileCollectionTugasBaru,
-      page: () => MobcolTugasbaruView(),
-      binding: MobcolTugasbaruBinding(),
-    ),
-    GetPage(
-      name: mobileCollectionTugasBaruDetail,
-      page: () => MobcolTugasbaruDetailView(),
-    ),
-    GetPage(
-      name: mobileCollectionDetailCust,
-      page: () => MobcolDetailCustView(),
-      binding: MobcolDetailCustBinding(),
-    ),
-    GetPage(
-      name: mobileCollectionKunjungan,
-      page: () => MobcolKunjunganView(),
-      binding: KunjunganBinding(),
-    ),
-    GetPage(
-      name: mobileCollectionTugasBelumSelesai,
-      page: () => MobcolTugasbelumselesaiView(),
-      binding: MobcolTugasbelumselesaiBinding(),
-    ),
-    GetPage(
-      name: mobileCollectionTugasBelumSelesaiDetail,
-      page: () => MobcolTugasBelumSelesaiDetailView(),
-    ),
-    GetPage(
-      name: mobileCollectionUploadBukti,
-      page: () => MobcolUploadBuktiView(),
-      binding: MobcolUploadbuktiBinding(),
-    ),
-    GetPage(
-      name: mobileCollectionUploadBuktiDetail,
-      page: () => MobcolUploadbuktiDetailView(),
-      binding: MobcolUploadbuktiDetailBinding(),
-    ),
-    GetPage(
-      name: mobileCollectionTugasSelesai,
-      page: () => MobcolTugasSelesaiView(),
-      binding: MobcolTugasSelesaiBinding(),
-    ),
-    GetPage(
-      name: mobileCollectionTugasSelesaiDetail,
-      page: () => MobcolTugasselesaiDetailView(),
-    ),
-    // --------------------------------------------------------------------------------------------------------------------------------//
     GetPage(name: login, page: () => LoginPage(), binding: LoginBinding()),
     GetPage(
       name: register,
@@ -261,5 +189,6 @@ class AppRoutes {
       page: () => const FasilitasWebView(),
     ),
     ...SurveyRoutes.routes,
+    ...MobcolRoutes.routes,
   ];
 }

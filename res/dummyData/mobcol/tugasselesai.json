@@ -1,0 +1,102 @@
+[
+  {
+    "id": "S001",
+    "name": "Citra Lestari",
+    "dateTime": "2025-05-01T09:15:00.000Z",
+    "money": 550000,
+    "coordinate": {
+      "latitude": -6.1680,
+      "longitude": 106.8950
+    },
+    "email": "citra.lestari@email.com",
+    "phoneNumber": "081122334455",
+    "kelurahan": "Pegangsaan",
+    "kecamatan": "Menteng",
+    "alamatLengkap": "Jl. Sabang No. 15, Pegangsaan, Jakarta Pusat",
+    "typeUnit": "Toyota Rush",
+    "policeNumber": "B 3030 XYZ",
+    "colorOfCar": "Putih",
+    "angsuranKe": 15,
+    "kondisi": "Bekas"
+  },
+  {
+    "id": "S002",
+    "name": "Budi Santoso",
+    "dateTime": "2025-05-05T11:30:00.000Z",
+    "money": 380000,
+    "coordinate": {
+      "latitude": -6.2250,
+      "longitude": 106.8010
+    },
+    "email": "budi.santoso@domain.net",
+    "phoneNumber": "085678901234",
+    "kelurahan": "Petojo Utara",
+    "kecamatan": "Gambir",
+    "alamatLengkap": "Jl. Kamboja No. 8, Petojo Utara, Jakarta Pusat",
+    "typeUnit": "Honda CR-V",
+    "policeNumber": "B 777 ABC",
+    "colorOfCar": "Hitam",
+    "angsuranKe": 8,
+    "kondisi": "Baru"
+  },
+  {
+    "id": "S003",
+    "name": "Dewi Ayu",
+    "dateTime": "2025-05-09T14:00:00.000Z",
+    "money": 290000,
+    "coordinate": {
+      "latitude": -6.1990,
+      "longitude": 106.8520
+    },
+    "email": "dewi.ayu@mymail.org",
+    "phoneNumber": "087812345679",
+    "kelurahan": "Gondangdia",
+    "kecamatan": "Menteng",
+    "alamatLengkap": "Jl. Cemara No. 22, Gondangdia, Jakarta Pusat",
+    "typeUnit": "Suzuki Ignis",
+    "policeNumber": "B 1212 DEF",
+    "colorOfCar": "Merah",
+    "angsuranKe": 3,
+    "kondisi": "Bekas"
+  },
+  {
+    "id": "S004",
+    "name": "Eko Prasetyo",
+    "dateTime": "2025-05-12T16:45:00.000Z",
+    "money": 420000,
+    "coordinate": {
+      "latitude": -6.2350,
+      "longitude": 106.8150
+    },
+    "email": "eko.prasetyo@work.com",
+    "phoneNumber": "082299887766",
+    "kelurahan": "Kebon Kelapa",
+    "kecamatan": "Gambir",
+    "alamatLengkap": "Gg. Anggrek No. 5, Kebon Kelapa, Jakarta Pusat",
+    "typeUnit": "Daihatsu Terios",
+    "policeNumber": "B 5656 GHI",
+    "colorOfCar": "Silver",
+    "angsuranKe": 11,
+    "kondisi": "Baru"
+  },
+  {
+    "id": "S005",
+    "name": "Farah Maulida",
+    "dateTime": "2025-05-15T10:30:00.000Z",
+    "money": 310000,
+    "coordinate": {
+      "latitude": -6.1720,
+      "longitude": 106.8700
+    },
+    "email": "farah.maulida@service.id",
+    "phoneNumber": "089654321098",
+    "kelurahan": "Menteng Dalam",
+    "kecamatan": "Tebet",
+    "alamatLengkap": "Jl. Bunga Mawar No. 10, Menteng Dalam, Jakarta Selatan",
+    "typeUnit": "Nissan Magnite",
+    "policeNumber": "B 9090 JKL",
+    "colorOfCar": "Biru",
+    "angsuranKe": 6,
+    "kondisi": "Bekas"
+  }
+]

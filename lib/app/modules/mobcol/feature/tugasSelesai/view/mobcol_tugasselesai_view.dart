@@ -51,8 +51,8 @@ class MobcolTugasSelesaiView extends GetView<MobcolTugasSelesaiController> {
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text("${tugas['dateTime'].day}", style: AppTextStyles.MobcolNum),
-                                      Text("${controller.monthsInYear[tugas['dateTime'].month]}", style: AppTextStyles.medBody,),
+                                      Text("${tugas.dateTime.day}", style: AppTextStyles.MobcolNum),
+                                      Text("${controller.monthsInYear[tugas.dateTime.month]}", style: AppTextStyles.medBody,),
                                     ],
                                   ),
                                 ),
@@ -61,23 +61,23 @@ class MobcolTugasSelesaiView extends GetView<MobcolTugasSelesaiController> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("${tugas['name']}", style: AppTextStyles.medBody),
-                                    Text('id: ${tugas['id']}', style: AppTextStyles.medBody),
-                                    Text('Rp. ${tugas['money']}', style: AppTextStyles.medBody),
+                                    Text("${tugas.name}", style: AppTextStyles.medBody),
+                                    Text('id: ${tugas.id}', style: AppTextStyles.medBody),
+                                    Text('Rp. ${tugas.money}', style: AppTextStyles.medBody),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Container(
+                                        SizedBox(
                                           width: 100,
-                                          child: Text("kel. ${tugas['kelurahan']}", 
-                                            style: AppTextStyles.medBody, 
+                                          child: Text("kel. ${tugas.kelurahan}",
+                                            style: AppTextStyles.medBody,
                                             softWrap: true,
                                             textAlign: TextAlign.left,),
                                         ),
-                                        Container(
+                                        SizedBox(
                                           width: 100,
-                                          child: Text("kel. ${tugas['kecamatan']}", 
-                                            style: AppTextStyles.medBody, 
+                                          child: Text("kec. ${tugas.kecamatan}",
+                                            style: AppTextStyles.medBody,
                                             softWrap: true,
                                             textAlign: TextAlign.left,),
                                         ),
@@ -85,14 +85,14 @@ class MobcolTugasSelesaiView extends GetView<MobcolTugasSelesaiController> {
                                     ),
                                   ],
                                 ),
-                              ]
+                              ],
                             )
-                          ]
+                          ],
                         ),
                       ),
                     );
                   },
-                )), 
+                )),
           ),
         ],
       ),

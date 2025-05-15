@@ -1,0 +1,62 @@
+[
+  {
+    "id": "00010",
+    "name": "Bob",
+    "dateTime": "2025-06-15T14:45:00.000Z",
+    "money": 250000,
+    "coordinate": {
+      "latitude": -6.1754,
+      "longitude": 106.8272
+    },
+    "email": "bob@example.com",
+    "phoneNumber": "085112233445",
+    "kelurahan": "Gondangdia",
+    "kecamatan": "Menteng",
+    "alamatLengkap": "Jl. Mawar No. 12, Gondangdia, Jakarta Pusat",
+    "typeUnit": "Honda Brio",
+    "policeNumber": "B 9876 XY",
+    "colorOfCar": "Merah",
+    "angsuranKe": 3,
+    "kondisi": "Bekas"
+  },
+  {
+    "id": "00011",
+    "name": "Charlie",
+    "dateTime": "2025-03-01T09:00:00.000Z",
+    "money": 600000,
+    "coordinate": {
+      "latitude": -6.2511,
+      "longitude": 106.8190
+    },
+    "email": "charlie@example.com",
+    "phoneNumber": "089988776655",
+    "kelurahan": "Senen",
+    "kecamatan": "Senen",
+    "alamatLengkap": "Jl. Kramat No. 34, Senen, Jakarta Pusat",
+    "typeUnit": "Daihatsu Xenia",
+    "policeNumber": "B 5432 ZW",
+    "colorOfCar": "Putih",
+    "angsuranKe": 12,
+    "kondisi": "Baru"
+  },
+  {
+    "id": "00012",
+    "name": "Diana",
+    "dateTime": "2025-11-05T16:30:00.000Z",
+    "money": 150000,
+    "coordinate": {
+      "latitude": -6.1902,
+      "longitude": 106.8805
+    },
+    "email": "diana@example.com",
+    "phoneNumber": "082233445566",
+    "kelurahan": "Cikini",
+    "kecamatan": "Menteng",
+    "alamatLengkap": "Jl. Pegangsaan Timur No. 56, Cikini, Jakarta Pusat",
+    "typeUnit": "Suzuki Ertiga",
+    "policeNumber": "B 1122 PQ",
+    "colorOfCar": "Abu-abu",
+    "angsuranKe": 6,
+    "kondisi": "Bekas"
+  }
+]

@@ -14,7 +14,7 @@ class MobcolKunjunganView extends GetView<KunjunganController> {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, dynamic> tugas = Get.arguments;
+    final dynamic tugas = Get.arguments;
     return Scaffold(
       appBar: SuzukiFinanceAppBarWsidebar(),
       drawer: const Drawer(
@@ -32,8 +32,8 @@ class MobcolKunjunganView extends GetView<KunjunganController> {
                 ProfileCardMobcol(
                   image:
                       "https://media.istockphoto.com/id/515660465/id/vektor/siluet-kepala.jpg?s=612x612&w=0&k=20&c=HepLXginpYBXHOYvPtjU_VX-fFtBtvPIzLEjlnFvq4c=",
-                  name: "${tugas['name']}", 
-                  username: "${tugas['email']}",
+                  name: "${tugas.name}", 
+                  username: "${tugas.email}",
                   profession: "TARGET",
                   borders: 10,
                 ),

@@ -49,27 +49,27 @@ class MobcolUploadBuktiView extends GetView<MobcolUploadBuktiController> {
                                   children: [
                                     Row(
                                       children: [
-                                        Text("${tugas['name']}", style: AppTextStyles.Navybodymed),
+                                        Text("${tugas.name}", style: AppTextStyles.Navybodymed),
                                         Expanded(child: SizedBox()),
-                                        Text("${tugas['Progress']}", style: AppTextStyles.Navybodymed),
+                                        Text("${tugas.progress}", style: AppTextStyles.Navybodymed),
                                       ],
                                     ),
-                                    Text('${tugas['id']}', style: AppTextStyles.medBody),
-                                    Text('Tanggal Go live ${tugas['dateTime'].day}-${tugas['dateTime'].month}-${tugas['dateTime'].year}', style: AppTextStyles.medBody),
-                                    Text('Email : ${tugas['email']}', style: AppTextStyles.medBody),
+                                    Text('${tugas.id}', style: AppTextStyles.medBody),
+                                    Text('Tanggal Go live ${tugas.dateTime.day}-${tugas.dateTime.month}-${tugas.dateTime.year}', style: AppTextStyles.medBody),
+                                    Text('Email : ${tugas.email}', style: AppTextStyles.medBody),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
                                           width: 100,
-                                          child: Text("kel. ${tugas['kelurahan']}", 
+                                          child: Text("kel. ${tugas.kelurahan}", 
                                             style: AppTextStyles.medBody, 
                                             softWrap: true,
                                             textAlign: TextAlign.left,),
                                         ),
                                         Container(
                                           width: 100,
-                                          child: Text("kel. ${tugas['kecamatan']}", 
+                                          child: Text("kel. ${tugas.kecamatan}", 
                                             style: AppTextStyles.medBody, 
                                             softWrap: true,
                                             textAlign: TextAlign.left,),
