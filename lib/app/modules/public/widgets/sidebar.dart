@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sufi_one/app/modules/public/homepage_public/widgets/home_routes.dart';
 import 'package:sufi_one/app/routes/app_routes.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:get/get.dart';
@@ -55,7 +56,7 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.home, color: Colors.white),
     title: 'Home',
     onTap: () {
-      Get.toNamed(AppRoutes.homepageCust);
+      Get.toNamed(HomeRoutes.homepageCust);
     },
   ),
   SidebarItemData(

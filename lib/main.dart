@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sufi_one/app/modules/public/homepage_public/widgets/home_routes.dart';
 import 'app/routes/app_routes.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'SuperApp (Public)',
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.splash,
+      initialRoute: HomeRoutes.splash,
       getPages: AppRoutes.pages,
     );
   }
