@@ -5,6 +5,7 @@ import 'package:intl/intl.dart' as intl;
 import 'package:sufi_one/app/modules/survey/features/finish/controllers/finish_controller.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
 import 'package:sufi_one/app/modules/survey/widgets/appBar_widget.dart';
+import 'package:sufi_one/app/modules/survey/widgets/app_bar_widget.dart';
 import 'package:sufi_one/app/modules/survey/widgets/tab_bar_widget.dart';
 
 class SurveyFinishView extends GetView<SurveyFinishController> {
@@ -18,7 +19,7 @@ class SurveyFinishView extends GetView<SurveyFinishController> {
       builder: (controller) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
-          appBar: SurveyAppBar(
+          appBar: SurveyAppBarWidget(
             menus: [
               SurveyMenuModel(
                 title: "Refresh",
