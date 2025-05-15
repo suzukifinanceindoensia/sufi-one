@@ -1,21 +1,21 @@
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBaru/binding/mobcol_detailcust_controller.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBaru/binding/mobcol_kunjungan_binding.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBaru/binding/mobcol_tugasbaru_binding.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBelumSelesai/binding/mobcol_tugasbelumselesai_bindings.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasSelesai/binding/mobcol_tugasselesai_binding.dart';
-import 'package:sufi_one/app/modules/mobcol/uploadBukti/binding/mobcol_uploadbukti_binding.dart';
-import 'package:sufi_one/app/modules/mobcol/uploadBukti/binding/mobcol_uploadbukti_detail_binding.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBaru/view/mobcol_detailcust_view.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBaru/view/mobcol_kunjungan_view.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBaru/view/mobcol_tugasbaru_detail_view.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBaru/view/mobcol_tugasbaru_view.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBelumSelesai/view/mobcol_tugasbelumselesai_detail_view.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBelumSelesai/view/mobcol_tugasbelumselesai_view.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasSelesai/view/mobcol_tugasselesai_detail_view.dart';
-import 'package:sufi_one/app/modules/mobcol/uploadBukti/view/mobcol_uploadbukti_detail_view.dart';
-import 'package:sufi_one/app/modules/mobcol/uploadBukti/view/mobcol_uploadbukti_view.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasSelesai/view/mobcol_tugasselesai_view.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/binding/mobcol_detailcust_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/binding/mobcol_kunjungan_binding.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/binding/mobcol_tugasbaru_binding.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/view/mobcol_detailcust_view.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/view/mobcol_kunjungan_view.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/view/mobcol_tugasbaru_detail_view.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/view/mobcol_tugasbaru_view.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/tugasBelumSelesai/binding/mobcol_tugasbelumselesai_bindings.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/tugasSelesai/binding/mobcol_tugasselesai_binding.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/uploadBukti/binding/mobcol_uploadbukti_binding.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/uploadBukti/binding/mobcol_uploadbukti_detail_binding.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/tugasBelumSelesai/view/mobcol_tugasbelumselesai_detail_view.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/tugasBelumSelesai/view/mobcol_tugasbelumselesai_view.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/tugasSelesai/view/mobcol_tugasselesai_detail_view.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/uploadBukti/view/mobcol_uploadbukti_detail_view.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/uploadBukti/view/mobcol_uploadbukti_view.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/tugasSelesai/view/mobcol_tugasselesai_view.dart';
 import 'package:sufi_one/app/modules/public/bindings/forgot_password_binding.dart';
 import 'package:sufi_one/app/modules/public/bindings/login_binding.dart';
 import 'package:sufi_one/app/modules/public/bindings/register_binding.dart';
@@ -25,8 +25,8 @@ import 'package:sufi_one/app/modules/public/views/homepage_cust_view.dart';
 import 'package:sufi_one/app/modules/public/views/login_view.dart';
 import 'package:sufi_one/app/modules/public/views/register_view.dart';
 import 'package:sufi_one/app/modules/public/views/splash_view.dart';
-import 'package:sufi_one/app/modules/mobcol/dashboard/view/mobile_collection_view.dart';
-import 'package:sufi_one/app/modules/mobcol/dashboard/binding/mobile_collection_binding.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/dashboard/view/mobile_collection_view.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/dashboard/binding/mobile_collection_binding.dart';
 import 'package:sufi_one/app/modules/survey/views/newtask_confirm_view.dart';
 import 'package:sufi_one/app/modules/survey/views/upload_checking_view.dart';
 import 'package:sufi_one/app/modules/survey/views/process_survey_view.dart';
@@ -125,12 +125,11 @@ class AppRoutes {
       page: () => const ZeusDetailView(),
       binding: ZeusBinding(),
     ),
-    GetPage(name: mobileCollection, page: () => MobileCollection()),
     // MOBILE COLLECTION
     GetPage(
       name: mobileCollection,
-      page: () => MobileCollection(),
-      binding: MobileCollectionBinding(),
+      page: () => MobcolDashboardView(),
+      binding: MobcolDashboardBinding(),
     ),
     GetPage(
       name: mobileCollectionTugasBaru,

@@ -19,7 +19,7 @@ class MenuCreatorMobcol extends StatelessWidget {
     return FractionallySizedBox(
       widthFactor: 0.9,
       child: Container(
-        height: 120,
+        height: 130,
         padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
         decoration: BoxDecoration(
           color: AppColors.bg2,
@@ -32,13 +32,14 @@ class MenuCreatorMobcol extends StatelessWidget {
         child: Row(
           children: [
             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
                   height: 55,
                   child: Text(number, style: AppTextStyles.MobcolNum),
                 ),
                 SizedBox(
-                  height: 37,
+                  height: 40,
                   child: Center(
                     child: Text(title, style: AppTextStyles.medBody, textAlign: TextAlign.center,),
                   ) 
@@ -46,7 +47,7 @@ class MenuCreatorMobcol extends StatelessWidget {
               ],
             ),
             const Expanded(child: SizedBox()),
-            Opacity(opacity: 0.5, child: Image.network(imageUrl, height: 70,width: 70,fit: BoxFit.cover,),),
+            Opacity(opacity: 0.5, child: Image.network(imageUrl, height: 80,width: 80,fit: BoxFit.cover,),),
           ],
         ),
       ),
