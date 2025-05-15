@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:sufi_one/app/modules/survey/features/finish/controllers/finish_controller.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
-import 'package:sufi_one/app/modules/survey/widgets/appBar_widget.dart';
 import 'package:sufi_one/app/modules/survey/widgets/app_bar_widget.dart';
 import 'package:sufi_one/app/modules/survey/widgets/tab_bar_widget.dart';
 
