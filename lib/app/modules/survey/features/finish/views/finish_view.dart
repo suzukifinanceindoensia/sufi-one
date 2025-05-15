@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:sufi_one/app/modules/survey/features/finish/controllers/finish_controller.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
+import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/modules/survey/widgets/app_bar_widget.dart';
 import 'package:sufi_one/app/modules/survey/widgets/tab_bar_widget.dart';
 
@@ -61,63 +62,15 @@ class SurveyFinishView extends GetView<SurveyFinishController> {
   }
 }
 
-class TabMenu extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final String route;
-  final bool isSelected;
-
-  const TabMenu({
-    super.key,
-    required this.icon,
-    required this.label,
-    required this.route,
-    this.isSelected = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: GestureDetector(
-        onTap: () => Get.toNamed(route),
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: isSelected ? Colors.blue : Colors.black,
-              ),
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(icon, size: 20, color: Colors.black),
-                  SizedBox(width: 10),
-                  Text(
-                    label,
-                    style: const TextStyle(fontSize: 13, color: Colors.black87),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 Widget listItem({
   Widget? floatingChild,
   String? deviceHandlesPrefix,
   bool? enableTap = true,
 }) {
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      Get.toNamed(SurveyRoutes.surveyFinishDetail);
+    },
     child: Container(
       width: double.infinity,
       margin: const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
