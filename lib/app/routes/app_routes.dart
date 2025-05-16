@@ -1,23 +1,5 @@
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBaru/binding/mobcol_detailcust_controller.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBaru/binding/mobcol_kunjungan_binding.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBaru/binding/mobcol_tugasbaru_binding.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBelumSelesai/binding/mobcol_tugasbelumselesai_bindings.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasSelesai/binding/mobcol_tugasselesai_binding.dart';
-import 'package:sufi_one/app/modules/mobcol/uploadBukti/binding/mobcol_uploadbukti_binding.dart';
-import 'package:sufi_one/app/modules/mobcol/uploadBukti/binding/mobcol_uploadbukti_detail_binding.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBaru/view/mobcol_detailcust_view.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBaru/view/mobcol_kunjungan_view.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBaru/view/mobcol_tugasbaru_detail_view.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBaru/view/mobcol_tugasbaru_view.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBelumSelesai/view/mobcol_tugasbelumselesai_detail_view.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasBelumSelesai/view/mobcol_tugasbelumselesai_view.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasSelesai/view/mobcol_tugasselesai_detail_view.dart';
-import 'package:sufi_one/app/modules/mobcol/uploadBukti/view/mobcol_uploadbukti_detail_view.dart';
-import 'package:sufi_one/app/modules/mobcol/uploadBukti/view/mobcol_uploadbukti_view.dart';
-import 'package:sufi_one/app/modules/mobcol/tugasSelesai/view/mobcol_tugasselesai_view.dart';
-import 'package:sufi_one/app/modules/mobcol/dashboard/view/mobile_collection_view.dart';
-import 'package:sufi_one/app/modules/mobcol/dashboard/binding/mobile_collection_binding.dart';
+import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/modules/zeus/views/zeus_view.dart';
 import 'package:sufi_one/app/modules/zeus/views/zeus_detail_view.dart';
@@ -26,7 +8,7 @@ import 'package:sufi_one/app/modules/public/home_routes.dart';
 
 class AppRoutes {
   //MOBCOL
-  static const mobileCollection = '/public/mobile_collection';
+  static const mobileCollection = '/mobile_collection';
   static const survey = '/survey/splash';
   static const surveyHome = '/survey/home';
   static const mobileCollectionTugasBaru = '/mobile_collection/tugas_baru';
@@ -61,63 +43,92 @@ class AppRoutes {
       page: () => const ZeusDetailView(),
       binding: ZeusBinding(),
     ),
-    GetPage(name: mobileCollection, page: () => MobileCollection()),
-    // MOBILE COLLECTION
+    GetPage(name: login, page: () => LoginPage(), binding: LoginBinding()),
     GetPage(
-      name: mobileCollection,
-      page: () => MobileCollection(),
-      binding: MobileCollectionBinding(),
+      name: register,
+      page: () => RegisterPage(),
+      binding: RegisterBinding(),
     ),
     GetPage(
-      name: mobileCollectionTugasBaru,
-      page: () => MobcolTugasbaruView(),
-      binding: MobcolTugasbaruBinding(),
+      name: forgotPassword,
+      page: () => ForgotPasswordPage(),
+      binding: ForgotPasswordBinding(),
     ),
     GetPage(
-      name: mobileCollectionTugasBaruDetail,
-      page: () => MobcolTugasbaruDetailView(),
+      name: AppRoutes.profilePage,
+      page: () => ProfilePageView(),
+      binding: ProfilePageBinding(),
     ),
     GetPage(
-      name: mobileCollectionDetailCust,
-      page: () => MobcolDetailCustView(),
-      binding: MobcolDetailCustBinding(),
+      name: AppRoutes.profileEdit,
+      page: () => ProfileEditView(),
+      binding: ProfilePageBinding(),
+    ),
+    GetPage(name: AppRoutes.promo, page: () => const PromoView()),
+    GetPage(
+      name: AppRoutes.about,
+      page: () => const AboutView(),
+      binding: AboutBinding(),
     ),
     GetPage(
-      name: mobileCollectionKunjungan,
-      page: () => MobcolKunjunganView(),
-      binding: KunjunganBinding(),
+      name: AppRoutes.contact,
+      page: () => const ContactView(),
+      binding: ContactBinding(),
     ),
     GetPage(
-      name: mobileCollectionTugasBelumSelesai,
-      page: () => MobcolTugasbelumselesaiView(),
-      binding: MobcolTugasbelumselesaiBinding(),
+      name: AppRoutes.ubahPassword,
+      page: () => const UbahPasswordView(),
+      binding: ProfilePageBinding(),
     ),
     GetPage(
-      name: mobileCollectionTugasBelumSelesaiDetail,
-      page: () => MobcolTugasBelumSelesaiDetailView(),
+      name: AppRoutes.transaksiPoint,
+      page: () => TransaksiPointView(),
+      binding: ProfilePageBinding(),
     ),
     GetPage(
-      name: mobileCollectionUploadBukti,
-      page: () => MobcolUploadBuktiView(),
-      binding: MobcolUploadbuktiBinding(),
+      name: produkKategori,
+      page: () => ProdukKategoriView(),
+      binding: ProdukBinding(),
     ),
     GetPage(
-      name: mobileCollectionUploadBuktiDetail,
-      page: () => MobcolUploadbuktiDetailView(),
-      binding: MobcolUploadbuktiDetailBinding(),
+      name: produkTipe,
+      page: () => ProdukTipeView(),
+      binding: ProdukBinding(),
     ),
     GetPage(
-      name: mobileCollectionTugasSelesai,
-      page: () => MobcolTugasSelesaiView(),
-      binding: MobcolTugasSelesaiBinding(),
+      name: produkHarga,
+      page: () => ProdukHargaView(),
+      binding: ProdukBinding(),
     ),
     GetPage(
-      name: mobileCollectionTugasSelesaiDetail,
-      page: () => MobcolTugasselesaiDetailView(),
+      name: produkDetail,
+      page: () => ProdukDetailView(),
+      binding: ProdukBinding(),
     ),
-
-    // --------------------------------------------------------------------------------------------------------------------------------//
+    GetPage(
+      name: AppRoutes.pengajuanKredit,
+      page: () => PengajuanKreditView(),
+      binding: PengajuanKreditBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.cabang,
+      page: () => CabangView(),
+      binding: CabangBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.simulasiKredit,
+      page: () => const SimulasiKreditView(),
+    ),
+    GetPage(
+      name: AppRoutes.opsiPembayaranAsuransi,
+      page: () => const OpsiPembayaranAsuransiView(),
+    ),
+    GetPage(
+      name: AppRoutes.fasilitasWebView,
+      page: () => const FasilitasWebView(),
+    ),
     ...SurveyRoutes.routes,
     ...HomeRoutes.routes,
+    ...MobcolRoutes.routes,
   ];
 }

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "00001",
+    "name": "Alice",
+    "dateTime": "2025-02-10T10:30:00.000Z",
+    "money": 100000,
+    "coordinate": {
+      "latitude": -6.2088,
+      "longitude": 106.8456
+    },
+    "email": "alice@example.com",
+    "phoneNumber": "081234567890",
+    "kelurahan": "Menteng",
+    "kecamatan": "Menteng",
+    "alamatLengkap": "Jl. Kenangan No. 1, Menteng, Jakarta Pusat",
+    "typeUnit": "Toyota Avanza",
+    "policeNumber": "B 1234 AB",
+    "colorOfCar": "Silver",
+    "angsuranKe": 1,
+    "kondisi": "Baru"
+  },
+  {
+    "id": "00002",
+    "name": "Bob",
+    "dateTime": "2025-03-10T12:00:00.000Z",
+    "money": 150000,
+    "coordinate": {
+      "latitude": -6.1754,
+      "longitude": 106.8272
+    },
+    "email": "bob@example.com",
+    "phoneNumber": "082234567891",
+    "kelurahan": "Gambir",
+    "kecamatan": "Gambir",
+    "alamatLengkap": "Jl. Kebahagiaan No. 2, Gambir, Jakarta Pusat",
+    "typeUnit": "Honda Jazz",
+    "policeNumber": "B 5678 CD",
+    "colorOfCar": "Merah",
+    "angsuranKe": 3,
+    "kondisi": "Bekas"
+  },
+  {
+    "id": "00003",
+    "name": "Charlie",
+    "dateTime": "2025-12-09T14:45:00.000Z",
+    "money": 200000,
+    "coordinate": {
+      "latitude": -6.2299,
+      "longitude": 106.8228
+    },
+    "email": "charlie@example.com",
+    "phoneNumber": "083234567892",
+    "kelurahan": "Senen",
+    "kecamatan": "Senen",
+    "alamatLengkap": "Jl. Ceria No. 3, Senen, Jakarta Pusat",
+    "typeUnit": "Daihatsu Xenia",
+    "policeNumber": "B 9012 EF",
+    "colorOfCar": "Hitam",
+    "angsuranKe": 2,
+    "kondisi": "Baru"
+  },
+  {
+    "id": "00004",
+    "name": "David",
+    "dateTime": "2025-06-04T16:15:00.000Z",
+    "money": 250000,
+    "coordinate": {
+      "latitude": -6.1886,
+      "longitude": 106.8105
+    },
+    "email": "david@example.com",
+    "phoneNumber": "084234567893",
+    "kelurahan": "Cikini",
+    "kecamatan": "Menteng",
+    "alamatLengkap": "Jl. Damai No. 4, Cikini, Jakarta Pusat",
+    "typeUnit": "Suzuki Ertiga",
+    "policeNumber": "B 3456 GH",
+    "colorOfCar": "Putih",
+    "angsuranKe": 5,
+    "kondisi": "Bekas"
+  },
+  {
+    "id": "00005",
+    "name": "Eve",
+    "dateTime": "2025-08-01T18:00:00.000Z",
+    "money": 300000,
+    "coordinate": {
+      "latitude": -6.2146,
+      "longitude": 106.8451
+    },
+    "email": "eve@example.com",
+    "phoneNumber": "085234567894",
+    "kelurahan": "Kebon Sirih",
+    "kecamatan": "Menteng",
+    "alamatLengkap": "Jl. Elok No. 5, Kebon Sirih, Jakarta Pusat",
+    "typeUnit": "Mitsubishi Xpander",
+    "policeNumber": "B 7890 IJ",
+    "colorOfCar": "Abu-abu",
+    "angsuranKe": 12,
+    "kondisi": "Baru"
+  },
+  {
+    "id": "00006",
+    "name": "Frank",
+    "dateTime": "2025-12-13T20:30:00.000Z",
+    "money": 350000,
+    "coordinate": {
+      "latitude": -6.1956,
+      "longitude": 106.7982
+    },
+    "email": "frank@example.com",
+    "phoneNumber": "086234567895",
+    "kelurahan": "Tanah Abang",
+    "kecamatan": "Tanah Abang",
+    "alamatLengkap": "Jl. Fajar No. 6, Tanah Abang, Jakarta Pusat",
+    "typeUnit": "Nissan Livina",
+    "policeNumber": "B 2345 KL",
+    "colorOfCar": "Coklat",
+    "angsuranKe": 7,
+    "kondisi": "Bekas"
+  },
+  {
+    "id": "00007",
+    "name": "Grace",
+    "dateTime": "2025-10-22T22:00:00.000Z",
+    "money": 400000,
+    "coordinate": {
+      "latitude": -6.2308,
+      "longitude": 106.8618
+    },
+    "email": "grace@example.com",
+    "phoneNumber": "087234567896",
+    "kelurahan": "Rawasari",
+    "kecamatan": "Cempaka Putih",
+    "alamatLengkap": "Jl. Gemilang No. 7, Rawasari, Jakarta Pusat",
+    "typeUnit": "Wuling Confero",
+    "policeNumber": "B 6789 MN",
+    "colorOfCar": "Hitam",
+    "angsuranKe": 9,
+    "kondisi": "Baru"
+  }
+]

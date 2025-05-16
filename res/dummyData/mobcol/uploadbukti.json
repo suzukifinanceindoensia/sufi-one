@@ -1,0 +1,44 @@
+[
+  {
+    "id": "00013",
+    "name": "Eve",
+    "dateTime": "2025-07-20T11:15:00.000Z",
+    "money": 320000,
+    "coordinate": {
+      "latitude": -6.2140,
+      "longitude": 106.8320
+    },
+    "email": "eve@example.com",
+    "phoneNumber": "081345678901",
+    "kelurahan": "Kebon Sirih KEBON SIRIH KEBON SIRIH",
+    "kecamatan": "Menteng",
+    "alamatLengkap": "Jl. Sabang No. 78, Kebon Sirih, Jakarta Pusat",
+    "typeUnit": "Toyota Calya",
+    "policeNumber": "B 2233 RS",
+    "colorOfCar": "Hitam",
+    "angsuranKe": 5,
+    "kondisi": "Baru",
+    "Progress": 2
+  },
+  {
+    "id": "00014",
+    "name": "Frank",
+    "dateTime": "2025-09-01T18:00:00.000Z",
+    "money": 480000,
+    "coordinate": {
+      "latitude": -6.2460,
+      "longitude": 106.8010
+    },
+    "email": "frank@example.com",
+    "phoneNumber": "087890123456",
+    "kelurahan": "Petojo Selatan",
+    "kecamatan": "Gambir",
+    "alamatLengkap": "Jl. Tanah Abang I No. 23, Petojo Selatan, Jakarta Pusat",
+    "typeUnit": "Daihatsu Sigra",
+    "policeNumber": "B 7788 YZ",
+    "colorOfCar": "Silver",
+    "angsuranKe": 10,
+    "kondisi": "Bekas",
+    "Progress": 1
+  }
+]
