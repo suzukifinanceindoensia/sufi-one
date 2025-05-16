@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/public/home_routes.dart';
+import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/routes/app_routes.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:get/get.dart';
@@ -63,14 +65,14 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.person, color: Colors.white),
     title: 'Mobile Collection',
     onTap: () {
-      Get.toNamed(AppRoutes.mobileCollection);
+      Get.toNamed(MobcolRoutes.mobileCollection);
     },
   ),
   SidebarItemData(
     icon: const Icon(Icons.info, color: Colors.white),
     title: 'Mobile Survey',
     onTap: () {
-      Get.toNamed(AppRoutes.survey);
+      Get.toNamed(SurveyRoutes.survey);
     },
   ),
   SidebarItemData(
