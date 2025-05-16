@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
+import 'package:sufi_one/app/modules/survey/utils/color.dart';
+import 'package:sufi_one/app/modules/survey/utils/text_style.dart';
 import 'package:sufi_one/app/modules/survey/widgets/avatar_widget.dart';
 
 class SurveyAppBarWidget extends StatelessWidget
@@ -20,7 +22,7 @@ class SurveyAppBarWidget extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: const Color(0xFF003399),
+      backgroundColor: SurveyColor.primaryColor,
       toolbarHeight: 140,
       automaticallyImplyLeading: false,
       leading: Container(
@@ -39,22 +41,8 @@ class SurveyAppBarWidget extends StatelessWidget
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            "DANU PRAKARSA",
-            style: TextStyle(
-              color: const Color(0XFFEEEEEE),
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
-          ),
-          Text(
-            "danu.prakarsa#CMO",
-            style: TextStyle(
-              color: const Color(0XFFEEEEEE),
-              fontWeight: FontWeight.bold,
-              fontSize: 12,
-            ),
-          ),
+          Text("DANU PRAKARSA", style: SurveyTextStyles.boldTitleLightLabel),
+          Text("danu.prakarsa#CMO", style: SurveyTextStyles.basicLightLabel),
         ],
       ),
       centerTitle: false,
@@ -74,20 +62,27 @@ class SurveyAppBarWidget extends StatelessWidget
                   children: List.generate(menus.length, (index) {
                     return ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
+                        backgroundColor: SurveyColor.background,
                         padding: const EdgeInsets.all(8),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
+                          side: const BorderSide(
+                            color: SurveyColor.warningColor, // Border color
+                            width: 2,
+                          ),
                         ),
                         elevation: 2,
                       ),
                       onPressed: menus[index].onTap ?? () {},
                       child:
                           menus[index].iconData != null
-                              ? Icon(menus[index].iconData)
+                              ? Icon(
+                                menus[index].iconData,
+                                color: SurveyColor.darkTextColor,
+                              )
                               : Text(
                                 "${menus[index].title}",
-                                style: const TextStyle(color: Colors.black),
+                                style: SurveyTextStyles.basicLabel,
                               ),
                     );
                   }),
@@ -95,9 +90,7 @@ class SurveyAppBarWidget extends StatelessWidget
                 const SizedBox(height: 4), // space between buttons and version
                 Text(
                   'v1.1.1',
-                  style: TextStyle(
-                    color: const Color(0XFFEEEEEE),
-                    fontWeight: FontWeight.bold,
+                  style: SurveyTextStyles.basicLightLabel.copyWith(
                     fontSize: 10,
                   ),
                 ),

@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/survey/features/finish/bindings/finish_binding.dart';
+import 'package:sufi_one/app/modules/survey/features/finish/bindings/finish_detail_binding.dart';
+import 'package:sufi_one/app/modules/survey/features/finish/views/finish_detail_view.dart';
 import 'package:sufi_one/app/modules/survey/features/finish/views/finish_view.dart';
 import 'package:sufi_one/app/modules/survey/features/home/bindings/detail_binding.dart';
 import 'package:sufi_one/app/modules/survey/features/home/bindings/home_binding.dart';
@@ -18,6 +20,7 @@ class SurveyRoutes {
   static const surveyProcess = '/survey/process';
   static const surveyUpload = '/survey/upload';
   static const surveyFinish = '/survey/finish';
+  static const surveyFinishDetail = '/survey/finishDetail';
   static const surveyFormDetail = '/survey/formDetail';
 
   static final routes = [
@@ -45,6 +48,11 @@ class SurveyRoutes {
       name: surveyFinish,
       page: () => SurveyFinishView(),
       binding: SurveyFinishBinding(),
+    ),
+    GetPage(
+      name: surveyFinishDetail,
+      page: () => SurveyFinishDetailView(),
+      binding: SurveyFinishDetailBinding(),
     ),
     GetPage(
       name: surveyFormDetail,

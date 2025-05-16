@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:sufi_one/app/modules/survey/features/process/controllers/process_controller.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
-import 'package:sufi_one/app/modules/survey/widgets/appBar_widget.dart';
 import 'package:sufi_one/app/modules/survey/widgets/app_bar_widget.dart';
 import 'package:sufi_one/app/modules/survey/widgets/tab_bar_widget.dart';
 
@@ -21,11 +20,6 @@ class SurveyProcessView extends GetView<SurveyProcessController> {
           resizeToAvoidBottomInset: false,
           appBar: SurveyAppBarWidget(
             menus: [
-              SurveyMenuModel(
-                title: "Refresh",
-                iconData: FontAwesomeIcons.arrowsRotate,
-                onTap: controller.refreshData,
-              ),
               SurveyMenuModel(
                 title: "Refresh",
                 iconData: FontAwesomeIcons.arrowsRotate,
@@ -49,12 +43,12 @@ class SurveyProcessView extends GetView<SurveyProcessController> {
                   child: ListView(
                     physics: const AlwaysScrollableScrollPhysics(),
                     children: [
-                      listItem(),
-                      listItem(),
-                      listItem(),
-                      listItem(),
-                      // SizedBox(height: 250),
-                      // Center(child: Text('Pull down to refresh')),
+                      // listItem(),
+                      // listItem(),
+                      // listItem(),
+                      // listItem(),
+                      SizedBox(height: 250),
+                      Center(child: Text('PROCESS TAB - ON PROGRESS DEVELOP')),
                     ],
                   ),
                 ),

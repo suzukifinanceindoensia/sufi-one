@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/survey/features/home/controllers/detail_controller.dart';
+import 'package:sufi_one/app/modules/survey/features/finish/controllers/finish_detail_controller.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
 import 'package:sufi_one/app/modules/survey/utils/text_style.dart';
 import 'package:sufi_one/app/modules/survey/widgets/app_bar_widget.dart';
 
-class SurveyFormDetailView extends GetView<SurveyFormDetailController> {
-  const SurveyFormDetailView({super.key});
+class SurveyFinishDetailView extends GetView<SurveyFinishDetailController> {
+  const SurveyFinishDetailView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +32,8 @@ class SurveyFormDetailView extends GetView<SurveyFormDetailController> {
                 controller: controller.tabController,
                 children:
                     controller.tabs.map((tab) {
-                      // return Center(child: Text('Content of ${tab['name']}'));
                       return SingleChildScrollView(child: form());
                     }).toList(),
-                // children: [SingleChildScrollView(child: form())],
               ),
             ),
           ],
