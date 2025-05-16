@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:sufi_one/app/modules/survey/features/home/controllers/home_controller.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
-import 'package:sufi_one/app/modules/survey/widgets/appBar_widget.dart';
+import 'package:sufi_one/app/modules/survey/survey_routes.dart';
+import 'package:sufi_one/app/modules/survey/widgets/app_bar_widget.dart';
 import 'package:sufi_one/app/modules/survey/widgets/tab_bar_widget.dart';
 
 class SurveyHomeView extends GetView<SurveyHomeController> {
@@ -18,7 +19,7 @@ class SurveyHomeView extends GetView<SurveyHomeController> {
       builder: (controller) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
-          appBar: SurveyAppBar(
+          appBar: SurveyAppBarWidget(
             menus: [
               SurveyMenuModel(
                 title: "Refresh",
@@ -67,7 +68,9 @@ Widget listItem({
   bool? enableTap = true,
 }) {
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      Get.toNamed(SurveyRoutes.surveyFormDetail);
+    },
     child: Container(
       width: double.infinity,
       margin: const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
