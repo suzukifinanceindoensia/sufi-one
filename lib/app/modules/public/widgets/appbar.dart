@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
+import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/routes/app_routes.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:get/get.dart';
@@ -24,10 +26,10 @@ class SuzukiFinanceAppBar extends StatelessWidget
             onSelected: (value) {
               switch (value) {
                 case 'Mobile Collection':
-                  Get.toNamed(AppRoutes.mobileCollection);
+                  Get.toNamed(MobcolRoutes.mobileCollection);
                   break;
                 case 'Mobile Survey':
-                  Get.toNamed(AppRoutes.survey);
+                  Get.toNamed(SurveyRoutes.survey);
                   break;
                 case 'Zeus':
                   Get.toNamed(AppRoutes.zeus);

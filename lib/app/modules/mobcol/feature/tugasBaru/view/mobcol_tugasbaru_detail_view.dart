@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/controller/mobcol_tugasbaru_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_button_style.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/profile_card_mobcol.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
-import 'package:sufi_one/app/routes/app_routes.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/modules/mobcol/models/tugasBaru_model.dart';
 
@@ -65,7 +65,7 @@ class MobcolTugasbaruDetailView extends StatelessWidget {
                   ElevatedButton(
                     style: MobcolAppButtonStyle.goodButtonStyle(),
                     onPressed: (){
-                      Get.toNamed(AppRoutes.mobileCollectionDetailCust, arguments: tugas);
+                      Get.toNamed(MobcolRoutes.mobileCollectionDetailCust, arguments: tugas);
                     },
                     child: FractionallySizedBox(widthFactor: 1,child: Text("View Customer Detail", style: AppTextStyles.buttonFont, textAlign: TextAlign.center,),),
                   ),
@@ -104,7 +104,7 @@ class MobcolTugasbaruDetailView extends StatelessWidget {
               ElevatedButton(
                 style: MobcolAppButtonStyle.goodButtonStyle(),
                 onPressed: (){
-                  Get.toNamed(AppRoutes.mobileCollectionKunjungan, arguments: tugas);
+                  Get.toNamed(MobcolRoutes.mobileCollectionKunjungan, arguments: tugas);
                 },
                 child: FractionallySizedBox(widthFactor: 1,child: Text("START", style: AppTextStyles.buttonFont, textAlign: TextAlign.center,),),
               )

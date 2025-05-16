@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/dashboard/controllers/mobile_collection_controller.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/tugasBelumSelesai/controller/mobcol_tugasbelumselesai_controller.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/tugasSelesai/controller/mobcol_tugasselesai_controller.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/uploadBukti/controller/mobcol_uploadbukti_view.dart';
+import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/menu_creator_mobcol.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/profile_card_mobcol.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
-import 'package:sufi_one/app/routes/app_routes.dart';
 
 class MobcolDashboardView extends StatelessWidget {
   const MobcolDashboardView({super.key});
@@ -43,7 +40,7 @@ class MobcolDashboardView extends StatelessWidget {
                   const SizedBox(height: 10),
                   GestureDetector(
                     onTap: (){
-                      Get.toNamed(AppRoutes.mobileCollectionTugasBaru);
+                      Get.toNamed(MobcolRoutes.mobileCollectionTugasBaru);
                     },
                     child: MenuCreatorMobcol(
                       imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
@@ -54,7 +51,7 @@ class MobcolDashboardView extends StatelessWidget {
                   const SizedBox(height: 10),
                   GestureDetector(
                     onTap: (){
-                      Get.toNamed(AppRoutes.mobileCollectionTugasBelumSelesai);
+                      Get.toNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai);
                     },
                     child: MenuCreatorMobcol(
                       imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
@@ -65,7 +62,7 @@ class MobcolDashboardView extends StatelessWidget {
                   const SizedBox(height: 10),
                   GestureDetector(
                     onTap: (){
-                      Get.toNamed(AppRoutes.mobileCollectionUploadBukti);
+                      Get.toNamed(MobcolRoutes.mobileCollectionUploadBukti);
                     },
                     child: MenuCreatorMobcol(
                       imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
@@ -76,7 +73,7 @@ class MobcolDashboardView extends StatelessWidget {
                   const SizedBox(height: 10),
                   GestureDetector(
                     onTap: (){
-                      Get.toNamed(AppRoutes.mobileCollectionTugasSelesai);
+                      Get.toNamed(MobcolRoutes.mobileCollectionTugasSelesai);
                     },
                     child: MenuCreatorMobcol(
                       imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
