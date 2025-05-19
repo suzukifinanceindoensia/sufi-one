@@ -12,6 +12,6 @@ class MobcolDashboardBinding extends Bindings {
     Get.lazyPut<TugasBelumSelesaiService>(() => TugasBelumSelesaiService());
     Get.lazyPut<TugasSelesaiService>(() => TugasSelesaiService());
     Get.lazyPut<UploadBuktiService>(() => UploadBuktiService());
-    Get.lazyPut<MobcolDashboardController>(() => MobcolDashboardController());
+    Get.put(MobcolDashboardController());
   }
 }

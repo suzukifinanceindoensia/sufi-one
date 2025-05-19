@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:sufi_one/app/modules/locationTest/location_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/modules/zeus/views/zeus_view.dart';
@@ -46,5 +47,6 @@ class AppRoutes {
     ...SurveyRoutes.routes,
     ...HomeRoutes.routes,
     ...MobcolRoutes.routes,
+    ...LocationRoutes.routes,
   ];
 }

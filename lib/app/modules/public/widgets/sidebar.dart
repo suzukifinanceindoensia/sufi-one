@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sufi_one/app/modules/locationTest/location_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/public/home_routes.dart';
 import 'package:sufi_one/app/modules/survey/survey_routes.dart';
@@ -26,7 +27,7 @@ class AppSidebar extends StatelessWidget {
                   itemCount: _sidebarItems.length,
                   separatorBuilder:
                       (BuildContext context, int index) =>
-                          const Divider(color: Colors.white60, thickness: 0.8),
+                          const Divider(color: Colors.white60, thickness: 2),
                   itemBuilder: (BuildContext context, int index) {
                     final item = _sidebarItems[index];
                     return SidebarItem(
@@ -80,6 +81,13 @@ final List<SidebarItemData> _sidebarItems = [
     title: 'Zeus',
     onTap: () {
       Get.toNamed(AppRoutes.zeus);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.location_on, color: Colors.white),
+    title: 'Track Location',
+    onTap: () {
+      Get.toNamed(LocationRoutes.trackLocation);
     },
   ),
 ];
