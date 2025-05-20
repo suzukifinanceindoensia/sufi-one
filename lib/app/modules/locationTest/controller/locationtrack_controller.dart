@@ -22,7 +22,7 @@ class LocationTrackController extends GetxController {
   RxString errorMessage = ''.obs;
 
   // You'll need to get the userId from somewhere, e.g., an authentication service
-  final RxString userId = 'your_user_id_here'.obs; // **Important: Replace with actual user ID logic**
+  final RxString userId = 'null'.obs; // **Important: Replace with actual user ID logic**
 
   @override
   void onInit() {
@@ -127,6 +127,7 @@ class LocationTrackController extends GetxController {
     try {
       final List<LocationTrackModel> dataUpload = await _LocationTrackService.getLocationTrackFromJson();
       listLocationTrack.assignAll(dataUpload);
+      userId.value = listLocationTrack[0].id.toString();
       isLoading.value = false;
     } catch (e) {
       errorMessage.value = 'Gagal mengambil data: $e';
@@ -141,7 +142,7 @@ class LocationTrackController extends GetxController {
         'longitude': longitude.value,
       },
       'phone_id': deviceId.value,
-      'user_id': userId.value, // Ensure userId is properly set
+      'user_id': userId.value,
       'timestamp': timestamp.value,
     };
     return jsonEncode(locationData);
