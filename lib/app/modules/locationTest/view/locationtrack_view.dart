@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
-import 'dart:async';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/locationTest/controller/locationtrack_controller.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
+import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class LocationTrackView extends StatelessWidget {
   final LocationTrackController locationController = Get.find<LocationTrackController>();
@@ -28,28 +27,28 @@ class LocationTrackView extends StatelessWidget {
                 style: TextStyle(fontSize: 20),
               ),
               const SizedBox(height: 10),
-              Obx(() => Text(
-                    'Latitude: ${locationController.latitude.value}',
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  )),
-              Obx(() => Text(
-                    'Longitude: ${locationController.longitude.value}',
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  )),
-              Obx(() => Text(
-                    'Timestamp: ${locationController.timestamp.value}',
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  )),
-              Obx(()=> Text(
+              Obx(()=>Text(
+                'User ID: ${locationController.listLocationTrack[0].id}',
+                style: AppTextStyles.bigBody,
+              )),
+              const SizedBox(height: 10),
+              Obx(()=>Text(
                 'Device ID: ${locationController.deviceId.value}',
+                style: AppTextStyles.bigBody,
               )),
               const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  locationController.getLocation();
-                },
-                child: const Text('Get Current Location'),
-              ),
+              Obx(() => Text(
+                    'Latitude: ${locationController.latitude.value}',
+                    style: AppTextStyles.bigBody,
+              )),
+              Obx(() => Text(
+                    'Longitude: ${locationController.longitude.value}',
+                    style: AppTextStyles.bigBody,
+              )),
+              Obx(() => Text(
+                    'Timestamp: ${locationController.timestamp.value}',
+                    style: AppTextStyles.bigBody,
+              )),
             ],
           ),
         ),
