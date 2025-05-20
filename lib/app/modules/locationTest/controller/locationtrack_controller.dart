@@ -3,22 +3,29 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
 import 'package:device_info_plus/device_info_plus.dart'; // Import for device info
-import 'package:flutter/foundation.dart'; // Import for kIsWeb
+import 'package:flutter/foundation.dart';
+import 'package:sufi_one/app/modules/locationTest/model/locationtrack_model.dart';
+import 'package:sufi_one/app/modules/locationTest/service/locationtrack_service.dart'; // Import for kIsWeb
 
 class LocationTrackController extends GetxController {
+  final LocationtrackService _LocationTrackService = Get.find<LocationtrackService>();
   final RxString latitude = 'Loading...'.obs;
   final RxString longitude = 'Loading...'.obs;
   final RxString timestamp = 'Loading...'.obs;
   final RxString deviceId = 'Loading...'.obs; // Add RxString for device ID
+  RxList<LocationTrackModel> listLocationTrack = <LocationTrackModel>[].obs;
   StreamSubscription<Position>? _positionStreamSubscription;
   final DateFormat _dateFormat = DateFormat('yyyy-MM-dd HH:mm:ss');
   Timer? _timer;
+  RxBool isLoading = true.obs;
+  RxString errorMessage = ''.obs;
 
   @override
   void onInit() {
     super.onInit();
-    _getDeviceId(); // Get device ID on initialization
+    fetchTrackLocation();
     _startLocationTracking();
+    _getDeviceId();
   }
 
   // Get the device ID
@@ -28,10 +35,10 @@ class LocationTrackController extends GetxController {
       if (kIsWeb) {
         deviceId.value = 'Web Device'; // No device ID for web.
       } else if (GetPlatform.isAndroid) {
-        final androidInfo = await deviceInfo.androidInfo;
+        AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
         deviceId.value = androidInfo.id; // Use androidInfo.id
       } else if (GetPlatform.isIOS) {
-        final iosInfo = await deviceInfo.iosInfo;
+        IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
         deviceId.value = iosInfo.identifierForVendor ??
             'Unknown'; // Use identifierForVendor on iOS
       } else {
@@ -110,5 +117,20 @@ class LocationTrackController extends GetxController {
       timestamp.value = 'Error: ${error.toString()}';
     });
   }
+    Future<void> fetchTrackLocation() async {
+    isLoading.value = true;
+    try {
+      final List<LocationTrackModel> dataUpload = await _LocationTrackService.getLocationTrackFromJson();
+      listLocationTrack.assignAll(dataUpload);
+      print("data uploaded : $dataUpload");
+      isLoading.value = false;
+    } catch (e) {
+      errorMessage.value = 'Gagal mengambil data: $e';
+      print(errorMessage);
+      isLoading.value = false;
+    }
+  }
+
+
 }
 
