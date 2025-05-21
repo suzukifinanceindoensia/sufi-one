@@ -14,8 +14,6 @@ class SurveyHomeView extends GetView<SurveyHomeController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<SurveyHomeController>(
-      init:
-          SurveyHomeController(), // Temporary for direct injection (we'll move this to bindings)
       builder: (controller) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
