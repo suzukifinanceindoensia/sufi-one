@@ -26,36 +26,43 @@ class SurveyRoutes {
   static final routes = [
     GetPage(
       name: survey,
+      transition: Transition.zoom,
       page: () => SurveySplashView(),
       binding: SurveySplashBinding(),
     ),
     GetPage(
       name: surveyHome,
+      transition: Transition.fadeIn,
       page: () => SurveyHomeView(),
       binding: SurveyHomeBinding(),
     ),
     GetPage(
       name: surveyProcess,
+      transition: Transition.fadeIn,
       page: () => SurveyProcessView(),
       binding: SurveyProcessBinding(),
     ),
     GetPage(
       name: surveyUpload,
+      transition: Transition.fadeIn,
       page: () => SurveyUploadView(),
       binding: SurveyUploadBinding(),
     ),
     GetPage(
       name: surveyFinish,
+      transition: Transition.fadeIn,
       page: () => SurveyFinishView(),
       binding: SurveyFinishBinding(),
     ),
     GetPage(
       name: surveyFinishDetail,
+      transition: Transition.zoom,
       page: () => SurveyFinishDetailView(),
       binding: SurveyFinishDetailBinding(),
     ),
     GetPage(
       name: surveyFormDetail,
+      // transition: Transition.,
       page: () => SurveyFormDetailView(),
       binding: SurveyFormDetailBinding(),
     ),
