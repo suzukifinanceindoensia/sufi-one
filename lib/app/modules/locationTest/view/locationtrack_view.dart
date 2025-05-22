@@ -28,7 +28,7 @@ class LocationTrackView extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Obx(()=>Text(
-                'User ID: ${locationController.listLocationTrack[0].id}',
+                'User ID: ${locationController.userId.value}',
                 style: AppTextStyles.bigBody,
               )),
               const SizedBox(height: 10),

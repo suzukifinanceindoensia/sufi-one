@@ -14,6 +14,7 @@ class LocationTrackController extends GetxController {
   final RxString longitude = 'Loading...'.obs;
   final RxString timestamp = 'Loading...'.obs;
   final RxString deviceId = 'Loading...'.obs;
+  final RxString userId = 'Loading...'.obs; 
   RxList<LocationTrackModel> listLocationTrack = <LocationTrackModel>[].obs;
   StreamSubscription<Position>? _positionStreamSubscription;
   final DateFormat _dateFormat = DateFormat('yyyy-MM-dd HH:mm:ss');
@@ -21,8 +22,6 @@ class LocationTrackController extends GetxController {
   RxBool isLoading = true.obs;
   RxString errorMessage = ''.obs;
 
-  // You'll need to get the userId from somewhere, e.g., an authentication service
-  final RxString userId = 'null'.obs; // **Important: Replace with actual user ID logic**
 
   @override
   void onInit() {
@@ -130,6 +129,7 @@ class LocationTrackController extends GetxController {
       userId.value = listLocationTrack[0].id.toString();
       isLoading.value = false;
     } catch (e) {
+      userId.value = 'User id Tidak ditemukan';
       errorMessage.value = 'Gagal mengambil data: $e';
       isLoading.value = false;
     }

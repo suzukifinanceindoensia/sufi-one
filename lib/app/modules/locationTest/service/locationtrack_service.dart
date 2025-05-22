@@ -6,7 +6,7 @@ class LocationtrackService {
   Future<List<LocationTrackModel>> getLocationTrackFromJson() async {
     try {
       final String rawJson = await rootBundle.loadString(
-        'res/dummyData/tracklocation/userdata.json',
+        'res/dummyData/tracklocation/userdata1.json',
       );
       final List<dynamic> decoded = json.decode(rawJson);
       return decoded.map((e) => LocationTrackModel.fromJson(e)).toList();
