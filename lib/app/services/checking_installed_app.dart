@@ -5,6 +5,7 @@ import 'package:installed_apps/installed_apps.dart';
 import 'package:installed_apps/app_info.dart';
 import 'package:sufi_one/app/services/check_app_model.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
+import 'package:sufi_one/app/modules/public/home_routes.dart';
 
 // Pengecekan aplikasi akan running jika melakukan perpindahan page/module melalui side bar dan ter print di terminal
 class CheckingInstalledAppService {
@@ -55,7 +56,10 @@ class CheckingInstalledAppService {
               ),
               actions: [
                 TextButton(
-                  onPressed: () => Get.back(),
+                  onPressed: () {
+                    Get.back();
+                    Get.offAllNamed(HomeRoutes.homepageCust);
+                  },
                   child: Text("OK", style: AppTextStyles.medBodyBold),
                 ),
               ],
