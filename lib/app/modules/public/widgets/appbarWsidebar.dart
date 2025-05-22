@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
-import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class SuzukiFinanceAppBarWsidebar extends StatelessWidget
     implements PreferredSizeWidget {
-  const SuzukiFinanceAppBarWsidebar({super.key, this.title = const Text('Register')});
+  const SuzukiFinanceAppBarWsidebar({
+    super.key,
+    this.title = const Text('Register'),
+  });
 
   final Widget title;
 
@@ -21,21 +23,18 @@ class SuzukiFinanceAppBarWsidebar extends StatelessWidget
         children: [
           // Logo Suzuki
           Image.asset(
-            'res/images/logo_suzuki.png', // Ganti dengan logo Suzuki kamu
-            height: 40,
+            'res/images/splashscreen2.png', // Ganti dengan logo Suzuki kamu
+            height: 38,
           ),
-          const SizedBox(width: 12),
+          /*const SizedBox(width: 12),
           // Judul
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("Suzuki Finance", style: AppTextStyles.appBar),
-              Text(
-                'Kredit Resmi Suzuki',
-                style: AppTextStyles.appBarSmall,
-              ),
+              Text('Kredit Resmi Suzuki', style: AppTextStyles.appBarSmall),
             ],
-          ),
+          ),*/
         ],
       ),
       leading: IconButton(
