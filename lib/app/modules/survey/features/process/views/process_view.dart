@@ -5,6 +5,7 @@ import 'package:intl/intl.dart' as intl;
 import 'package:sufi_one/app/modules/survey/features/process/controllers/process_controller.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
 import 'package:sufi_one/app/modules/survey/widgets/app_bar_widget.dart';
+import 'package:sufi_one/app/modules/survey/widgets/circular_loader/circular_loader_widget.dart';
 import 'package:sufi_one/app/modules/survey/widgets/tab_bar_widget.dart';
 
 class SurveyProcessView extends GetView<SurveyProcessController> {
@@ -12,51 +13,78 @@ class SurveyProcessView extends GetView<SurveyProcessController> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SurveyProcessController>(
-      init:
-          SurveyProcessController(), // Temporary for direct injection (we'll move this to bindings)
-      builder: (controller) {
-        return Scaffold(
-          resizeToAvoidBottomInset: false,
-          appBar: SurveyAppBarWidget(
-            menus: [
-              SurveyMenuModel(
-                title: "Refresh",
-                iconData: FontAwesomeIcons.arrowsRotate,
-                onTap: controller.refreshData,
-              ),
-            ],
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: SurveyAppBarWidget(
+        menus: [
+          SurveyMenuModel(
+            title: "Refresh",
+            iconData: FontAwesomeIcons.arrowsRotate,
+            onTap: controller.refreshData,
           ),
-          backgroundColor: const Color(0xFFF5F4F4),
-          body: Column(
-            children: [
-              TabBarWidget.buildTabBar(controller.selectedTabIndex),
-              // Page content area
-              Expanded(
-                child: RefreshIndicator(
-                  onRefresh: () async {
-                    //dummy func
-                    print("Pull-to-refresh triggered...");
-                    await Future.delayed(const Duration(seconds: 1));
-                    print("Dummy data refreshed");
-                  },
-                  child: ListView(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    children: [
-                      // listItem(),
-                      // listItem(),
-                      // listItem(),
-                      // listItem(),
-                      SizedBox(height: 250),
-                      Center(child: Text('PROCESS TAB - ON PROGRESS DEVELOP')),
-                    ],
-                  ),
+        ],
+      ),
+      backgroundColor: const Color(0xFFF5F4F4),
+      body: CircularLoaderWidget(
+        controller: controller.loaderController,
+        child: Column(
+          children: [
+            TabBarWidget.buildTabBar(controller.selectedTabIndex),
+            // Page content area
+            Expanded(
+              child: RefreshIndicator(
+                onRefresh: () async {
+                  //dummy func
+                  print("Pull-to-refresh triggered...");
+                  await Future.delayed(const Duration(seconds: 1));
+                  print("Dummy data refreshed");
+                },
+                child: ListView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  children: [
+                    listItem(),
+                    listItem(),
+                    // listItem(),
+                    // listItem(),
+                    // SizedBox(height: 250),
+                    // Center(child: Text('Pull down to refresh')),
+                  ],
                 ),
               ),
-            ],
-          ),
-        );
-      },
+            ),
+          ],
+        ),
+      ),
+      // body: Column(
+      //   children: [
+      //     TabBarWidget.buildTabBar(controller.selectedTabIndex),
+      //     // Page content area
+      //     Expanded(
+      //       child: RefreshIndicator(
+      //         onRefresh: () async {
+      //           //dummy func
+      //           print("Pull-to-refresh triggered...");
+      //           await Future.delayed(const Duration(seconds: 1));
+      //           print("Dummy data refreshed");
+      //         },
+      //         child: CircularLoaderWidget(
+      //           controller: controller.loaderController,
+      //         ),
+      //         // child: ListView(
+      //         //   physics: const AlwaysScrollableScrollPhysics(),
+      //         //   children: [
+      //         //     // listItem(),
+      //         //     // listItem(),
+      //         //     // listItem(),
+      //         //     // listItem(),
+      //         //     SizedBox(height: 250),
+      //         //     Center(child: Text('PROCESS TAB - ON PROGRESS DEVELOP')),
+      //         //   ],
+      //         // ),
+      //       ),
+      //     ),
+      //   ],
+      // ),
     );
   }
 }
