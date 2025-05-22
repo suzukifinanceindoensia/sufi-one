@@ -27,12 +27,15 @@ class MobcolDashboardController extends GetxController {
   RxBool isLoadingUpload = false.obs;
   RxString errorMessageUpload = ''.obs;
   @override
-  void onInit() {
+
+  void onInit() async {
+    Future.delayed(const Duration(milliseconds: 100), () {
+      fetchDataTugasBaru();
+      fetchDataTugasBelumSelesai();
+      fetchTugasSelesai();
+      fetchUploadBukti();
+    });
     super.onInit();
-    fetchDataTugasBaru();
-    fetchDataTugasBelumSelesai();
-    fetchTugasSelesai();
-    fetchUploadBukti();
   }
 
   Future<void> fetchDataTugasBaru() async {

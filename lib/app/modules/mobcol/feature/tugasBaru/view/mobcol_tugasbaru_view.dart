@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/controller/mobcol_tugasbaru_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
-import 'package:sufi_one/app/routes/app_routes.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:intl/intl.dart';
 
@@ -40,7 +40,7 @@ class MobcolTugasbaruView extends GetView<MobcolTugasbaruController> {
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                       child: GestureDetector(
                         onTap: () {
-                          Get.toNamed(AppRoutes.mobileCollectionTugasBaruDetail, arguments: tugas);
+                          Get.toNamed(MobcolRoutes.mobileCollectionTugasBaruDetail, arguments: tugas);
                         },
                         child: MobcolContainer(
                           children: [

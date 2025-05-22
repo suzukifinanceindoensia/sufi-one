@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/tugasSelesai/controller/mobcol_tugasselesai_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
-import 'package:sufi_one/app/routes/app_routes.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class MobcolTugasSelesaiView extends GetView<MobcolTugasSelesaiController> {
@@ -39,7 +39,7 @@ class MobcolTugasSelesaiView extends GetView<MobcolTugasSelesaiController> {
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                       child: GestureDetector(
                         onTap: () {
-                          Get.toNamed(AppRoutes.mobileCollectionTugasSelesaiDetail, arguments: tugas);
+                          Get.toNamed(MobcolRoutes.mobileCollectionTugasSelesaiDetail, arguments: tugas);
                         },
                         child: MobcolContainer(
                           children: [

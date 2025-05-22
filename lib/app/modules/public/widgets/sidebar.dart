@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:sufi_one/app/modules/locationTest/location_routes.dart';
+import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/public/home_routes.dart';
+import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/routes/app_routes.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
+import 'package:sufi_one/app/services/checking_installed_app.dart';
 
 class AppSidebar extends StatelessWidget {
   const AppSidebar({super.key});
@@ -24,7 +28,7 @@ class AppSidebar extends StatelessWidget {
                   itemCount: _sidebarItems.length,
                   separatorBuilder:
                       (BuildContext context, int index) =>
-                          const Divider(color: Colors.white60, thickness: 0.8),
+                          const Divider(color: Colors.white60, thickness: 2),
                   itemBuilder: (BuildContext context, int index) {
                     final item = _sidebarItems[index];
                     return SidebarItem(
@@ -56,6 +60,7 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.home, color: Colors.white),
     title: 'Home',
     onTap: () {
+      // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
       Get.toNamed(HomeRoutes.homepageCust);
     },
   ),
@@ -63,6 +68,7 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.person, color: Colors.white),
     title: 'Mobile Collection',
     onTap: () {
+      CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
       Get.toNamed(AppRoutes.mobileCollection);
     },
   ),
@@ -70,6 +76,7 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.info, color: Colors.white),
     title: 'Mobile Survey',
     onTap: () {
+      CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
       Get.toNamed(AppRoutes.survey);
     },
   ),
@@ -77,7 +84,15 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.abc, color: Colors.white),
     title: 'Zeus',
     onTap: () {
+      CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
       Get.toNamed(AppRoutes.zeus);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.location_on, color: Colors.white),
+    title: 'Track Location',
+    onTap: () {
+      Get.toNamed(LocationRoutes.trackLocation);
     },
   ),
 ];
