@@ -1,0 +1,56 @@
+import 'package:suzuki/model/application_question_group_model.dart';
+import 'package:suzuki/model/dicission_model.dart';
+
+class ApplicationPageModel {
+  final int? id; //: 9,
+  final int? formId; //: 1,
+  final String? name; //: "ORDER IN",
+  final int? order; //: 1,
+  final int? totalQuestionGroup; //: 2,
+  final List<ApplicationQuestionGroup>? questionGroups;
+  final int? totalDicission;
+  final List<DicissionModel>? dicissions;
+
+  ApplicationPageModel({
+    this.id,
+    this.formId,
+    this.name,
+    this.order,
+    this.totalQuestionGroup,
+    this.questionGroups,
+    this.totalDicission,
+    this.dicissions,
+  });
+
+  static ApplicationPageModel fromJson(Map<String, dynamic> json) {
+    return ApplicationPageModel(
+      id: (json["id"] as num?)?.toInt(),
+      formId: (json["form_id"] as num?)?.toInt(),
+      name: (json["name"] as String?),
+      order: (json["order"] as num?)?.toInt(),
+      totalQuestionGroup: (json["totalQuestionGroup"] as num?)?.toInt(),
+      questionGroups: (json["questionGroups"] as List?)
+              ?.map((e) => ApplicationQuestionGroup.fromjson(e))
+              .toList() ??
+          [],
+      totalDicission: (json["totalDicission"] as num?)?.toInt(),
+      dicissions: (json["dicissions"] as List?)
+              ?.map((e) => DicissionModel.fromJson(e))
+              .toList() ??
+          [],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "form_id": formId,
+      "name": name,
+      "order": order,
+      "totalQuestionGroup": totalQuestionGroup,
+      "questionGroups": questionGroups,
+      "totalDicission": totalDicission,
+      "dicissions": dicissions,
+    };
+  }
+}
