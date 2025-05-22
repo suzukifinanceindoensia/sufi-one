@@ -6,6 +6,7 @@ import 'package:sufi_one/app/routes/app_routes.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
+import 'package:sufi_one/app/services/checking_installed_app.dart';
 
 class AppSidebar extends StatelessWidget {
   const AppSidebar({super.key});
@@ -58,6 +59,7 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.home, color: Colors.white),
     title: 'Home',
     onTap: () {
+      // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
       Get.toNamed(HomeRoutes.homepageCust);
     },
   ),
@@ -65,20 +67,23 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.person, color: Colors.white),
     title: 'Mobile Collection',
     onTap: () {
-      Get.toNamed(MobcolRoutes.mobileCollection);
+      CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
+      Get.toNamed(AppRoutes.mobileCollection);
     },
   ),
   SidebarItemData(
     icon: const Icon(Icons.info, color: Colors.white),
     title: 'Mobile Survey',
     onTap: () {
-      Get.toNamed(SurveyRoutes.survey);
+      CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
+      Get.toNamed(AppRoutes.survey);
     },
   ),
   SidebarItemData(
     icon: const Icon(Icons.abc, color: Colors.white),
     title: 'Zeus',
     onTap: () {
+      CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
       Get.toNamed(AppRoutes.zeus);
     },
   ),
