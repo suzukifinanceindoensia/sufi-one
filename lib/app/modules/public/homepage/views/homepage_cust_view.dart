@@ -254,7 +254,7 @@ class _HomepageCustViewState extends State<HomepageCustView> {
             height: 180,
             alignment: Alignment.centerLeft,
             child: PageView.builder(
-              controller: _newsPageController,
+              controller: PageController(viewportFraction: 0.9),
               itemCount: newsImages.length,
               itemBuilder:
                   (context, index) => Padding(
