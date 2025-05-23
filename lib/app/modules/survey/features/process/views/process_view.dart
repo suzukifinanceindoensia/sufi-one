@@ -147,7 +147,7 @@ Widget listItem({
 }) {
   return GestureDetector(
     onTap: () {
-      Get.toNamed(SurveyRoutes.surveyFormDetail);
+      Get.toNamed(SurveyRoutes.surveyFormInput);
     },
     child: Container(
       width: double.infinity,
