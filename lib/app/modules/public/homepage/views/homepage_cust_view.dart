@@ -17,6 +17,7 @@ class HomepageCustView extends StatefulWidget {
 
 class _HomepageCustViewState extends State<HomepageCustView> {
   final HomepageCustController controller = Get.find<HomepageCustController>();
+  late final PageController _bannerPageController;
   final PageController _newsPageController = PageController(
     viewportFraction: 0.7,
   );
@@ -37,7 +38,15 @@ class _HomepageCustViewState extends State<HomepageCustView> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _bannerPageController = PageController();
+    controller.startAutoSlide(_bannerPageController);
+  }
+
+  @override
   void dispose() {
+    _bannerPageController.dispose();
     _newsPageController.dispose();
     super.dispose();
   }
@@ -89,7 +98,7 @@ class _HomepageCustViewState extends State<HomepageCustView> {
           SizedBox(
             height: 240,
             child: PageView.builder(
-              controller: controller.pageController,
+              controller: _bannerPageController,
               onPageChanged: controller.onPageChanged,
               itemCount: bannerImages.length,
               itemBuilder:
