@@ -61,7 +61,7 @@ final List<SidebarItemData> _sidebarItems = [
     title: 'Home',
     onTap: () {
       // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
-      Get.toNamed(HomeRoutes.homepageCust);
+      Get.offNamed(HomeRoutes.homepageCust);
     },
   ),
   SidebarItemData(
