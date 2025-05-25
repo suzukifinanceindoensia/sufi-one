@@ -34,10 +34,7 @@ class SurveyHomeView extends GetView<SurveyHomeController> {
               Expanded(
                 child: RefreshIndicator(
                   onRefresh: () async {
-                    //dummy func
-                    print("Pull-to-refresh triggered...");
-                    await Future.delayed(const Duration(seconds: 1));
-                    print("Dummy data refreshed");
+                    await controller.refreshData();
                   },
                   child: ListView(
                     physics: const AlwaysScrollableScrollPhysics(),
