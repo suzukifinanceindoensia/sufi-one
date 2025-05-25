@@ -31,6 +31,7 @@ class SurveyHomeSearchBox extends StatelessWidget {
               height: 50,
               color: Colors.transparent,
               child: Material(
+                color: SurveyColor.lightTextColor,
                 child: TextField(
                   controller: controller.searchController,
                   autofocus: false,
