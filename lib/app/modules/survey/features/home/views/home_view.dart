@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:sufi_one/app/modules/survey/features/home/controllers/home_controller.dart';
+import 'package:sufi_one/app/modules/survey/features/home/widgets/home_search_widget.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
 import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/modules/survey/widgets/app_bar_widget.dart';
@@ -30,7 +32,7 @@ class SurveyHomeView extends GetView<SurveyHomeController> {
           body: Column(
             children: [
               TabBarWidget.buildTabBar(controller.selectedTabIndex),
-              // Page content area
+              SurveyHomeSearchBox(),
               Expanded(
                 child: RefreshIndicator(
                   onRefresh: () async {

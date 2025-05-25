@@ -1,4 +1,5 @@
 // lib/app/modules/survey/home/controllers/survey_home_controller.dart
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/survey/features/home/models/newtask_model.dart';
 import 'package:sufi_one/app/modules/survey/features/home/services/newtask_service.dart';
@@ -6,11 +7,15 @@ import 'package:sufi_one/app/modules/survey/features/home/services/newtask_servi
 class SurveyHomeController extends GetxController {
   RxInt selectedTabIndex = 0.obs;
   final RxList<SurveyNewtaskModel> tasks = <SurveyNewtaskModel>[].obs;
+  TextEditingController searchController = TextEditingController();
 
   @override
   void onInit() {
     super.onInit();
     loadNewTasks();
+    searchController.addListener(() {
+      print("Search text: ${searchController.text}");
+    });
   }
 
   // For now it's empty — just to confirm binding works
@@ -40,5 +45,11 @@ class SurveyHomeController extends GetxController {
     } catch (e) {
       print("Error loading tasks: $e");
     }
+  }
+
+  @override
+  void onClose() {
+    searchController.dispose();
+    super.onClose();
   }
 }
