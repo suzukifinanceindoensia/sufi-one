@@ -1,11 +1,8 @@
-// ignore_for_file: dead_code
-
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/survey/models/application_model.dart';
-import 'package:sufi_one/app/modules/survey/services/newtask_service.dart';
+import 'package:sufi_one/app/modules/survey/services/tasklist_service.dart';
 import 'package:sufi_one/app/modules/survey/widgets/circular_loader/circular_loader_controller.dart';
 
 class SurveyHomeController extends GetxController {
@@ -58,7 +55,7 @@ class SurveyHomeController extends GetxController {
 
   Future<void> loadNewTasks() async {
     try {
-      final result = await SurveyNewTaskService.getNewTaskList(
+      final result = await SurveyTasklistService.getNewTaskList(
         token: "dummy-token",
       );
       tasks.assignAll(result);

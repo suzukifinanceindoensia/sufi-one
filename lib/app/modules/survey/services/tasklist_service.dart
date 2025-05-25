@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:sufi_one/app/modules/survey/models/application_model.dart';
 
-class SurveyNewTaskService {
+class SurveyTasklistService {
   static Future<List<SurveyApplicationModel>> getNewTaskList({
     required String? token,
   }) async {
