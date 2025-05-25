@@ -57,10 +57,5 @@ class SurveyHomeView extends GetView<SurveyHomeController> {
         ),
       ),
     );
-
-    // return GetBuilder<SurveyHomeController>(
-    //   builder: (controller) {
-    //   },
-    // );
   }
 }
