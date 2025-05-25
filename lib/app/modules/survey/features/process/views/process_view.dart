@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:sufi_one/app/modules/survey/features/process/controllers/process_controller.dart';
+import 'package:sufi_one/app/modules/survey/features/process/widgets/slidable_tile_widget.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
 import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/modules/survey/widgets/app_bar_widget.dart';
@@ -40,17 +41,21 @@ class SurveyProcessView extends GetView<SurveyProcessController> {
                   await Future.delayed(const Duration(seconds: 1));
                   print("Dummy data refreshed");
                 },
-                child: ListView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  children: [
-                    listItem(),
-                    listItem(),
-                    // listItem(),
-                    // listItem(),
-                    // SizedBox(height: 250),
-                    // Center(child: Text('Pull down to refresh')),
-                  ],
-                ),
+                child: Obx(() {
+                  if (controller.tasks.isEmpty) {
+                    return const Center(child: Text('No tasks available'));
+                  }
+
+                  return ListView.builder(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    itemCount: controller.tasks.length,
+                    itemBuilder: (context, taskIndex) {
+                      return SlidableSurveyTaskTile(
+                        task: controller.tasks[taskIndex],
+                      );
+                    },
+                  );
+                }),
               ),
             ),
           ],
