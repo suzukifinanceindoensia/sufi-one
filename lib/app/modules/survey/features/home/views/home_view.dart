@@ -4,10 +4,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:sufi_one/app/modules/survey/features/home/controllers/home_controller.dart';
+import 'package:sufi_one/app/modules/survey/features/home/models/newtask_model.dart';
 import 'package:sufi_one/app/modules/survey/features/home/widgets/home_search_widget.dart';
+import 'package:sufi_one/app/modules/survey/features/home/widgets/tile_widget.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
 import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/modules/survey/widgets/app_bar_widget.dart';
+import 'package:sufi_one/app/modules/survey/widgets/circular_loader/circular_loader_widget.dart';
 import 'package:sufi_one/app/modules/survey/widgets/tab_bar_widget.dart';
 
 class SurveyHomeView extends GetView<SurveyHomeController> {
@@ -22,36 +25,76 @@ class SurveyHomeView extends GetView<SurveyHomeController> {
           appBar: SurveyAppBarWidget(
             menus: [
               SurveyMenuModel(
-                title: "Refresh",
+                title: "Reload",
                 iconData: FontAwesomeIcons.arrowsRotate,
-                onTap: controller.refreshData,
+                onTap: controller.simulateLoadingProcess,
               ),
             ],
           ),
           backgroundColor: const Color(0xFFF5F4F4),
-          body: Column(
-            children: [
-              TabBarWidget.buildTabBar(controller.selectedTabIndex),
-              SurveyHomeSearchBox(),
-              Expanded(
-                child: RefreshIndicator(
-                  onRefresh: () async {
-                    await controller.refreshData();
-                  },
-                  child: ListView(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    children: [
-                      listItem(),
-                      listItem(),
-                      listItem(),
-                      listItem(),
-                      // SizedBox(height: 250),
-                      // Center(child: Text('Pull down to refresh')),
-                    ],
+          body: CircularLoaderWidget(
+            controller: controller.loaderController,
+            child: Column(
+              children: [
+                TabBarWidget.buildTabBar(controller.selectedTabIndex),
+                SurveyHomeSearchBox(),
+                Expanded(
+                  child: RefreshIndicator(
+                    onRefresh: () async {
+                      await controller.refreshData();
+                    },
+                    child: Obx(() {
+                      if (controller.tasks.isEmpty) {
+                        return const Center(child: Text('No tasks available'));
+                      }
+
+                      return ListView.builder(
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        itemCount: controller.tasks.length,
+                        itemBuilder: (context, taskIndex) {
+                          return SurveyTaskTile(
+                            task: controller.tasks[taskIndex],
+                          );
+                        },
+                      );
+                    }),
+                    // child: Obx(() {
+                    //   if (controller.tasks.isEmpty) {
+                    //     return ListView(
+                    //       physics: const AlwaysScrollableScrollPhysics(),
+                    //       children: const [
+                    //         SizedBox(height: 250),
+                    //         Center(child: Text('No tasks found')),
+                    //       ],
+                    //     );
+                    //   }
+                    //   return ListView.builder(
+                    //     physics: const AlwaysScrollableScrollPhysics(),
+                    //     itemCount: controller.tasks.length,
+                    //     itemBuilder: (context, index) {
+                    //       final task = controller.tasks[index];
+                    //       print(task);
+                    //       return listItem(
+                    //         task,
+                    //       ); // pass task to your listItem widget if it accepts it
+                    //     },
+                    //   );
+                    // }),
+                    // child: ListView(
+                    //   physics: const AlwaysScrollableScrollPhysics(),
+                    //   children: [
+                    //     listItem(),
+                    //     listItem(),
+                    //     listItem(),
+                    //     listItem(),
+                    //     // SizedBox(height: 250),
+                    //     // Center(child: Text('Pull down to refresh')),
+                    //   ],
+                    // ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
@@ -59,7 +102,130 @@ class SurveyHomeView extends GetView<SurveyHomeController> {
   }
 }
 
-Widget listItem({
+Widget listItem(SurveyNewtaskModel task) {
+  return GestureDetector(
+    onTap: () {
+      Get.toNamed(SurveyRoutes.surveyFormDetail);
+    },
+    child: Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade400,
+            offset: const Offset(2, 2),
+            blurRadius: 2,
+          ),
+        ],
+        border: Border.all(
+          color: Colors.grey.shade400,
+          style: BorderStyle.solid,
+        ),
+      ),
+      child: Container(
+        color: Colors.transparent,
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                border: Border(bottom: BorderSide(color: Colors.black)),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Container(
+                      color: Colors.transparent,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            ("151225050005"),
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: "Roboto",
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            ("Konsumen dapat dihubungi"),
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: "Roboto",
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      color: Colors.transparent,
+                      alignment: Alignment.centerRight,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            intl.DateFormat(
+                              "dd MMM yyyy HH:mm:ss",
+                            ).format(DateTime.parse('2025-05-01 07:07:07')),
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: "Roboto",
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "0 Hari  0 jam 0 menit",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: "Roboto",
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            IntrinsicHeight(
+              child: Container(
+                color: Colors.transparent,
+                child: Stack(
+                  children: [
+                    Column(
+                      children: [
+                        consumerData(),
+                        deviceHandles(
+                          deviceHandlesPrefix:
+                              "In Progres At ", //$deviceHandlesPrefix",
+                        ),
+                      ],
+                    ),
+                    // floatingChild ?? const SizedBox(),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+Widget listItems({
   Widget? floatingChild,
   String? deviceHandlesPrefix,
   bool? enableTap = true,

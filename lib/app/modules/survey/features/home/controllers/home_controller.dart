@@ -1,10 +1,15 @@
-// lib/app/modules/survey/home/controllers/survey_home_controller.dart
+// ignore_for_file: dead_code
+
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/survey/features/home/models/newtask_model.dart';
 import 'package:sufi_one/app/modules/survey/features/home/services/newtask_service.dart';
+import 'package:sufi_one/app/modules/survey/widgets/circular_loader/circular_loader_controller.dart';
 
 class SurveyHomeController extends GetxController {
+  final CircularLoaderController loaderController = CircularLoaderController();
   RxInt selectedTabIndex = 0.obs;
   final RxList<SurveyNewtaskModel> tasks = <SurveyNewtaskModel>[].obs;
   TextEditingController searchController = TextEditingController();
@@ -12,10 +17,35 @@ class SurveyHomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    loadNewTasks();
+    // loadNewTasks();
+    simulateLoadingProcess();
+
     searchController.addListener(() {
       print("Search text: ${searchController.text}");
     });
+  }
+
+  Future<void> simulateLoadingProcess() async {
+    loaderController.startLoading(message: "Loading data...");
+
+    await Future.delayed(Duration(seconds: 1)); // simulate delay
+
+    try {
+      await loadNewTasks(); // ✅ properly awaited
+
+      loaderController.stopLoading(
+        message: "Data loaded successfully!",
+        duration: Duration(seconds: 2),
+        onClose: () => print("Success message closed"),
+      );
+    } catch (e) {
+      loaderController.stopLoading(
+        message: "Failed to load data.",
+        isError: true,
+        duration: Duration(seconds: 2),
+        onClose: () => print("Error message closed"),
+      );
+    }
   }
 
   // For now it's empty — just to confirm binding works
@@ -32,16 +62,6 @@ class SurveyHomeController extends GetxController {
         token: "dummy-token",
       );
       tasks.assignAll(result);
-
-      for (var task in result) {
-        print("Task ID: ${task.submissionId}");
-        for (var data in task.data ?? []) {
-          print("Data code: ${data?.code}");
-          print("Data Label: ${data?.label}");
-          print("Data Name: ${data?.value}");
-        }
-        print("-----");
-      }
     } catch (e) {
       print("Error loading tasks: $e");
     }
