@@ -14,54 +14,53 @@ class SurveyHomeView extends GetView<SurveyHomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SurveyHomeController>(
-      builder: (controller) {
-        return Scaffold(
-          resizeToAvoidBottomInset: false,
-          appBar: SurveyAppBarWidget(
-            menus: [
-              SurveyMenuModel(
-                title: "Reload",
-                iconData: FontAwesomeIcons.arrowsRotate,
-                onTap: controller.simulateLoadingProcess,
-              ),
-            ],
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: SurveyAppBarWidget(
+        menus: [
+          SurveyMenuModel(
+            title: "Reload",
+            iconData: FontAwesomeIcons.arrowsRotate,
+            onTap: controller.simulateLoadingProcess,
           ),
-          backgroundColor: const Color(0xFFF5F4F4),
-          body: CircularLoaderWidget(
-            controller: controller.loaderController,
-            child: Column(
-              children: [
-                TabBarWidget.buildTabBar(controller.selectedTabIndex),
-                SurveyHomeSearchBox(),
-                SizedBox(height: 5),
-                Expanded(
-                  child: RefreshIndicator(
-                    onRefresh: () async {
-                      await controller.refreshData();
-                    },
-                    child: Obx(() {
-                      if (controller.tasks.isEmpty) {
-                        return const Center(child: Text('No tasks available'));
-                      }
+        ],
+      ),
+      backgroundColor: const Color(0xFFF5F4F4),
+      body: CircularLoaderWidget(
+        controller: controller.loaderController,
+        child: Column(
+          children: [
+            TabBarWidget.buildTabBar(controller.selectedTabIndex),
+            SurveyHomeSearchBox(),
+            SizedBox(height: 5),
+            Expanded(
+              child: RefreshIndicator(
+                onRefresh: () async {
+                  await controller.refreshData();
+                },
+                child: Obx(() {
+                  if (controller.tasks.isEmpty) {
+                    return const Center(child: Text('No tasks available'));
+                  }
 
-                      return ListView.builder(
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        itemCount: controller.tasks.length,
-                        itemBuilder: (context, taskIndex) {
-                          return SurveyTaskTile(
-                            task: controller.tasks[taskIndex],
-                          );
-                        },
-                      );
-                    }),
-                  ),
-                ),
-              ],
+                  return ListView.builder(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    itemCount: controller.tasks.length,
+                    itemBuilder: (context, taskIndex) {
+                      return SurveyTaskTile(task: controller.tasks[taskIndex]);
+                    },
+                  );
+                }),
+              ),
             ),
-          ),
-        );
-      },
+          ],
+        ),
+      ),
     );
+
+    // return GetBuilder<SurveyHomeController>(
+    //   builder: (controller) {
+    //   },
+    // );
   }
 }
