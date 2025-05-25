@@ -61,9 +61,9 @@ class _SurveyTaskTileState extends State<SurveyTaskTile> {
       },
       child: Container(
         width: double.infinity,
-        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(15),
           color: Colors.white,
           boxShadow: [
             BoxShadow(
@@ -158,26 +158,18 @@ class _SurveyTaskTileState extends State<SurveyTaskTile> {
                     children: [
                       Column(
                         children: [
-                          consumerData(context, widget.task.data ?? []),
+                          _consumerData(context, widget.task.data ?? []),
+                          widget.task.deviceModel!.isEmpty
+                              ? SizedBox()
+                              : _deviceHandles(
+                                deviceHandlesPrefix: widget.task.deviceModel,
+                              ),
                         ],
                       ),
                     ],
                   ),
                 ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.all(8.0),
-              //   child: Text('Submission ID: ${widget.task.submissionId}'),
-              // ),
-              // ...?widget.task.data?.map((d) {
-              //   return ListTile(
-              //     title: Text(d?.label ?? 'No Label'),
-              //     subtitle: Text(
-              //       'Parent ID: ${widget.task.submissionId}\nValue: ${d?.value ?? '-'}',
-              //     ),
-              //   );
-              // }).toList(),
-              // const Divider(),
             ],
           ),
         ),
@@ -186,7 +178,7 @@ class _SurveyTaskTileState extends State<SurveyTaskTile> {
   }
 }
 
-Widget consumerData(
+Widget _consumerData(
   BuildContext context,
   List<ApplicationSnapshootModel?> data,
 ) {
@@ -226,6 +218,37 @@ Widget consumerData(
           ),
         );
       }),
+    ),
+  );
+}
+
+Widget _deviceHandles({String? deviceHandlesPrefix}) {
+  return Container(
+    color: Colors.transparent,
+    padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Text(
+          'Processed at: ',
+          style: TextStyle(
+            color: Colors.black,
+            fontFamily: "Roboto",
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(width: 5),
+        Text(
+          deviceHandlesPrefix!,
+          style: TextStyle(
+            color: Colors.black,
+            fontFamily: "Roboto",
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
     ),
   );
 }
