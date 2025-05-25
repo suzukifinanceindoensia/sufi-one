@@ -16,15 +16,23 @@ class SurveyFormDetailView extends GetView<SurveyFormDetailController> {
         appBar: SurveyAppBarWidget(menus: [SurveyMenuModel(title: "Process")]),
         body: Column(
           children: [
-            TabBar(
-              controller: controller.tabController,
-              labelColor: const Color(0xFF003399),
-              indicatorColor: const Color(0xFF003399),
-              indicatorAnimation: TabIndicatorAnimation.elastic,
-              tabs:
-                  controller.tabs
-                      .map((tab) => Tab(text: tab['name'].toString()))
-                      .toList(),
+            Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                border: Border(
+                  bottom: BorderSide(color: Colors.grey, width: 0.5),
+                ),
+              ),
+              child: TabBar(
+                controller: controller.tabController,
+                labelColor: const Color(0xFF003399),
+                indicatorColor: const Color(0xFF003399),
+                indicatorAnimation: TabIndicatorAnimation.elastic,
+                tabs:
+                    controller.tabs
+                        .map((tab) => Tab(text: tab['name'].toString()))
+                        .toList(),
+              ),
             ),
             const SizedBox(height: 10),
             Expanded(
