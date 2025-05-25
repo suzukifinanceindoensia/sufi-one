@@ -9,16 +9,16 @@ import 'package:intl/intl.dart' as intl;
 import 'package:sufi_one/app/modules/survey/utils/color.dart';
 import 'package:sufi_one/app/modules/survey/utils/text_style.dart';
 
-class SurveyTaskTile extends StatefulWidget {
+class SurveyProcessTile extends StatefulWidget {
   final SurveyApplicationModel task;
 
-  const SurveyTaskTile({super.key, required this.task});
+  const SurveyProcessTile({super.key, required this.task});
 
   @override
-  State<SurveyTaskTile> createState() => _SurveyTaskTileState();
+  State<SurveyProcessTile> createState() => _SurveyProcessTileState();
 }
 
-class _SurveyTaskTileState extends State<SurveyTaskTile> {
+class _SurveyProcessTileState extends State<SurveyProcessTile> {
   final Rx<Duration> _elapsed = Duration.zero.obs;
   Timer? _timer;
 
@@ -32,10 +32,10 @@ class _SurveyTaskTileState extends State<SurveyTaskTile> {
     _timer?.cancel();
 
     _timer = Timer.periodic(const Duration(seconds: 1), (_) {
-      final pivotDate = widget.task.finishedDate ?? DateTime.now();
-      final submissionDate = widget.task.submissionDate ?? pivotDate;
+      final now = DateTime.now();
+      final submissionDate = widget.task.submissionDate ?? now;
 
-      final elapsed = pivotDate.difference(submissionDate);
+      final elapsed = now.difference(submissionDate);
       _elapsed.value = elapsed.isNegative ? Duration.zero : elapsed;
     });
   }

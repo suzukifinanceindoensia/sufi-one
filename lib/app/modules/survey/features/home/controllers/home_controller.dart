@@ -4,14 +4,14 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/survey/features/home/models/newtask_model.dart';
-import 'package:sufi_one/app/modules/survey/features/home/services/newtask_service.dart';
+import 'package:sufi_one/app/modules/survey/models/application_model.dart';
+import 'package:sufi_one/app/modules/survey/services/newtask_service.dart';
 import 'package:sufi_one/app/modules/survey/widgets/circular_loader/circular_loader_controller.dart';
 
 class SurveyHomeController extends GetxController {
   final CircularLoaderController loaderController = CircularLoaderController();
   RxInt selectedTabIndex = 0.obs;
-  final RxList<SurveyNewtaskModel> tasks = <SurveyNewtaskModel>[].obs;
+  final RxList<SurveyApplicationModel> tasks = <SurveyApplicationModel>[].obs;
   TextEditingController searchController = TextEditingController();
 
   @override

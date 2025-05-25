@@ -19,7 +19,7 @@ class SurveyProcessView extends GetView<SurveyProcessController> {
       appBar: SurveyAppBarWidget(
         menus: [
           SurveyMenuModel(
-            title: "Refresh",
+            title: "Reload",
             iconData: FontAwesomeIcons.arrowsRotate,
             onTap: controller.refreshData,
           ),
@@ -31,7 +31,7 @@ class SurveyProcessView extends GetView<SurveyProcessController> {
         child: Column(
           children: [
             TabBarWidget.buildTabBar(controller.selectedTabIndex),
-            // Page content area
+            SizedBox(height: 5),
             Expanded(
               child: RefreshIndicator(
                 onRefresh: () async {

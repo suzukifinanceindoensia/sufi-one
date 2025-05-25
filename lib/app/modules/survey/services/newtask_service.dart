@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:sufi_one/app/modules/survey/features/home/models/newtask_model.dart';
+import 'package:sufi_one/app/modules/survey/models/application_model.dart';
 
 class SurveyNewTaskService {
-  static Future<List<SurveyNewtaskModel>> getNewTaskList({
+  static Future<List<SurveyApplicationModel>> getNewTaskList({
     required String? token,
   }) async {
     try {
@@ -15,7 +15,9 @@ class SurveyNewTaskService {
       final Map<String, dynamic> jsonMap = json.decode(rawResponse);
       final List<dynamic> mainDataList = jsonMap['data'] ?? [];
 
-      return mainDataList.map((e) => SurveyNewtaskModel.fromJson(e)).toList();
+      return mainDataList
+          .map((e) => SurveyApplicationModel.fromJson(e))
+          .toList();
     } catch (error) {
       print('Error loading tasks: $error');
       rethrow;

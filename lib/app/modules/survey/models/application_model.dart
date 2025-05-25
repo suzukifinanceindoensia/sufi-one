@@ -1,6 +1,6 @@
 import 'package:sufi_one/app/modules/survey/models/application_snap_shoot_model.dart';
 
-class SurveyNewtaskModel {
+class SurveyApplicationModel {
   int? submissionId; // 0,
   String? submissionNumber; // "String",
   int? applicationId; // 0,
@@ -22,7 +22,7 @@ class SurveyNewtaskModel {
   String? submitMessage; // "string"
   List<ApplicationSnapshootModel?>? data;
 
-  SurveyNewtaskModel({
+  SurveyApplicationModel({
     this.submissionId,
     this.submissionNumber,
     this.applicationId,
@@ -45,8 +45,8 @@ class SurveyNewtaskModel {
     this.data,
   });
 
-  factory SurveyNewtaskModel.fromJson(Map<String, dynamic> json) {
-    return SurveyNewtaskModel(
+  factory SurveyApplicationModel.fromJson(Map<String, dynamic> json) {
+    return SurveyApplicationModel(
       submissionId: (json["submission_id"] as int?)?.toInt(),
       submissionNumber: (json["submission_number"] as String?),
       applicationId: (json["application_id"] as num?)?.toInt(),
@@ -91,6 +91,7 @@ class SurveyNewtaskModel {
           [],
     );
   }
+
   Map<String, dynamic> toJson() {
     return {
       "submission_id": submissionId,
