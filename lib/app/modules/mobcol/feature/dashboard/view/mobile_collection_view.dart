@@ -43,40 +43,40 @@ class MobcolDashboardView extends StatelessWidget {
                       Get.toNamed(MobcolRoutes.mobileCollectionTugasBaru);
                     },
                     child: MenuCreatorMobcol(
-                      imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
+                      imageUrl: "https://cdn-icons-png.freepik.com/512/7177/7177065.png",
                       number: "${controller.listTugasBaru.length}",
                       title: "Tugas Baru",
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   GestureDetector(
                     onTap: (){
                       Get.toNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai);
                     },
                     child: MenuCreatorMobcol(
-                      imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
+                      imageUrl: "https://cdn-icons-png.flaticon.com/512/5058/5058432.png",
                       number: "${controller.listTugasBelumSelesai.length}",
                       title: "Tugas Belum\nSelesai",
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   GestureDetector(
                     onTap: (){
                       Get.toNamed(MobcolRoutes.mobileCollectionUploadBukti);
                     },
                     child: MenuCreatorMobcol(
-                      imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
+                      imageUrl: "https://cdn-icons-png.flaticon.com/512/762/762686.png",
                       number: "${controller.listUploadBukti.length}",
                       title: "Upload Bukti\nPembayaran",
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   GestureDetector(
                     onTap: (){
                       Get.toNamed(MobcolRoutes.mobileCollectionTugasSelesai);
                     },
                     child: MenuCreatorMobcol(
-                      imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
+                      imageUrl: "https://cdn-icons-png.flaticon.com/512/6783/6783643.png",
                       number: "${controller.listTugasSelesai.length}",
                       title: "Tugas Selesai",
                     ),

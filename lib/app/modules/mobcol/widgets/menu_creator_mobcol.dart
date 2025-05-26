@@ -22,12 +22,27 @@ class MenuCreatorMobcol extends StatelessWidget {
         height: 130,
         padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
         decoration: BoxDecoration(
-          color: AppColors.bg2,
+          gradient: const LinearGradient(
+            colors: [
+              AppColors.bg1,
+              AppColors.bg2,
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: AppColors.iconDefault,
-            width: 2,
+            width: 1.6,
           ),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 7,
+              offset: Offset(1, 5),
+            ),
+          ],
+
         ),
         child: Row(
           children: [
@@ -47,7 +62,7 @@ class MenuCreatorMobcol extends StatelessWidget {
               ],
             ),
             const Expanded(child: SizedBox()),
-            Opacity(opacity: 0.5, child: Image.network(imageUrl, height: 80,width: 80,fit: BoxFit.cover,),),
+            Opacity(opacity: 0.6, child: Image.network(imageUrl, height: 80,width: 80,fit: BoxFit.cover,),),
           ],
         ),
       ),
