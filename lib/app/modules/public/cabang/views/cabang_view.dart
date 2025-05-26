@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/cabang/controllers/cabang_controller.dart';
+import 'package:sufi_one/app/modules/public/cabang/models/cabang_model.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
@@ -33,9 +34,9 @@ class CabangView extends StatelessWidget {
                 items:
                     controller.cabangList.map((cabang) {
                       return DropdownMenuItem<String>(
-                        value: cabang['name'],
+                        value: cabang.name,
                         child: Text(
-                          cabang['name']!,
+                          cabang.name,
                           style: TextStyle(color: AppColors.iconDefault),
                         ),
                       );
@@ -63,14 +64,19 @@ class CabangView extends StatelessWidget {
                   style: TextStyle(color: AppColors.iconDefault, fontSize: 14),
                 );
               }
+
               final selectedCabang = controller.cabangList.firstWhere(
-                (cabang) => cabang['name'] == controller.selectedCabang.value,
+                (cabang) => cabang.name == controller.selectedCabang.value,
                 orElse:
-                    () => {
-                      'address': 'Alamat tidak tersedia',
-                      'distance': '0 km',
-                    },
+                    () => CabangModel(
+                      name: 'Cabang Tidak Ditemukan',
+                      address: 'Alamat tidak tersedia',
+                      latitude: 0,
+                      longitude: 0,
+                      distance: '0 km',
+                    ),
               );
+
               return Card(
                 color: AppColors.bg1,
                 margin: EdgeInsets.symmetric(vertical: 10),
@@ -80,7 +86,7 @@ class CabangView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        selectedCabang['name'] ?? 'Cabang Tidak Ditemukan',
+                        selectedCabang.name,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -89,7 +95,7 @@ class CabangView extends StatelessWidget {
                       ),
                       SizedBox(height: 8),
                       Text(
-                        selectedCabang['address']!,
+                        selectedCabang.address,
                         style: TextStyle(
                           fontSize: 14,
                           color: AppColors.iconDefault,
@@ -100,7 +106,7 @@ class CabangView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            selectedCabang['distance'] ?? '0 km',
+                            selectedCabang.distance,
                             style: TextStyle(
                               fontSize: 14,
                               color: AppColors.iconDefault,
@@ -108,8 +114,7 @@ class CabangView extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap:
-                                () =>
-                                    controller.goToMap(selectedCabang['name']!),
+                                () => controller.goToMap(selectedCabang.name),
                             child: Row(
                               children: [
                                 Text(
