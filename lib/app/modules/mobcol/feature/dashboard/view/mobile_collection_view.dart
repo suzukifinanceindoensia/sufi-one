@@ -44,7 +44,7 @@ class MobcolDashboardView extends StatelessWidget {
                     },
                     child: MenuCreatorMobcol(
                       imageUrl: "https://cdn-icons-png.freepik.com/512/7177/7177065.png",
-                      number: "${controller.listTugasBaru.length}",
+                      number: controller.countTugasBaru,
                       title: "Tugas Baru",
                     ),
                   ),
@@ -55,7 +55,7 @@ class MobcolDashboardView extends StatelessWidget {
                     },
                     child: MenuCreatorMobcol(
                       imageUrl: "https://cdn-icons-png.flaticon.com/512/5058/5058432.png",
-                      number: "${controller.listTugasBelumSelesai.length}",
+                      number: controller.countTugasBelumSelesai,
                       title: "Tugas Belum\nSelesai",
                     ),
                   ),
@@ -66,7 +66,7 @@ class MobcolDashboardView extends StatelessWidget {
                     },
                     child: MenuCreatorMobcol(
                       imageUrl: "https://cdn-icons-png.flaticon.com/512/762/762686.png",
-                      number: "${controller.listUploadBukti.length}",
+                      number: controller.countUploadBukti,
                       title: "Upload Bukti\nPembayaran",
                     ),
                   ),
@@ -77,7 +77,7 @@ class MobcolDashboardView extends StatelessWidget {
                     },
                     child: MenuCreatorMobcol(
                       imageUrl: "https://cdn-icons-png.flaticon.com/512/6783/6783643.png",
-                      number: "${controller.listTugasSelesai.length}",
+                      number: controller.countTugasSelesai,
                       title: "Tugas Selesai",
                     ),
                   ),

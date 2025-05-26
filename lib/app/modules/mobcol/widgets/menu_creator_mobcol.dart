@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
@@ -10,7 +11,7 @@ class MenuCreatorMobcol extends StatelessWidget {
     required this.imageUrl,
   });
 
-  final String number;
+  final RxInt number;
   final String title;
   final String imageUrl;
 
@@ -51,7 +52,13 @@ class MenuCreatorMobcol extends StatelessWidget {
               children: [
                 SizedBox(
                   height: 55,
-                  child: Text(number, style: AppTextStyles.MobcolNum),
+                  child: Obx(
+                    () => Text(
+                      // Akses nilai dari RxInt
+                      '${number.value}',
+                      style: AppTextStyles.MobcolNum
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 40,
