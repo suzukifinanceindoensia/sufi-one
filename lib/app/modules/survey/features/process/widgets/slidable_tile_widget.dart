@@ -14,6 +14,48 @@ class SlidableSurveyTaskTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Slidable(
       key: ValueKey(task.submissionId), // ensure unique key
+      startActionPane: ActionPane(
+        motion: const DrawerMotion(),
+        extentRatio: 0.4,
+        children: [
+          Flexible(
+            flex: 1, // Ensure non-zero
+            child: Container(
+              color: Colors.transparent,
+              height: double.infinity,
+              width: (MediaQuery.of(context).size.width - 40) * 30 / 100,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.edit, color: Colors.blue),
+                    onPressed: () {
+                      Get.toNamed(
+                        SurveyRoutes.surveyFormInput,
+                        arguments: task,
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 8),
+                  IconButton(
+                    icon: const Icon(Icons.delete, color: Colors.red),
+                    onPressed: () {
+                      // your delete logic here
+                    },
+                  ),
+                  const SizedBox(height: 8),
+                  IconButton(
+                    icon: const Icon(Icons.info_outline, color: Colors.grey),
+                    onPressed: () {
+                      // your info logic here
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
       endActionPane: ActionPane(
         motion: const DrawerMotion(),
         extentRatio: 0.4,
