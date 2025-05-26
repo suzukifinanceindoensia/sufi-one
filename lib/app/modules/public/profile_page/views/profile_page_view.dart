@@ -17,8 +17,8 @@ class ProfilePageView extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.bg1,
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: Drawer(child: AppSidebar()),
+      appBar: const SuzukiFinanceAppBarWsidebar(),
+      drawer: const Drawer(child: AppSidebar()),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -45,13 +45,15 @@ class ProfilePageView extends StatelessWidget {
         const SizedBox(height: 8),
         Obx(
           () => Text(
-            controller.user.value.username,
+            controller.user.value?.username ?? 'No Username',
             style: AppTextStyles.bigBody,
           ),
         ),
         Obx(
-          () =>
-              Text(controller.user.value.email, style: AppTextStyles.smallBody),
+          () => Text(
+            controller.user.value?.email ?? 'No Email',
+            style: AppTextStyles.smallBody,
+          ),
         ),
         const SizedBox(height: 12),
         Container(
@@ -60,7 +62,7 @@ class ProfilePageView extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(12),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.black12,
                 blurRadius: 6,
@@ -106,7 +108,9 @@ class ProfilePageView extends StatelessWidget {
   Widget _buildMenuSection() {
     return Column(
       children: [
-        _buildMenuItem('Pengajuan kendaraan saya', Icons.directions_car, () {}),
+        _buildMenuItem('Pengajuan kendaraan saya', Icons.directions_car, () {
+          // TODO: Implementasi navigasi jika ada
+        }),
         _buildMenuItem('Riwayat Transaksi Point', Icons.history, () {
           Get.toNamed(HomeRoutes.transaksiPoint);
         }),
@@ -116,7 +120,10 @@ class ProfilePageView extends StatelessWidget {
         _buildMenuItem('Atur Ulang Kata Sandi', Icons.lock_reset, () {
           Get.toNamed(HomeRoutes.ubahPassword);
         }),
-        _buildMenuItem('Keluar', Icons.logout, () {}),
+        _buildMenuItem('Keluar', Icons.logout, () {
+          // TODO: Implementasi logout atau navigasi keluar
+          Get.back();
+        }),
       ],
     );
   }
@@ -131,6 +138,7 @@ class ProfilePageView extends StatelessWidget {
         color: Colors.grey,
       ),
       onTap: onTap,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
     );
   }
 }
