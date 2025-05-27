@@ -25,7 +25,7 @@ class MobcolDashboardView extends StatelessWidget {
             left: 0,
             right: 0,
             child: ProfileCardMobcol(
-              image: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
+              image: "res/images/mobcol/blankprofile.jpg",
               name: "JON SUZUKI",
               username: "@jon.suzuki",
               profession: "Profesional Surveyor",
@@ -43,7 +43,7 @@ class MobcolDashboardView extends StatelessWidget {
                       Get.toNamed(MobcolRoutes.mobileCollectionTugasBaru);
                     },
                     child: MenuCreatorMobcol(
-                      imageUrl: "https://cdn-icons-png.freepik.com/512/7177/7177065.png",
+                      imageAddress: "res/images/mobcol/tugasbaru.png",
                       number: controller.countTugasBaru,
                       title: "Tugas Baru",
                     ),
@@ -54,7 +54,7 @@ class MobcolDashboardView extends StatelessWidget {
                       Get.toNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai);
                     },
                     child: MenuCreatorMobcol(
-                      imageUrl: "https://cdn-icons-png.flaticon.com/512/5058/5058432.png",
+                      imageAddress: "res/images/mobcol/tugasbelumselesai.png",
                       number: controller.countTugasBelumSelesai,
                       title: "Tugas Belum\nSelesai",
                     ),
@@ -65,7 +65,7 @@ class MobcolDashboardView extends StatelessWidget {
                       Get.toNamed(MobcolRoutes.mobileCollectionUploadBukti);
                     },
                     child: MenuCreatorMobcol(
-                      imageUrl: "https://cdn-icons-png.flaticon.com/512/762/762686.png",
+                      imageAddress: "res/images/mobcol/uploadbukti.png",
                       number: controller.countUploadBukti,
                       title: "Upload Bukti\nPembayaran",
                     ),
@@ -76,7 +76,7 @@ class MobcolDashboardView extends StatelessWidget {
                       Get.toNamed(MobcolRoutes.mobileCollectionTugasSelesai);
                     },
                     child: MenuCreatorMobcol(
-                      imageUrl: "https://cdn-icons-png.flaticon.com/512/6783/6783643.png",
+                      imageAddress: "res/images/mobcol/tugasselesai.png",
                       number: controller.countTugasSelesai,
                       title: "Tugas Selesai",
                     ),

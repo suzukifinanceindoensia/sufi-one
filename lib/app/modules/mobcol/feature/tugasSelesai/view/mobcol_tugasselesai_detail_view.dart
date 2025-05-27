@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_button_style.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
-import 'package:sufi_one/app/modules/mobcol/widgets/profile_card_mobcol.dart';
+import 'package:sufi_one/app/modules/mobcol/widgets/profile_mobcol.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
@@ -24,7 +24,7 @@ class MobcolTugasselesaiDetailView extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: Column(
             children: [
-              ProfileCardMobcol(
+              ProfileMobcol(
                 image: "https://i.pinimg.com/236x/ea/6e/00/ea6e0069abf7777c75f59fbd2714528a.jpg", 
                 name: "${tugas.name}", 
                 username: "${tugas.email}", 

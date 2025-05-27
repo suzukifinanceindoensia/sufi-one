@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/uploadBukti/controller/mobcol_uploadbukti_detail_controller.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_button_style.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
-import 'package:sufi_one/app/modules/mobcol/widgets/profile_card_mobcol.dart';
+import 'package:sufi_one/app/modules/mobcol/widgets/profile_mobcol.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
@@ -24,7 +24,7 @@ class MobcolUploadbuktiDetailView extends GetView<MobcolUploadbuktiDetailControl
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            ProfileCardMobcol(
+            ProfileMobcol(
               image: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
               name: "${tugas.name}",
               username: "${tugas.email}",

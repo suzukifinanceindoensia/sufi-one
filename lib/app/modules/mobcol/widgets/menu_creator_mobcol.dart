@@ -8,12 +8,12 @@ class MenuCreatorMobcol extends StatelessWidget {
     super.key,
     required this.number,
     required this.title,
-    required this.imageUrl,
+    required this.imageAddress,
   });
 
   final RxInt number;
   final String title;
-  final String imageUrl;
+  final String imageAddress;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class MenuCreatorMobcol extends StatelessWidget {
               ],
             ),
             const Expanded(child: SizedBox()),
-            Opacity(opacity: 0.6, child: Image.network(imageUrl, height: 80,width: 80,fit: BoxFit.cover,),),
+            Opacity(opacity: 0.6, child: Image.asset(imageAddress, height: 80,width: 80,fit: BoxFit.cover,),),
           ],
         ),
       ),
