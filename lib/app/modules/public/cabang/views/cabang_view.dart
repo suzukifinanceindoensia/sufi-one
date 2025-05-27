@@ -7,7 +7,7 @@ import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 
 class CabangView extends StatelessWidget {
-  final CabangController controller = Get.put(CabangController());
+  final CabangController controller = Get.find<CabangController>();
 
   @override
   Widget build(BuildContext context) {
