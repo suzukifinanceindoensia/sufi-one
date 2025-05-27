@@ -15,7 +15,7 @@ class AboutView extends StatefulWidget {
 }
 
 class _AboutViewState extends State<AboutView> {
-  final AboutController controller = Get.put(AboutController());
+  final AboutController controller = Get.find<AboutController>();
   String? strVersion;
 
   Future<void> getPackageInfo() async {
