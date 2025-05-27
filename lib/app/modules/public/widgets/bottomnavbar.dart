@@ -1,52 +1,51 @@
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/home_routes.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 
 class BottomNavbar extends StatelessWidget {
-  final int selectedIndex; // Index aktif sekarang
+  final int selectedIndex;
 
-  const BottomNavbar({Key? key, required this.selectedIndex}) : super(key: key);
+  const BottomNavbar({super.key, required this.selectedIndex});
 
   void _onItemTapped(int index) {
     if (index == selectedIndex) return;
 
     switch (index) {
       case 0:
-        Get.offAllNamed(HomeRoutes.homepageCust); // Home Page
+        Get.offAllNamed(HomeRoutes.homepageCust);
         break;
       case 1:
-        Get.offAllNamed(HomeRoutes.about); // About Page
+        Get.offAllNamed(HomeRoutes.about);
         break;
       case 2:
-        Get.offAllNamed(HomeRoutes.contact); // contact Page
+        Get.offAllNamed(HomeRoutes.contact);
         break;
       case 3:
-        Get.offAllNamed(HomeRoutes.profilePage); // Profile Page
+        Get.offAllNamed(HomeRoutes.profilePage);
         break;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      backgroundColor: AppColors.snack,
-      selectedItemColor: AppColors.bg2,
-      unselectedItemColor: AppColors.bg1,
-      showSelectedLabels: true,
-      showUnselectedLabels: true,
-      currentIndex: selectedIndex,
-      onTap: _onItemTapped,
+    return ConvexAppBar(
+      style: TabStyle.reactCircle,
+      height: 50, // Tinggi bottom bar (default 50)
+      curveSize: 100, // Ukuran lengkungan bubble (default 80)
+      backgroundColor: AppColors.splashStart,
+      activeColor: AppColors.bg1,
+      color: AppColors.bg2,
+      elevation: 10,
       items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.perm_device_information),
-          label: 'About',
-        ),
-        BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Support'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        TabItem(icon: Icons.home, title: 'Home'),
+        TabItem(icon: Icons.perm_device_information, title: 'About'),
+        TabItem(icon: Icons.contact_support, title: 'Support'),
+        TabItem(icon: Icons.person, title: 'Profile'),
       ],
+      initialActiveIndex: selectedIndex,
+      onTap: _onItemTapped,
     );
   }
 }

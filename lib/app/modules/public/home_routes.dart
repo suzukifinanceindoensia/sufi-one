@@ -24,8 +24,6 @@ import 'package:sufi_one/app/modules/public/produk/bindings/produk_binding.dart'
 import 'package:sufi_one/app/modules/public/produk/views/produk_tipe_view.dart';
 import 'package:sufi_one/app/modules/public/produk/views/produk_harga_view.dart';
 import 'package:sufi_one/app/modules/public/produk/views/produk_detail_view.dart';
-import 'package:sufi_one/app/modules/public/webview/views/pengajuan_kredit_view.dart';
-import 'package:sufi_one/app/modules/public/profile_page/bindings/pengajuan_kredit_binding.dart';
 import 'package:sufi_one/app/modules/public/cabang/views/cabang_view.dart';
 import 'package:sufi_one/app/modules/public/cabang/bindings/cabang_binding.dart';
 import 'package:sufi_one/app/modules/public/webview/views/simulasi_kredit_view.dart';
@@ -126,11 +124,6 @@ class HomeRoutes {
       name: produkDetail,
       page: () => ProdukDetailView(),
       binding: ProdukBinding(),
-    ),
-    GetPage(
-      name: pengajuanKredit,
-      page: () => PengajuanKreditView(),
-      binding: PengajuanKreditBinding(),
     ),
     GetPage(name: cabang, page: () => CabangView(), binding: CabangBinding()),
     GetPage(name: simulasiKredit, page: () => const SimulasiKreditView()),
