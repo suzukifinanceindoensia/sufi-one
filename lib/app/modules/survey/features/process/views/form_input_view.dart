@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/survey/features/home/controllers/detail_controller.dart';
+import 'package:sufi_one/app/modules/survey/features/process/controllers/input_controller.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
 import 'package:sufi_one/app/modules/survey/utils/text_style.dart';
 import 'package:sufi_one/app/modules/survey/widgets/app_bar_widget.dart';
 
-class SurveyFormDetailView extends GetView<SurveyFormDetailController> {
-  const SurveyFormDetailView({super.key});
+class SurveyFormInputView extends GetView<SurveyFormInputController> {
+  const SurveyFormInputView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,34 +17,29 @@ class SurveyFormDetailView extends GetView<SurveyFormDetailController> {
         appBar: SurveyAppBarWidget(menus: [SurveyMenuModel(title: "Process")]),
         body: Column(
           children: [
-            Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                border: Border(
-                  bottom: BorderSide(color: Colors.grey, width: 0.5),
-                ),
-              ),
-              child: TabBar(
-                controller: controller.tabController,
-                labelColor: const Color(0xFF003399),
-                indicatorColor: const Color(0xFF003399),
-                indicatorAnimation: TabIndicatorAnimation.elastic,
-                tabs:
-                    controller.tabs
-                        .map((tab) => Tab(text: tab['name'].toString()))
-                        .toList(),
-              ),
+            TabBar(
+              controller: controller.tabController,
+              labelColor: const Color(0xFF003399),
+              indicatorColor: const Color(0xFF003399),
+              indicatorAnimation: TabIndicatorAnimation.elastic,
+              tabs:
+                  controller.tabs
+                      .map((tab) => Tab(text: tab['name'].toString()))
+                      .toList(),
             ),
             const SizedBox(height: 10),
             Expanded(
               child: TabBarView(
                 controller: controller.tabController,
-                children:
-                    controller.tabs.map((tab) {
-                      // return Center(child: Text('Content of ${tab['name']}'));
-                      return SingleChildScrollView(child: form());
-                    }).toList(),
-                // children: [SingleChildScrollView(child: form())],
+                // children:
+                // controller.tabs.map((tab) {
+                //   // return Center(child: Text('Content of ${tab['name']}'));
+                //   return SingleChildScrollView(child: form());
+                // }).toList(),
+                children: [
+                  SingleChildScrollView(child: form()),
+                  SingleChildScrollView(child: form()),
+                ],
               ),
             ),
           ],
@@ -182,6 +178,58 @@ Widget question({Color? color}) {
             ),
           ),
         ],
+      ),
+    ),
+  );
+}
+
+Widget text(
+  //   QuestionComponentController controller, {
+  GlobalKey? key,
+  //   required ValueChanged<ApplicationQuestionModel>? onChanged,
+  // }
+) {
+  // controller.inputController =
+  //     controller.inputController ?? TextEditingController();
+  // (controller.inputController as TextEditingController).text =
+  //     controller.value.value;
+  return IntrinsicHeight(
+    child: Container(
+      margin: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: Colors.black),
+      ),
+      child: TextField(
+        key: key,
+        expands: true,
+        // controller: controller.inputController,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          isDense: true,
+          contentPadding: const EdgeInsets.only(
+            left: 5,
+            top: 5,
+            right: 10,
+            bottom: 5,
+          ),
+          fillColor: Colors.white,
+          hintText: "{controller.value.hint}",
+          hintStyle: SurveyTextStyles.basicLabel.copyWith(
+            color: Colors.grey.shade400,
+          ),
+        ),
+        inputFormatters: [FilteringTextInputFormatter.deny(RegExp("[',\"]"))],
+        style: SurveyTextStyles.boldTitleLabel,
+        maxLines: null,
+        minLines: null,
+        onChanged: (value) {
+          // controller.value.value = value;
+          // controller.getLocation();
+          // if (onChanged != null) {
+          //   onChanged(controller.value);
+          // }
+        },
       ),
     ),
   );

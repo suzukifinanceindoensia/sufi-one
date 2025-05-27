@@ -1,0 +1,153 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:suzuki/model/collection_data_model.dart';
+import 'package:suzuki/util/enum.dart';
+import 'package:suzuki/util/network.dart';
+import 'package:suzuki/util/system.dart';
+
+class CollectionModel {
+  int? id; // 0,
+  String? name; // "string"
+  String? hash;
+
+  CollectionModel({
+    this.id,
+    this.name,
+    this.hash,
+  });
+
+  static CollectionModel fromJson(Map<String, dynamic> json) {
+    return CollectionModel(
+      id: (json["id"] as num?)?.toInt(),
+      name: (json["name"] as String?),
+      hash: (json["hash"] as String?),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "name": name,
+      "hash": hash,
+    };
+  }
+
+  static Future<List<CollectionModel?>> list({
+    required String? token,
+    int? id,
+  }) {
+    return Network.get(
+      url: Uri.parse(
+        System.data.apiEndPoint.url + System.data.apiEndPoint.collectionListUrl,
+      ),
+      querys: {
+        "id": "${id ?? ""}",
+      },
+      otpRequired: null,
+      headers: {
+        HttpHeaders.authorizationHeader: "$token",
+      },
+    ).then((value) {
+      if (value == null) {
+        return <CollectionModel>[];
+      } else {
+        return (value as List).map((e) => CollectionModel.fromJson(e)).toList();
+      }
+    }).catchError(
+      (onError) {
+        throw onError;
+      },
+    );
+  }
+
+  static void syncCollection(
+    List<CollectionModel?> collections, {
+    required ValueChanged<String> onSync,
+    required ValueChanged<bool> onSyncFinish,
+    required ValueChanged<Object> onError,
+  }) async {
+    try {
+      onSync("compare with local data master");
+
+      List<CollectionModel> currentCollection = [];
+
+      //read current collection
+      onSync("read current collection");
+
+      try {
+        currentCollection = (json.decode(
+                    System.data.getFile(FileKey.collection)!.readAsStringSync())
+                as List)
+            .map((e) => CollectionModel.fromJson(e))
+            .toList();
+      } catch (e) {
+        currentCollection = [];
+      }
+
+      try {
+        for (var collection in collections) {
+          onSync("cheking master ${collection?.name}");
+
+          var match = currentCollection
+              .where(
+                  (e) => e.id == collection?.id && e.hash == collection?.hash)
+              .toList();
+
+          if (match.isEmpty) {
+            onSync("update master ${collection?.name}");
+
+            List<CollectionDataModel?> _newData =
+                await CollectionDataModel.list(
+                    token: System.data.global.token,
+                    collectionId: collection?.id);
+
+            File _fileData = File(System.data.getDir(DirKey.collection).path +
+                "/data#${collection?.id}.json");
+
+            if (!_fileData.existsSync()) {
+              _fileData.createSync(recursive: true);
+            }
+
+            _fileData.writeAsStringSync(
+              json.encode(
+                _newData.map((e) => e?.toJson()).toList(),
+              ),
+            );
+          }
+        }
+      } catch (e) {
+        onSyncFinish(false);
+        onError(e);
+      }
+
+      //save new info to file
+      onSync("saving collection info");
+      System.data.getFile(FileKey.collection)!.writeAsString(
+          json.encode(collections.map((e) => e?.toJson()).toList()));
+      onSync("syncronize master finish");
+      onSyncFinish(true);
+    } catch (e) {
+      onSyncFinish(false);
+      onError(e);
+    }
+  }
+
+  static DateTime lastUpdateCollection() {
+    return System.data.getFile(FileKey.collection)!.lastModifiedSync();
+  }
+
+  static Future<List<CollectionModel>> getFromLocal() {
+    return System.data
+        .getFile(FileKey.collection)!
+        .readAsString()
+        .then((value) {
+      return (json.decode(value) as List)
+          .map((e) => CollectionModel.fromJson(e))
+          .toList();
+    }).catchError((onError) {
+      throw onError;
+    });
+  }
+}

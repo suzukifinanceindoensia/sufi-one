@@ -1,0 +1,172 @@
+{
+  "status": "200",
+  "message": "Success",
+  "data": [
+    {
+      "submission_id": 9851,
+      "submission_number": "154822062011",
+      "application_id": 201,
+      "application_code": "SFI_SURVEY",
+      "application_name": "SFI_SURVEY",
+      "submission_date": "2022-11-07 08:03:10.093",
+      "submission_lat": 0,
+      "submission_lon": 0,
+      "state_id": 101,
+      "state_name": "ASSIGNED",
+      "state_status": "PROCESSED",
+      "user_id": 9,
+      "user_name": "DANU PRAKARSA",
+      "organitation_id": 302,
+      "organitaion_name": "CMO",
+      "device_id": "RP1A.200720.012",
+      "device_model": "SM-A105G A10",
+      "submit_message": "Customer_bisa_dihubungi",
+      "totalData": 3,
+      "data": [
+        {
+          "id": 113,
+          "code": "CUST_NAME",
+          "label": "NAMA LENGKAP PEMOHON",
+          "value": "JONI"
+        },
+        {
+          "id": 118,
+          "code": "MOBILE_PHN_NO_1",
+          "label": "NOMOR TELEPON/WHATSAPP PEMOHON",
+          "value": "08677777888"
+        },
+        {
+          "id": 131,
+          "code": "QMH0002",
+          "label": "CEK JARAK ALAMAT DOMISILI",
+          "value": "8.5400"
+        }
+      ]
+    },
+    {
+      "submission_id": 9876,
+      "submission_number": "151222060002",
+      "application_id": 201,
+      "application_code": "SFI_SURVEY",
+      "application_name": "SFI_SURVEY",
+      "submission_date": "2022-11-18 09:07:19.363",
+      "submission_lat": 0,
+      "submission_lon": 0,
+      "state_id": 101,
+      "state_name": "ASSIGNED",
+      "state_status": "READED",
+      "user_id": 9,
+      "user_name": "DANU PRAKARSA",
+      "organitation_id": 302,
+      "organitaion_name": "CMO",
+      "device_id": "RP1A.200720.012",
+      "device_model": "SM-A105G A10",
+      "submit_message": "Customer_bisa_dihubungi",
+      "totalData": 3,
+      "data": [
+        {
+          "id": 113,
+          "code": "CUST_NAME",
+          "label": "NAMA LENGKAP PEMOHON",
+          "value": "JOHAN"
+        },
+        {
+          "id": 118,
+          "code": "MOBILE_PHN_NO_1",
+          "label": "NOMOR TELEPON/WHATSAPP PEMOHON",
+          "value": "089766555"
+        },
+        {
+          "id": 131,
+          "code": "QMH0002",
+          "label": "CEK JARAK ALAMAT DOMISILI",
+          "value": "100"
+        }
+      ]
+    },
+    {
+      "submission_id": 9878,
+      "submission_number": "151222110006",
+      "application_id": 201,
+      "application_code": "SFI_SURVEY",
+      "application_name": "SFI_SURVEY",
+      "submission_date": "2022-11-18 09:16:47.223",
+      "submission_lat": -6.1921392,
+      "submission_lon": 106.9172603,
+      "state_id": 101,
+      "state_name": "ASSIGNED",
+      "state_status": "READED",
+      "user_id": 9,
+      "user_name": "DANU PRAKARSA",
+      "organitation_id": 302,
+      "organitaion_name": "CMO",
+      "device_id": "RP1A.200720.012",
+      "device_model": "SM-A105G A10",
+      "submit_message": "Customer_bisa_dihubungi",
+      "totalData": 3,
+      "data": [
+        {
+          "id": 113,
+          "code": "CUST_NAME",
+          "label": "NAMA LENGKAP PEMOHON",
+          "value": "ARIEF DWI"
+        },
+        {
+          "id": 118,
+          "code": "MOBILE_PHN_NO_1",
+          "label": "NOMOR TELEPON/WHATSAPP PEMOHON",
+          "value": "081932222471"
+        },
+        {
+          "id": 131,
+          "code": "QMH0002",
+          "label": "CEK JARAK ALAMAT DOMISILI",
+          "value": "48.8"
+        }
+      ]
+    },
+    {
+      "submission_id": 9879,
+      "submission_number": "151222100035",
+      "application_id": 201,
+      "application_code": "SFI_SURVEY",
+      "application_name": "SFI_SURVEY",
+      "submission_date": "2022-11-18 09:29:07.050",
+      "submission_lat": -6.208880199999999,
+      "submission_lon": 107.2916668,
+      "state_id": 101,
+      "state_name": "ASSIGNED",
+      "state_status": "PROCESSED",
+      "user_id": 9,
+      "user_name": "DANU PRAKARSA",
+      "organitation_id": 302,
+      "organitaion_name": "CMO",
+      "device_id": "PPR1.180610.011",
+      "device_model": "SM-G390Y XCOVER4LTE",
+      "submit_message": "Customer_bisa_dihubungi",
+      "totalData": 3,
+      "data": [
+        {
+          "id": 113,
+          "code": "CUST_NAME",
+          "label": "NAMA LENGKAP PEMOHON",
+          "value": "YUDI PERMANA"
+        },
+        {
+          "id": 118,
+          "code": "MOBILE_PHN_NO_1",
+          "label": "NOMOR TELEPON/WHATSAPP PEMOHON",
+          "value": "0812911991999"
+        },
+        {
+          "id": 131,
+          "code": "QMH0002",
+          "label": "CEK JARAK ALAMAT DOMISILI",
+          "value": "69.7"
+        }
+      ]
+    }
+  ],
+  "summary": null,
+  "total": 27
+}

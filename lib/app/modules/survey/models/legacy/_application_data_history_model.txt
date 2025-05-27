@@ -1,0 +1,47 @@
+class ApplicationDataHistoryModel {
+  final int? submissionId; //	:	29
+  final int? formId; //	:	29
+  final int? pageId; //	:	29
+  final int? groupId; //	:	29
+  final int? questionId; //	:	101
+  final String? value; //	:	LOLOS
+  final double? lat; //	:	0
+  final double? lon; //	:	0
+
+  ApplicationDataHistoryModel({
+    this.submissionId,
+    this.formId,
+    this.pageId,
+    this.groupId,
+    this.questionId,
+    this.value,
+    this.lat,
+    this.lon,
+  });
+
+  static ApplicationDataHistoryModel fromJson(Map<String, dynamic> json) {
+    return ApplicationDataHistoryModel(
+      submissionId: (json["submission_id"] as num?)?.toInt(),
+      formId: (json["form_id"] as num?)?.toInt(),
+      pageId: (json["page_id"] as num?)?.toInt(),
+      groupId: (json["group_id"] as num?)?.toInt(),
+      questionId: (json["question_id"] as num?)?.toInt(),
+      value: (json["value"] as String?),
+      lat: (json["lat"] as num?)?.toDouble(),
+      lon: (json["lon"] as num?)?.toDouble(),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "submission_id": submissionId,
+      "form_id": formId,
+      "page_id": pageId,
+      "group_id": groupId,
+      "question_id": questionId,
+      "value": value,
+      "lat": lat,
+      "lon": lon,
+    };
+  }
+}
