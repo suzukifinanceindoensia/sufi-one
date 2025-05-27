@@ -16,7 +16,7 @@ class HomepageCustView extends StatefulWidget {
 }
 
 class _HomepageCustViewState extends State<HomepageCustView> {
-  final HomepageCustController controller = Get.find<HomepageCustController>();
+  late final HomepageCustController controller;
   late final PageController _bannerPageController;
   final PageController _newsPageController = PageController(
     viewportFraction: 0.7,
@@ -40,6 +40,7 @@ class _HomepageCustViewState extends State<HomepageCustView> {
   @override
   void initState() {
     super.initState();
+    controller = Get.find<HomepageCustController>();
     _bannerPageController = PageController();
     controller.startAutoSlide(_bannerPageController);
   }
