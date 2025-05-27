@@ -61,7 +61,7 @@ final List<SidebarItemData> _sidebarItems = [
     title: 'Home',
     onTap: () {
       // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
-      Get.toNamed(HomeRoutes.homepageCust);
+      Get.offNamed(HomeRoutes.homepageCust);
     },
   ),
   SidebarItemData(
@@ -93,6 +93,13 @@ final List<SidebarItemData> _sidebarItems = [
     title: 'Track Location',
     onTap: () {
       Get.toNamed(LocationRoutes.trackLocation);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.home_work, color: Colors.white),
+    title: 'login/register page',
+    onTap: () {
+      Get.toNamed('/public/home');
     },
   ),
 ];

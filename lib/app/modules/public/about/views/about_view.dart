@@ -5,7 +5,6 @@ import 'package:sufi_one/app/modules/public/about/controllers/about_controller.d
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 
 class AboutView extends StatefulWidget {
@@ -16,7 +15,7 @@ class AboutView extends StatefulWidget {
 }
 
 class _AboutViewState extends State<AboutView> {
-  final AboutController controller = Get.put(AboutController());
+  final AboutController controller = Get.find<AboutController>();
   String? strVersion;
 
   Future<void> getPackageInfo() async {
@@ -45,7 +44,7 @@ class _AboutViewState extends State<AboutView> {
             const SizedBox(height: 10),
             Text(
               'Sufi-One',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: Colors.blue,
@@ -56,55 +55,32 @@ class _AboutViewState extends State<AboutView> {
               style: TextStyle(fontSize: 14, color: Colors.grey[700]),
             ),
             const SizedBox(height: 20),
+
+            // Sosial Media Icons
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _sosmedIcon(
-                  FontAwesomeIcons.instagram,
-                  Colors.pink,
-                  'https://www.instagram.com/sfigroup.id/',
-                ),
-                _sosmedIcon(
-                  FontAwesomeIcons.whatsapp,
-                  Colors.green,
-                  'https://api.whatsapp.com/send?phone=6281119209998&text=Hello%20saya%20mau%20tanya%20',
-                ),
-                _sosmedIcon(
-                  FontAwesomeIcons.youtube,
-                  Colors.red,
-                  'https://youtube.com/@suzukifinance?si=i_SKnZW3bhxAw8WP',
-                ),
-                _sosmedIcon(
-                  FontAwesomeIcons.twitter,
-                  Colors.blue,
-                  'https://twitter.com/yourpage',
-                ),
-                _sosmedIcon(
-                  FontAwesomeIcons.facebook,
-                  Colors.indigo,
-                  'https://www.facebook.com/suzukifinanceindonesia',
-                ),
-              ],
+              children:
+                  controller.socialMediaItems
+                      .map(
+                        (item) => GestureDetector(
+                          onTap: () => controller.launchUrlExternal(item.url),
+                          child: Icon(item.icon, color: item.color, size: 30),
+                        ),
+                      )
+                      .toList(),
             ),
+
             const SizedBox(height: 30),
-            _infoTile('Call Center', '(021)80607000', () {
-              controller.launchUrlExternal('tel: 02180607000');
-            }),
-            _infoTile('Email', 'customercare@sfi.co.id', () {
-              controller.launchEmail('customercare@sfi.co.id');
-            }),
-            _infoTile('Website', 'https://www.sfi.co.id/', () {
-              controller.launchUrlExternal('https://www.sfi.co.id/');
-            }),
-            _infoTileWithIcon('Komunitas', FontAwesomeIcons.users, () {
-              controller.launchUrlExternal('https://komunitas.example.com');
-            }),
-            _infoTileWithIcon('FAQ', FontAwesomeIcons.chevronRight, () {
-              controller.launchUrlExternal(
-                'https://faq.example.com',
-                isFaq: true,
-              );
-            }),
+
+            // Kontak Info
+            ...controller.contactInfos.map(
+              (item) => _infoTile(item.title, item.value, item.onTap),
+            ),
+
+            // Icon Item seperti Komunitas & FAQ
+            ...controller.iconItems.map(
+              (item) => _infoTileWithIcon(item.title, item.icon, item.onTap),
+            ),
           ],
         ),
       ),
@@ -154,13 +130,6 @@ class _AboutViewState extends State<AboutView> {
         ),
         const Divider(),
       ],
-    );
-  }
-
-  Widget _sosmedIcon(IconData icon, Color color, String url) {
-    return GestureDetector(
-      onTap: () => controller.launchUrlExternal(url),
-      child: Icon(icon, color: color, size: 30),
     );
   }
 }

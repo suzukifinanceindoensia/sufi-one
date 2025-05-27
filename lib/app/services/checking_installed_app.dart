@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:installed_apps/installed_apps.dart';
 import 'package:installed_apps/app_info.dart';
 import 'package:sufi_one/app/services/check_app_model.dart';
+import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/modules/public/home_routes.dart';
 
@@ -44,29 +45,46 @@ class CheckingInstalledAppService {
           Get.dialog(
             AlertDialog(
               title: Text(
-                "Peringatan Deteksi Aplikasi",
-                textAlign: TextAlign.center,
-                style: AppTextStyles.bigBody,
-              ),
-              content: Text(
-                "Ditemukan aplikasi Fake GPS: '$detectedAppName'.\n\n"
-                "Harap hapus aplikasi tersebut yang berfungsi untuk memalsukan lokasi Anda.",
+                "Pemberitahuan Keamanan",
                 textAlign: TextAlign.center,
                 style: AppTextStyles.medBodyBold,
               ),
+              content: Text(
+                "Aplikasi dengan nama '$detectedAppName' terdeteksi sebagai aplikasi yang dapat memanipulasi lokasi perangkat (Fake GPS).\n\n"
+                "Untuk menjaga integritas dan keamanan sistem, mohon untuk menghapus aplikasi tersebut sebelum melanjutkan penggunaan layanan ini.",
+                textAlign: TextAlign.center,
+                style: AppTextStyles.medBody,
+              ),
+              actionsAlignment: MainAxisAlignment.center,
               actions: [
-                TextButton(
-                  onPressed: () {
-                    Get.back();
-                    Get.offAllNamed(HomeRoutes.homepageCust);
-                  },
-                  child: Text("OK", style: AppTextStyles.medBodyBold),
+                SizedBox(
+                  width: 150,
+                  height: 40,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.splashStart,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    onPressed: () {
+                      Get.back();
+                      Get.offAllNamed(HomeRoutes.homepageCust);
+                    },
+                    child: Text(
+                      "Saya Mengerti",
+                      style: AppTextStyles.medBodyBold.copyWith(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
             barrierDismissible: false,
           );
         }
+
         print("📋 Detail list aplikasi terinstall:");
         for (int i = 0; i < appModels.length; i++) {
           final app = appModels[i];

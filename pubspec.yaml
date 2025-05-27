@@ -54,6 +54,7 @@ dependencies:
   file_picker: ^10.1.9
   device_info_plus: ^11.4.0
   flutter_slidable: ^4.0.0
+  convex_bottom_bar: ^3.2.0
 
 dev_dependencies:
   flutter_test:
@@ -83,6 +84,8 @@ flutter:
     - res/dummyData/survey/
     - res/dummyData/mobcol/
     - res/dummyData/tracklocation/
+    - res/dummyData/cabang/
+    - res/dummyData/profilepage/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
