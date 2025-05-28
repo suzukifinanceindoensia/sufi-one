@@ -1,0 +1,48 @@
+import 'package:suzuki/model/application_question_model.dart';
+
+class ApplicationQuestionGroup {
+  final int? pageId; //": 9,
+  final int? groupId; //": 22,
+  final int? order; //": 0,
+  final String? code; //": "GMHD001",
+  final String? name; //": "TIPE PEMOHON",
+  final int? totalQuestions; //": 1,
+  final List<ApplicationQuestionModel>? questions;
+
+  ApplicationQuestionGroup({
+    this.pageId,
+    this.groupId,
+    this.order,
+    this.code,
+    this.name,
+    this.totalQuestions,
+    this.questions,
+  });
+
+  static ApplicationQuestionGroup fromjson(Map<String, dynamic> json) {
+    return ApplicationQuestionGroup(
+      pageId: (json["page_id"] as num?)?.toInt(),
+      groupId: (json["group_id"] as int?)?.toInt(),
+      order: (json["order"] as num?)?.toInt(),
+      code: (json["code"] as String?),
+      name: (json["name"] as String?),
+      totalQuestions: (json["totalQuestions"] as num?)?.toInt(),
+      questions: (json["questions"] as List?)
+              ?.map((e) => ApplicationQuestionModel.fromJson(e))
+              .toList() ??
+          [],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "page_id": pageId,
+      "group_id": groupId,
+      "order": order,
+      "code": code,
+      "name": name,
+      "totalQuestions": totalQuestions,
+      "questions": questions,
+    };
+  }
+}

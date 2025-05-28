@@ -1,0 +1,185 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:suzuki/model/application_data_model.dart';
+import 'package:suzuki/model/application_page_model.dart';
+import 'package:suzuki/model/application_question_model.dart';
+import 'package:suzuki/util/network.dart';
+import 'package:suzuki/util/system.dart';
+
+class ApplicationFormModel {
+  int? id; //: 1,
+  String? code; //: "FOOO1",
+  String? name; //: "ORDER IN",
+  int? totalPage; //: 1,
+  List<ApplicationPageModel?>? pages;
+  List<ApplicationDataModel?>? data;
+
+  ApplicationFormModel({
+    this.id,
+    this.code,
+    this.name,
+    this.totalPage,
+    this.pages,
+    this.data,
+  });
+
+  static ApplicationFormModel fromJson(Map<String, dynamic> data) {
+    try {
+      return ApplicationFormModel(
+        id: (data["id"] as num?)?.toInt(),
+        code: (data["code"] as String?),
+        name: (data["name"] as String?),
+        totalPage: (data["totalPage"] as num?)?.toInt(),
+        pages: (data["pages"] as List?)
+                ?.map((e) => ApplicationPageModel.fromJson((e)))
+                .toList() ??
+            [],
+        data: (data["data"] as List?)
+            ?.map((e) => ApplicationDataModel.fromJson(e))
+            .toList(),
+      );
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "code": code,
+      "name": name,
+      "totalPage": totalPage,
+      "pages": pages?.map((e) => e?.toJson()).toList(),
+      "data": data?.map((e) => e?.toJson()).toList(),
+    };
+  }
+
+  static Future<List<ApplicationFormModel?>> formRef({
+    required String? token,
+    required int? submissionId,
+  }) {
+    return Network.get(
+      url: Uri.parse(
+        System.data.apiEndPoint.url +
+            System.data.apiEndPoint.applicationFormRef,
+      ),
+      querys: {
+        "submissionId": "${submissionId ?? ""}",
+      },
+      otpRequired: null,
+      headers: {
+        HttpHeaders.authorizationHeader: "$token",
+      },
+    ).then((value) {
+      try {
+        if (value == null) {
+          return <ApplicationFormModel>[];
+        } else {
+          var data = (value as List)
+              .map((e) => ApplicationFormModel.fromJson(e))
+              .toList();
+
+          setAllQuestionState(data);
+
+          return data;
+        }
+      } catch (e) {
+        rethrow;
+      }
+    }).catchError(
+      (onError) {
+        throw onError;
+      },
+    );
+  }
+
+  static Future<List<ApplicationFormModel?>?> formRefFromFile(File? file) {
+    if (file == null) {
+      return Future.value().then((value) => null);
+    } else {
+      return file.readAsString().then((value) {
+        var data = (json.decode(value) as List)
+            .map((e) => ApplicationFormModel.fromJson(e))
+            .toList();
+
+        setAllQuestionState(data);
+
+        return data;
+      }).catchError(
+        (onError) {
+          throw onError;
+        },
+      );
+    }
+  }
+
+  static Future<ApplicationFormModel?> form({
+    required String? token,
+    required int? submissionId,
+  }) {
+    return Network.get(
+      url: Uri.parse(
+        System.data.apiEndPoint.url + System.data.apiEndPoint.applicationForm,
+      ),
+      querys: {
+        "submissionId": "${submissionId ?? ""}",
+      },
+      otpRequired: null,
+      headers: {
+        HttpHeaders.authorizationHeader: "$token",
+      },
+    ).then((value) {
+      try {
+        if (value == null) {
+          return null;
+        } else {
+          var data = ApplicationFormModel.fromJson(value);
+          var datas =
+              setAllQuestionState([data], questionState: QuestionState.edit);
+          return datas.first;
+        }
+      } catch (e) {
+        rethrow;
+      }
+    }).catchError(
+      (onError) {
+        throw onError;
+      },
+    );
+  }
+
+  static Future<ApplicationFormModel?> formFromFile(File? file) {
+    if (file == null) {
+      return Future.value().then((value) => null);
+    } else {
+      return file.readAsString().then(
+        (value) {
+          return ApplicationFormModel.fromJson(json.decode(value));
+        },
+      ).catchError(
+        (onError) {
+          throw onError;
+        },
+      );
+    }
+  }
+
+  static List<ApplicationFormModel> setAllQuestionState(
+    List<ApplicationFormModel> forms, {
+    String questionState = QuestionState.read,
+  }) {
+    //make all to read only in interface
+    for (var f in forms) {
+      f.pages?.forEach((p) {
+        p?.questionGroups?.forEach((g) {
+          g.questions?.forEach((q) {
+            q.questionState = questionState;
+          });
+        });
+      });
+    }
+
+    return forms;
+  }
+}

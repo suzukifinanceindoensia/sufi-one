@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:sufi_one/app/modules/public/profile_page/models/forgot_password_model.dart';
 
 class ForgotPasswordController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -20,18 +20,23 @@ class ForgotPasswordController extends GetxController {
 
   void resetPassword() {
     if (formKey.currentState!.validate()) {
-      isButtonEnabled.value =
-          false; 
+      final model = ForgotPasswordModel(email: emailController.text);
+
+      print("Email to reset: ${model.toJson()}");
+
+      isButtonEnabled.value = false;
+
       Future.delayed(Duration(seconds: 3), () {
-        isButtonEnabled.value =
-            true;
+        isButtonEnabled.value = true;
       });
-      Get.back(); 
+
+      Get.back();
+
       Get.snackbar(
-          'Reset Link Sent',
-          'A password reset link has been sent to your email address.',
-          snackPosition: SnackPosition.BOTTOM,
-        );
+        'Reset Link Sent',
+        'A password reset link has been sent to your email address.',
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
   }
 

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sufi_one/app/modules/public/profile_page/models/register_model.dart';
 
 class RegisterController extends GetxController {
-  final _registerKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _registKey = GlobalKey<FormState>();
   final fullNameController = TextEditingController();
   final usernameController = TextEditingController();
   final emailController = TextEditingController();
@@ -11,9 +12,19 @@ class RegisterController extends GetxController {
   final confirmPasswordController = TextEditingController();
   final isChecked = false.obs;
 
-  GlobalKey<FormState> get registKey => _registerKey;
+  GlobalKey<FormState> get registKey => _registKey;
 
-  void toggleChecked(value) {
+  RegisterModel get registerData {
+    return RegisterModel(
+      fullName: fullNameController.text,
+      username: usernameController.text,
+      email: emailController.text,
+      telpNumber: telpNumberController.text,
+      password: passwordController.text,
+    );
+  }
+
+  void toggleChecked(bool? value) {
     if (value != null) {
       isChecked.value = value;
     }
@@ -40,8 +51,7 @@ class RegisterController extends GetxController {
     if (value == null || value.isEmpty) {
       return 'Email harus diisi';
     }
-    final emailRegex =
-        RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
+    final emailRegex = RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
     if (!emailRegex.hasMatch(value)) {
       return 'Email tidak valid';
     }
@@ -83,19 +93,25 @@ class RegisterController extends GetxController {
   }
 
   void register() {
-    if (_registerKey.currentState!.validate()) { //check the checkbox
-      //entar masukin disini bagian databse
-      String fullName = fullNameController.text;
-      String username = usernameController.text;
-      String email = emailController.text;
-      String telpNumber = telpNumberController.text;
-      String password = passwordController.text;
+    if (_registKey.currentState!.validate()) {
+      if (!isChecked.value) {
+        Get.snackbar(
+          'Error',
+          'Harap setujui terms and conditions',
+          snackPosition: SnackPosition.BOTTOM,
+        );
+        return;
+      }
 
-      print('Full Name: $fullName');
-      print('Username: $username');
-      print('Email: $email');
-      print('Telp Number: $telpNumber');
-      print('Password: $password');
+      final data = registerData;
+
+      print('Full Name: ${data.fullName}');
+      print('Username: ${data.username}');
+      print('Email: ${data.email}');
+      print('Telp Number: ${data.telpNumber}');
+      print('Password: ${data.password}');
+
+      // TODO: panggil API / simpan data ke database disini
 
       Get.toNamed('/public/login');
       Get.snackbar(
@@ -104,7 +120,7 @@ class RegisterController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
       clearForm();
-    } else{
+    } else {
       Get.snackbar(
         'Error',
         'Registrasi Tidak berhasil',
@@ -120,6 +136,7 @@ class RegisterController extends GetxController {
     telpNumberController.clear();
     passwordController.clear();
     confirmPasswordController.clear();
+    isChecked.value = false;
   }
 
   @override

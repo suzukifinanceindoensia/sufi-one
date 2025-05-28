@@ -35,7 +35,7 @@ class CircularLoaderWidget extends StatelessWidget {
                 child ?? const SizedBox(),
                 if (cover && value.state != CircularLoaderState.idle)
                   Container(
-                    color: Colors.grey.shade400.withOpacity(0.6),
+                    color: Colors.grey.shade400.withAlpha((0.6 * 255).toInt()),
                     child: _buildChildByState(value),
                   ),
               ],
