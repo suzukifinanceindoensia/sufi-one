@@ -5,6 +5,7 @@ import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_button_style.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/profile_card_mobcol.dart';
+import 'package:sufi_one/app/modules/mobcol/widgets/profile_mobcol.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
@@ -29,7 +30,7 @@ class MobcolTugasbaruDetailView extends StatelessWidget {
           child : Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ProfileCardMobcol(
+              ProfileMobcol(
                 image: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
                 name: tugas.name ?? '', // Akses properti model
                 username: tugas.email ?? '', // Akses properti model

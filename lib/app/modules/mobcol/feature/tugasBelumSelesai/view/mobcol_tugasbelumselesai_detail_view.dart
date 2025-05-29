@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_button_style.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
-import 'package:sufi_one/app/modules/mobcol/widgets/profile_card_mobcol.dart';
+import 'package:sufi_one/app/modules/mobcol/widgets/profile_mobcol.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
@@ -26,7 +26,7 @@ class MobcolTugasBelumSelesaiDetailView extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: Column(
             children: [
-              ProfileCardMobcol(
+              ProfileMobcol(
                 image: 'https://i.pinimg.com/736x/25/78/61/25786134576ce0344893b33a051160b1.jpg',
                 name: tugas.name ?? '', // Gunakan properti model
                 username: tugas.email ?? '', // Gunakan properti model

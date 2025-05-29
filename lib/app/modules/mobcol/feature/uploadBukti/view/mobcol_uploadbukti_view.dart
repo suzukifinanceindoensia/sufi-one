@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/uploadBukti/controller/mobcol_uploadbukti_view.dart';
 import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
-import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
+import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_showtask.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
@@ -41,7 +41,7 @@ class MobcolUploadBuktiView extends GetView<MobcolUploadBuktiController> {
                         onTap: () {
                           Get.toNamed(MobcolRoutes.mobileCollectionUploadBuktiDetail, arguments: tugas);
                         },
-                        child: MobcolContainer(
+                        child: Mobcol_showtask(
                           children: [
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.start,

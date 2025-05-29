@@ -25,7 +25,7 @@ class MobcolDashboardView extends StatelessWidget {
             left: 0,
             right: 0,
             child: ProfileCardMobcol(
-              image: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
+              image: "res/images/mobcol/blankprofile.jpg",
               name: "JON SUZUKI",
               username: "@jon.suzuki",
               profession: "Profesional Surveyor",
@@ -43,41 +43,41 @@ class MobcolDashboardView extends StatelessWidget {
                       Get.toNamed(MobcolRoutes.mobileCollectionTugasBaru);
                     },
                     child: MenuCreatorMobcol(
-                      imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
-                      number: "${controller.listTugasBaru.length}",
+                      imageAddress: "res/images/mobcol/tugasbaru.png",
+                      number: controller.countTugasBaru,
                       title: "Tugas Baru",
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   GestureDetector(
                     onTap: (){
                       Get.toNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai);
                     },
                     child: MenuCreatorMobcol(
-                      imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
-                      number: "${controller.listTugasBelumSelesai.length}",
+                      imageAddress: "res/images/mobcol/tugasbelumselesai.png",
+                      number: controller.countTugasBelumSelesai,
                       title: "Tugas Belum\nSelesai",
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   GestureDetector(
                     onTap: (){
                       Get.toNamed(MobcolRoutes.mobileCollectionUploadBukti);
                     },
                     child: MenuCreatorMobcol(
-                      imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
-                      number: "${controller.listUploadBukti.length}",
+                      imageAddress: "res/images/mobcol/uploadbukti.png",
+                      number: controller.countUploadBukti,
                       title: "Upload Bukti\nPembayaran",
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   GestureDetector(
                     onTap: (){
                       Get.toNamed(MobcolRoutes.mobileCollectionTugasSelesai);
                     },
                     child: MenuCreatorMobcol(
-                      imageUrl: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
-                      number: "${controller.listTugasSelesai.length}",
+                      imageAddress: "res/images/mobcol/tugasselesai.png",
+                      number: controller.countTugasSelesai,
                       title: "Tugas Selesai",
                     ),
                   ),

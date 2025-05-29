@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/tugasBelumSelesai/controller/mobcol_tugasbelumselesai_controller.dart';
 import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
-import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
+import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_showtask.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
@@ -60,7 +60,7 @@ class MobcolTugasbelumselesaiView extends GetView<MobcolTugasbelumselesaiControl
                     onTap: () {
                       Get.toNamed(MobcolRoutes.mobileCollectionTugasBelumSelesaiDetail, arguments: tugas);
                     },
-                    child: MobcolContainer(
+                    child: Mobcol_showtask(
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

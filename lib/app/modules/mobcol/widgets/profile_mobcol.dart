@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
-class ProfileCardMobcol extends StatelessWidget {
-  const ProfileCardMobcol({
+class ProfileMobcol extends StatelessWidget {
+  const ProfileMobcol({
     super.key,
     required this.image,
     required this.name,
@@ -26,7 +26,7 @@ class ProfileCardMobcol extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [AppColors.splashStart, AppColors.bg3],
+            colors: [AppColors.bg2, AppColors.bg2],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -36,23 +36,22 @@ class ProfileCardMobcol extends StatelessWidget {
             bottomLeft: Radius.circular(10),
             bottomRight: Radius.circular(10),
           ),
-          border: const Border(
-            bottom: BorderSide(color: Colors.black26, width: 1),
-            left: BorderSide(color: Colors.black26, width: 1),
-            right: BorderSide(color: Colors.black26, width: 1),
+          border: Border.all(
+            color: Colors.black,
+            width: 1.6,
           ),
           boxShadow: const [
             BoxShadow(
               color: Colors.black26,
               blurRadius: 5,
-              offset: Offset(1, 3),
+              offset: Offset(1, 5),
             ),
           ],
         ),
         child: Row(
           children: [
             CircleAvatar(
-              backgroundImage: AssetImage(
+              backgroundImage: NetworkImage(
                 image,
               ),
               radius: 70,

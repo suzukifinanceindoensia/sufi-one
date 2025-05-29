@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
@@ -7,12 +8,12 @@ class MenuCreatorMobcol extends StatelessWidget {
     super.key,
     required this.number,
     required this.title,
-    required this.imageUrl,
+    required this.imageAddress,
   });
 
-  final String number;
+  final RxInt number;
   final String title;
-  final String imageUrl;
+  final String imageAddress;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +23,27 @@ class MenuCreatorMobcol extends StatelessWidget {
         height: 130,
         padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
         decoration: BoxDecoration(
-          color: AppColors.bg2,
+          gradient: const LinearGradient(
+            colors: [
+              AppColors.bg1,
+              AppColors.bg2,
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: AppColors.iconDefault,
-            width: 2,
+            width: 1.6,
           ),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 7,
+              offset: Offset(1, 5),
+            ),
+          ],
+
         ),
         child: Row(
           children: [
@@ -36,7 +52,13 @@ class MenuCreatorMobcol extends StatelessWidget {
               children: [
                 SizedBox(
                   height: 55,
-                  child: Text(number, style: AppTextStyles.MobcolNum),
+                  child: Obx(
+                    () => Text(
+                      // Akses nilai dari RxInt
+                      '${number.value}',
+                      style: AppTextStyles.MobcolNum
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 40,
@@ -47,7 +69,7 @@ class MenuCreatorMobcol extends StatelessWidget {
               ],
             ),
             const Expanded(child: SizedBox()),
-            Opacity(opacity: 0.5, child: Image.network(imageUrl, height: 80,width: 80,fit: BoxFit.cover,),),
+            Opacity(opacity: 0.6, child: Image.asset(imageAddress, height: 80,width: 80,fit: BoxFit.cover,),),
           ],
         ),
       ),

@@ -13,11 +13,14 @@ class MobcolDashboardController extends GetxController {
   final TugasSelesaiService _tugasSelesaiService = Get.find<TugasSelesaiService>();
   final TugasBelumSelesaiService _tugasBelumSelesaiService = Get.find<TugasBelumSelesaiService>();
   final UploadBuktiService _uploadBuktiService = Get.find<UploadBuktiService>();
-
   RxList<AllTugasBaruModel> listTugasBaru = <AllTugasBaruModel>[].obs;
   RxList<TugasBelumSelesaiModel> listTugasBelumSelesai = <TugasBelumSelesaiModel>[].obs;
   RxList<AllTugasSelesaiModel> listTugasSelesai = <AllTugasSelesaiModel>[].obs;
   RxList<AllUploadBuktiModel> listUploadBukti = <AllUploadBuktiModel>[].obs;
+  RxInt countTugasBaru = 1.obs;
+  RxInt countTugasBelumSelesai = 1.obs;
+  RxInt countTugasSelesai = 1.obs;
+  RxInt countUploadBukti = 1.obs;
   RxBool isLoading = true.obs;
   RxString errorMessage = ''.obs;
   RxBool isLoadingBelumSelesai = false.obs;
@@ -28,14 +31,22 @@ class MobcolDashboardController extends GetxController {
   RxString errorMessageUpload = ''.obs;
   @override
 
-  void onInit() async {
-    Future.delayed(const Duration(milliseconds: 100), () {
-      fetchDataTugasBaru();
-      fetchDataTugasBelumSelesai();
-      fetchTugasSelesai();
-      fetchUploadBukti();
-    });
+  void onInit() {
     super.onInit();
+    _fetchInitialData();
+    ever(listTugasBaru, (_) => countTugasBaru.value = listTugasBaru.length);
+    ever(listTugasBelumSelesai, (_) => countTugasBelumSelesai.value = listTugasBelumSelesai.length);
+    ever(listTugasSelesai, (_) => countTugasSelesai.value = listTugasSelesai.length);
+    ever(listUploadBukti, (_) => countUploadBukti.value = listUploadBukti.length);
+  }
+
+  Future<void> _fetchInitialData() async {
+    await Future.wait([
+      fetchDataTugasBaru(),
+      fetchDataTugasBelumSelesai(),
+      fetchTugasSelesai(),
+      fetchUploadBukti(),
+    ]);
   }
 
   Future<void> fetchDataTugasBaru() async {
