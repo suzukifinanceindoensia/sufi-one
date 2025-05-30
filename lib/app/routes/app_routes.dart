@@ -3,7 +3,6 @@ import 'package:sufi_one/app/modules/locationTest/location_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/modules/zeus/views/zeus_view.dart';
-import 'package:sufi_one/app/modules/zeus/views/zeus_detail_view.dart';
 import 'package:sufi_one/app/modules/zeus/bindings/zeus_binding.dart';
 import 'package:sufi_one/app/modules/public/home_routes.dart';
 
@@ -39,11 +38,6 @@ class AppRoutes {
 
   static final pages = [
     GetPage(name: zeus, page: () => ZeusView(), binding: ZeusBinding()),
-    GetPage(
-      name: zeusDetail,
-      page: () => const ZeusDetailView(),
-      binding: ZeusBinding(),
-    ),
     ...SurveyRoutes.routes,
     ...HomeRoutes.routes,
     ...MobcolRoutes.routes,
