@@ -1,203 +1,171 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart'; // Assuming GetX is still used for other parts of your app
+import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart'; // Your custom AppBar
+import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
+import 'package:sufi_one/app/modules/public/widgets/sidebar.dart'; // Your custom Sidebar
 import 'package:sufi_one/app/modules/zeus/controllers/zeus_controller.dart';
-import 'package:sufi_one/app/theme/color_constant.dart';
-import 'package:sufi_one/app/routes/app_routes.dart';
-import 'package:sufi_one/app/theme/fontstyle.dart';
+import 'package:sufi_one/app/theme/color_constant.dart'; 
+import 'dart:io';
 
-class ZeusView extends StatelessWidget {
+import 'package:sufi_one/app/theme/fontstyle.dart'; // Import for File class
+
+
+class ZeusView extends GetView<ZeusController> {
   const ZeusView({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(ZeusController());
+  void _showManualFormDialog(BuildContext context) {
+    final TextEditingController _platNomorController = TextEditingController();
 
-    return Scaffold(
-      backgroundColor: AppColors.bg1,
-      appBar: AppBar(
-        backgroundColor: AppColors.snack,
-        centerTitle: false,
-        toolbarHeight: 50,
-        automaticallyImplyLeading: false,
-        title: Row(
-          children: [
-            Image.asset('res/images/logo_suzuki.png', height: 40),
-            const SizedBox(width: 12),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0), // Sudut membulat untuk dialog
+          ),
+          title: const Text(
+            "Pengisian Manual",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: AppColors.bg3, 
+            ),
+          ),
+          content: SingleChildScrollView( 
+            child: Column(
+              mainAxisSize: MainAxisSize.min, 
               children: [
-                Text(
-                  'Suzuki Finance',
-                  style: AppTextStyles.bigBody.copyWith(
-                    color: AppColors.bg1,
-                    fontWeight: FontWeight.bold,
+                TextFormField(
+                  controller: _platNomorController, 
+                  decoration: InputDecoration(
+                    labelText: 'PLAT NOMOR',
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                    prefixIcon: const Icon(Icons.directions_car_filled),
                   ),
-                ),
-                Text(
-                  'Kredit Resmi Suzuki',
-                  style: AppTextStyles.medBody.copyWith(color: AppColors.bg1),
                 ),
               ],
             ),
-          ],
-        ),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Obx(() {
-          if (controller.isLoading.value) {
-            return const Center(child: CircularProgressIndicator());
-          } else {
-            return Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: AppColors.bg1,
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.bg3,
-                    spreadRadius: 2,
-                    blurRadius: 8,
-                    offset: const Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    'Zeus',
-                    style: AppTextStyles.bigBody.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Container(
-                    height: 300,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.bg3),
-                    ),
-                    child:
-                        controller.imagePath.value.isEmpty
-                            ? Center(
-                              child: Text(
-                                'Belum ada gambar',
-                                style: AppTextStyles.medBody,
-                              ),
-                            )
-                            : Image.asset(
-                              controller.imagePath.value,
-                              fit: BoxFit.cover,
-                            ),
-                  ),
-                  const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: controller.scanPlatNomor,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.button,
-                      foregroundColor: AppColors.bg1,
-                    ),
-                    child: Text(
-                      'Scan Plat Nomor',
-                      style: AppTextStyles.medBody.copyWith(
-                        color: AppColors.bg1,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  if (controller.nomorPolisi.value.isNotEmpty) ...[
-                    buildInfoRow('Nomor Polisi', controller.nomorPolisi.value),
-                    buildInfoRow('Status', controller.status.value),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4.0),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('SKMBJ', style: AppTextStyles.medBody),
-                                const SizedBox(height: 4),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 12,
-                                    vertical: 10,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: AppColors.bg1,
-                                    borderRadius: BorderRadius.circular(8),
-                                    border: Border.all(color: AppColors.bg2),
-                                  ),
-                                  child: Text(
-                                    '${controller.skmbj.value}.pdf',
-                                    style: AppTextStyles.medBody,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          IconButton(
-                            icon: const Icon(Icons.share),
-                            onPressed: controller.shareOptions,
-                            color: AppColors.iconDefault,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: TextButton(
-                        style: TextButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                          minimumSize: Size(0, 0),
-                        ),
-                        onPressed: () => Get.toNamed(AppRoutes.zeusDetail),
-                        child: Text(
-                          'Detail',
-                          style: AppTextStyles.smallBody.copyWith(
-                            fontStyle: FontStyle.italic,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ],
-              ),
-            );
-          }
-        }),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: AppColors.snack,
-        selectedItemColor: AppColors.bg1,
-        unselectedItemColor: AppColors.bg1,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.perm_device_information),
-            label: 'About',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Support'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
-      ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(
+                "Batal",
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            ElevatedButton(
+              child: Text("Simpan", style: AppTextStyles.buttonFont,),
+              style: AppButtonStyle.primaryButtonStyle(),
+              onPressed: () {
+                final String plat = _platNomorController.text;
+                Navigator.of(context).pop();
+                controller.printManualFormData(
+                  plat: plat,
+                );
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 
-  Widget buildInfoRow(String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(label, style: AppTextStyles.medBody),
-          Text(
-            value,
-            style: AppTextStyles.medBody.copyWith(fontWeight: FontWeight.bold),
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.bg1,
+      appBar: SuzukiFinanceAppBarWsidebar(),
+      drawer: Drawer(
+        child: AppSidebar(),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("INI ADALAH HALAMAN ZEUS", style: AppTextStyles.bigBody,textAlign: TextAlign.center,),
+              const SizedBox(height: 20), 
+              Obx(() => Container(
+                height: 400, 
+                width: 400, 
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black, width: 2),
+                  borderRadius: BorderRadius.circular(17.0), 
+                  color: Colors.grey[200], 
+                ),
+                child: controller.imageFile != null
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0), 
+                        child: Image.file(
+                          File(controller.imageFile!.path), 
+                          height: 400,
+                          width: 400, 
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    : const Center(
+                        child: Icon(
+                          Icons.camera_alt,
+                          size: 120,
+                          color: Colors.grey,
+                        ),
+                      ),
+              )),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: controller.takePhoto,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      elevation: 5, // Efek bayangan
+                    ),
+                    child: const Text(
+                      "Ambil Foto",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 15), 
+                  ElevatedButton(
+                    onPressed: () => _showManualFormDialog(context), 
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepPurple,
+                      foregroundColor: Colors.white, 
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      elevation: 5, 
+                    ),
+                    child: const Text(
+                      "Isi Manual",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
