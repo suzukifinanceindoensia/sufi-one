@@ -4,6 +4,6 @@ import 'package:sufi_one/app/modules/public/cabang/controllers/cabang_controller
 class CabangBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => CabangController());
+    Get.lazyPut<CabangController>(() => CabangController());
   }
 }
