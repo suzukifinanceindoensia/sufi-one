@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/survey/features/home/controllers/home_controller.dart';
 import 'package:sufi_one/app/modules/survey/features/home/widgets/home_search_widget.dart';
 import 'package:sufi_one/app/modules/survey/models/menu_model.dart';
+import 'package:sufi_one/app/modules/survey/survey_routes.dart';
 import 'package:sufi_one/app/modules/survey/widgets/app_bar_widget.dart';
 import 'package:sufi_one/app/modules/survey/widgets/circular_loader/circular_loader_widget.dart';
 import 'package:sufi_one/app/modules/survey/widgets/tab_bar_widget.dart';
@@ -47,7 +48,17 @@ class SurveyHomeView extends GetView<SurveyHomeController> {
                     physics: const AlwaysScrollableScrollPhysics(),
                     itemCount: controller.tasks.length,
                     itemBuilder: (context, taskIndex) {
-                      return SurveyTile(task: controller.tasks[taskIndex]);
+                      final task = controller.tasks[taskIndex];
+                      final submissionId = task.submissionId;
+                      return SurveyTile(
+                        task: task,
+                        onTap: () {
+                          Get.toNamed(
+                            SurveyRoutes.surveyFormDetail,
+                            arguments: {'submissionId': submissionId},
+                          );
+                        },
+                      );
                     },
                   );
                 }),

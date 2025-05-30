@@ -60,7 +60,10 @@ class _SurveyTileState extends State<SurveyTile> {
       onTap:
           widget.onTap ??
           () {
-            Get.toNamed(SurveyRoutes.surveyFormDetail);
+            Get.toNamed(
+              SurveyRoutes.surveyFormDetail,
+              arguments: {'submissionId': widget.task.submissionId},
+            );
           },
       child: Container(
         width: double.infinity,

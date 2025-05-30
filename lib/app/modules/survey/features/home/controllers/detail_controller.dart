@@ -10,6 +10,7 @@ class SurveyFormDetailController extends GetxController
   final finishedDate = DateTime.now().obs;
   final stateId = 101.obs;
   final duration = Duration(days: 1, hours: 5, minutes: 30).obs;
+  late final int submissionId;
 
   // List<String> tabs = ['Form A', 'Form B', 'Form C'];
   late TabController tabController;
@@ -24,6 +25,9 @@ class SurveyFormDetailController extends GetxController
   void onInit() {
     super.onInit();
     tabController = TabController(length: tabs.length, vsync: this);
+    final args = Get.arguments as Map<String, dynamic>;
+    submissionId = args['submissionId'];
+    print(submissionId);
   }
 
   @override
