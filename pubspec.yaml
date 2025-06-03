@@ -83,6 +83,7 @@ flutter:
     - res/images/produk/
     - res/images/mobcol/
     - res/dummyData/
+    - res/dummyData/zeus/
     - res/dummyData/survey/
     - res/dummyData/mobcol/
     - res/dummyData/tracklocation/

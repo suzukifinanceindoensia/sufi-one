@@ -1,0 +1,26 @@
+[
+  {
+    "plat_nomor": "D 5678 PQR",
+    "tipe_mobil": "TOYOTA AVANZA",
+    "status": "DALAM PROSES",
+    "no_skmbj": "0987654321"
+  },
+  {
+    "plat_nomor": "F 9012 ABC",
+    "tipe_mobil": "HONDA CRV",
+    "status": "SUDAH DIAMBIL",
+    "no_skmbj": "1122334455"
+  },
+  {
+    "plat_nomor": "B 1234 XYZ",
+    "tipe_mobil": "DAIHATSU XENIA",
+    "status": "SIAP DI AMBIL",
+    "no_skmbj": "1231231231"
+  },
+  {
+    "plat_nomor": "A 3456 DEF",
+    "tipe_mobil": "DAIHATSU XENIA",
+    "status": "SIAP DI AMBIL",
+    "no_skmbj": "6677889900"
+  }
+]
