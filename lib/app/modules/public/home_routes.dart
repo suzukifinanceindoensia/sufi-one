@@ -26,34 +26,29 @@ import 'package:sufi_one/app/modules/public/produk/views/produk_harga_view.dart'
 import 'package:sufi_one/app/modules/public/produk/views/produk_detail_view.dart';
 import 'package:sufi_one/app/modules/public/cabang/views/cabang_view.dart';
 import 'package:sufi_one/app/modules/public/cabang/bindings/cabang_binding.dart';
-import 'package:sufi_one/app/modules/public/webview/views/simulasi_kredit_view.dart';
-import 'package:sufi_one/app/modules/public/webview/views/opsi_pembayaran_view.dart';
-import 'package:sufi_one/app/modules/public/webview/views/fasilitas_view.dart';
+import 'package:sufi_one/app/modules/public/webview/generic_webview.dart';
 
 class HomeRoutes {
   static const splash = '/';
   static const publicHome = '/public/home';
-  static const homepageCust = '/public/homepage_cust_view';
+  static const homepageCust = '/public/homepage/homepage_cust_view';
   static const catalog = '/public/catalog';
-  static const login = '/public/login';
-  static const register = '/public/register';
-  static const forgotPassword = '/public/forgot_password';
-  static const profilePage = '/public/profile_page_view';
-  static const profileEdit = '/public/profile_edit_view';
-  static const promo = '/public/public/promo';
-  static const about = '/public/public/about';
-  static const contact = '/public/public/contact';
-  static const ubahPassword = '/public/ubah-password';
-  static const transaksiPoint = '/public/public/transaksi-point';
-  static const pengajuanKredit = '/public/pengajuan-kredit';
+  static const login = '/public/profile_page/login';
+  static const register = '/public/profile_page/register';
+  static const forgotPassword = '/public/profile_page/forgot_password';
+  static const profilePage = '/public/profile_page/profile_page_view';
+  static const profileEdit = '/public/profile_page/profile_edit_view';
+  static const promo = '/public/homepage/promo';
+  static const about = '/public/about';
+  static const contact = '/public/about/contact';
+  static const ubahPassword = '/public/profile_page/ubah-password';
+  static const transaksiPoint = '/public/profile_page/transaksi-point';
   static const cabang = '/public/cabang';
-  static const produkKategori = '/public/public/produk_kategori';
-  static const produkTipe = '/public/public/produk_tipe';
-  static const produkHarga = '/public/public/produk_harga';
-  static const produkDetail = '/public/public/produk_detail';
-  static const simulasiKredit = '/public/simulasi-kredit';
-  static const opsiPembayaranAsuransi = '/public/opsi-pembayaran-asuransi';
-  static const String fasilitasWebView = '/public/fasilitas-webview';
+  static const produkKategori = '/public/produk/produk_kategori';
+  static const produkTipe = '/public/produk/produk_tipe';
+  static const produkHarga = '/public/produk/produk_harga';
+  static const produkDetail = '/public/produk/produk_detail';
+  static const genericWebView = '/public/webview';
 
   static final routes = [
     GetPage(name: splash, page: () => SplashPage()),
@@ -126,11 +121,6 @@ class HomeRoutes {
       binding: ProdukBinding(),
     ),
     GetPage(name: cabang, page: () => CabangView(), binding: CabangBinding()),
-    GetPage(name: simulasiKredit, page: () => const SimulasiKreditView()),
-    GetPage(
-      name: opsiPembayaranAsuransi,
-      page: () => const OpsiPembayaranAsuransiView(),
-    ),
-    GetPage(name: fasilitasWebView, page: () => const FasilitasWebView()),
+    GetPage(name: genericWebView, page: () => const GenericWebView()), //webview
   ];
 }

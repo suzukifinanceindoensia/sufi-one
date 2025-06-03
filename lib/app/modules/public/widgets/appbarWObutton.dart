@@ -25,14 +25,6 @@ class SuzukiFinanceAppBarWObutton extends StatelessWidget
             height: 35,
           ),
           const SizedBox(width: 12),
-          // Judul
-          // Column(
-          //   crossAxisAlignment: CrossAxisAlignment.start,
-          //   children: [
-          //     Text("Suzuki Finance",style: AppTextStyles.appBar),
-          //     Text( 'Kredit Resmi Suzuki',style: AppTextStyles.appBarSmall,),
-          //   ],
-          // ),
         ],
       ),
     );
