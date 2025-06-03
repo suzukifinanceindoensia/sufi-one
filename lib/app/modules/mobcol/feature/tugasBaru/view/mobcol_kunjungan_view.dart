@@ -4,8 +4,7 @@ import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/controller/mobcol_
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_button_style.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/profile_card_mobcol.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
-import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:intl/intl.dart';
 
@@ -16,10 +15,7 @@ class MobcolKunjunganView extends GetView<KunjunganController> {
   Widget build(BuildContext context) {
     final dynamic tugas = Get.arguments;
     return Scaffold(
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: const Drawer(
-        child: AppSidebar(),
-      ),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Form(

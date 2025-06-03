@@ -4,8 +4,7 @@ import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_button_style.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/profile_mobcol.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
-import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/modules/mobcol/models/tugasBelumSelesai_model.dart'; // Pastikan import model ini ada
 
@@ -17,10 +16,7 @@ class MobcolTugasBelumSelesaiDetailView extends StatelessWidget {
     final TugasBelumSelesaiModel tugas = Get.arguments as TugasBelumSelesaiModel;
 
     return Scaffold(
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: const Drawer(
-        child: AppSidebar(),
-      ),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),
