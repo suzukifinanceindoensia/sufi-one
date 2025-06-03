@@ -14,9 +14,11 @@ class ZeusController extends GetxController {
   RxList<ZeushomeModel> listPlatNomor = <ZeushomeModel>[].obs;
   RxBool isLoading = true.obs;
   RxString errorMessage = ''.obs;
-  RxString selectedPlatNomor = 'Loading'.obs;
-  final RxString _foundPlatResult = 'Tidak Ditemukan'.obs;
-  String get foundPlatResult => _foundPlatResult.value;
+  RxString SelectedPlatNomor = 'Loading'.obs;
+  RxString SelectedTipeMobil = 'Loading'.obs;
+  RxString SelectedStatus = 'Loading'.obs;
+  RxString SelectedNo_SKMBJ = 'Loading'.obs;
+  final RxList<ZeushomeModel> selectedPlatNomorList = <ZeushomeModel>[].obs;
 
   final ImagePicker _picker = ImagePicker();
 
@@ -32,9 +34,6 @@ class ZeusController extends GetxController {
       final List<ZeushomeModel> dataBaru = await _allZeushomeService.getAllTugasBaruFromJson();
       listPlatNomor.assignAll(dataBaru);
       isLoading.value = false;
-      if (listPlatNomor.isNotEmpty) {
-        selectedPlatNomor.value = listPlatNomor.first.platNomor;
-      }
     } catch (e) {
       errorMessage.value = 'Gagal mengambil data: $e';
       print(errorMessage);
@@ -48,7 +47,10 @@ class ZeusController extends GetxController {
       if (pickedFile != null) {
         _imageFile.value = pickedFile;
         _photoTaken.value = true;
-        _foundPlatResult.value = 'Detect Lewat gambar';
+        SelectedPlatNomor.value = 'Detect Lewat gambar';
+        SelectedTipeMobil.value = 'Detect Lewat gambar';
+        SelectedNo_SKMBJ.value = 'Detect Lewat gambar';
+        SelectedStatus.value = 'Detect Lewat gambar';
       } else {
         _photoTaken.value = false;
       }
@@ -71,7 +73,11 @@ class ZeusController extends GetxController {
     );
 
     if (foundModel != null) {
-      _foundPlatResult.value = foundModel.platNomor;
+      SelectedPlatNomor.value = foundModel.platNomor;
+      SelectedTipeMobil.value = foundModel.tipeMobil;
+      SelectedNo_SKMBJ.value = foundModel.noSkmbj;
+      SelectedStatus.value = foundModel.status;
+      selectedPlatNomorList.assignAll([foundModel]);
       _photoTaken.value = true;
       _imageFile.value = null;
       Get.snackbar(
@@ -82,7 +88,10 @@ class ZeusController extends GetxController {
         colorText: Colors.white,
       );
     } else {
-      _foundPlatResult.value = 'Tidak Ditemukan';
+      SelectedPlatNomor.value = 'tidak ditemukan';
+      SelectedTipeMobil.value = 'tidak ditemukan';
+      SelectedNo_SKMBJ.value = 'tidak ditemukan';
+      SelectedStatus.value = 'tidak ditemukan';
       _photoTaken.value = false;
       _imageFile.value = null;
       Get.snackbar(
@@ -93,13 +102,15 @@ class ZeusController extends GetxController {
         colorText: Colors.white,
       );
     }
-    //_photoTaken.value = true;
   }
 
   void resetPhotoStatus() {
     _photoTaken.value = false;
     _imageFile.value = null;
-    _foundPlatResult.value = 'Tidak Ditemukan'; // Reset hasil plat juga
+    SelectedPlatNomor.value = 'tidak ditemukan';
+    SelectedTipeMobil.value = 'tidak ditemukan';
+    SelectedNo_SKMBJ.value = 'tidak ditemukan';
+    SelectedStatus.value = 'tidak ditemukan';
   }
 
   @override

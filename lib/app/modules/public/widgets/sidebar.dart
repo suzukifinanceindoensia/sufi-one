@@ -3,6 +3,7 @@ import 'package:sufi_one/app/modules/locationTest/location_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/public/home_routes.dart';
 import 'package:sufi_one/app/modules/survey/survey_routes.dart';
+import 'package:sufi_one/app/modules/zeus/zeus_route.dart';
 import 'package:sufi_one/app/routes/app_routes.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:get/get.dart';
@@ -69,7 +70,7 @@ final List<SidebarItemData> _sidebarItems = [
     title: 'Mobile Collection',
     onTap: () {
       CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
-      Get.toNamed(AppRoutes.mobileCollection);
+      Get.toNamed(MobcolRoutes.mobileCollection);
     },
   ),
   SidebarItemData(
@@ -85,7 +86,7 @@ final List<SidebarItemData> _sidebarItems = [
     title: 'Zeus',
     onTap: () {
       CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
-      Get.toNamed(AppRoutes.zeus);
+      Get.toNamed(ZeusRoute.zeus);
     },
   ),
   SidebarItemData(
