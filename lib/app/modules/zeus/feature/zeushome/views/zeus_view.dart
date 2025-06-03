@@ -4,6 +4,7 @@ import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/modules/zeus/feature/zeushome/controllers/zeus_controller.dart';
+import 'package:sufi_one/app/modules/zeus/zeus_route.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'dart:io';
 import 'package:sufi_one/app/theme/fontstyle.dart';
@@ -86,38 +87,40 @@ class ZeusView extends GetView<ZeusController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Plat Nomor: ${controller.foundPlatResult}",
+                            Text("Plat Nomor: ${controller.SelectedPlatNomor}",
                               style: AppTextStyles.bigBody,
                             ),
                             const Divider(
                               color: Colors.black,
                               thickness: 1,
                             ),
-                            Text("Tipe Mobil: SUZUKI JIMNY",
+                            Text("Tipe Mobil: ${controller.SelectedTipeMobil}",
                               style: AppTextStyles.bigBody,
                             ),
                             const Divider(
                               color: Colors.black,
                               thickness: 1,
                             ),
-                            Text("Status: SIAP DI AMBIL",
+                            Text("Status: ${controller.SelectedStatus}",
                               style: AppTextStyles.bigBody,
                             ),
                             const Divider(
                               color: Colors.black,
                               thickness: 1,
                             ),
-                            Text("No SKMBJ : 1234567890",
+                            Text("No SKMBJ : ${controller.SelectedNo_SKMBJ}",
                               style: AppTextStyles.bigBody,
                             ),
                             const SizedBox(height: 25),
                             Center(
                               child: ElevatedButton(
-                                onPressed: controller.resetPhotoStatus,
+                                onPressed: (){
+                                  Get.toNamed(ZeusRoute.zeusDetail, arguments: controller.selectedPlatNomorList);
+                                },
                                 style: AppButtonStyle.primaryButtonStyle(),
                                 child: SizedBox(
                                   width: 170,
-                                  child: Text("Reset Data",
+                                  child: Text("Detail",
                                     style: AppTextStyles.buttonFont,
                                     textAlign: TextAlign.center,
                                   ),
