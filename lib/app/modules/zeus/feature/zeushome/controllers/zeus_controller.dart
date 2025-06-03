@@ -48,7 +48,7 @@ class ZeusController extends GetxController {
       if (pickedFile != null) {
         _imageFile.value = pickedFile;
         _photoTaken.value = true;
-        _foundPlatResult.value = 'Detect Lewat gambar'; // ini seharusnya diisi dengan hasil detect plat lwt gambar
+        _foundPlatResult.value = 'Detect Lewat gambar';
       } else {
         _photoTaken.value = false;
       }
@@ -66,13 +66,14 @@ class ZeusController extends GetxController {
   }
 
   void compareAndSetPlat({required String inputPlat}) {
-    // Cari plat nomor di listPlatNomor (case-insensitive)
     final foundModel = listPlatNomor.firstWhereOrNull(
       (element) => element.platNomor.toLowerCase() == inputPlat.toLowerCase(),
     );
 
     if (foundModel != null) {
       _foundPlatResult.value = foundModel.platNomor;
+      _photoTaken.value = true;
+      _imageFile.value = null;
       Get.snackbar(
         'Sukses',
         'Plat nomor "${foundModel.platNomor}" ditemukan!',
@@ -82,6 +83,8 @@ class ZeusController extends GetxController {
       );
     } else {
       _foundPlatResult.value = 'Tidak Ditemukan';
+      _photoTaken.value = false;
+      _imageFile.value = null;
       Get.snackbar(
         'Peringatan',
         'Plat nomor "$inputPlat" tidak ditemukan.',
@@ -90,8 +93,7 @@ class ZeusController extends GetxController {
         colorText: Colors.white,
       );
     }
-    // Set photoTaken ke true agar informasi plat muncul (jika diperlukan)
-    _photoTaken.value = true;
+    //_photoTaken.value = true;
   }
 
   void resetPhotoStatus() {
