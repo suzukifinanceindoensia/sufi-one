@@ -138,14 +138,14 @@ class ZeusView extends GetView<ZeusController> {
                   onPressed: controller.takePhoto,
                   style: AppButtonStyle.primaryButtonStyle(),
                   child: SizedBox(
-                    width: 170,
+                    width: MediaQuery.sizeOf(context).width/2 - 40,
                     child: Text("Ambil Foto",
                       style: AppTextStyles.buttonFont,
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
-                const SizedBox(width: 25),
+                const SizedBox(width: 15),
                 ElevatedButton(
                   onPressed: () {
                     showDialog(
@@ -157,7 +157,7 @@ class ZeusView extends GetView<ZeusController> {
                   },
                   style: AppButtonStyle.primaryButtonStyle(),
                   child: SizedBox(
-                    width: 170,
+                    width: MediaQuery.sizeOf(context).width/2 - 40,
                     child: Text("Pengisian Manual",
                       style: AppTextStyles.buttonFont,
                       textAlign: TextAlign.center,
