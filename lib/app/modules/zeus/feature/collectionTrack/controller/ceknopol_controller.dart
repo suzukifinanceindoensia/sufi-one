@@ -4,7 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sufi_one/app/modules/zeus/models/zeushome_model.dart';
 import 'package:sufi_one/app/modules/zeus/services/zeushome_service.dart';
 
-class ZeusController extends GetxController {
+class CeknopolController extends GetxController {
   final Rx<XFile?> _imageFile = Rx<XFile?>(null);
   XFile? get imageFile => _imageFile.value;
   final RxBool _photoTaken = false.obs;

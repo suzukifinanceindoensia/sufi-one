@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
-import 'package:sufi_one/app/modules/zeus/feature/zeusdetail/controllers/zeusdetail_contorller.dart';
+import 'package:sufi_one/app/modules/zeus/feature/collectionTrack/controller/detailnopol_controller.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
-class DetailZeusView extends GetView<DetailZeusController> {
-  const DetailZeusView({Key? key}) : super(key: key);
+class DetailnopolView extends GetView<DetailnopolController> {
+  const DetailnopolView({Key? key}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {

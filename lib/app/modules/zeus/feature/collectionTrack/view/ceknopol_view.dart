@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
-import 'package:sufi_one/app/modules/zeus/feature/zeushome/controllers/zeus_controller.dart';
+import 'package:sufi_one/app/modules/zeus/feature/collectionTrack/controller/ceknopol_controller.dart';
 import 'package:sufi_one/app/modules/zeus/zeus_route.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'dart:io';
@@ -11,8 +11,8 @@ import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/modules/zeus/widgets/platnomorpopup.dart';
 
 
-class ZeusView extends GetView<ZeusController> {
-  const ZeusView({super.key});
+class CeknopolView extends GetView<CeknopolController> {
+  const CeknopolView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +115,7 @@ class ZeusView extends GetView<ZeusController> {
                             Center(
                               child: ElevatedButton(
                                 onPressed: (){
-                                  Get.toNamed(ZeusRoute.zeusDetail, arguments: controller.selectedPlatNomorList);
+                                  Get.toNamed(ZeusRoute.detailnopol, arguments: controller.selectedPlatNomorList);
                                 },
                                 style: AppButtonStyle.primaryButtonStyle(),
                                 child: SizedBox(
