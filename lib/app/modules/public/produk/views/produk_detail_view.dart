@@ -33,7 +33,7 @@ class _ProdukDetailViewState extends State<ProdukDetailView> {
       appBar: AppBar(
         title: Text(tipeDetail['name']),
         centerTitle: true,
-        backgroundColor: AppColors.splashEnd,
+        backgroundColor: AppColors.splashStart,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -79,7 +79,14 @@ class _ProdukDetailViewState extends State<ProdukDetailView> {
                 const SizedBox(width: 16),
                 ElevatedButton(
                   onPressed: () {
-                    Get.toNamed(HomeRoutes.simulasiKredit);
+                    Get.toNamed(
+                      HomeRoutes.genericWebView,
+                      arguments: {
+                        'title': 'Simulasi Kredit',
+                        'url':
+                            'https://sufismart.sfi.co.id/sufismart/api/simulasi_page_sufismart.php',
+                      },
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.splashEnd,

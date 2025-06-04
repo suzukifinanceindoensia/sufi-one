@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:sufi_one/app/modules/public/homepage/models/homepage_model.dart';
 import 'package:sufi_one/app/modules/public/home_routes.dart';
 
@@ -37,12 +38,12 @@ class HomepageCustController extends GetxController {
     MenuItemModel(
       iconPath: 'res/images/ic_icon_credit_simulation.png',
       label: 'Simulasi Kredit',
-      route: HomeRoutes.simulasiKredit,
+      route: HomeRoutes.genericWebView,
     ),
     MenuItemModel(
       iconPath: 'res/images/ic_icon_promo.png',
       label: 'Fasilitas',
-      route: HomeRoutes.fasilitasWebView,
+      route: HomeRoutes.genericWebView,
     ),
     MenuItemModel(
       iconPath: 'res/images/ic_icon_branch.png',
@@ -52,7 +53,7 @@ class HomepageCustController extends GetxController {
     MenuItemModel(
       iconPath: 'res/images/ic_icon_installment_status.png',
       label: 'Opsi Pembayaran & Asuransi',
-      route: HomeRoutes.opsiPembayaranAsuransi,
+      route: HomeRoutes.genericWebView,
     ),
   ];
 
@@ -70,6 +71,18 @@ class HomepageCustController extends GetxController {
         curve: Curves.easeInOut,
       );
     });
+  }
+
+  // ✅ Fungsi untuk membuka halaman website promo
+  Future<void> openPromoWebsite() async {
+    final Uri promoUrl = Uri.parse(
+      'https://www.sfi.co.id/category_news/category/5',
+    );
+    if (await canLaunchUrl(promoUrl)) {
+      await launchUrl(promoUrl, mode: LaunchMode.externalApplication);
+    } else {
+      Get.snackbar('Error', 'Tidak dapat membuka link promo');
+    }
   }
 
   @override

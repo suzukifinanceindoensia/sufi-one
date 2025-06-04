@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
+import 'package:sufi_one/app/modules/public/homepage/controllers/homepage_cust_controller.dart';
 
-class PromoView extends StatelessWidget {
+class PromoView extends GetView<HomepageCustController> {
   const PromoView({Key? key}) : super(key: key);
 
   @override
@@ -25,9 +27,12 @@ class PromoView extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(bottom: 16.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.asset(promoImages[index]),
+            child: GestureDetector(
+              onTap: controller.openPromoWebsite,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(promoImages[index]),
+              ),
             ),
           );
         },

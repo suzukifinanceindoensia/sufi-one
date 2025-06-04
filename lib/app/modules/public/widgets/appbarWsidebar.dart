@@ -24,7 +24,7 @@ class SuzukiFinanceAppBarWsidebar extends StatelessWidget
           // Logo Suzuki
           Image.asset(
             'res/images/splashscreen2.png', // Ganti dengan logo Suzuki kamu
-            height: 38,
+            height: 30,
           ),
           /*const SizedBox(width: 12),
           // Judul

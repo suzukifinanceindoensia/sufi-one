@@ -3,8 +3,7 @@ import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/controller/mobcol_detailcust_controller.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/foto_dan_label_mobcol.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
-import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class MobcolDetailCustView extends GetView<MobcolDetailCustController> {
@@ -15,10 +14,7 @@ class MobcolDetailCustView extends GetView<MobcolDetailCustController> {
     final dynamic tugas = Get.arguments; // Ambil data dari arguments
 
     return Scaffold(
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: const Drawer(
-        child: AppSidebar(),
-      ),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
