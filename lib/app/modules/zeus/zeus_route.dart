@@ -1,23 +1,23 @@
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/zeus/feature/zeusdetail/bindings/zeusdetail_binding.dart';
-import 'package:sufi_one/app/modules/zeus/feature/zeusdetail/views/zeusdetail_view.dart';
-import 'package:sufi_one/app/modules/zeus/feature/zeushome/bindings/zeus_binding.dart';
-import 'package:sufi_one/app/modules/zeus/feature/zeushome/views/zeus_view.dart';
+import 'package:sufi_one/app/modules/zeus/feature/collectionTrack/binding/detailnopol_binding.dart';
+import 'package:sufi_one/app/modules/zeus/feature/collectionTrack/view/detailnopol_view.dart';
+import 'package:sufi_one/app/modules/zeus/feature/collectionTrack/binding/ceknopol_binding.dart';
+import 'package:sufi_one/app/modules/zeus/feature/collectionTrack/view/ceknopol_view.dart';
 
 class ZeusRoute {
-  static const zeus = '/zeus';
-  static const zeusDetail = '/zeus/detail';
+  static const ceknopol = '/zeus/ceknopol';
+  static const detailnopol = '/zeus/ceknopol/detail';
 
   static final routes = [
     GetPage(
-      name: ZeusRoute.zeus,
-      page: () => const ZeusView(),
-      binding: ZeusBinding(),
+      name: ZeusRoute.ceknopol,
+      page: () => const CeknopolView(),
+      binding: CeknopolBinding(),
     ),
     GetPage(
-      name: ZeusRoute.zeusDetail,
-      page: () => const DetailZeusView(),
-      binding: DetailZeusBinding(),
+      name: ZeusRoute.detailnopol,
+      page: () => const DetailnopolView(),
+      binding: DetailnopolBinding(),
     ),
   ];
 }

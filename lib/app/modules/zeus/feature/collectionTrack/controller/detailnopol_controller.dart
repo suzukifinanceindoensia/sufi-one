@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class DetailZeusController extends GetxController {
+class DetailnopolController extends GetxController {
     RxString SelectedPlatNomor = 'Loading'.obs;
     RxString SelectedTipeMobil = 'Loading'.obs;
     RxString SelectedStatus = 'Loading'.obs;
