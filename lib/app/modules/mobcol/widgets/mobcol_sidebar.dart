@@ -70,21 +70,21 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.warning_amber_outlined, color: Colors.white),
     title: 'Tugas Belum Selesai',
     onTap: () {
-      Get.toNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai);
+      Get.offNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai);
     },
   ),
   SidebarItemData(
     icon: const Icon(Icons.upload, color: Colors.white),
     title: 'Upload Bukti Pembayaran',
     onTap: () {
-      Get.toNamed(MobcolRoutes.mobileCollectionUploadBukti);
+      Get.offNamed(MobcolRoutes.mobileCollectionUploadBukti);
     },
   ),
   SidebarItemData(
     icon: const Icon(Icons.upload, color: Colors.white),
     title: 'Tugas Selesai',
     onTap: () {
-      Get.toNamed(MobcolRoutes.mobileCollectionTugasSelesai);
+      Get.offNamed(MobcolRoutes.mobileCollectionTugasSelesai);
     },
   ),
   SidebarItemData(
