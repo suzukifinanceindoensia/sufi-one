@@ -17,6 +17,7 @@ class CeknopolController extends GetxController {
   RxString SelectedPlatNomor = 'Loading'.obs;
   RxString SelectedTipeMobil = 'Loading'.obs;
   RxString SelectedStatus = 'Loading'.obs;
+  RxString SelectedSKMBJ = 'Loading'.obs;
   RxString SelectedNo_SKMBJ = 'Loading'.obs;
   final RxList<ZeushomeModel> selectedPlatNomorList = <ZeushomeModel>[].obs;
 
@@ -36,7 +37,7 @@ class CeknopolController extends GetxController {
       isLoading.value = false;
     } catch (e) {
       errorMessage.value = 'Gagal mengambil data: $e';
-      print(errorMessage);
+      print('ini loh error msgnya : $errorMessage');
       isLoading.value = false;
     }
   }
@@ -49,6 +50,7 @@ class CeknopolController extends GetxController {
         _photoTaken.value = true;
         SelectedPlatNomor.value = 'Detect Lewat gambar';
         SelectedTipeMobil.value = 'Detect Lewat gambar';
+        SelectedSKMBJ.value = 'Detect Lewat gambar';
         SelectedNo_SKMBJ.value = 'Detect Lewat gambar';
         SelectedStatus.value = 'Detect Lewat gambar';
       } else {
@@ -76,7 +78,9 @@ class CeknopolController extends GetxController {
       SelectedPlatNomor.value = foundModel.platNomor;
       SelectedTipeMobil.value = foundModel.tipeMobil;
       SelectedNo_SKMBJ.value = foundModel.noSkmbj;
+      SelectedSKMBJ.value = foundModel.skmbj;
       SelectedStatus.value = foundModel.status;
+      print(foundModel);
       selectedPlatNomorList.assignAll([foundModel]);
       _photoTaken.value = true;
       _imageFile.value = null;
@@ -91,6 +95,7 @@ class CeknopolController extends GetxController {
       SelectedPlatNomor.value = 'tidak ditemukan';
       SelectedTipeMobil.value = 'tidak ditemukan';
       SelectedNo_SKMBJ.value = 'tidak ditemukan';
+      SelectedSKMBJ.value = 'tidak ditemukan';
       SelectedStatus.value = 'tidak ditemukan';
       _photoTaken.value = false;
       _imageFile.value = null;

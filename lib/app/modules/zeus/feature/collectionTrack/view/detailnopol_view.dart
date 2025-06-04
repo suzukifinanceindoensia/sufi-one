@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
-import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/modules/zeus/feature/collectionTrack/controller/detailnopol_controller.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
@@ -12,23 +11,45 @@ class DetailnopolView extends GetView<DetailnopolController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: Drawer(
-        child: AppSidebar(),
-      ),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Obx(() => Text(
-                  'Plat Nomor: ${controller.SelectedPlatNomor.value}',
-                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                )),
-            const SizedBox(height: 20),
-            Obx(() => Text(
-                  'Tipe Mobil: ${controller.SelectedTipeMobil.value}',
-                  style: const TextStyle(fontSize: 18),
-                )),
+            Obx(() {
+              if (controller.SelectedPlatNomor.value == 'Tidak Ditemukan') {
+                return Text("TIDAK ADA DATA");
+              } else {
+                if (controller.SelectedSKMBJ.value =='true') {
+                  return Column(
+                    children: [
+                      Text(
+                        'Plat Nomor: ${controller.SelectedPlatNomor.value}',
+                        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        'Tipe Mobil: ${controller.SelectedTipeMobil.value}',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        'Status: ${controller.SelectedStatus.value}',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        'Nomor SKMBJ: ${controller.SelectedNo_SKMBJ.value}',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  );
+                } else {
+                  return Text("INI FALSE");
+                }
+              }
+            }),
+
             const SizedBox(height: 40),
             ElevatedButton(
               style: AppButtonStyle.primaryButtonStyle(),
