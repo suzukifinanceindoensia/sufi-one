@@ -4,8 +4,7 @@ import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_button_style.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/profile_mobcol.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
-import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class MobcolTugasselesaiDetailView extends StatelessWidget {
@@ -15,10 +14,7 @@ class MobcolTugasselesaiDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     final dynamic tugas = Get.arguments;
     return Scaffold(
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: Drawer(
-        child: AppSidebar(),
-      ),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),
