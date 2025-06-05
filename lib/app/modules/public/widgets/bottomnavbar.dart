@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/home_routes.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
+import 'package:get_storage/get_storage.dart';
 
 class BottomNavbar extends StatelessWidget {
   final int selectedIndex;
+  final box = GetStorage();
 
-  const BottomNavbar({super.key, required this.selectedIndex});
+  BottomNavbar({super.key, required this.selectedIndex});
 
   void _onItemTapped(int index) {
     if (index == selectedIndex) return;
@@ -23,7 +25,12 @@ class BottomNavbar extends StatelessWidget {
         Get.offAllNamed(HomeRoutes.contact);
         break;
       case 3:
-        Get.offAllNamed(HomeRoutes.profilePage);
+        final isLoggedIn = box.hasData('user');
+        if (isLoggedIn) {
+          Get.offAllNamed(HomeRoutes.profilePage);
+        } else {
+          Get.toNamed(HomeRoutes.login);
+        }
         break;
     }
   }

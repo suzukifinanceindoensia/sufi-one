@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
+import 'package:sufi_one/app/auth/controllers/auth_controller.dart';
 
 class SuzukiFinanceAppBarWsidebar extends StatelessWidget
     implements PreferredSizeWidget {
@@ -12,40 +14,30 @@ class SuzukiFinanceAppBarWsidebar extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: AppColors.splashStart,
-      centerTitle:
-          false, // Consider making this configurable in the constructor if needed
-      toolbarHeight: 50,
-      automaticallyImplyLeading:
-          false, //  Important:  We'll add our own leading.
-      title: Row(
-        children: [
-          // Logo Suzuki
-          Image.asset(
-            'res/images/splashscreen2.png', // Ganti dengan logo Suzuki kamu
-            height: 30,
-          ),
-          /*const SizedBox(width: 12),
-          // Judul
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("Suzuki Finance", style: AppTextStyles.appBar),
-              Text('Kredit Resmi Suzuki', style: AppTextStyles.appBarSmall),
-            ],
-          ),*/
-        ],
-      ),
-      leading: IconButton(
-        //  Add the menu icon button here
-        icon: const Icon(Icons.menu, color: Colors.white),
-        onPressed: () {
-          // Use the Scaffold's key to open the drawer
-          Scaffold.of(context).openDrawer();
-        },
-      ),
-    );
+    final authController = Get.find<AuthController>();
+
+    return Obx(() {
+      final isLoggedIn = authController.user.value != null;
+
+      return AppBar(
+        backgroundColor: AppColors.splashStart,
+        centerTitle: false,
+        toolbarHeight: 50,
+        automaticallyImplyLeading: false,
+        title: Row(
+          children: [Image.asset('res/images/splashscreen2.png', height: 30)],
+        ),
+        leading:
+            isLoggedIn
+                ? IconButton(
+                  icon: const Icon(Icons.menu, color: AppColors.bg1),
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                )
+                : null,
+      );
+    });
   }
 
   @override
