@@ -18,7 +18,11 @@ class DetailnopolView extends GetView<DetailnopolController> {
           children: [
             Obx(() {
               if (controller.SelectedPlatNomor.value == 'Tidak Ditemukan') {
-                return Text("TIDAK ADA DATA");
+                return Column(
+                  children: [
+                    Text("TIDAK ADA DATA"),
+                  ],
+                );
               } else {
                 if (controller.SelectedSKMBJ.value =='true') {
                   return Column(
@@ -45,7 +49,40 @@ class DetailnopolView extends GetView<DetailnopolController> {
                     ],
                   );
                 } else {
-                  return Text("INI FALSE");
+                  return Column(
+                    children: [
+                      Text(
+                        'Plat Nomor: ${controller.SelectedPlatNomor.value}',
+                        style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        'Tipe Mobil: ${controller.SelectedTipeMobil.value}',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        'Status: ${controller.SelectedStatus.value}',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        'SKMBJ TIDAK DITEMUKAN REQUEST SKR',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                      const SizedBox(height: 20),
+                      ElevatedButton(
+                        style: AppButtonStyle.primaryButtonStyle(),
+                        onPressed: () => controller.kembaliKeHalamanSebelumnya(),
+                        child: SizedBox(
+                          width: 170,
+                          child : Text("Request SKMBJ", 
+                            style: AppTextStyles.buttonFont,
+                            textAlign: TextAlign.center,)
+                        ),
+                      ),
+                    ],
+                  );
                 }
               }
             }),
