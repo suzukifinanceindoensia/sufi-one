@@ -134,7 +134,6 @@ class CeknopolView extends GetView<CeknopolController> {
                     )
                   : const SizedBox.shrink(),
             ),
-            Text('${controller.listPlatNomor.length}'),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

@@ -29,49 +29,13 @@ class TaskAssignView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 40),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Assign Task button pressed!'),
-                          duration: Duration(seconds: 2),
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.assignment_add),
-                    label: const Text(
-                      'Assign New Task',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green, // Button background color
-                      foregroundColor: Colors.white, // Button text/icon color
-                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      elevation: 5, // Add shadow to the button
-                    ),
-                  ),
+                  //search bar with filtering options
+                  //all data
                 ],
               ),
             )
           ],
         ),
-      ),
-      // Optional: Add a floating action button for quick actions
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Floating Action Button pressed!'),
-              duration: Duration(seconds: 2),
-            ),
-          );
-        },
-        backgroundColor: Colors.orange,
-        child: const Icon(Icons.add, color: Colors.white),
       ),
     );
   }
