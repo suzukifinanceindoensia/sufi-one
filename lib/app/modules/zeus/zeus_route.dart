@@ -3,6 +3,7 @@ import 'package:sufi_one/app/modules/zeus/feature/collectionTrack/binding/detail
 import 'package:sufi_one/app/modules/zeus/feature/collectionTrack/view/detailnopol_view.dart';
 import 'package:sufi_one/app/modules/zeus/feature/collectionTrack/binding/ceknopol_binding.dart';
 import 'package:sufi_one/app/modules/zeus/feature/collectionTrack/view/ceknopol_view.dart';
+import 'package:sufi_one/app/modules/zeus/feature/taskAssign/binding/taskAssign_binding.dart';
 import 'package:sufi_one/app/modules/zeus/feature/taskAssign/view/taskAssign_view.dart';
 
 class ZeusRoute {
@@ -24,7 +25,7 @@ class ZeusRoute {
     GetPage(
       name: ZeusRoute.taskassign,
       page: () => const TaskAssignView(),
-      //binding: TaskAssignBinding(),
+      binding: TaskAssignBinding(),
     ),
   ];
 }
