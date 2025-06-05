@@ -55,6 +55,7 @@ dependencies:
   flutter_slidable: ^4.0.0
   convex_bottom_bar: ^3.2.0
   flutter_inappwebview: ^6.1.4
+  get_storage: ^2.1.1
 
 
 dev_dependencies:
@@ -87,7 +88,7 @@ flutter:
     - res/dummyData/mobcol/
     - res/dummyData/tracklocation/
     - res/dummyData/cabang/
-    - res/dummyData/profilepage/
+    - res/dummyData/usermodel/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
