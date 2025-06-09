@@ -6,8 +6,8 @@ import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 
-class CabangView extends StatelessWidget {
-  final CabangController controller = Get.find<CabangController>();
+class CabangView extends GetView<CabangController> {
+  const CabangView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +22,7 @@ class CabangView extends StatelessWidget {
           children: [
             Obx(
               () => DropdownButtonFormField<String>(
+                dropdownColor: AppColors.bg1,
                 isExpanded: true,
                 value:
                     controller.selectedCabang.value.isEmpty
