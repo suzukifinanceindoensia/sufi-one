@@ -8,7 +8,7 @@ import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 
 class ContactView extends StatefulWidget {
-  const ContactView({Key? key}) : super(key: key);
+  const ContactView({super.key});
 
   @override
   State<ContactView> createState() => _ContactViewState();
@@ -53,8 +53,9 @@ class _ContactViewState extends State<ContactView> {
                 ],
                 decoration: const InputDecoration(labelText: "nama lengkap"),
                 validator: (value) {
-                  if (value == null || value.isEmpty)
+                  if (value == null || value.isEmpty) {
                     return "Nama lengkap tidak boleh kosong";
+                  }
                   return null;
                 },
               ),
@@ -65,12 +66,15 @@ class _ContactViewState extends State<ContactView> {
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 decoration: const InputDecoration(labelText: "nomor telepon"),
                 validator: (value) {
-                  if (value == null || value.isEmpty)
+                  if (value == null || value.isEmpty) {
                     return "Nomor telepon tidak boleh kosong";
-                  if (value.length < 10)
+                  }
+                  if (value.length < 10) {
                     return "Nomor telepon minimal 10 digit";
-                  if (value.length > 15)
+                  }
+                  if (value.length > 15) {
                     return "Nomor telepon maksimal 15 digit";
+                  }
                   return null;
                 },
               ),
@@ -80,21 +84,28 @@ class _ContactViewState extends State<ContactView> {
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(labelText: "email"),
                 validator: (value) {
-                  if (value == null || value.isEmpty)
+                  if (value == null || value.isEmpty) {
                     return "Email tidak boleh kosong";
-                  if (!GetUtils.isEmail(value))
+                  }
+                  if (!GetUtils.isEmail(value)) {
                     return "Format email tidak valid";
+                  }
                   return null;
                 },
               ),
               const SizedBox(height: 6),
               TextFormField(
                 controller: controller.messageController,
-                maxLines: 4,
-                decoration: const InputDecoration(labelText: "pesan"),
+                minLines: 1,
+                maxLines: 6,
+                decoration: const InputDecoration(
+                  labelText: "pesan",
+                  alignLabelWithHint: true,
+                ),
                 validator: (value) {
-                  if (value == null || value.isEmpty)
+                  if (value == null || value.isEmpty) {
                     return "Pesan tidak boleh kosong";
+                  }
                   return null;
                 },
               ),
@@ -106,6 +117,9 @@ class _ContactViewState extends State<ContactView> {
                   onPressed: controller.onSubmit,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.button,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero, // ✅ persegi
+                    ),
                   ),
                   child: const Text(
                     "Konfirmasi",
