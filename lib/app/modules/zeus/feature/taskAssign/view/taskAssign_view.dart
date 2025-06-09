@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/zeus/feature/taskAssign/controller/taskAssign_controller.dart';
 import 'package:sufi_one/app/modules/zeus/widgets/profile_zeus.dart';
+import 'package:sufi_one/app/modules/zeus/widgets/taskAssignpopup.dart';
 import 'package:sufi_one/app/modules/zeus/widgets/zeus_sidebar.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
@@ -84,7 +85,10 @@ class TaskAssignView extends GetView<TaskAssignController> {
                     final task = controller.allTasks[index];
                     return GestureDetector(
                       onTap: () {
-                        print('Card tapped: ${task.platNomor}');
+                        Get.dialog(
+                          TaskAssignDetailPopup(platNomor: task.platNomor,),
+                          barrierDismissible: true,
+                        );
                       },
                       child: Card(
                         margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 15.0),
