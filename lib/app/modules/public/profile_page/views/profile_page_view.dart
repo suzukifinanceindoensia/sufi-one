@@ -7,14 +7,13 @@ import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
+import 'package:sufi_one/app/auth/controllers/auth_controller.dart';
 
-class ProfilePageView extends StatelessWidget {
-  const ProfilePageView({Key? key}) : super(key: key);
+class ProfilePageView extends GetView<ProfilePageController> {
+  const ProfilePageView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ProfilePageController controller = Get.find();
-
     return Scaffold(
       backgroundColor: AppColors.bg1,
       appBar: const SuzukiFinanceAppBarWsidebar(),
@@ -23,18 +22,18 @@ class ProfilePageView extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 16),
-            _buildHeader(controller),
+            _buildHeader(),
             const SizedBox(height: 16),
             _buildMenuSection(),
             const SizedBox(height: 32),
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavbar(selectedIndex: 3),
+      bottomNavigationBar: BottomNavbar(selectedIndex: 3),
     );
   }
 
-  Widget _buildHeader(ProfilePageController controller) {
+  Widget _buildHeader() {
     return Column(
       children: [
         const CircleAvatar(
@@ -43,28 +42,38 @@ class ProfilePageView extends StatelessWidget {
           child: Icon(Icons.person, size: 48, color: Colors.white),
         ),
         const SizedBox(height: 8),
-        Obx(
-          () => Text(
-            controller.user.value?.username ?? 'No Username',
-            style: AppTextStyles.bigBody,
-          ),
-        ),
-        Obx(
-          () => Text(
-            controller.user.value?.email ?? 'No Email',
+        Obx(() {
+          final user = controller.user.value;
+          return Text(user?.name ?? 'No Name', style: AppTextStyles.bigBody);
+        }),
+        Obx(() {
+          final user = controller.user.value;
+          return Text(
+            user?.email ?? 'No Email',
             style: AppTextStyles.smallBody,
-          ),
-        ),
+          );
+        }),
+        Obx(() {
+          final user = controller.user.value;
+          // Kalau user.role kosong/null tampilkan "No Role"
+          return Text(
+            user?.role ?? 'No Role',
+            style: AppTextStyles.smallBody.copyWith(
+              fontStyle: FontStyle.italic,
+              color: Colors.grey[600],
+            ),
+          );
+        }),
         const SizedBox(height: 12),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 16),
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.bg1,
             borderRadius: BorderRadius.circular(12),
             boxShadow: const [
               BoxShadow(
-                color: Colors.black12,
+                color: AppColors.iconDefault,
                 blurRadius: 6,
                 offset: Offset(0, 2),
               ),
@@ -74,9 +83,9 @@ class ProfilePageView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _buildInfoTile('Points', '5.000', Icons.monetization_on),
-              Container(height: 32, width: 1, color: Colors.grey[300]),
+              Container(height: 32, width: 1, color: AppColors.bg1),
               _buildInfoTile('Sobat Sufi', 'DF9A549', Icons.card_membership),
-              Container(height: 32, width: 1, color: Colors.grey[300]),
+              Container(height: 32, width: 1, color: AppColors.bg1),
               _buildInfoTile('Level', 'Silver', Icons.military_tech),
             ],
           ),
@@ -121,8 +130,9 @@ class ProfilePageView extends StatelessWidget {
           Get.toNamed(HomeRoutes.ubahPassword);
         }),
         _buildMenuItem('Keluar', Icons.logout, () {
-          // TODO: Implementasi logout atau navigasi keluar
-          Get.back();
+          final AuthController authController = Get.find<AuthController>();
+          authController.logout();
+          Get.offAllNamed(HomeRoutes.login);
         }),
       ],
     );

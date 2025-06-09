@@ -6,15 +6,24 @@ import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
-class UbahPasswordView extends StatefulWidget {
+class UbahPasswordView extends GetView<ProfilePageController> {
   const UbahPasswordView({super.key});
 
   @override
-  State<UbahPasswordView> createState() => _UbahPasswordViewState();
+  Widget build(BuildContext context) {
+    return _UbahPasswordForm(controller: controller);
+  }
 }
 
-class _UbahPasswordViewState extends State<UbahPasswordView> {
-  final controller = Get.find<ProfilePageController>();
+class _UbahPasswordForm extends StatefulWidget {
+  final ProfilePageController controller;
+  const _UbahPasswordForm({required this.controller});
+
+  @override
+  State<_UbahPasswordForm> createState() => _UbahPasswordFormState();
+}
+
+class _UbahPasswordFormState extends State<_UbahPasswordForm> {
   final _formKey = GlobalKey<FormState>();
   bool isObscure1 = true;
   bool isObscure2 = true;
@@ -22,10 +31,12 @@ class _UbahPasswordViewState extends State<UbahPasswordView> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = widget.controller;
+
     return Scaffold(
       backgroundColor: AppColors.bg1,
       appBar: SuzukiFinanceAppBarWObutton(),
-      bottomNavigationBar: const BottomNavbar(selectedIndex: 3),
+      bottomNavigationBar: BottomNavbar(selectedIndex: 3),
       body: Padding(
         padding: const EdgeInsets.all(32.0),
         child: Form(
