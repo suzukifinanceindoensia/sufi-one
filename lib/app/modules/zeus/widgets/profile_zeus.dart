@@ -63,18 +63,18 @@ class ProfileCardZeus extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: AppTextStyles.bigBody,
+                  style: AppTextStyles.bigBody.copyWith(color: Colors.white),
                   textAlign: TextAlign.right,
                 ),
                 Text(
                   username,
-                  style: AppTextStyles.medBody,
+                  style: AppTextStyles.medBody.copyWith(color: Colors.white),
                   textAlign: TextAlign.right,
                 ),
                 Expanded(child: SizedBox()),
                 Text(
                   profession,
-                  style: AppTextStyles.medBody,
+                  style: AppTextStyles.medBody.copyWith(color: Colors.white),
                   textAlign: TextAlign.right,
                 ),
               ],
