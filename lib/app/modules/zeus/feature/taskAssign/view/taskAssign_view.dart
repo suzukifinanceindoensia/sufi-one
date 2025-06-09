@@ -86,7 +86,7 @@ class TaskAssignView extends GetView<TaskAssignController> {
                     return GestureDetector(
                       onTap: () {
                         Get.dialog(
-                          TaskAssignDetailPopup(platNomor: task.platNomor,),
+                          TaskAssignDetailPopup(taskDetail: task),
                           barrierDismissible: true,
                         );
                       },
