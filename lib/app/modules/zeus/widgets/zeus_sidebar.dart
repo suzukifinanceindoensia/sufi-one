@@ -53,7 +53,7 @@ class SidebarItemData {
 final List<SidebarItemData> _sidebarItems = [
   SidebarItemData(
     icon: const Icon(Icons.home, color: Colors.white),
-    title: 'Dashboard',
+    title: 'Cek Plat Nomor',
     onTap: () {
       // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
       Get.toNamed(ZeusRoute.ceknopol);

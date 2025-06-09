@@ -33,7 +33,7 @@ class Platnomorpopup extends StatelessWidget {
               controller: platNomorController,
               decoration: InputDecoration(
                 labelText: 'PLAT NOMOR',
-                hintText: 'Contoh: B 1234 XYZ', // Tambahkan hint
+                hintText: 'Contoh: B 1234 XYZ',
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 prefixIcon: const Icon(Icons.directions_car_filled),
               ),
