@@ -3,6 +3,7 @@ import 'package:sufi_one/app/modules/zeus/zeus_route.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
+import 'package:sufi_one/app/modules/public/home_routes.dart';
 
 class ZeusSidebar extends StatelessWidget {
   const ZeusSidebar({super.key});
@@ -83,10 +84,38 @@ final List<SidebarItemData> _sidebarItems = [
     },
   ),
   SidebarItemData(
-    icon: const Icon(Icons.home_work, color: Colors.white),
-    title: 'login/register page',
+    icon: const Icon(Icons.description, color: Colors.white),
+    title: 'cetak skmbj',
     onTap: () {
-      Get.offNamed('/public/home');
+      Get.toNamed(ZeusRoute.cetakSkmbj);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.description, color: Colors.white),
+    title: 'cetak stmbj',
+    onTap: () {
+      Get.toNamed(ZeusRoute.cetakStmbj);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.description, color: Colors.white),
+    title: 'cetak skmbj',
+    onTap: () {
+      Get.toNamed(ZeusRoute.cetakSkmbj);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.description, color: Colors.white),
+    title: 'cetak stmbj',
+    onTap: () {
+      Get.toNamed(ZeusRoute.cetakStmbj);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.home_work, color: Colors.white),
+    title: 'homepage',
+    onTap: () {
+      Get.offAllNamed(HomeRoutes.homepageCust);
     },
   ),
 ];
