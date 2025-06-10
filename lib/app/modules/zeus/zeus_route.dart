@@ -9,6 +9,10 @@ import 'package:sufi_one/app/modules/zeus/feature/dashboard/binding/zeusdashboar
 import 'package:sufi_one/app/modules/zeus/feature/dashboard/view/dashboardHome_view.dart';
 import 'package:sufi_one/app/modules/zeus/feature/taskAssign/binding/taskAssign_binding.dart';
 import 'package:sufi_one/app/modules/zeus/feature/taskAssign/view/taskAssign_view.dart';
+import 'package:sufi_one/app/modules/zeus/feature/cetak_skmbj/bindings/cetak_skmbj_binding.dart';
+import 'package:sufi_one/app/modules/zeus/feature/cetak_skmbj/views/cetak_skmbj_view.dart';
+import 'package:sufi_one/app/modules/zeus/feature/cetak_stmbj/bindings/cetak_stmbj_binding.dart';
+import 'package:sufi_one/app/modules/zeus/feature/cetak_stmbj/views/cetak_stmbj_view.dart';
 
 class ZeusRoute {
   static const zeusdashboard = '/zeus';
@@ -16,6 +20,8 @@ class ZeusRoute {
   static const fotonopol = '/zeus/fotonopol';
   static const detailnopol = '/zeus/nopol/detail';
   static const taskassign = '/zeus/taskassign';
+  static const cetakSkmbj = '/zeus/cetak-skmbj';
+  static const cetakStmbj = '/zeus/cetak-stmbj';
 
   static final routes = [
     GetPage(
@@ -43,6 +49,15 @@ class ZeusRoute {
       page: () => const TaskAssignView(),
       binding: TaskAssignBinding(),
     ),
+    GetPage(
+      name: ZeusRoute.cetakSkmbj,
+      page: () => CetakSkmbjView(),
+      binding: CetakSkmbjBinding(),
+    ),
+    GetPage(
+      name: cetakStmbj,
+      page: () => CetakStmbjView(),
+      binding: CetakStmbjBinding(),
+    ),
   ];
 }
-
