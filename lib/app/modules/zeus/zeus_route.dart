@@ -13,6 +13,13 @@ import 'package:sufi_one/app/modules/zeus/feature/cetak_skmbj/bindings/cetak_skm
 import 'package:sufi_one/app/modules/zeus/feature/cetak_skmbj/views/cetak_skmbj_view.dart';
 import 'package:sufi_one/app/modules/zeus/feature/cetak_stmbj/bindings/cetak_stmbj_binding.dart';
 import 'package:sufi_one/app/modules/zeus/feature/cetak_stmbj/views/cetak_stmbj_view.dart';
+import 'package:sufi_one/app/modules/zeus/feature/anggota&registrasi/bindings/registrasi_binding.dart';
+import 'package:sufi_one/app/modules/zeus/feature/anggota&registrasi/views/listanggota_view.dart';
+import 'package:sufi_one/app/modules/zeus/feature/anggota&registrasi/views/register_view.dart';
+import 'package:sufi_one/app/modules/zeus/feature/permohonanSK/bindings/permohonansk_binding.dart';
+import 'package:sufi_one/app/modules/zeus/feature/permohonanSK/views/permohonansk_view.dart';
+import 'package:sufi_one/app/modules/zeus/feature/serah-terimaSK/bindings/serahterimask_binding.dart';
+import 'package:sufi_one/app/modules/zeus/feature/serah-terimaSK/views/serahterimask_view.dart';
 
 class ZeusRoute {
   static const zeusdashboard = '/zeus';
@@ -22,6 +29,10 @@ class ZeusRoute {
   static const taskassign = '/zeus/taskassign';
   static const cetakSkmbj = '/zeus/cetak-skmbj';
   static const cetakStmbj = '/zeus/cetak-stmbj';
+  static const listanggota = '/zeus/list-anggota';
+  static const register = '/zeus/registrasi-anggota';
+  static const permohonansk = '/zeus/permohonan-sk';
+  static const serahterimask = '/zeus/serah-terimask';
 
   static final routes = [
     GetPage(
@@ -58,6 +69,26 @@ class ZeusRoute {
       name: cetakStmbj,
       page: () => CetakStmbjView(),
       binding: CetakStmbjBinding(),
+    ),
+    GetPage(
+      name: listanggota,
+      page: () => const ListAnggotaView(),
+      binding: RegistrasiBinding(),
+    ),
+    GetPage(
+      name: register,
+      page: () => const RegisterView(),
+      binding: RegistrasiBinding(),
+    ),
+    GetPage(
+      name: permohonansk,
+      page: () => PermohonanskView(),
+      binding: PermohonanSkBinding(),
+    ),
+    GetPage(
+      name: serahterimask,
+      page: () => SerahterimaskView(),
+      binding: serahterimaskBinding(),
     ),
   ];
 }
