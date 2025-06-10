@@ -53,24 +53,40 @@ class SidebarItemData {
 final List<SidebarItemData> _sidebarItems = [
   SidebarItemData(
     icon: const Icon(Icons.home, color: Colors.white),
+    title: 'Dashboard',
+    onTap: () {
+      // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
+      Get.toNamed(ZeusRoute.zeusdashboard);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.camera_alt, color: Colors.white),
+    title: 'Foto Plat Nomor',
+    onTap: () {
+      // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
+      Get.offNamed(ZeusRoute.fotonopol);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.dataset_rounded, color: Colors.white),
     title: 'Cek Plat Nomor',
     onTap: () {
       // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
-      Get.toNamed(ZeusRoute.ceknopol);
+      Get.offNamed(ZeusRoute.ceknopol);
     },
   ),
   SidebarItemData(
     icon: const Icon(Icons.add_task_rounded, color: Colors.white),
     title: 'Task Assign',
     onTap: () {
-      Get.toNamed(ZeusRoute.taskassign);
+      Get.offNamed(ZeusRoute.taskassign);
     },
   ),
   SidebarItemData(
     icon: const Icon(Icons.home_work, color: Colors.white),
     title: 'login/register page',
     onTap: () {
-      Get.toNamed('/public/home');
+      Get.offNamed('/public/home');
     },
   ),
 ];

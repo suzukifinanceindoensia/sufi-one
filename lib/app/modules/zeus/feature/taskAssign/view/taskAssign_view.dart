@@ -22,7 +22,7 @@ class TaskAssignView extends GetView<TaskAssignController> {
       body: Column(
         children: [
           ProfileCardZeus(
-            image: "https://storage.googleapis.com/website-production/uploads/2017/10/stock-photo-guide-cheesy-celebration.jpg",
+            image: "res/images/mobcol/blankprofile.jpg",
             name: "John Doe",
             username: "john.doe",
             profession: "Software Engineer",

@@ -85,7 +85,7 @@ final List<SidebarItemData> _sidebarItems = [
     title: 'Zeus',
     onTap: () {
       CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
-      Get.toNamed(ZeusRoute.ceknopol);
+      Get.toNamed(ZeusRoute.zeusdashboard);
     },
   ),
   SidebarItemData(
