@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
-import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
+import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart'; 
 import 'package:sufi_one/app/modules/zeus/feature/collectionTrack/controller/ceknopol_controller.dart';
 import 'package:sufi_one/app/modules/zeus/widgets/zeus_sidebar.dart';
-import 'package:sufi_one/app/modules/zeus/zeus_route.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
-import 'dart:io';
 import 'package:sufi_one/app/theme/fontstyle.dart';
-import 'package:sufi_one/app/modules/zeus/widgets/platnomorpopup.dart';
-
 
 class CeknopolView extends GetView<CeknopolController> {
   const CeknopolView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController nopolController = TextEditingController();
+
     return Scaffold(
       backgroundColor: AppColors.bg1,
       appBar: SuzukiFinanceAppBarWsidebar(),
@@ -26,152 +24,146 @@ class CeknopolView extends GetView<CeknopolController> {
         padding: const EdgeInsets.all(25),
         child: Column(
           children: [
-            Text("INI ADALAH HALAMAN ZEUS", style: AppTextStyles.bigBody,textAlign: TextAlign.center,),
-            const SizedBox(height: 20),
-            Obx(() => Container(
-                  height: MediaQuery.of(context).size.width-50,
-                  width: MediaQuery.of(context).size.width-50,
+            // --- Decorated Text Form and Button Side-by-Side ---
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12), // Rounded corners for the container
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.08),
+                    spreadRadius: 2,
+                    blurRadius: 10,
+                    offset: const Offset(0, 4), // subtle shadow
+                  ),
+                ],
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5), // Inner padding
+              child: Row(
+                children: [
+                  Expanded(
+                    // TextField takes available space
+                    child: TextField(
+                      controller: nopolController,
+                      decoration: InputDecoration(
+                        labelText: 'Masukkan Plat Nomor',
+                        hintText: 'Misal: B 1234 ABC',
+                        prefixIcon: Icon(Icons.directions_car, color: Colors.black54), // Added icon
+                        border: InputBorder.none, // Remove default border as container has one
+                        contentPadding: const EdgeInsets.symmetric(vertical: 15), // Adjust padding
+                        floatingLabelBehavior: FloatingLabelBehavior.auto, // Label floats above
+                      ),
+                      style: AppTextStyles.bigBody, // Apply your font style
+                      textCapitalization: TextCapitalization.characters, // Capitalize input for plate numbers
+                    ),
+                  ),
+                  const SizedBox(width: 10), // Space between text field and button
+                  // --- Search Button ---
+                  SizedBox(
+                    height: 50, // Match height of text field visually
+                    child: ElevatedButton(
+                      onPressed: () {
+                        controller.compareAndSetPlat(inputPlat: nopolController.text.trim()); // Trim whitespace
+                      },
+                      style: AppButtonStyle.primaryButtonStyle().copyWith(
+                        padding: MaterialStateProperty.all(const EdgeInsets.symmetric(horizontal: 20)), // Adjust button padding
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))), // Rounded corners for button
+                      ),
+                      child: Text(
+                        'Cek', // Shorter text for button
+                        style: AppTextStyles.buttonFont,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 30), // Space between input section and results
+
+            // --- This section Reactively Returns (Displays) the result ---
+            Obx(() {
+              // Show loading indicator while fetching data
+              if (controller.isLoading.value) {
+                return const Center(child: CircularProgressIndicator());
+              }
+
+              // Show error message if data fetching failed
+              if (controller.errorMessage.value.isNotEmpty) {
+                return Center(
+                  child: Text(
+                    'Error: ${controller.errorMessage.value}',
+                    style: AppTextStyles.bigBody.copyWith(color: Colors.red),
+                    textAlign: TextAlign.center,
+                  ),
+                );
+              }
+
+              // Display fetched data if a plat number is found
+              if (controller.selectedPlatNomorList.isNotEmpty) {
+                final foundData = controller.selectedPlatNomorList.first;
+                return Container(
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 2),
-                    borderRadius: BorderRadius.circular(17.0),
-                    color: Colors.grey[200],
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black26,
+                        color: Colors.black.withOpacity(0.08),
                         spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: const Offset(0, 3),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
                       ),
                     ],
                   ),
-                  child: controller.imageFile != null
-                      ? ClipRRect(
-                          borderRadius: BorderRadius.circular(15.0),
-                          child: Image.file(
-                            File(controller.imageFile!.path),
-                            height: MediaQuery.of(context).size.width-50,
-                            width: MediaQuery.of(context).size.width-50,
-                            fit: BoxFit.cover,
-                          ),
-                        )
-                      : const Center(
-                          child: Icon(
-                            Icons.camera_alt,
-                            size: 120,
-                            color: Colors.grey,
-                          ),
-                        ),
-                )
-            ),
-            const SizedBox(height: 20),
-            Obx(() => controller.photoTaken
-                  ? Padding(
-                      padding: const EdgeInsets.only(bottom: 15),
-                      child: Container(
-                        padding: const EdgeInsets.all(10),
-                        width: MediaQuery.of(context).size.width-50,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black, width: 1.6),
-                          borderRadius: BorderRadius.circular(17.0),
-                          color: AppColors.bg2,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black26,
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Plat Nomor: ${controller.SelectedPlatNomor}",
-                              style: AppTextStyles.bigBody,
-                            ),
-                            const Divider(
-                              color: Colors.black,
-                              thickness: 1,
-                            ),
-                            Text("Tipe Mobil: ${controller.SelectedTipeMobil}",
-                              style: AppTextStyles.bigBody,
-                            ),
-                            const Divider(
-                              color: Colors.black,
-                              thickness: 1,
-                            ),
-                            Text("Status: ${controller.SelectedStatus}",
-                              style: AppTextStyles.bigBody,
-                            ),
-                            const Divider(
-                              color: Colors.black,
-                              thickness: 1,
-                            ),
-                            Text("No SKMBJ : ${controller.SelectedNo_SKMBJ}",
-                              style: AppTextStyles.bigBody,
-                            ),
-                            const SizedBox(height: 25),
-                            Center(
-                              child: ElevatedButton(
-                                onPressed: (){
-                                  Get.toNamed(ZeusRoute.detailnopol, arguments: controller.selectedPlatNomorList);
-                                },
-                                style: AppButtonStyle.primaryButtonStyle(),
-                                child: SizedBox(
-                                  width: 170,
-                                  child: Text("Detail",
-                                    style: AppTextStyles.buttonFont,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                )
-                              ),
-                            ),
-                            const SizedBox(height: 5),
-                          ],
-                        ),
-                      ),
-                    )
-                  : const SizedBox.shrink(),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: controller.takePhoto,
-                  style: AppButtonStyle.primaryButtonStyle(),
-                  child: SizedBox(
-                    width: MediaQuery.sizeOf(context).width/2 - 40,
-                    child: Text("Ambil Foto",
-                      style: AppTextStyles.buttonFont.copyWith(fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Detail Plat Nomor:', style: AppTextStyles.bigBody.copyWith(fontWeight: FontWeight.bold, color: AppColors.bg3)),
+                      const Divider(height: 20, thickness: 1, color: Colors.black54),
+                      _buildInfoRow('Plat Nomor', foundData.platNomor),
+                      _buildInfoRow('Tipe Mobil', foundData.tipeMobil),
+                      _buildInfoRow('Status', foundData.status),
+                      _buildInfoRow('SKMBJ', foundData.skmbj),
+                      _buildInfoRow('No. SKMBJ', foundData.noSkmbj),
+                    ],
                   ),
-                ),
-                const SizedBox(width: 15),
-                ElevatedButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return Platnomorpopup(controller: controller);
-                      },
-                    );
-                  },
-                  style: AppButtonStyle.primaryButtonStyle(),
-                  child: SizedBox(
-                    width: MediaQuery.sizeOf(context).width/2 - 40,
-                    child: Text("Pengisian Manual",
-                      style: AppTextStyles.buttonFont.copyWith(fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
+                );
+              } else if (controller.SelectedPlatNomor.value == 'tidak ditemukan') {
+                 return Center(
+                   child: Text(
+                     'Plat Nomor tidak ditemukan.',
+                     style: AppTextStyles.bigBody.copyWith(color: AppColors.button2),
+                   ),
+                 );
+              } else {
+                 return Center(
+                   child: Text(
+                     'Masukkan plat nomor untuk mencari.',
+                     style: AppTextStyles.bigBody.copyWith(color: Colors.grey),
+                   ),
+                 );
+              }
+            }),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildInfoRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 120,
+            child: Text('$label:', style: AppTextStyles.bigBody.copyWith(fontWeight: FontWeight.bold, color: Colors.black54)),
+          ),
+          Expanded(
+            child: Text(value, style: AppTextStyles.bigBody),
+          ),
+        ],
       ),
     );
   }
