@@ -6,7 +6,6 @@ import 'package:sufi_one/app/modules/zeus/widgets/profile_zeus.dart';
 import 'package:sufi_one/app/modules/zeus/widgets/zeus_sidebar.dart';
 import 'package:sufi_one/app/modules/zeus/widgets/zeusmenucreate.dart';
 import 'package:sufi_one/app/modules/zeus/zeus_route.dart';
-import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 
 class ZeusDashboardView extends GetView<ZeusDashboardController> {

@@ -25,7 +25,6 @@ class FotoNopolView extends GetView<FotoNopolController> {
         padding: const EdgeInsets.all(25),
         child: Column(
           children: [
-            Text("INI ADALAH HALAMAN ZEUS", style: AppTextStyles.bigBody,textAlign: TextAlign.center,),
             const SizedBox(height: 20),
             Obx(() => Container(
                   height: MediaQuery.of(context).size.width-50,
@@ -140,14 +139,16 @@ class FotoNopolView extends GetView<FotoNopolController> {
                   onPressed: controller.takePhoto,
                   style: AppButtonStyle.primaryButtonStyle(),
                   child: SizedBox(
-                    width: MediaQuery.sizeOf(context).width/2 - 40,
-                    child: Text("Ambil Foto",
-                      style: AppTextStyles.buttonFont.copyWith(fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
+                    width: MediaQuery.sizeOf(context).width - 50,
+                    height: 55,
+                    child: Center(
+                      child: Text("Ambil Foto",
+                        style: AppTextStyles.buttonFont.copyWith(fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    )
                   ),
                 ),
-                const SizedBox(width: 15),
               ],
             ),
             const SizedBox(height: 20),

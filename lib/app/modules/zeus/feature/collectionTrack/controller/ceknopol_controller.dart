@@ -42,33 +42,6 @@ class CeknopolController extends GetxController {
     }
   }
 
-  Future<void> takePhoto() async {
-    try {
-      final XFile? pickedFile = await _picker.pickImage(source: ImageSource.camera);
-      if (pickedFile != null) {
-        _imageFile.value = pickedFile;
-        _photoTaken.value = true;
-        SelectedPlatNomor.value = 'Detect Lewat gambar';
-        SelectedTipeMobil.value = 'Detect Lewat gambar';
-        SelectedSKMBJ.value = 'Detect Lewat gambar';
-        SelectedNo_SKMBJ.value = 'Detect Lewat gambar';
-        SelectedStatus.value = 'Detect Lewat gambar';
-      } else {
-        _photoTaken.value = false;
-      }
-    } catch (e) {
-      print('Error taking photo: $e');
-      _photoTaken.value = false;
-      Get.snackbar(
-        'Error',
-        'Gagal mengambil foto: $e',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.redAccent,
-        colorText: Colors.white,
-      );
-    }
-  }
-
   void compareAndSetPlat({required String inputPlat}) {
     final foundModel = listPlatNomor.firstWhereOrNull(
       (element) => element.platNomor.toLowerCase() == inputPlat.toLowerCase(),
@@ -107,15 +80,6 @@ class CeknopolController extends GetxController {
         colorText: Colors.white,
       );
     }
-  }
-
-  void resetPhotoStatus() {
-    _photoTaken.value = false;
-    _imageFile.value = null;
-    SelectedPlatNomor.value = 'tidak ditemukan';
-    SelectedTipeMobil.value = 'tidak ditemukan';
-    SelectedNo_SKMBJ.value = 'tidak ditemukan';
-    SelectedStatus.value = 'tidak ditemukan';
   }
 
   @override
