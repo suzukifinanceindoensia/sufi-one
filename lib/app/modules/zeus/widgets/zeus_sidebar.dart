@@ -98,6 +98,13 @@ final List<SidebarItemData> _sidebarItems = [
     },
   ),
   SidebarItemData(
+    icon: const Icon(Icons.groups, color: Colors.white),
+    title: 'List Anggota & Registrasi',
+    onTap: () {
+      Get.toNamed(ZeusRoute.listanggota);
+    },
+  ),
+  SidebarItemData(
     icon: const Icon(Icons.description, color: Colors.white),
     title: 'cetak skmbj',
     onTap: () {
@@ -109,6 +116,20 @@ final List<SidebarItemData> _sidebarItems = [
     title: 'cetak stmbj',
     onTap: () {
       Get.toNamed(ZeusRoute.cetakStmbj);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.assignment, color: Colors.white),
+    title: 'Permohonan SK',
+    onTap: () {
+      Get.toNamed(ZeusRoute.permohonansk);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.assignment, color: Colors.white),
+    title: 'Serah terima SK',
+    onTap: () {
+      Get.toNamed(ZeusRoute.serahterimask);
     },
   ),
   SidebarItemData(
