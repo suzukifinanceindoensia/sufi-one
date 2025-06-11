@@ -105,20 +105,6 @@ final List<SidebarItemData> _sidebarItems = [
     },
   ),
   SidebarItemData(
-    icon: const Icon(Icons.description, color: Colors.white),
-    title: 'cetak skmbj',
-    onTap: () {
-      Get.toNamed(ZeusRoute.cetakSkmbj);
-    },
-  ),
-  SidebarItemData(
-    icon: const Icon(Icons.description, color: Colors.white),
-    title: 'cetak stmbj',
-    onTap: () {
-      Get.toNamed(ZeusRoute.cetakStmbj);
-    },
-  ),
-  SidebarItemData(
     icon: const Icon(Icons.assignment, color: Colors.white),
     title: 'Permohonan SK',
     onTap: () {
