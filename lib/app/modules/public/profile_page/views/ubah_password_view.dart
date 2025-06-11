@@ -11,13 +11,12 @@ class UbahPasswordView extends GetView<ProfilePageController> {
 
   @override
   Widget build(BuildContext context) {
-    return _UbahPasswordForm(controller: controller);
+    return const _UbahPasswordForm();
   }
 }
 
 class _UbahPasswordForm extends StatefulWidget {
-  final ProfilePageController controller;
-  const _UbahPasswordForm({required this.controller});
+  const _UbahPasswordForm();
 
   @override
   State<_UbahPasswordForm> createState() => _UbahPasswordFormState();
@@ -25,19 +24,19 @@ class _UbahPasswordForm extends StatefulWidget {
 
 class _UbahPasswordFormState extends State<_UbahPasswordForm> {
   final _formKey = GlobalKey<FormState>();
-  bool isObscure1 = true;
-  bool isObscure2 = true;
-  bool isObscure3 = true;
+  final controller = Get.find<ProfilePageController>();
+
+  bool isObscureCurrent = true;
+  bool isObscureNew = true;
+  bool isObscureConfirm = true;
 
   @override
   Widget build(BuildContext context) {
-    final controller = widget.controller;
-
     return Scaffold(
       backgroundColor: AppColors.bg1,
       appBar: SuzukiFinanceAppBarWObutton(),
       bottomNavigationBar: BottomNavbar(selectedIndex: 3),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(32.0),
         child: Form(
           key: _formKey,
@@ -45,7 +44,7 @@ class _UbahPasswordFormState extends State<_UbahPasswordForm> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Atur Ulang Kata sandi',
+                'Atur Ulang Kata Sandi',
                 style: AppTextStyles.bigBody.copyWith(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
@@ -53,57 +52,69 @@ class _UbahPasswordFormState extends State<_UbahPasswordForm> {
                 ),
               ),
               const SizedBox(height: 16),
+
+              // Password Lama
               TextFormField(
                 controller: controller.currentPasswordController,
-                obscureText: isObscure1,
+                obscureText: isObscureCurrent,
                 decoration: InputDecoration(
                   hintText: 'Password Lama',
                   suffixIcon: IconButton(
                     icon: Icon(
-                      isObscure1 ? Icons.visibility_off : Icons.visibility,
+                      isObscureCurrent
+                          ? Icons.visibility_off
+                          : Icons.visibility,
                     ),
                     onPressed: () {
-                      setState(() => isObscure1 = !isObscure1);
+                      setState(() => isObscureCurrent = !isObscureCurrent);
                     },
                   ),
                 ),
                 validator: controller.validateCurrentPassword,
               ),
               const SizedBox(height: 16),
+
+              // Password Baru
               TextFormField(
                 controller: controller.newPasswordController,
-                obscureText: isObscure2,
+                obscureText: isObscureNew,
                 decoration: InputDecoration(
                   hintText: 'Password Baru',
                   suffixIcon: IconButton(
                     icon: Icon(
-                      isObscure2 ? Icons.visibility_off : Icons.visibility,
+                      isObscureNew ? Icons.visibility_off : Icons.visibility,
                     ),
                     onPressed: () {
-                      setState(() => isObscure2 = !isObscure2);
+                      setState(() => isObscureNew = !isObscureNew);
                     },
                   ),
                 ),
                 validator: controller.validateNewPassword,
               ),
               const SizedBox(height: 16),
+
+              // Konfirmasi Password Baru
               TextFormField(
                 controller: controller.confirmPasswordController,
-                obscureText: isObscure3,
+                obscureText: isObscureConfirm,
                 decoration: InputDecoration(
-                  hintText: 'Password Konfirmasi',
+                  hintText: 'Konfirmasi Password Baru',
                   suffixIcon: IconButton(
                     icon: Icon(
-                      isObscure3 ? Icons.visibility_off : Icons.visibility,
+                      isObscureConfirm
+                          ? Icons.visibility_off
+                          : Icons.visibility,
                     ),
                     onPressed: () {
-                      setState(() => isObscure3 = !isObscure3);
+                      setState(() => isObscureConfirm = !isObscureConfirm);
                     },
                   ),
                 ),
                 validator: controller.validateConfirmPassword,
               ),
               const SizedBox(height: 24),
+
+              // Tombol Update
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -112,7 +123,7 @@ class _UbahPasswordFormState extends State<_UbahPasswordForm> {
                     padding: const EdgeInsets.symmetric(vertical: 14),
                   ),
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
+                    if (_formKey.currentState?.validate() ?? false) {
                       controller.changePassword();
                     }
                   },

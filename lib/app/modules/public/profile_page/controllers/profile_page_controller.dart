@@ -195,34 +195,30 @@ class ProfilePageController extends GetxController {
     }
   }
 
-  // Fungsi untuk mengganti password dengan validasi yang sederhana
-  void changePassword() {
-    final currentPassword = currentPasswordController.text;
+  // Fungsi untuk mengganti password
+  Future<void> changePassword() async {
+    final oldPassword = currentPasswordController.text;
     final newPassword = newPasswordController.text;
     final confirmPassword = confirmPasswordController.text;
 
+    if (oldPassword.isEmpty || newPassword.isEmpty || confirmPassword.isEmpty) {
+      Get.snackbar('Error', 'Semua kolom password harus diisi');
+      return;
+    }
+
     if (newPassword != confirmPassword) {
-      Get.snackbar(
-        'Error',
-        'New password and confirmation do not match',
-        snackPosition: SnackPosition.TOP,
-      );
+      Get.snackbar('Error', 'Password baru dan konfirmasi tidak cocok');
       return;
     }
 
-    if (currentPassword == newPassword) {
-      Get.snackbar(
-        'Error',
-        'New password must be different from current password',
-        snackPosition: SnackPosition.TOP,
-      );
-      return;
-    }
+    // Panggil fungsi dari AuthController
+    await _authController.changePassword(oldPassword, newPassword);
 
-    Get.snackbar(
-      'Success',
-      'Password updated successfully',
-      snackPosition: SnackPosition.TOP,
-    );
+    // Bersihkan form hanya jika sukses (opsional)
+    currentPasswordController.clear();
+    newPasswordController.clear();
+    confirmPasswordController.clear();
+
+    isPasswordChange.value = false;
   }
 }

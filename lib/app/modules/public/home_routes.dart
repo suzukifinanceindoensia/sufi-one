@@ -7,11 +7,9 @@ import 'package:sufi_one/app/bindings/auth_binding.dart';
 import 'package:sufi_one/app/modules/public/login/views/login_view.dart';
 import 'package:sufi_one/app/modules/public/login/views/register_view.dart';
 import 'package:sufi_one/app/modules/public/login/views/forgot_password_view.dart';
-import 'package:sufi_one/app/modules/public/login/views/reset_password_view.dart';
 import 'package:sufi_one/app/modules/public/login/bindings/login_binding.dart';
 import 'package:sufi_one/app/modules/public/login/bindings/register_binding.dart';
 import 'package:sufi_one/app/modules/public/login/bindings/forgot_password_binding.dart';
-import 'package:sufi_one/app/modules/public/login/bindings/reset_password_binding.dart';
 
 // Homepage
 import 'package:sufi_one/app/modules/public/homepage/splash/splash_view.dart';
@@ -96,11 +94,6 @@ class HomeRoutes {
       name: forgotPassword,
       page: () => ForgotPasswordPage(),
       binding: ForgotPasswordBinding(),
-    ),
-    GetPage(
-      name: resetpassword,
-      page: () => ResetPasswordPage(),
-      binding: ResetPasswordBinding(),
     ),
 
     // Profile

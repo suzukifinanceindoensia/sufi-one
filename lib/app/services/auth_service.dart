@@ -2,10 +2,11 @@ import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:get_storage/get_storage.dart';
 import 'package:sufi_one/app/models/user_model.dart';
+import 'package:collection/collection.dart';
 
 class AuthService {
-  final box = GetStorage(); // GetStorage untuk menyimpan data lokal
-  List<Map<String, dynamic>> dummyUsers = []; // Data user dummy JSON
+  final box = GetStorage(); // Local storage
+  List<Map<String, dynamic>> dummyUsers = []; // User list from JSON
 
   /* ----------------------------
    ========== REGISTER ==========
@@ -36,11 +37,9 @@ class AuthService {
   Future<void> registerUser(UserModel newUser) async {
     await loadDummyUsers();
 
-    // Cek jika email sudah terdaftar
     final exists = dummyUsers.any((user) => user['email'] == newUser.email);
     if (exists) throw Exception("Email sudah digunakan");
 
-    // Generate ID baru
     final newId =
         (dummyUsers
             .map((e) => e['id'] as int)
@@ -52,28 +51,30 @@ class AuthService {
       'name': newUser.name,
       'email': newUser.email,
       'token': newUser.token,
-      'password': newUser.password, // Simpan password dari input
+      'password': newUser.password,
+      'address': newUser.address,
+      'role': newUser.role,
+      'phone': newUser.phone,
     };
 
     dummyUsers.add(newUserMap);
-    box.write('dummyUsers', dummyUsers); // Simpan ke GetStorage
+    box.write('dummyUsers', dummyUsers);
   }
 
-  /// ----------------------------
-  /// ========== LOGIN ==========
-  /// ----------------------------
+  /* ----------------------------
+   ========== LOGIN ==========
+   ---------------------------- */
 
   Future<UserModel?> login(String email, String password) async {
     if (dummyUsers.isEmpty) {
-      await loadDummyUsers(); // Load data jika belum tersedia
+      await loadDummyUsers();
     }
 
-    final userData = dummyUsers.firstWhere(
+    final userData = dummyUsers.firstWhereOrNull(
       (user) => user['email'] == email && user['password'] == password,
-      orElse: () => {},
     );
 
-    if (userData.isNotEmpty) {
+    if (userData != null) {
       final user = UserModel.fromJson(userData);
       box.write('user', user.toJson());
       return user;
@@ -81,10 +82,23 @@ class AuthService {
       throw Exception("Email atau password salah");
     }
   }
+  /* ---------------------------------------
+   ========== UPDATE USER PROFILE ==========
+   ----------------------------------------- */
 
-  /// ----------------------------
-  /// ========== OTP / RESET PASSWORD ==========
-  /// ----------------------------
+  Future<void> updateUserProfile(UserModel updatedUser) async {
+    await loadDummyUsers();
+    final index = dummyUsers.indexWhere((u) => u['email'] == updatedUser.email);
+    if (index != -1) {
+      dummyUsers[index] = updatedUser.toJson();
+      box.write('dummyUsers', dummyUsers);
+      box.write('user', updatedUser.toJson());
+    }
+  }
+
+  /* ----------------------------
+   ========== RESET PASSWORD ==========
+   ---------------------------- */
 
   Future<bool> sendOtp(String email) async {
     await loadDummyUsers();
@@ -92,9 +106,41 @@ class AuthService {
     return exists;
   }
 
-  /// ----------------------------
-  /// ========== USER SESSION ==========
-  /// ----------------------------
+  Future<bool> changePassword(
+    String email,
+    String oldPassword,
+    String newPassword,
+  ) async {
+    await loadDummyUsers();
+
+    // Temukan index user berdasarkan email dan password lama
+    final index = dummyUsers.indexWhere(
+      (user) => user['email'] == email && user['password'] == oldPassword,
+    );
+
+    if (index != -1) {
+      // Update password
+      dummyUsers[index]['password'] = newPassword;
+
+      // Simpan perubahan ke GetStorage
+      box.write('dummyUsers', dummyUsers);
+
+      // Update juga data user yang sedang login
+      final currentUser = getLoggedInUser();
+      if (currentUser != null && currentUser.email == email) {
+        final updatedUser = currentUser.copyWith(password: newPassword);
+        box.write('user', updatedUser.toJson());
+      }
+
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  /* ----------------------------
+   ========== SESSION ==========
+   ---------------------------- */
 
   UserModel? getLoggedInUser() {
     final data = box.read('user');
@@ -112,15 +158,26 @@ class AuthService {
     box.remove('user');
   }
 
-  /// ----------------------------
-  /// ========== DUMMY DATA ==========
-  /// ----------------------------
+  /* ----------------------------
+   ========== DUMMY DATA ==========
+   ---------------------------- */
 
   Future<void> loadDummyUsers() async {
+    // Coba baca dari GetStorage terlebih dahulu
+    final stored = box.read('dummyUsers');
+    if (stored != null && stored is List) {
+      dummyUsers = List<Map<String, dynamic>>.from(stored);
+      return;
+    }
+
+    // Jika tidak ada di storage, load dari file JSON
     final jsonString = await rootBundle.loadString(
       'res/dummyData/usermodel/usermodel.json',
     );
     final List<dynamic> jsonData = json.decode(jsonString);
     dummyUsers = jsonData.cast<Map<String, dynamic>>();
+
+    // Simpan pertama kali ke storage
+    box.write('dummyUsers', dummyUsers);
   }
 }

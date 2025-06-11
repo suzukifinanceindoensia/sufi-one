@@ -71,4 +71,37 @@ class AuthController extends GetxController {
   }
 
   bool get isLoggedIn => user.value != null;
+
+  /// ----------------------------
+  /// ========== CHANGE PASSWORD ==========
+  /// ----------------------------
+
+  Future<void> changePassword(String oldPassword, String newPassword) async {
+    try {
+      isLoading.value = true;
+
+      final currentUser = user.value;
+      if (currentUser == null) {
+        Get.snackbar('Gagal', 'User belum login');
+        return;
+      }
+
+      final success = await _authService.changePassword(
+        currentUser.email,
+        oldPassword,
+        newPassword,
+      );
+
+      if (success) {
+        user.value = _authService.getLoggedInUser(); // refresh
+        Get.snackbar('Berhasil', 'Password berhasil diubah');
+      } else {
+        Get.snackbar('Gagal', 'Password lama salah');
+      }
+    } catch (e) {
+      Get.snackbar('Error', 'Terjadi kesalahan: $e');
+    } finally {
+      isLoading.value = false;
+    }
+  }
 }

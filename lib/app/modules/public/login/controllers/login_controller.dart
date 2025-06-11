@@ -29,6 +29,7 @@ class LoginController extends GetxController {
     if (value == null || value.isEmpty) {
       return 'Please enter your email';
     }
+    if (!GetUtils.isEmail(value)) return 'Email tidak valid';
     return null;
   }
 

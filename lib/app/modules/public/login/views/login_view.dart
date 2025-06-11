@@ -28,6 +28,7 @@ class LoginPage extends GetView<LoginController> {
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
             child: Form(
               key: controller.loginKey,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               child: Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
@@ -66,6 +67,9 @@ class LoginPage extends GetView<LoginController> {
                       width: double.infinity,
                       child: TextFormField(
                         controller: controller.emailController,
+                        textInputAction: TextInputAction.next,
+                        onFieldSubmitted:
+                            (_) => FocusScope.of(context).nextFocus(),
                         keyboardType: TextInputType.emailAddress,
                         decoration: const InputDecoration(
                           labelText: 'Email',
