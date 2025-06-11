@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sufi_one/app/modules/locationTest/location_routes.dart';
-import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
-import 'package:sufi_one/app/modules/public/home_routes.dart';
 import 'package:sufi_one/app/modules/zeus/zeus_route.dart';
-import 'package:sufi_one/app/routes/app_routes.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
-import 'package:sufi_one/app/services/checking_installed_app.dart';
+import 'package:sufi_one/app/modules/public/home_routes.dart';
 
-class AppSidebar extends StatelessWidget {
-  const AppSidebar({super.key});
+class ZeusSidebar extends StatelessWidget {
+  const ZeusSidebar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,48 +54,75 @@ class SidebarItemData {
 final List<SidebarItemData> _sidebarItems = [
   SidebarItemData(
     icon: const Icon(Icons.home, color: Colors.white),
-    title: 'Home',
+    title: 'Dashboard',
     onTap: () {
       // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
-      Get.offNamed(HomeRoutes.homepageCust);
-    },
-  ),
-  SidebarItemData(
-    icon: const Icon(Icons.person, color: Colors.white),
-    title: 'Mobile Collection',
-    onTap: () {
-      CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
-      Get.toNamed(MobcolRoutes.mobileCollection);
-    },
-  ),
-  SidebarItemData(
-    icon: const Icon(Icons.info, color: Colors.white),
-    title: 'Mobile Survey',
-    onTap: () {
-      CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
-      Get.toNamed(AppRoutes.survey);
-    },
-  ),
-  SidebarItemData(
-    icon: const Icon(Icons.abc, color: Colors.white),
-    title: 'Zeus',
-    onTap: () {
-      CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
       Get.toNamed(ZeusRoute.zeusdashboard);
     },
   ),
   SidebarItemData(
-    icon: const Icon(Icons.location_on, color: Colors.white),
-    title: 'Track Location',
+    icon: const Icon(Icons.camera_alt, color: Colors.white),
+    title: 'Foto Plat Nomor',
     onTap: () {
-      Get.toNamed(LocationRoutes.trackLocation);
+      // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
+      Get.offNamed(ZeusRoute.fotonopol);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.dataset_rounded, color: Colors.white),
+    title: 'Cek Plat Nomor',
+    onTap: () {
+      // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
+      Get.offNamed(ZeusRoute.ceknopol);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.add_task_rounded, color: Colors.white),
+    title: 'Task Assign',
+    onTap: () {
+      Get.offNamed(ZeusRoute.taskassign);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.description, color: Colors.white),
+    title: 'cetak skmbj',
+    onTap: () {
+      Get.toNamed(ZeusRoute.cetakSkmbj);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.description, color: Colors.white),
+    title: 'cetak stmbj',
+    onTap: () {
+      Get.toNamed(ZeusRoute.cetakStmbj);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.groups, color: Colors.white),
+    title: 'List Anggota & Registrasi',
+    onTap: () {
+      Get.toNamed(ZeusRoute.listanggota);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.assignment, color: Colors.white),
+    title: 'Permohonan SK',
+    onTap: () {
+      Get.toNamed(ZeusRoute.permohonansk);
+    },
+  ),
+  SidebarItemData(
+    icon: const Icon(Icons.assignment, color: Colors.white),
+    title: 'Serah terima SK',
+    onTap: () {
+      Get.toNamed(ZeusRoute.serahterimask);
     },
   ),
   SidebarItemData(
     icon: const Icon(Icons.home_work, color: Colors.white),
-    title: 'login/register page',
+    title: 'homepage',
     onTap: () {
-      Get.toNamed('/public/home');
+      Get.offAllNamed(HomeRoutes.homepageCust);
     },
   ),
 ];

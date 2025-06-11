@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/zeus/feature/zeushome/controllers/zeus_controller.dart';
+import 'package:sufi_one/app/modules/zeus/feature/collectionTrack/controller/ceknopol_controller.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 
 class Platnomorpopup extends StatelessWidget {
-  final ZeusController controller;
+  final CeknopolController controller;
 
   const Platnomorpopup({super.key, required this.controller});
 
@@ -33,7 +33,7 @@ class Platnomorpopup extends StatelessWidget {
               controller: platNomorController,
               decoration: InputDecoration(
                 labelText: 'PLAT NOMOR',
-                hintText: 'Contoh: B 1234 XYZ', // Tambahkan hint
+                hintText: 'Contoh: B 1234 XYZ',
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                 prefixIcon: const Icon(Icons.directions_car_filled),
               ),

@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
-import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
-import 'package:sufi_one/app/modules/zeus/feature/zeushome/controllers/zeus_controller.dart';
+import 'package:sufi_one/app/modules/zeus/feature/collectionTrack/controller/fotonopol_controller.dart';
+import 'package:sufi_one/app/modules/zeus/widgets/zeus_sidebar.dart';
+import 'package:sufi_one/app/modules/zeus/zeus_route.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'dart:io';
 import 'package:sufi_one/app/theme/fontstyle.dart';
-import 'package:sufi_one/app/modules/zeus/widgets/platnomorpopup.dart';
 
 
-class ZeusView extends GetView<ZeusController> {
-  const ZeusView({super.key});
+class FotoNopolView extends GetView<FotoNopolController> {
+  const FotoNopolView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +19,12 @@ class ZeusView extends GetView<ZeusController> {
       backgroundColor: AppColors.bg1,
       appBar: SuzukiFinanceAppBarWsidebar(),
       drawer: Drawer(
-        child: AppSidebar(),
+        child: ZeusSidebar(),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(25),
         child: Column(
           children: [
-            Text("INI ADALAH HALAMAN ZEUS", style: AppTextStyles.bigBody,textAlign: TextAlign.center,),
             const SizedBox(height: 20),
             Obx(() => Container(
                   height: MediaQuery.of(context).size.width-50,
@@ -86,38 +85,40 @@ class ZeusView extends GetView<ZeusController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Plat Nomor: ${controller.foundPlatResult}",
+                            Text("Plat Nomor: ${controller.SelectedPlatNomor}",
                               style: AppTextStyles.bigBody,
                             ),
                             const Divider(
                               color: Colors.black,
                               thickness: 1,
                             ),
-                            Text("Tipe Mobil: SUZUKI JIMNY",
+                            Text("Tipe Mobil: ${controller.SelectedTipeMobil}",
                               style: AppTextStyles.bigBody,
                             ),
                             const Divider(
                               color: Colors.black,
                               thickness: 1,
                             ),
-                            Text("Status: SIAP DI AMBIL",
+                            Text("Status: ${controller.SelectedStatus}",
                               style: AppTextStyles.bigBody,
                             ),
                             const Divider(
                               color: Colors.black,
                               thickness: 1,
                             ),
-                            Text("No SKMBJ : 1234567890",
+                            Text("No SKMBJ : ${controller.SelectedNo_SKMBJ}",
                               style: AppTextStyles.bigBody,
                             ),
                             const SizedBox(height: 25),
                             Center(
                               child: ElevatedButton(
-                                onPressed: controller.resetPhotoStatus,
+                                onPressed: (){
+                                  Get.toNamed(ZeusRoute.detailnopol, arguments: controller.selectedPlatNomorList);
+                                },
                                 style: AppButtonStyle.primaryButtonStyle(),
                                 child: SizedBox(
                                   width: 170,
-                                  child: Text("Reset Data",
+                                  child: Text("Detail",
                                     style: AppTextStyles.buttonFont,
                                     textAlign: TextAlign.center,
                                   ),
@@ -138,30 +139,14 @@ class ZeusView extends GetView<ZeusController> {
                   onPressed: controller.takePhoto,
                   style: AppButtonStyle.primaryButtonStyle(),
                   child: SizedBox(
-                    width: MediaQuery.sizeOf(context).width/2 - 40,
-                    child: Text("Ambil Foto",
-                      style: AppTextStyles.buttonFont,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 15),
-                ElevatedButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return Platnomorpopup(controller: controller);
-                      },
-                    );
-                  },
-                  style: AppButtonStyle.primaryButtonStyle(),
-                  child: SizedBox(
-                    width: MediaQuery.sizeOf(context).width/2 - 40,
-                    child: Text("Pengisian Manual",
-                      style: AppTextStyles.buttonFont,
-                      textAlign: TextAlign.center,
-                    ),
+                    width: MediaQuery.sizeOf(context).width - 50,
+                    height: 55,
+                    child: Center(
+                      child: Text("Ambil Foto",
+                        style: AppTextStyles.buttonFont.copyWith(fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    )
                   ),
                 ),
               ],
