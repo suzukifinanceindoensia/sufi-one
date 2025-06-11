@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:sufi_one/app/auth/models/user_model.dart';
-import 'package:sufi_one/app/auth/services/auth_service.dart';
+import 'package:sufi_one/app/models/user_model.dart';
+import 'package:sufi_one/app/services/auth_service.dart';
 
 class AuthController extends GetxController {
   final AuthService _authService =
