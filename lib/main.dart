@@ -4,8 +4,8 @@ import 'package:sufi_one/app/modules/public/home_routes.dart';
 import 'app/routes/app_routes.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:sufi_one/app/auth/bindings/auth_binding.dart';
-import 'package:sufi_one/app/auth/controllers/auth_controller.dart';
+import 'package:sufi_one/app/bindings/auth_binding.dart';
+import 'package:sufi_one/app/controllers/auth_controller.dart';
 
 void main() async {
   await GetStorage.init();
