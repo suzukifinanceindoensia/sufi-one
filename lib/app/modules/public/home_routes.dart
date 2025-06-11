@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 // Auth
-import 'package:sufi_one/app/auth/bindings/auth_binding.dart';
+import 'package:sufi_one/app/bindings/auth_binding.dart';
 
 // Login & Register
 import 'package:sufi_one/app/modules/public/login/views/login_view.dart';
@@ -45,7 +45,7 @@ import 'package:sufi_one/app/modules/public/cabang/views/cabang_view.dart';
 import 'package:sufi_one/app/modules/public/cabang/bindings/cabang_binding.dart';
 
 // WebView
-import 'package:sufi_one/app/modules/public/webview/generic_webview.dart';
+import 'package:sufi_one/app/services/generic_webview.dart';
 
 class HomeRoutes {
   static const splash = '/';

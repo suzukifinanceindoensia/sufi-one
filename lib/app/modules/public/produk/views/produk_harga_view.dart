@@ -5,6 +5,7 @@ import 'package:sufi_one/app/modules/public/produk/controllers/produk_controller
 import 'package:sufi_one/app/modules/public/produk/views/produk_detail_view.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
+import 'package:sufi_one/app/controllers/auth_controller.dart';
 
 class ProdukHargaView extends StatefulWidget {
   @override
@@ -13,56 +14,64 @@ class ProdukHargaView extends StatefulWidget {
 
 class _ProdukHargaViewState extends State<ProdukHargaView> {
   final ProdukController controller = Get.find<ProdukController>();
+  final authController = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
     final tipeDetail = controller.getProdukDetail();
 
     if (tipeDetail == null) {
+      return Obx(() {
+        final isLoggedIn = authController.user.value != null;
+
+        return Scaffold(
+          backgroundColor: AppColors.bg1,
+          appBar: SuzukiFinanceAppBarWsidebar(),
+          drawer: isLoggedIn ? Drawer(child: AppSidebar()) : null,
+          body: const Center(child: Text('Produk tidak ditemukan')),
+        );
+      });
+    }
+
+    return Obx(() {
+      final isLoggedIn = authController.user.value != null;
       return Scaffold(
         backgroundColor: AppColors.bg1,
         appBar: SuzukiFinanceAppBarWsidebar(),
-        drawer: Drawer(child: AppSidebar()),
-        body: const Center(child: Text('Produk tidak ditemukan')),
-      );
-    }
-
-    return Scaffold(
-      backgroundColor: AppColors.bg1,
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: Drawer(child: AppSidebar()),
-      body: Center(
-        child: GestureDetector(
-          onTap: () {
-            Get.to(() => ProdukDetailView());
-          },
-          child: Card(
-            color: AppColors.bg1,
-            elevation: 4,
-            margin: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Image.asset(
-                  tipeDetail['image'],
-                  height: 200,
-                  fit: BoxFit.cover,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Text(
-                    tipeDetail['price'],
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
+        drawer: isLoggedIn ? Drawer(child: AppSidebar()) : null,
+        body: Center(
+          child: GestureDetector(
+            onTap: () {
+              Get.to(() => ProdukDetailView());
+            },
+            child: Card(
+              color: AppColors.bg1,
+              elevation: 4,
+              margin: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.asset(
+                    tipeDetail['image'],
+                    height: 200,
+                    fit: BoxFit.cover,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(
+                      tipeDetail['price'],
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

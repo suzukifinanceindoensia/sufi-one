@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/auth/services/auth_service.dart';
+import 'package:sufi_one/app/services/auth_service.dart';
 import 'package:sufi_one/app/modules/public/home_routes.dart';
 
 class ForgotPasswordController extends GetxController {

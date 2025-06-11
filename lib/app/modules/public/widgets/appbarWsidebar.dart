@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
-import 'package:sufi_one/app/auth/controllers/auth_controller.dart';
+import 'package:sufi_one/app/controllers/auth_controller.dart';
 
 class SuzukiFinanceAppBarWsidebar extends StatelessWidget
     implements PreferredSizeWidget {

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/modules/public/login/models/register_model.dart';
-import 'package:sufi_one/app/auth/controllers/auth_controller.dart';
+import 'package:sufi_one/app/controllers/auth_controller.dart';
 import 'package:sufi_one/app/modules/public/home_routes.dart';
 
 class RegisterController extends GetxController {

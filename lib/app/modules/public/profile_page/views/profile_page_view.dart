@@ -7,30 +7,36 @@ import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
-import 'package:sufi_one/app/auth/controllers/auth_controller.dart';
+import 'package:sufi_one/app/controllers/auth_controller.dart';
+import 'package:sufi_one/app/controllers/auth_controller.dart';
 
 class ProfilePageView extends GetView<ProfilePageController> {
   const ProfilePageView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.bg1,
-      appBar: const SuzukiFinanceAppBarWsidebar(),
-      drawer: const Drawer(child: AppSidebar()),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 16),
-            _buildHeader(),
-            const SizedBox(height: 16),
-            _buildMenuSection(),
-            const SizedBox(height: 32),
-          ],
+    final authController = Get.find<AuthController>();
+    return Obx(() {
+      final isLoggedIn = authController.user.value != null;
+
+      return Scaffold(
+        backgroundColor: AppColors.bg1,
+        appBar: const SuzukiFinanceAppBarWsidebar(),
+        drawer: isLoggedIn ? Drawer(child: AppSidebar()) : null,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 16),
+              _buildHeader(),
+              const SizedBox(height: 16),
+              _buildMenuSection(),
+              const SizedBox(height: 32),
+            ],
+          ),
         ),
-      ),
-      bottomNavigationBar: BottomNavbar(selectedIndex: 3),
-    );
+        bottomNavigationBar: BottomNavbar(selectedIndex: 3),
+      );
+    });
   }
 
   Widget _buildHeader() {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:sufi_one/app/auth/services/auth_service.dart';
+import 'package:sufi_one/app/services/auth_service.dart';
 
 class ResetPasswordController extends GetxController {
   /// ----------------------------
