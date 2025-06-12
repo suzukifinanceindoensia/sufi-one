@@ -8,7 +8,6 @@ import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/controllers/auth_controller.dart';
-import 'package:sufi_one/app/controllers/auth_controller.dart';
 
 class ProfilePageView extends GetView<ProfilePageController> {
   const ProfilePageView({super.key});

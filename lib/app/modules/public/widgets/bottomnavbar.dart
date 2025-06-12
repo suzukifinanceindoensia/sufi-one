@@ -41,7 +41,7 @@ class BottomNavbar extends StatelessWidget {
       style: TabStyle.reactCircle,
       height: 50, // Tinggi bottom bar (default 50)
       curveSize: 100, // Ukuran lengkungan bubble (default 80)
-      backgroundColor: AppColors.splashStart,
+      backgroundColor: AppColors.navIcon,
       activeColor: AppColors.bg1,
       color: AppColors.bg2,
       elevation: 10,
