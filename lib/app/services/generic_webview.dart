@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
+import 'package:sufi_one/app/theme/color_constant.dart';
 
 class GenericWebView extends StatefulWidget {
   const GenericWebView({super.key});
@@ -51,20 +52,30 @@ class _GenericWebViewState extends State<GenericWebView> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(title),
+          backgroundColor: AppColors.navIcon,
+          centerTitle: false,
+          toolbarHeight: 50,
+          automaticallyImplyLeading: false,
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back, color: AppColors.bg1),
             onPressed: handleBackNavigation,
+          ),
+          title: Row(
+            children: [
+              Image.asset('res/images/splashscreen2.png', height: 35),
+              const SizedBox(width: 12),
+            ],
           ),
           actions: [
             IconButton(
-              icon: const Icon(Icons.refresh),
+              icon: const Icon(Icons.refresh, color: AppColors.bg1),
               onPressed: () {
                 webViewController?.reload();
               },
             ),
           ],
         ),
+
         body: Stack(
           children: [
             InAppWebView(

@@ -13,7 +13,7 @@ class SuzukiFinanceAppBarWObutton extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.splashStart,
+      backgroundColor: AppColors.navIcon,
       centerTitle: false,
       toolbarHeight: 50,
       automaticallyImplyLeading: false,
