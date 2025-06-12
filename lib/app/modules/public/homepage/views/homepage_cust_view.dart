@@ -74,17 +74,9 @@ class _HomepageCustViewState extends State<HomepageCustView> {
               //   color: AppColors.splashStart,
               // ),
               _buildMenuGrid(),
-              const Divider(
-                height: 20,
-                thickness: 9,
-                color: AppColors.splashStart,
-              ),
+              const Divider(height: 20, thickness: 4, color: AppColors.navIcon),
               _OrderSection(),
-              const Divider(
-                height: 20,
-                thickness: 9,
-                color: AppColors.splashStart,
-              ),
+              const Divider(height: 20, thickness: 4, color: AppColors.navIcon),
               _NewsCarousel(),
               // const Divider(
               //   height: 20,
@@ -164,7 +156,7 @@ class _HomepageCustViewState extends State<HomepageCustView> {
         children: [
           const Text(
             'Fitur',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12.0),
           GridView.count(
@@ -238,7 +230,10 @@ class _HomepageCustViewState extends State<HomepageCustView> {
                         Text(
                           item['label']!,
                           textAlign: TextAlign.center,
-                          style: AppTextStyles.smallBody,
+                          style: TextStyle(
+                            color: AppColors.iconDefault,
+                            fontSize: 14,
+                          ),
                         ),
                       ],
                     ),
@@ -257,7 +252,7 @@ class _HomepageCustViewState extends State<HomepageCustView> {
         children: [
           const Text(
             'Ayo, Order Kendaraan Suzuki',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
           ),
           const SizedBox(height: 8.0),
           ElevatedButton(
@@ -292,7 +287,7 @@ class _HomepageCustViewState extends State<HomepageCustView> {
         children: [
           const Text(
             'Berita Terbaru',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12.0),
           Container(

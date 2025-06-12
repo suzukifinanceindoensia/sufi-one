@@ -21,11 +21,16 @@ class ProfileEditView extends GetView<ProfilePageController> {
             children: [
               const Text(
                 'Ubah Profil',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.navIcon,
+                ),
               ),
               const SizedBox(height: 8),
               const Text(
                 'Terimakasih sudah bergabung dan menjadi bagian dari Suzuki Finance dan aplikasi Sufi Smart',
+                style: TextStyle(fontSize: 16, color: AppColors.navIcon),
               ),
               const SizedBox(height: 24),
               _buildTextField(
@@ -78,7 +83,11 @@ class ProfileEditView extends GetView<ProfilePageController> {
               const SizedBox(height: 16),
               const Text(
                 'Isi informasi No KTP dan nomor kontrak jika anda nasabah Suzuki Finance',
-                style: TextStyle(fontStyle: FontStyle.italic),
+                style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  color: AppColors.navIcon,
+                  fontSize: 16,
+                ),
               ),
               const SizedBox(height: 8),
               _buildTextField(

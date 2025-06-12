@@ -29,7 +29,8 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                 Text(
                   "Lupa Password",
                   style: AppTextStyles.medBodyBold.copyWith(
-                    color: AppColors.button,
+                    color: AppColors.navIcon,
+                    fontSize: 25,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -39,7 +40,8 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                 Text(
                   "Jika ingin memulihkan akun anda, silahkan isi email valid yang sudah terdaftar dalam aplikasi SUFI-ONE",
                   style: AppTextStyles.medBody.copyWith(
-                    color: AppColors.button,
+                    color: AppColors.navIcon,
+                    fontSize: 20,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -50,8 +52,10 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                 TextFormField(
                   controller: controller.emailController,
                   keyboardType: TextInputType.emailAddress,
+                  style: const TextStyle(fontSize: 22),
                   decoration: InputDecoration(
                     labelText: 'Email',
+                    labelStyle: TextStyle(fontSize: 25),
                     suffixIcon: Icon(Icons.email_outlined),
                     border: UnderlineInputBorder(), // garis bawah
                     focusedBorder: UnderlineInputBorder(
@@ -75,7 +79,10 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                         controller.isButtonEnabled.value
                             ? Text(
                               'Reset Password',
-                              style: AppTextStyles.buttonFont,
+                              style: AppTextStyles.buttonFont.copyWith(
+                                fontSize: 20,
+                                color: AppColors.bg1,
+                              ),
                             )
                             : const SizedBox(
                               height: 20,

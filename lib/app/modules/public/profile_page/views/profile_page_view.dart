@@ -49,13 +49,22 @@ class ProfilePageView extends GetView<ProfilePageController> {
         const SizedBox(height: 8),
         Obx(() {
           final user = controller.user.value;
-          return Text(user?.name ?? 'No Name', style: AppTextStyles.bigBody);
+          return Text(
+            user?.name ?? 'No Name',
+            style: AppTextStyles.bigBody.copyWith(
+              fontSize: 25,
+              color: AppColors.iconDefault,
+            ),
+          );
         }),
         Obx(() {
           final user = controller.user.value;
           return Text(
             user?.email ?? 'No Email',
-            style: AppTextStyles.smallBody,
+            style: AppTextStyles.smallBody.copyWith(
+              fontStyle: FontStyle.italic,
+              fontSize: 15,
+            ),
           );
         }),
         Obx(() {
@@ -66,6 +75,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
             style: AppTextStyles.smallBody.copyWith(
               fontStyle: FontStyle.italic,
               color: Colors.grey[600],
+              fontSize: 15,
             ),
           );
         }),
@@ -79,7 +89,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
             boxShadow: const [
               BoxShadow(
                 color: AppColors.iconDefault,
-                blurRadius: 6,
+                blurRadius: 3,
                 offset: Offset(0, 2),
               ),
             ],
@@ -145,15 +155,21 @@ class ProfilePageView extends GetView<ProfilePageController> {
 
   Widget _buildMenuItem(String title, IconData icon, VoidCallback onTap) {
     return ListTile(
-      leading: Icon(icon, color: Colors.blue),
-      title: Text(title, style: AppTextStyles.medBody),
+      leading: Icon(icon, color: AppColors.navIcon),
+      title: Text(
+        title,
+        style: AppTextStyles.medBody.copyWith(
+          fontSize: 18,
+          color: AppColors.iconDefault,
+        ),
+      ),
       trailing: const Icon(
         Icons.arrow_forward_ios,
         size: 16,
-        color: Colors.grey,
+        color: AppColors.navIcon,
       ),
       onTap: onTap,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 30),
     );
   }
 }

@@ -46,9 +46,9 @@ class _UbahPasswordFormState extends State<_UbahPasswordForm> {
               Text(
                 'Atur Ulang Kata Sandi',
                 style: AppTextStyles.bigBody.copyWith(
-                  fontSize: 15,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.bg3,
+                  color: AppColors.navIcon,
                 ),
               ),
               const SizedBox(height: 16),
@@ -127,7 +127,13 @@ class _UbahPasswordFormState extends State<_UbahPasswordForm> {
                       controller.changePassword();
                     }
                   },
-                  child: Text('Update', style: AppTextStyles.buttonFont),
+                  child: Text(
+                    'Update',
+                    style: AppTextStyles.buttonFont.copyWith(
+                      fontSize: 20,
+                      color: AppColors.bg1,
+                    ),
+                  ),
                 ),
               ),
             ],

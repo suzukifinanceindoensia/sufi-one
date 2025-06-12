@@ -46,7 +46,8 @@ class LoginPage extends GetView<LoginController> {
                     Text(
                       "Selamat Datang Kembali",
                       style: AppTextStyles.medBodyBold.copyWith(
-                        color: AppColors.button,
+                        color: AppColors.navIcon,
+                        fontSize: 23,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -56,7 +57,8 @@ class LoginPage extends GetView<LoginController> {
                     Text(
                       "Masukkan email dan kata sandi anda yang terdaftar di aplikasi SUFI-ONE",
                       style: AppTextStyles.medBody.copyWith(
-                        color: AppColors.button,
+                        color: AppColors.navIcon,
+                        fontSize: 18,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -71,8 +73,13 @@ class LoginPage extends GetView<LoginController> {
                         onFieldSubmitted:
                             (_) => FocusScope.of(context).nextFocus(),
                         keyboardType: TextInputType.emailAddress,
+                        style: const TextStyle(
+                          fontSize: 20,
+                        ), // Ukuran font input
                         decoration: const InputDecoration(
                           labelText: 'Email',
+                          labelStyle: TextStyle(fontSize: 20),
+                          errorStyle: TextStyle(fontSize: 15),
                           border: OutlineInputBorder(),
                           suffixIcon: Icon(Icons.email_outlined),
                         ),
@@ -88,8 +95,15 @@ class LoginPage extends GetView<LoginController> {
                         child: TextFormField(
                           controller: controller.passwordController,
                           obscureText: !controller.isPasswordVisible.value,
+                          style: const TextStyle(
+                            fontSize: 20,
+                          ), // Ukuran font input
                           decoration: InputDecoration(
                             labelText: 'Password',
+                            labelStyle: const TextStyle(
+                              fontSize: 20,
+                            ), // Ukuran font label
+                            errorStyle: TextStyle(fontSize: 15),
                             border: const OutlineInputBorder(),
                             suffixIcon: IconButton(
                               icon: Icon(
@@ -112,7 +126,13 @@ class LoginPage extends GetView<LoginController> {
                       child: ElevatedButton(
                         style: AppButtonStyle.primaryButtonStyle(),
                         onPressed: controller.login,
-                        child: Text("Login", style: AppTextStyles.buttonFont),
+                        child: Text(
+                          "Login",
+                          style: AppTextStyles.buttonFont.copyWith(
+                            fontSize: 20,
+                            color: AppColors.bg1,
+                          ),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -124,7 +144,7 @@ class LoginPage extends GetView<LoginController> {
                         onPressed: () => Get.toNamed(HomeRoutes.forgotPassword),
                         child: Text(
                           'Lupa Password?',
-                          style: AppTextStyles.smallBody,
+                          style: AppTextStyles.smallBody.copyWith(fontSize: 16),
                         ),
                       ),
                     ),
@@ -139,11 +159,15 @@ class LoginPage extends GetView<LoginController> {
                             children: [
                               TextSpan(
                                 text: 'Belum punya akun? ',
-                                style: AppTextStyles.smallBody,
+                                style: AppTextStyles.smallBody.copyWith(
+                                  fontSize: 12,
+                                ),
                               ),
                               TextSpan(
                                 text: 'Daftar sekarang',
-                                style: AppTextStyles.smallBodyBold,
+                                style: AppTextStyles.smallBodyBold.copyWith(
+                                  fontSize: 12,
+                                ),
                               ),
                             ],
                           ),
