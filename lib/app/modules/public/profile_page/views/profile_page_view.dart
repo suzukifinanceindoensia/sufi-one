@@ -7,34 +7,38 @@ import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
+import 'package:sufi_one/app/controllers/auth_controller.dart';
 
-class ProfilePageView extends StatelessWidget {
-  const ProfilePageView({Key? key}) : super(key: key);
+class ProfilePageView extends GetView<ProfilePageController> {
+  const ProfilePageView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ProfilePageController controller = Get.find();
+    final authController = Get.find<AuthController>();
+    return Obx(() {
+      final isLoggedIn = authController.user.value != null;
 
-    return Scaffold(
-      backgroundColor: AppColors.bg1,
-      appBar: const SuzukiFinanceAppBarWsidebar(),
-      drawer: const Drawer(child: AppSidebar()),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 16),
-            _buildHeader(controller),
-            const SizedBox(height: 16),
-            _buildMenuSection(),
-            const SizedBox(height: 32),
-          ],
+      return Scaffold(
+        backgroundColor: AppColors.bg1,
+        appBar: const SuzukiFinanceAppBarWsidebar(),
+        drawer: isLoggedIn ? Drawer(child: AppSidebar()) : null,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 16),
+              _buildHeader(),
+              const SizedBox(height: 16),
+              _buildMenuSection(),
+              const SizedBox(height: 32),
+            ],
+          ),
         ),
-      ),
-      bottomNavigationBar: const BottomNavbar(selectedIndex: 3),
-    );
+        bottomNavigationBar: BottomNavbar(selectedIndex: 3),
+      );
+    });
   }
 
-  Widget _buildHeader(ProfilePageController controller) {
+  Widget _buildHeader() {
     return Column(
       children: [
         const CircleAvatar(
@@ -43,29 +47,49 @@ class ProfilePageView extends StatelessWidget {
           child: Icon(Icons.person, size: 48, color: Colors.white),
         ),
         const SizedBox(height: 8),
-        Obx(
-          () => Text(
-            controller.user.value?.username ?? 'No Username',
-            style: AppTextStyles.bigBody,
-          ),
-        ),
-        Obx(
-          () => Text(
-            controller.user.value?.email ?? 'No Email',
-            style: AppTextStyles.smallBody,
-          ),
-        ),
+        Obx(() {
+          final user = controller.user.value;
+          return Text(
+            user?.name ?? 'No Name',
+            style: AppTextStyles.bigBody.copyWith(
+              fontSize: 20,
+              color: AppColors.iconDefault,
+            ),
+          );
+        }),
+        Obx(() {
+          final user = controller.user.value;
+          return Text(
+            user?.email ?? 'No Email',
+            style: AppTextStyles.smallBody.copyWith(
+              fontStyle: FontStyle.italic,
+              fontSize: 13,
+            ),
+          );
+        }),
+        Obx(() {
+          final user = controller.user.value;
+          // Kalau user.role kosong/null tampilkan "No Role"
+          return Text(
+            user?.role ?? 'No Role',
+            style: AppTextStyles.smallBody.copyWith(
+              fontStyle: FontStyle.italic,
+              color: Colors.grey[600],
+              fontSize: 13,
+            ),
+          );
+        }),
         const SizedBox(height: 12),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 16),
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.bg1,
             borderRadius: BorderRadius.circular(12),
             boxShadow: const [
               BoxShadow(
-                color: Colors.black12,
-                blurRadius: 6,
+                color: AppColors.iconDefault,
+                blurRadius: 3,
                 offset: Offset(0, 2),
               ),
             ],
@@ -74,9 +98,9 @@ class ProfilePageView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _buildInfoTile('Points', '5.000', Icons.monetization_on),
-              Container(height: 32, width: 1, color: Colors.grey[300]),
+              Container(height: 32, width: 1, color: AppColors.bg1),
               _buildInfoTile('Sobat Sufi', 'DF9A549', Icons.card_membership),
-              Container(height: 32, width: 1, color: Colors.grey[300]),
+              Container(height: 32, width: 1, color: AppColors.bg1),
               _buildInfoTile('Level', 'Silver', Icons.military_tech),
             ],
           ),
@@ -121,8 +145,9 @@ class ProfilePageView extends StatelessWidget {
           Get.toNamed(HomeRoutes.ubahPassword);
         }),
         _buildMenuItem('Keluar', Icons.logout, () {
-          // TODO: Implementasi logout atau navigasi keluar
-          Get.back();
+          final AuthController authController = Get.find<AuthController>();
+          authController.logout();
+          Get.offAllNamed(HomeRoutes.login);
         }),
       ],
     );
@@ -130,15 +155,21 @@ class ProfilePageView extends StatelessWidget {
 
   Widget _buildMenuItem(String title, IconData icon, VoidCallback onTap) {
     return ListTile(
-      leading: Icon(icon, color: Colors.blue),
-      title: Text(title, style: AppTextStyles.medBody),
+      leading: Icon(icon, color: AppColors.navIcon),
+      title: Text(
+        title,
+        style: AppTextStyles.medBody.copyWith(
+          fontSize: 16,
+          color: AppColors.iconDefault,
+        ),
+      ),
       trailing: const Icon(
         Icons.arrow_forward_ios,
         size: 16,
-        color: Colors.grey,
+        color: AppColors.navIcon,
       ),
       onTap: onTap,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 30),
     );
   }
 }

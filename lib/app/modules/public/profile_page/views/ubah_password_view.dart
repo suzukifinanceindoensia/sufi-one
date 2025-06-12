@@ -6,27 +6,37 @@ import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
-class UbahPasswordView extends StatefulWidget {
+class UbahPasswordView extends GetView<ProfilePageController> {
   const UbahPasswordView({super.key});
 
   @override
-  State<UbahPasswordView> createState() => _UbahPasswordViewState();
+  Widget build(BuildContext context) {
+    return const _UbahPasswordForm();
+  }
 }
 
-class _UbahPasswordViewState extends State<UbahPasswordView> {
-  final controller = Get.find<ProfilePageController>();
+class _UbahPasswordForm extends StatefulWidget {
+  const _UbahPasswordForm();
+
+  @override
+  State<_UbahPasswordForm> createState() => _UbahPasswordFormState();
+}
+
+class _UbahPasswordFormState extends State<_UbahPasswordForm> {
   final _formKey = GlobalKey<FormState>();
-  bool isObscure1 = true;
-  bool isObscure2 = true;
-  bool isObscure3 = true;
+  final controller = Get.find<ProfilePageController>();
+
+  bool isObscureCurrent = true;
+  bool isObscureNew = true;
+  bool isObscureConfirm = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bg1,
       appBar: SuzukiFinanceAppBarWObutton(),
-      bottomNavigationBar: const BottomNavbar(selectedIndex: 3),
-      body: Padding(
+      bottomNavigationBar: BottomNavbar(selectedIndex: 3),
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(32.0),
         child: Form(
           key: _formKey,
@@ -34,65 +44,77 @@ class _UbahPasswordViewState extends State<UbahPasswordView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Atur Ulang Kata sandi',
+                'Atur Ulang Kata Sandi',
                 style: AppTextStyles.bigBody.copyWith(
-                  fontSize: 15,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.bg3,
+                  color: AppColors.navIcon,
                 ),
               ),
               const SizedBox(height: 16),
+
+              // Password Lama
               TextFormField(
                 controller: controller.currentPasswordController,
-                obscureText: isObscure1,
+                obscureText: isObscureCurrent,
                 decoration: InputDecoration(
                   hintText: 'Password Lama',
                   suffixIcon: IconButton(
                     icon: Icon(
-                      isObscure1 ? Icons.visibility_off : Icons.visibility,
+                      isObscureCurrent
+                          ? Icons.visibility_off
+                          : Icons.visibility,
                     ),
                     onPressed: () {
-                      setState(() => isObscure1 = !isObscure1);
+                      setState(() => isObscureCurrent = !isObscureCurrent);
                     },
                   ),
                 ),
                 validator: controller.validateCurrentPassword,
               ),
               const SizedBox(height: 16),
+
+              // Password Baru
               TextFormField(
                 controller: controller.newPasswordController,
-                obscureText: isObscure2,
+                obscureText: isObscureNew,
                 decoration: InputDecoration(
                   hintText: 'Password Baru',
                   suffixIcon: IconButton(
                     icon: Icon(
-                      isObscure2 ? Icons.visibility_off : Icons.visibility,
+                      isObscureNew ? Icons.visibility_off : Icons.visibility,
                     ),
                     onPressed: () {
-                      setState(() => isObscure2 = !isObscure2);
+                      setState(() => isObscureNew = !isObscureNew);
                     },
                   ),
                 ),
                 validator: controller.validateNewPassword,
               ),
               const SizedBox(height: 16),
+
+              // Konfirmasi Password Baru
               TextFormField(
                 controller: controller.confirmPasswordController,
-                obscureText: isObscure3,
+                obscureText: isObscureConfirm,
                 decoration: InputDecoration(
-                  hintText: 'Password Konfirmasi',
+                  hintText: 'Konfirmasi Password Baru',
                   suffixIcon: IconButton(
                     icon: Icon(
-                      isObscure3 ? Icons.visibility_off : Icons.visibility,
+                      isObscureConfirm
+                          ? Icons.visibility_off
+                          : Icons.visibility,
                     ),
                     onPressed: () {
-                      setState(() => isObscure3 = !isObscure3);
+                      setState(() => isObscureConfirm = !isObscureConfirm);
                     },
                   ),
                 ),
                 validator: controller.validateConfirmPassword,
               ),
               const SizedBox(height: 24),
+
+              // Tombol Update
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -101,11 +123,17 @@ class _UbahPasswordViewState extends State<UbahPasswordView> {
                     padding: const EdgeInsets.symmetric(vertical: 14),
                   ),
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
+                    if (_formKey.currentState?.validate() ?? false) {
                       controller.changePassword();
                     }
                   },
-                  child: Text('Update', style: AppTextStyles.buttonFont),
+                  child: Text(
+                    'Update',
+                    style: AppTextStyles.buttonFont.copyWith(
+                      fontSize: 18,
+                      color: AppColors.bg1,
+                    ),
+                  ),
                 ),
               ),
             ],

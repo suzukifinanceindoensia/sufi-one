@@ -4,7 +4,6 @@ class LoginModel {
 
   LoginModel({required this.email, required this.password});
 
-  // Untuk membuat model dari Map (misalnya dari JSON)
   factory LoginModel.fromJson(Map<String, dynamic> json) {
     return LoginModel(
       email: json['email'] as String,
@@ -12,7 +11,6 @@ class LoginModel {
     );
   }
 
-  // Untuk mengubah model menjadi Map (misalnya untuk dikirim ke API)
   Map<String, dynamic> toJson() {
     return {'email': email, 'password': password};
   }
