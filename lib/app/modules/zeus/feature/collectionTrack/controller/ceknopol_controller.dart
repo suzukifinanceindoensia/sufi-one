@@ -21,8 +21,6 @@ class CeknopolController extends GetxController {
   RxString SelectedNo_SKMBJ = 'Loading'.obs;
   final RxList<ZeushomeModel> selectedPlatNomorList = <ZeushomeModel>[].obs;
 
-  final ImagePicker _picker = ImagePicker();
-
   @override
   void onInit() {
     super.onInit();
