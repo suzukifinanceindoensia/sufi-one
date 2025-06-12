@@ -33,11 +33,7 @@ class ZeusMenuCreate extends StatelessWidget {
             children: [
               Container(
                 width: 170,
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(
-                  color: AppColors.bg2,                  
-                  borderRadius: BorderRadius.circular(8),
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),    
                 child: Column(
                 children: [
                   Text(

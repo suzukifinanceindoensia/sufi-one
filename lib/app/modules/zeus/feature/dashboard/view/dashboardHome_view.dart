@@ -24,14 +24,15 @@ class ZeusDashboardView extends GetView<ZeusDashboardController> {
         children: [
           const SizedBox(height: 20,), 
           Container(
-            padding: const EdgeInsets.all(16.0), 
-            margin: const EdgeInsets.symmetric(horizontal: 20.0), 
+            padding: const EdgeInsets.all(20), 
+            margin: const EdgeInsets.symmetric(horizontal: 15.0), 
+            height: 120,
             decoration: BoxDecoration(
               color: AppColors.bg2, 
               borderRadius: BorderRadius.circular(10.0), 
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.1), 
+                  color: Colors.black26, 
                   spreadRadius: 1,
                   blurRadius: 5,
                   offset: const Offset(0, 3),
@@ -40,25 +41,28 @@ class ZeusDashboardView extends GetView<ZeusDashboardController> {
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
                   children: [
                     Text(
                       'Welcome to Zeus!',
-                      style: TextStyle(
-                        fontSize: 24,
+                      style: AppTextStyles.bigBody.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: AppColors.bg3, 
+                        fontSize: 25,
                       ),
                     ),
                     const Expanded(child: SizedBox(),), 
-                    ElevatedButton.icon(
+                    TextButton(
                         onPressed: () {
                           controller.refreshDashboardData();                         
                         },
-                        icon: const Icon(Icons.refresh, color: Colors.white,),
-                        label: Text('Refresh Page', style: AppTextStyles.buttonFont,),
-                        style: AppButtonStyle.primaryButtonStyle(),
+                        child: Column(
+                          children: [
+                            const Icon(Icons.refresh, size: 35,),
+                            Text('Refresh', style: AppTextStyles.medBodyBold,),
+                          ],
+                        ),
                       ),
                   ],
                 ),
