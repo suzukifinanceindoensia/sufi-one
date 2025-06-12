@@ -57,7 +57,7 @@ class TransaksiPointView extends GetView<ProfilePageController> {
                 "Riwayat Point",
                 style: AppTextStyles.bigBody.copyWith(
                   fontWeight: FontWeight.bold,
-                  fontSize: 25,
+                  fontSize: 20,
                 ),
               ),
             ),
@@ -107,7 +107,7 @@ class TransaksiPointView extends GetView<ProfilePageController> {
                                   style: AppTextStyles.smallBody.copyWith(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.green.shade700,
-                                    fontSize: 15,
+                                    fontSize: 13,
                                   ),
                                 ),
                                 const SizedBox(height: 4),
@@ -115,14 +115,14 @@ class TransaksiPointView extends GetView<ProfilePageController> {
                                   item["tanggal"],
                                   style: AppTextStyles.smallBody.copyWith(
                                     color: Colors.grey[600],
-                                    fontSize: 14,
+                                    fontSize: 12,
                                   ),
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   item["deskripsi"],
                                   style: AppTextStyles.medBody.copyWith(
-                                    fontSize: 15,
+                                    fontSize: 12,
                                   ),
                                 ),
                               ],

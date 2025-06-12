@@ -26,7 +26,7 @@ class RegisterPage extends GetView<RegisterController> {
                   'Registrasi',
                   style: AppTextStyles.Navybodymed.copyWith(
                     color: AppColors.button,
-                    fontSize: 23,
+                    fontSize: 18,
                   ),
                 ),
                 const SizedBox(height: 5),
@@ -34,7 +34,7 @@ class RegisterPage extends GetView<RegisterController> {
                   'Silahkan lengkapi informasi data diri anda',
                   style: AppTextStyles.medBody.copyWith(
                     color: AppColors.button,
-                    fontSize: 18,
+                    fontSize: 14,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -203,7 +203,7 @@ class RegisterPage extends GetView<RegisterController> {
                       child: Text(
                         "Saya menyetujui syarat dan ketentuan",
                         style: AppTextStyles.smallBodyBold.copyWith(
-                          fontSize: 15,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -229,7 +229,7 @@ class RegisterPage extends GetView<RegisterController> {
                         child: Text(
                           'Register',
                           style: AppTextStyles.buttonFont.copyWith(
-                            fontSize: 20,
+                            fontSize: 16,
                             color: AppColors.bg1,
                           ),
                         ),

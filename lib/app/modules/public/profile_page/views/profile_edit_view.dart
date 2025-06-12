@@ -22,7 +22,7 @@ class ProfileEditView extends GetView<ProfilePageController> {
               const Text(
                 'Ubah Profil',
                 style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 23,
                   fontWeight: FontWeight.bold,
                   color: AppColors.navIcon,
                 ),
@@ -30,7 +30,7 @@ class ProfileEditView extends GetView<ProfilePageController> {
               const SizedBox(height: 8),
               const Text(
                 'Terimakasih sudah bergabung dan menjadi bagian dari Suzuki Finance dan aplikasi Sufi Smart',
-                style: TextStyle(fontSize: 16, color: AppColors.navIcon),
+                style: TextStyle(fontSize: 15, color: AppColors.navIcon),
               ),
               const SizedBox(height: 24),
               _buildTextField(
@@ -86,7 +86,7 @@ class ProfileEditView extends GetView<ProfilePageController> {
                 style: TextStyle(
                   fontStyle: FontStyle.italic,
                   color: AppColors.navIcon,
-                  fontSize: 16,
+                  fontSize: 15,
                 ),
               ),
               const SizedBox(height: 8),

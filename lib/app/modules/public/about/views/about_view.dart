@@ -50,14 +50,14 @@ class _AboutViewState extends State<AboutView> {
               Text(
                 'Sufi-One',
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: AppColors.navIcon,
                 ),
               ),
               Text(
                 'Versi: ${strVersion ?? "-"}',
-                style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                style: TextStyle(fontSize: 12, color: Colors.grey[700]),
               ),
               const SizedBox(height: 20),
 
@@ -104,11 +104,11 @@ class _AboutViewState extends State<AboutView> {
             children: [
               Text(
                 title,
-                style: TextStyle(fontSize: 20, color: AppColors.iconDefault),
+                style: TextStyle(fontSize: 16, color: AppColors.iconDefault),
               ),
               Text(
                 value,
-                style: TextStyle(fontSize: 20, color: AppColors.navIcon),
+                style: TextStyle(fontSize: 16, color: AppColors.navIcon),
               ),
             ],
           ),
@@ -128,7 +128,7 @@ class _AboutViewState extends State<AboutView> {
             children: [
               Text(
                 title,
-                style: TextStyle(fontSize: 20, color: AppColors.iconDefault),
+                style: TextStyle(fontSize: 16, color: AppColors.iconDefault),
               ),
               Icon(icon, color: AppColors.navIcon),
             ],

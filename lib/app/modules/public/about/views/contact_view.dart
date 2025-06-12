@@ -41,7 +41,7 @@ class _ContactViewState extends State<ContactView> {
                 const Text(
                   "Hubungi Kami",
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: AppColors.navIcon,
                   ),
@@ -49,7 +49,7 @@ class _ContactViewState extends State<ContactView> {
                 const SizedBox(height: 10),
                 const Text(
                   "Silahkan isi informasi di bawah ini untuk keluhan dan layanan lainnya",
-                  style: TextStyle(fontSize: 20, color: AppColors.navIcon),
+                  style: TextStyle(fontSize: 14, color: AppColors.navIcon),
                 ),
                 const SizedBox(height: 30),
                 TextFormField(
@@ -58,7 +58,7 @@ class _ContactViewState extends State<ContactView> {
                     FilteringTextInputFormatter.allow(RegExp("[a-z A-Z]")),
                   ],
                   decoration: const InputDecoration(labelText: "nama lengkap"),
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 16),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Nama lengkap tidak boleh kosong";
@@ -72,7 +72,7 @@ class _ContactViewState extends State<ContactView> {
                   keyboardType: TextInputType.phone,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   decoration: const InputDecoration(labelText: "nomor telepon"),
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 16),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Nomor telepon tidak boleh kosong";
@@ -91,7 +91,7 @@ class _ContactViewState extends State<ContactView> {
                   controller: controller.emailController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(labelText: "email"),
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 16),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Email tidak boleh kosong";

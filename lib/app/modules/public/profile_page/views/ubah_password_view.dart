@@ -46,7 +46,7 @@ class _UbahPasswordFormState extends State<_UbahPasswordForm> {
               Text(
                 'Atur Ulang Kata Sandi',
                 style: AppTextStyles.bigBody.copyWith(
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: AppColors.navIcon,
                 ),
@@ -130,7 +130,7 @@ class _UbahPasswordFormState extends State<_UbahPasswordForm> {
                   child: Text(
                     'Update',
                     style: AppTextStyles.buttonFont.copyWith(
-                      fontSize: 20,
+                      fontSize: 18,
                       color: AppColors.bg1,
                     ),
                   ),

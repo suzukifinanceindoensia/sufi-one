@@ -156,7 +156,7 @@ class _HomepageCustViewState extends State<HomepageCustView> {
         children: [
           const Text(
             'Fitur',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12.0),
           GridView.count(
@@ -232,7 +232,7 @@ class _HomepageCustViewState extends State<HomepageCustView> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: AppColors.iconDefault,
-                            fontSize: 14,
+                            fontSize: 12,
                           ),
                         ),
                       ],
@@ -252,7 +252,7 @@ class _HomepageCustViewState extends State<HomepageCustView> {
         children: [
           const Text(
             'Ayo, Order Kendaraan Suzuki',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
           ),
           const SizedBox(height: 8.0),
           ElevatedButton(
@@ -287,7 +287,7 @@ class _HomepageCustViewState extends State<HomepageCustView> {
         children: [
           const Text(
             'Berita Terbaru',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12.0),
           Container(

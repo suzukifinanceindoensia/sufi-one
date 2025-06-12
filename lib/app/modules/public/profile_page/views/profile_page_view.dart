@@ -52,7 +52,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
           return Text(
             user?.name ?? 'No Name',
             style: AppTextStyles.bigBody.copyWith(
-              fontSize: 25,
+              fontSize: 20,
               color: AppColors.iconDefault,
             ),
           );
@@ -63,7 +63,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
             user?.email ?? 'No Email',
             style: AppTextStyles.smallBody.copyWith(
               fontStyle: FontStyle.italic,
-              fontSize: 15,
+              fontSize: 13,
             ),
           );
         }),
@@ -75,7 +75,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
             style: AppTextStyles.smallBody.copyWith(
               fontStyle: FontStyle.italic,
               color: Colors.grey[600],
-              fontSize: 15,
+              fontSize: 13,
             ),
           );
         }),
@@ -159,7 +159,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
       title: Text(
         title,
         style: AppTextStyles.medBody.copyWith(
-          fontSize: 18,
+          fontSize: 16,
           color: AppColors.iconDefault,
         ),
       ),

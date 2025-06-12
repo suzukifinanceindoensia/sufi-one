@@ -30,7 +30,7 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                   "Lupa Password",
                   style: AppTextStyles.medBodyBold.copyWith(
                     color: AppColors.navIcon,
-                    fontSize: 25,
+                    fontSize: 18,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -41,7 +41,7 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                   "Jika ingin memulihkan akun anda, silahkan isi email valid yang sudah terdaftar dalam aplikasi SUFI-ONE",
                   style: AppTextStyles.medBody.copyWith(
                     color: AppColors.navIcon,
-                    fontSize: 20,
+                    fontSize: 14,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -52,10 +52,10 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                 TextFormField(
                   controller: controller.emailController,
                   keyboardType: TextInputType.emailAddress,
-                  style: const TextStyle(fontSize: 22),
+                  style: const TextStyle(fontSize: 16),
                   decoration: InputDecoration(
                     labelText: 'Email',
-                    labelStyle: TextStyle(fontSize: 25),
+                    labelStyle: TextStyle(fontSize: 16),
                     suffixIcon: Icon(Icons.email_outlined),
                     border: UnderlineInputBorder(), // garis bawah
                     focusedBorder: UnderlineInputBorder(
@@ -80,7 +80,7 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                             ? Text(
                               'Reset Password',
                               style: AppTextStyles.buttonFont.copyWith(
-                                fontSize: 20,
+                                fontSize: 16,
                                 color: AppColors.bg1,
                               ),
                             )

@@ -47,7 +47,7 @@ class LoginPage extends GetView<LoginController> {
                       "Selamat Datang Kembali",
                       style: AppTextStyles.medBodyBold.copyWith(
                         color: AppColors.navIcon,
-                        fontSize: 23,
+                        fontSize: 18,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -58,7 +58,7 @@ class LoginPage extends GetView<LoginController> {
                       "Masukkan email dan kata sandi anda yang terdaftar di aplikasi SUFI-ONE",
                       style: AppTextStyles.medBody.copyWith(
                         color: AppColors.navIcon,
-                        fontSize: 18,
+                        fontSize: 13,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -74,12 +74,12 @@ class LoginPage extends GetView<LoginController> {
                             (_) => FocusScope.of(context).nextFocus(),
                         keyboardType: TextInputType.emailAddress,
                         style: const TextStyle(
-                          fontSize: 20,
+                          fontSize: 16,
                         ), // Ukuran font input
                         decoration: const InputDecoration(
                           labelText: 'Email',
-                          labelStyle: TextStyle(fontSize: 20),
-                          errorStyle: TextStyle(fontSize: 15),
+                          labelStyle: TextStyle(fontSize: 16),
+                          errorStyle: TextStyle(fontSize: 13),
                           border: OutlineInputBorder(),
                           suffixIcon: Icon(Icons.email_outlined),
                         ),
@@ -96,14 +96,14 @@ class LoginPage extends GetView<LoginController> {
                           controller: controller.passwordController,
                           obscureText: !controller.isPasswordVisible.value,
                           style: const TextStyle(
-                            fontSize: 20,
+                            fontSize: 16,
                           ), // Ukuran font input
                           decoration: InputDecoration(
                             labelText: 'Password',
                             labelStyle: const TextStyle(
-                              fontSize: 20,
+                              fontSize: 16,
                             ), // Ukuran font label
-                            errorStyle: TextStyle(fontSize: 15),
+                            errorStyle: TextStyle(fontSize: 13),
                             border: const OutlineInputBorder(),
                             suffixIcon: IconButton(
                               icon: Icon(
@@ -129,7 +129,7 @@ class LoginPage extends GetView<LoginController> {
                         child: Text(
                           "Login",
                           style: AppTextStyles.buttonFont.copyWith(
-                            fontSize: 20,
+                            fontSize: 16,
                             color: AppColors.bg1,
                           ),
                         ),
@@ -144,7 +144,7 @@ class LoginPage extends GetView<LoginController> {
                         onPressed: () => Get.toNamed(HomeRoutes.forgotPassword),
                         child: Text(
                           'Lupa Password?',
-                          style: AppTextStyles.smallBody.copyWith(fontSize: 16),
+                          style: AppTextStyles.smallBody.copyWith(fontSize: 12),
                         ),
                       ),
                     ),
