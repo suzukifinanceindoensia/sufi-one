@@ -56,37 +56,38 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.home, color: Colors.white),
     title: 'Dashboard',
     onTap: () {
-      // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
-      Get.toNamed(ZeusRoute.zeusdashboard);
+      Get.offAndToNamed(ZeusRoute.zeusdashboard);
     },
   ),
   SidebarItemData(
     icon: const Icon(Icons.camera_alt, color: Colors.white),
     title: 'Foto Plat Nomor',
     onTap: () {
-      // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
-      Get.offNamed(ZeusRoute.fotonopol);
+      Get.offAndToNamed(ZeusRoute.zeusdashboard);
+      Get.toNamed(ZeusRoute.fotonopol);
     },
   ),
   SidebarItemData(
     icon: const Icon(Icons.dataset_rounded, color: Colors.white),
     title: 'Cek Plat Nomor',
     onTap: () {
-      // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
-      Get.offNamed(ZeusRoute.ceknopol);
+      Get.offAndToNamed(ZeusRoute.zeusdashboard);
+      Get.toNamed(ZeusRoute.ceknopol);
     },
   ),
   SidebarItemData(
     icon: const Icon(Icons.add_task_rounded, color: Colors.white),
     title: 'Task Assign',
     onTap: () {
-      Get.offNamed(ZeusRoute.taskassign);
+      Get.offAndToNamed(ZeusRoute.zeusdashboard);
+      Get.toNamed(ZeusRoute.taskassign);
     },
   ),
   SidebarItemData(
     icon: const Icon(Icons.description, color: Colors.white),
     title: 'cetak skmbj',
     onTap: () {
+      Get.offAndToNamed(ZeusRoute.zeusdashboard);
       Get.toNamed(ZeusRoute.cetakSkmbj);
     },
   ),
@@ -94,6 +95,7 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.description, color: Colors.white),
     title: 'cetak stmbj',
     onTap: () {
+      Get.offAndToNamed(ZeusRoute.zeusdashboard);
       Get.toNamed(ZeusRoute.cetakStmbj);
     },
   ),
@@ -101,6 +103,7 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.groups, color: Colors.white),
     title: 'List Anggota & Registrasi',
     onTap: () {
+      Get.offAndToNamed(ZeusRoute.zeusdashboard);
       Get.toNamed(ZeusRoute.listanggota);
     },
   ),
@@ -108,6 +111,7 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.assignment, color: Colors.white),
     title: 'Permohonan SK',
     onTap: () {
+      Get.offAndToNamed(ZeusRoute.zeusdashboard);
       Get.toNamed(ZeusRoute.permohonansk);
     },
   ),
@@ -115,6 +119,7 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.assignment, color: Colors.white),
     title: 'Serah terima SK',
     onTap: () {
+      Get.offAndToNamed(ZeusRoute.zeusdashboard);
       Get.toNamed(ZeusRoute.serahterimask);
     },
   ),
