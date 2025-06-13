@@ -6,7 +6,11 @@ import 'package:sufi_one/app/modules/mobcol/services/tugasSelesai_service.dart';
 class MobcolTugasSelesaiBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(()=>TugasSelesaiService());
+    //Get.lazyPut(()=>TugasSelesaiService());
     Get.lazyPut(() => MobcolTugasSelesaiController());
+    Get.putAsync<TugasSelesaiService>(() async {
+      await Future.delayed(Duration(seconds: 2));
+      return TugasSelesaiService();
+    });
   }
 }
