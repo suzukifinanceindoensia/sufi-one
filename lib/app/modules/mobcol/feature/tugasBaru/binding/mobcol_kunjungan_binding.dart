@@ -6,7 +6,11 @@ import 'package:sufi_one/app/modules/mobcol/services/tugasBaru_service.dart';
 class KunjunganBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => AllTugasBaruService());
+    //Get.lazyPut(() => AllTugasBaruService());
     Get.lazyPut(() => KunjunganController());
+    Get.putAsync<AllTugasBaruService>(() async {
+      await Future.delayed(Duration(seconds: 2));
+      return AllTugasBaruService();
+    });
   }
 }
