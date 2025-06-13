@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Admin",
+        "address": "Pulo Gadung",
+        "email": "admin@user.com",
+        "role": "Marketing",
+        "password": "user.100",
+        "token": "dummy_token_123",
+        "phone": "0812345678901"
+    },
+    {
+        "id": 2,
+        "name": "Admin2",
+        "address": "Pulo Gebang",
+        "email": "admin2@user.com",
+        "role": "CMO",
+        "password": "user.100",
+        "token": "dummy_token_123",
+        "phone": "0812345678902"
+    },
+    {
+        "id": 3,
+        "name": "Admin3",
+        "address": "Tebet",
+        "email": "admin3@user.com",
+        "role": "Collector",
+        "password": "user.100",
+        "token": "dummy_token_123",
+        "phone": "0812345678903"
+    },
+    {
+        "id": 4,
+        "name": "Admin4",
+        "address": "Jatiwaringin",
+        "email": "admin4@user.com",
+        "role": "Surveyor",
+        "password": "user.100",
+        "token": "dummy_token_123",
+        "phone": "0812345678904"
+    }
+]

@@ -9,6 +9,7 @@ class AppTextStyles {
   static final TextStyle buttonFont = GoogleFonts.outfit(
     fontSize: 14,
     color: Colors.white,
+    fontWeight: FontWeight.bold
   );
   static final TextStyle smallBodyBold = GoogleFonts.outfit(
     fontSize: 10,

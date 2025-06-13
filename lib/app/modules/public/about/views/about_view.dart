@@ -6,6 +6,7 @@ import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
+import 'package:sufi_one/app/controllers/auth_controller.dart';
 
 class AboutView extends StatefulWidget {
   const AboutView({super.key});
@@ -32,60 +33,65 @@ class _AboutViewState extends State<AboutView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.bg1,
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: Drawer(child: AppSidebar()),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            Image.asset('res/images/sufismart.png', height: 100, width: 100),
-            const SizedBox(height: 10),
-            Text(
-              'Sufi-One',
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
+    final authController = Get.find<AuthController>();
+
+    return Obx(() {
+      final isLoggedIn = authController.user.value != null;
+      return Scaffold(
+        backgroundColor: AppColors.bg1,
+        appBar: SuzukiFinanceAppBarWsidebar(),
+        drawer: isLoggedIn ? Drawer(child: AppSidebar()) : null,
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Image.asset('res/images/sufismart.png', height: 100, width: 100),
+              const SizedBox(height: 10),
+              Text(
+                'Sufi-One',
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.navIcon,
+                ),
               ),
-            ),
-            Text(
-              'Versi: ${strVersion ?? "-"}',
-              style: TextStyle(fontSize: 14, color: Colors.grey[700]),
-            ),
-            const SizedBox(height: 20),
+              Text(
+                'Versi: ${strVersion ?? "-"}',
+                style: TextStyle(fontSize: 12, color: Colors.grey[700]),
+              ),
+              const SizedBox(height: 20),
 
-            // Sosial Media Icons
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children:
-                  controller.socialMediaItems
-                      .map(
-                        (item) => GestureDetector(
-                          onTap: () => controller.launchUrlExternal(item.url),
-                          child: Icon(item.icon, color: item.color, size: 30),
-                        ),
-                      )
-                      .toList(),
-            ),
+              // Sosial Media Icons
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children:
+                    controller.socialMediaItems
+                        .map(
+                          (item) => GestureDetector(
+                            onTap: () => controller.launchUrlExternal(item.url),
+                            child: Icon(item.icon, color: item.color, size: 30),
+                          ),
+                        )
+                        .toList(),
+              ),
 
-            const SizedBox(height: 30),
+              const SizedBox(height: 30),
 
-            // Kontak Info
-            ...controller.contactInfos.map(
-              (item) => _infoTile(item.title, item.value, item.onTap),
-            ),
+              // Kontak Info
+              ...controller.contactInfos.map(
+                (item) => _infoTile(item.title, item.value, item.onTap),
+              ),
 
-            // Icon Item seperti Komunitas & FAQ
-            ...controller.iconItems.map(
-              (item) => _infoTileWithIcon(item.title, item.icon, item.onTap),
-            ),
-          ],
+              // Icon Item seperti Komunitas & FAQ
+              ...controller.iconItems.map(
+                (item) => _infoTileWithIcon(item.title, item.icon, item.onTap),
+              ),
+            ],
+          ),
         ),
-      ),
-      bottomNavigationBar: BottomNavbar(selectedIndex: 1),
-    );
+        bottomNavigationBar: BottomNavbar(selectedIndex: 1),
+      );
+    });
   }
 
   Widget _infoTile(String title, String value, VoidCallback onTap) {
@@ -102,7 +108,7 @@ class _AboutViewState extends State<AboutView> {
               ),
               Text(
                 value,
-                style: TextStyle(fontSize: 16, color: AppColors.snack),
+                style: TextStyle(fontSize: 16, color: AppColors.navIcon),
               ),
             ],
           ),
@@ -124,7 +130,7 @@ class _AboutViewState extends State<AboutView> {
                 title,
                 style: TextStyle(fontSize: 16, color: AppColors.iconDefault),
               ),
-              Icon(icon, color: AppColors.snack),
+              Icon(icon, color: AppColors.navIcon),
             ],
           ),
         ),
