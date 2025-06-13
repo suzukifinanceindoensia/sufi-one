@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/public/profile_page/models/user_profile_model.dart';
+import 'package:sufi_one/app/theme/color_constant.dart';
+import 'package:sufi_one/app/models/user_model.dart';
+import 'package:sufi_one/app/controllers/auth_controller.dart';
 
 class ProfilePageController extends GetxController {
-  final user = Rx<UserProfile?>(null);
+  final AuthController _authController = Get.find<AuthController>();
+
+  Rx<UserModel?> user = Rx<UserModel?>(null);
+
+  // Reactive variable untuk data gender dan pekerjaan (job)
   RxString gender = ''.obs;
   RxString job = ''.obs;
+
+  // visibilitas password dan status perubahan password
   RxBool isPasswordVisible = false.obs;
   RxBool isPasswordChange = false.obs;
 
+  // Key form untuk validasi input profile
   final profileFormKey = GlobalKey<FormState>();
 
+  // Controller textfield untuk profil user
   final nameController = TextEditingController();
   final phoneController = TextEditingController();
   final emailController = TextEditingController();
@@ -21,6 +31,7 @@ class ProfilePageController extends GetxController {
   final kontrak2Controller = TextEditingController();
   final kontrak3Controller = TextEditingController();
 
+  // Controller textfield untuk password
   final currentPasswordController = TextEditingController();
   final newPasswordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
@@ -28,11 +39,13 @@ class ProfilePageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    loadUserFromJsonAsset();
+    // Load data user dari AuthController saat inisialisasi controller
+    loadUserFromAuth();
   }
 
   @override
   void onClose() {
+    // Dispose semua controller textfield agar tidak memory leak
     nameController.dispose();
     phoneController.dispose();
     emailController.dispose();
@@ -48,33 +61,40 @@ class ProfilePageController extends GetxController {
     super.onClose();
   }
 
-  void loadUserFromJsonAsset() async {
-    final profile = await loadUserProfileFromJsonAsset(); // method di model
-    user.value = profile;
+  // Mengisi data user ke controller berdasarkan user yang aktif dari AuthController
+  void loadUserFromAuth() {
+    final currentUser = _authController.user.value;
+    if (currentUser != null) {
+      user.value = currentUser;
 
-    nameController.text = profile.name;
-    phoneController.text = profile.phone;
-    emailController.text = profile.email;
-    addressController.text = profile.address;
+      // Set nilai awal textfield dari data user
+      nameController.text = currentUser.name;
+      phoneController.text = currentUser.phone;
+      emailController.text = currentUser.email;
+      addressController.text = currentUser.address;
 
-    birthDateController.clear();
-    gender.value = '';
-    job.value = '';
-    ktpController.clear();
-    kontrak1Controller.clear();
-    kontrak2Controller.clear();
-    kontrak3Controller.clear();
+      // Kosongkan data opsional yang tidak tersedia saat ini
+      birthDateController.clear();
+      gender.value = '';
+      job.value = '';
+      ktpController.clear();
+      kontrak1Controller.clear();
+      kontrak2Controller.clear();
+      kontrak3Controller.clear();
+    }
   }
 
-  // ---------------------- UI Actions -----------------------
+  // Fungsi toggle untuk visibilitas password (show/hide)
   void togglePasswordVisibility() {
     isPasswordVisible.toggle();
   }
 
+  // Fungsi toggle untuk mengaktifkan atau menonaktifkan perubahan password
   void togglePasswordChange() {
     isPasswordChange.toggle();
   }
 
+  // Validator input form untuk masing-masing field
   String? validateName(String? value) =>
       (value == null || value.isEmpty) ? 'Please enter your name' : null;
 
@@ -109,6 +129,7 @@ class ProfilePageController extends GetxController {
     return null;
   }
 
+  // Validator untuk nomor kontrak opsional, hanya valid jika angka saja
   String? validateOptionalContract(String? value) {
     if (value != null &&
         value.isNotEmpty &&
@@ -118,6 +139,7 @@ class ProfilePageController extends GetxController {
     return null;
   }
 
+  // Fungsi simpan profil dan jika password berubah, juga ganti password
   void saveProfile() {
     if (profileFormKey.currentState?.validate() ?? false) {
       if (isPasswordChange.value) {
@@ -127,50 +149,76 @@ class ProfilePageController extends GetxController {
     }
   }
 
+  // Update data profil user pada model dan tampilkan snackbar sukses
   void updateProfileInfo() {
-    user.update((u) {
-      if (u != null) {
-        u.name = nameController.text;
-        u.phone = phoneController.text;
-        u.email = emailController.text;
-        u.address = addressController.text;
-      }
-    });
+    if (user.value != null) {
+      user.value = user.value!.copyWith(
+        name: nameController.text,
+        phone: phoneController.text,
+        email: emailController.text,
+        address: addressController.text,
+      );
+    }
 
     Get.snackbar(
       'Success',
       'Profile updated successfully',
-      snackPosition: SnackPosition.BOTTOM,
+      snackPosition: SnackPosition.TOP,
     );
   }
 
-  void changePassword() {
-    final currentPassword = currentPasswordController.text;
+  // date picker memilih tanggal lahir
+  void pickBirthDate(BuildContext context) async {
+    DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime(2000),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            colorScheme: ColorScheme.light(
+              primary: AppColors.iconDefault,
+              onPrimary: AppColors.bg1,
+              surface: AppColors.bg1,
+              onSurface: AppColors.iconDefault,
+            ),
+            dialogTheme: DialogTheme(backgroundColor: AppColors.bg1),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (picked != null) {
+      birthDateController.text = "${picked.toLocal()}".split(' ')[0];
+    }
+  }
+
+  // Fungsi untuk mengganti password
+  Future<void> changePassword() async {
+    final oldPassword = currentPasswordController.text;
     final newPassword = newPasswordController.text;
     final confirmPassword = confirmPasswordController.text;
 
+    if (oldPassword.isEmpty || newPassword.isEmpty || confirmPassword.isEmpty) {
+      Get.snackbar('Error', 'Semua kolom password harus diisi');
+      return;
+    }
+
     if (newPassword != confirmPassword) {
-      Get.snackbar(
-        'Error',
-        'New password and confirmation do not match',
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      Get.snackbar('Error', 'Password baru dan konfirmasi tidak cocok');
       return;
     }
 
-    if (currentPassword == newPassword) {
-      Get.snackbar(
-        'Error',
-        'New password must be different from current password',
-        snackPosition: SnackPosition.BOTTOM,
-      );
-      return;
-    }
+    // Panggil fungsi dari AuthController
+    await _authController.changePassword(oldPassword, newPassword);
 
-    Get.snackbar(
-      'Success',
-      'Password updated successfully',
-      snackPosition: SnackPosition.BOTTOM,
-    );
+    // Bersihkan form hanya jika sukses (opsional)
+    currentPasswordController.clear();
+    newPasswordController.clear();
+    confirmPasswordController.clear();
+
+    isPasswordChange.value = false;
   }
 }

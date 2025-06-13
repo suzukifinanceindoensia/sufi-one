@@ -7,6 +7,7 @@ import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
+import 'package:sufi_one/app/controllers/auth_controller.dart';
 
 class HomepageCustView extends StatefulWidget {
   const HomepageCustView({Key? key}) : super(key: key);
@@ -54,42 +55,40 @@ class _HomepageCustViewState extends State<HomepageCustView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.bg1,
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: Drawer(child: AppSidebar()),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            _buildBanner(),
-            // const Divider(
-            //   height: 20,
-            //   thickness: 12,
-            //   color: AppColors.splashStart,
-            // ),
-            _buildMenuGrid(),
-            const Divider(
-              height: 20,
-              thickness: 9,
-              color: AppColors.splashStart,
-            ),
-            _OrderSection(),
-            const Divider(
-              height: 20,
-              thickness: 9,
-              color: AppColors.splashStart,
-            ),
-            _NewsCarousel(),
-            // const Divider(
-            //   height: 20,
-            //   thickness: 12,
-            //   color: AppColors.splashStart,
-            // ),
-          ],
+    final authController = Get.find<AuthController>();
+
+    return Obx(() {
+      final isLoggedIn = authController.user.value != null;
+
+      return Scaffold(
+        backgroundColor: AppColors.bg1,
+        appBar: SuzukiFinanceAppBarWsidebar(),
+        drawer: isLoggedIn ? Drawer(child: AppSidebar()) : null,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildBanner(),
+              // const Divider(
+              //   height: 20,
+              //   thickness: 12,
+              //   color: AppColors.splashStart,
+              // ),
+              _buildMenuGrid(),
+              const Divider(height: 20, thickness: 4, color: AppColors.navIcon),
+              _OrderSection(),
+              const Divider(height: 20, thickness: 4, color: AppColors.navIcon),
+              _NewsCarousel(),
+              // const Divider(
+              //   height: 20,
+              //   thickness: 12,
+              //   color: AppColors.splashStart,
+              // ),
+            ],
+          ),
         ),
-      ),
-      bottomNavigationBar: BottomNavbar(selectedIndex: 0),
-    );
+        bottomNavigationBar: BottomNavbar(selectedIndex: 0),
+      );
+    });
   }
 
   Widget _buildBanner() {
@@ -157,7 +156,7 @@ class _HomepageCustViewState extends State<HomepageCustView> {
         children: [
           const Text(
             'Fitur',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12.0),
           GridView.count(
@@ -231,7 +230,10 @@ class _HomepageCustViewState extends State<HomepageCustView> {
                         Text(
                           item['label']!,
                           textAlign: TextAlign.center,
-                          style: AppTextStyles.smallBody,
+                          style: TextStyle(
+                            color: AppColors.iconDefault,
+                            fontSize: 12,
+                          ),
                         ),
                       ],
                     ),
@@ -250,7 +252,7 @@ class _HomepageCustViewState extends State<HomepageCustView> {
         children: [
           const Text(
             'Ayo, Order Kendaraan Suzuki',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
           ),
           const SizedBox(height: 8.0),
           ElevatedButton(
@@ -285,7 +287,7 @@ class _HomepageCustViewState extends State<HomepageCustView> {
         children: [
           const Text(
             'Berita Terbaru',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12.0),
           Container(

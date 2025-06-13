@@ -17,7 +17,7 @@ class AppSidebar extends StatelessWidget {
     return SizedBox(
       width: 200,
       child: Material(
-        color: AppColors.splashStart,
+        color: AppColors.navIcon,
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -28,7 +28,7 @@ class AppSidebar extends StatelessWidget {
                   itemCount: _sidebarItems.length,
                   separatorBuilder:
                       (BuildContext context, int index) =>
-                          const Divider(color: Colors.white60, thickness: 2),
+                          const Divider(color: AppColors.bg1, thickness: 2),
                   itemBuilder: (BuildContext context, int index) {
                     final item = _sidebarItems[index];
                     return SidebarItem(
@@ -57,7 +57,7 @@ class SidebarItemData {
 
 final List<SidebarItemData> _sidebarItems = [
   SidebarItemData(
-    icon: const Icon(Icons.home, color: Colors.white),
+    icon: const Icon(Icons.home, color: AppColors.bg1),
     title: 'Home',
     onTap: () {
       // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
@@ -65,7 +65,7 @@ final List<SidebarItemData> _sidebarItems = [
     },
   ),
   SidebarItemData(
-    icon: const Icon(Icons.person, color: Colors.white),
+    icon: const Icon(Icons.person, color: AppColors.bg1),
     title: 'Mobile Collection',
     onTap: () {
       CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
@@ -73,7 +73,7 @@ final List<SidebarItemData> _sidebarItems = [
     },
   ),
   SidebarItemData(
-    icon: const Icon(Icons.info, color: Colors.white),
+    icon: const Icon(Icons.info, color: AppColors.bg1),
     title: 'Mobile Survey',
     onTap: () {
       CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
@@ -81,7 +81,7 @@ final List<SidebarItemData> _sidebarItems = [
     },
   ),
   SidebarItemData(
-    icon: const Icon(Icons.abc, color: Colors.white),
+    icon: const Icon(Icons.abc, color: AppColors.bg1),
     title: 'Zeus',
     onTap: () {
       CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
@@ -89,14 +89,14 @@ final List<SidebarItemData> _sidebarItems = [
     },
   ),
   SidebarItemData(
-    icon: const Icon(Icons.location_on, color: Colors.white),
+    icon: const Icon(Icons.location_on, color: AppColors.bg1),
     title: 'Track Location',
     onTap: () {
       Get.toNamed(LocationRoutes.trackLocation);
     },
   ),
   SidebarItemData(
-    icon: const Icon(Icons.home_work, color: Colors.white),
+    icon: const Icon(Icons.home_work, color: AppColors.bg1),
     title: 'login/register page',
     onTap: () {
       Get.toNamed('/public/home');
