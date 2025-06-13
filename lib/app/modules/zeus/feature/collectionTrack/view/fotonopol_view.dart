@@ -113,6 +113,7 @@ class FotoNopolView extends GetView<FotoNopolController> {
                             Center(
                               child: ElevatedButton(
                                 onPressed: (){
+                                  Get.offAndToNamed(ZeusRoute.ceknopol);
                                   Get.toNamed(ZeusRoute.detailnopol, arguments: controller.selectedPlatNomorList);
                                 },
                                 style: AppButtonStyle.primaryButtonStyle(),

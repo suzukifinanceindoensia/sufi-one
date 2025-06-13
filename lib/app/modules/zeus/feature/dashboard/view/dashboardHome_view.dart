@@ -73,14 +73,20 @@ class ZeusDashboardView extends GetView<ZeusDashboardController> {
             image: "res/images/mobcol/tugasbaru.png", 
             menuTitle: 'Request SKMBJ', 
             itemCount: 0, 
-            onTap: () {Get.offNamed(ZeusRoute.taskassign);}
+            onTap: () {
+              Get.offAndToNamed(ZeusRoute.zeusdashboard);
+              Get.toNamed(ZeusRoute.taskassign);
+              }
           ),
           const SizedBox(height: 10,),
           ZeusMenuCreate(
             image: "res/images/mobcol/tugasbaru.png", 
             menuTitle: 'Print SKMBJ', 
             itemCount: 0, 
-            onTap: () {Get.offNamed('/zeus/print skmbj');}
+            onTap: () {
+              Get.offAndToNamed(ZeusRoute.zeusdashboard);
+              Get.toNamed('/zeus/print skmbj');
+              }
           ),
         ],
       ),
