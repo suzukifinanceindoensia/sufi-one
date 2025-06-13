@@ -39,6 +39,7 @@ class MobcolUploadBuktiView extends GetView<MobcolUploadBuktiController> {
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                       child: GestureDetector(
                         onTap: () {
+                          Get.offAndToNamed(MobcolRoutes.mobileCollectionUploadBukti);
                           Get.toNamed(MobcolRoutes.mobileCollectionUploadBuktiDetail, arguments: tugas);
                         },
                         child: Mobcol_showtask(

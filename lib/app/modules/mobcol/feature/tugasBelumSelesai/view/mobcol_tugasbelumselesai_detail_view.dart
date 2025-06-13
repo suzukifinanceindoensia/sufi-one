@@ -132,7 +132,8 @@ class MobcolTugasBelumSelesaiDetailView extends StatelessWidget {
               ElevatedButton(
                 style: MobcolAppButtonStyle.goodButtonStyle(),
                 onPressed: (){
-                  Get.toNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai, arguments: tugas);
+                  Get.offAndToNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai);
+                  //Get.toNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai, arguments: tugas);
                 },
                 child: FractionallySizedBox(
                   widthFactor: 1,

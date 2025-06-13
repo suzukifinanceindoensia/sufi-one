@@ -40,6 +40,7 @@ class MobcolDashboardView extends StatelessWidget {
                   const SizedBox(height: 10),
                   GestureDetector(
                     onTap: (){
+                      Get.offAndToNamed(MobcolRoutes.mobileCollection);
                       Get.toNamed(MobcolRoutes.mobileCollectionTugasBaru);
                     },
                     child: MenuCreatorMobcol(
@@ -51,6 +52,7 @@ class MobcolDashboardView extends StatelessWidget {
                   const SizedBox(height: 20),
                   GestureDetector(
                     onTap: (){
+                      Get.offAndToNamed(MobcolRoutes.mobileCollection);
                       Get.toNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai);
                     },
                     child: MenuCreatorMobcol(
@@ -62,6 +64,7 @@ class MobcolDashboardView extends StatelessWidget {
                   const SizedBox(height: 20),
                   GestureDetector(
                     onTap: (){
+                      Get.offAndToNamed(MobcolRoutes.mobileCollection);
                       Get.toNamed(MobcolRoutes.mobileCollectionUploadBukti);
                     },
                     child: MenuCreatorMobcol(
@@ -73,6 +76,7 @@ class MobcolDashboardView extends StatelessWidget {
                   const SizedBox(height: 20),
                   GestureDetector(
                     onTap: (){
+                      Get.offAndToNamed(MobcolRoutes.mobileCollection);
                       Get.toNamed(MobcolRoutes.mobileCollectionTugasSelesai);
                     },
                     child: MenuCreatorMobcol(

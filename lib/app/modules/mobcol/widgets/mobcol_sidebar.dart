@@ -72,7 +72,7 @@ final List<SidebarItemData> _sidebarItems = [
     title: 'Tugas Belum Selesai',
     onTap: () {
       Get.offAndToNamed(MobcolRoutes.mobileCollection);
-      Get.offNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai);
+      Get.toNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai);
     },
   ),
   SidebarItemData(
@@ -80,7 +80,7 @@ final List<SidebarItemData> _sidebarItems = [
     title: 'Upload Bukti Pembayaran',
     onTap: () {
       Get.offAndToNamed(MobcolRoutes.mobileCollection);
-      Get.offNamed(MobcolRoutes.mobileCollectionUploadBukti);
+      Get.toNamed(MobcolRoutes.mobileCollectionUploadBukti);
     },
   ),
   SidebarItemData(
@@ -88,7 +88,7 @@ final List<SidebarItemData> _sidebarItems = [
     title: 'Tugas Selesai',
     onTap: () {
       Get.offAndToNamed(MobcolRoutes.mobileCollection);
-      Get.offNamed(MobcolRoutes.mobileCollectionTugasSelesai);
+      Get.toNamed(MobcolRoutes.mobileCollectionTugasSelesai);
     },
   ),
   SidebarItemData(
@@ -96,7 +96,7 @@ final List<SidebarItemData> _sidebarItems = [
     title: 'Kembali',
     onTap: () {
       Get.offAndToNamed(MobcolRoutes.mobileCollection);
-      Get.offNamed(HomeRoutes.homepageCust);
+      Get.toNamed(HomeRoutes.homepageCust);
     },
   ),
 ];
