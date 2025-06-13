@@ -40,6 +40,7 @@ class MobcolTugasbaruView extends GetView<MobcolTugasbaruController> {
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                       child: GestureDetector(
                         onTap: () {
+                          Get.offAndToNamed(MobcolRoutes.mobileCollectionTugasBaru);
                           Get.toNamed(MobcolRoutes.mobileCollectionTugasBaruDetail, arguments: tugas);
                         },
                         child: Mobcol_showtask(

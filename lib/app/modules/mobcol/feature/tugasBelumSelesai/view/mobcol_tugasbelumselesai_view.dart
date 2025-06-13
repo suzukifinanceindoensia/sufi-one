@@ -58,6 +58,7 @@ class MobcolTugasbelumselesaiView extends GetView<MobcolTugasbelumselesaiControl
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                   child: GestureDetector(
                     onTap: () {
+                      Get.offAndToNamed(MobcolRoutes.mobileCollection);
                       Get.toNamed(MobcolRoutes.mobileCollectionTugasBelumSelesaiDetail, arguments: tugas);
                     },
                     child: Mobcol_showtask(
