@@ -9,18 +9,18 @@ import 'package:sufi_one/app/modules/mobcol/services/tugasSelesai_service.dart';
 import 'package:sufi_one/app/modules/mobcol/services/uploadBukti_service.dart'; 
 
 class MobcolDashboardController extends GetxController {
-  final AllTugasBaruService _allTugasBaruService = AllTugasBaruService();
-  final TugasSelesaiService _tugasSelesaiService = Get.find<TugasSelesaiService>();
-  final TugasBelumSelesaiService _tugasBelumSelesaiService = Get.find<TugasBelumSelesaiService>();
-  final UploadBuktiService _uploadBuktiService = Get.find<UploadBuktiService>();
+  late final AllTugasBaruService _allTugasBaruService = Get.find<AllTugasBaruService>();
+  late final TugasSelesaiService _tugasSelesaiService = Get.find<TugasSelesaiService>();
+  late final TugasBelumSelesaiService _tugasBelumSelesaiService = Get.find<TugasBelumSelesaiService>();
+  late final UploadBuktiService _uploadBuktiService = Get.find<UploadBuktiService>();
   RxList<AllTugasBaruModel> listTugasBaru = <AllTugasBaruModel>[].obs;
   RxList<TugasBelumSelesaiModel> listTugasBelumSelesai = <TugasBelumSelesaiModel>[].obs;
   RxList<AllTugasSelesaiModel> listTugasSelesai = <AllTugasSelesaiModel>[].obs;
   RxList<AllUploadBuktiModel> listUploadBukti = <AllUploadBuktiModel>[].obs;
-  RxInt countTugasBaru = 1.obs;
-  RxInt countTugasBelumSelesai = 1.obs;
-  RxInt countTugasSelesai = 1.obs;
-  RxInt countUploadBukti = 1.obs;
+  RxInt countTugasBaru = 0.obs;
+  RxInt countTugasBelumSelesai = 0.obs;
+  RxInt countTugasSelesai = 0.obs;
+  RxInt countUploadBukti = 0.obs;
   RxBool isLoading = true.obs;
   RxString errorMessage = ''.obs;
   RxBool isLoadingBelumSelesai = false.obs;

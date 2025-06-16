@@ -82,7 +82,7 @@ class MobcolTugasbelumselesaiView extends GetView<MobcolTugasbelumselesaiControl
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width: 240,
                                     child: Row(
                                       children: [

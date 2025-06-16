@@ -44,19 +44,19 @@ class MobcolTugasbaruDetailView extends StatelessWidget {
                   ),
                   const Divider(),
                   Text("Alamat Tagih", style: AppTextStyles.Navybodymed),
-                  Text('${tugas.alamatLengkap ?? ''}', style: AppTextStyles.bigBody), // Akses properti model
+                  Text(tugas.alamatLengkap ?? '', style: AppTextStyles.bigBody), // Akses properti model
                   const Divider(),
                   Text("Nomor Telepon", style: AppTextStyles.Navybodymed,),
-                  Text('${tugas.phoneNumber ?? ''}', style: AppTextStyles.bigBody), // Akses properti model
+                  Text(tugas.phoneNumber ?? '', style: AppTextStyles.bigBody), // Akses properti model
                   const Divider(),
                   Text("Tipe Unit", style: AppTextStyles.Navybodymed),
-                  Text('${tugas.typeUnit ?? ''}', style: AppTextStyles.bigBody), // Akses properti model
+                  Text(tugas.typeUnit ?? '', style: AppTextStyles.bigBody), // Akses properti model
                   const Divider(),
                   Text("Warna Mobil", style: AppTextStyles.Navybodymed),
-                  Text('${tugas.colorOfCar ?? ''}', style: AppTextStyles.bigBody), // Akses properti model
+                  Text(tugas.colorOfCar ?? '', style: AppTextStyles.bigBody), // Akses properti model
                   const Divider(),
                   Text("Nomor Polisi", style: AppTextStyles.Navybodymed),
-                  Text('${tugas.policeNumber ?? ''}', style: AppTextStyles.bigBody), // Akses properti model
+                  Text(tugas.policeNumber ?? '', style: AppTextStyles.bigBody), // Akses properti model
                   const SizedBox(height: 15),
                   ElevatedButton(
                     style: MobcolAppButtonStyle.goodButtonStyle(),

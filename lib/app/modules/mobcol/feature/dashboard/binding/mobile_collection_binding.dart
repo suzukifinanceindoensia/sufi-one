@@ -8,26 +8,26 @@ import 'package:sufi_one/app/modules/mobcol/services/uploadBukti_service.dart';
 class MobcolDashboardBinding extends Bindings {
   @override
   void dependencies() {
-    // Get.lazyPut<AllTugasBaruService>(() => AllTugasBaruService());
-    // Get.lazyPut<TugasBelumSelesaiService>(() => TugasBelumSelesaiService());
-    // Get.lazyPut<TugasSelesaiService>(() => TugasSelesaiService());
-    // Get.lazyPut<UploadBuktiService>(() => UploadBuktiService());
-    Get.putAsync<AllTugasBaruService>(() async {
-      await Future.delayed(Duration(seconds: 2));
-      return AllTugasBaruService();
-    });
-    Get.putAsync<TugasBelumSelesaiService>(() async {
-      await Future.delayed(Duration(seconds: 2));
-      return TugasBelumSelesaiService();
-    });
-    Get.putAsync<TugasSelesaiService>(() async {
-      await Future.delayed(Duration(seconds: 2));
-      return TugasSelesaiService();
-    });
-    Get.putAsync<UploadBuktiService>(() async {
-      await Future.delayed(Duration(seconds: 2));
-      return UploadBuktiService();
-    });
+    Get.lazyPut<AllTugasBaruService>(() => AllTugasBaruService());
+    Get.lazyPut<TugasBelumSelesaiService>(() => TugasBelumSelesaiService());
+    Get.lazyPut<TugasSelesaiService>(() => TugasSelesaiService());
+    Get.lazyPut<UploadBuktiService>(() => UploadBuktiService());
+    // Get.putAsync<AllTugasBaruService>(() async {
+    //   await Future.delayed(Duration(seconds: 0));
+    //   return AllTugasBaruService();
+    // });
+    // Get.putAsync<TugasBelumSelesaiService>(() async {
+    //   await Future.delayed(Duration(seconds: 0));
+    //   return TugasBelumSelesaiService();
+    // });
+    // Get.putAsync<TugasSelesaiService>(() async {
+    //   await Future.delayed(Duration(seconds: 0));
+    //   return TugasSelesaiService();
+    // });
+    // Get.putAsync<UploadBuktiService>(() async {
+    //   await Future.delayed(Duration(seconds: 0));
+    //   return UploadBuktiService();
+    // });
     Get.lazyPut<MobcolDashboardController>(() => MobcolDashboardController());
   }
 }
