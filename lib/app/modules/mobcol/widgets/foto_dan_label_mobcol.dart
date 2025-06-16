@@ -51,7 +51,7 @@ class MobcolImageWithLabel extends StatelessWidget {
                 ),
               ),
             ),
-            Text("$coordinate",style: AppTextStyles.smallBody,),
+            Text(coordinate,style: AppTextStyles.smallBody,),
             Text("Accuracy : $acuracy",style: AppTextStyles.smallBody,),
           ],
         ),

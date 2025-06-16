@@ -62,7 +62,7 @@ class MobcolTugasSelesaiView extends GetView<MobcolTugasSelesaiController> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("${tugas.name}", style: AppTextStyles.medBody),
+                                    Text(tugas.name, style: AppTextStyles.medBody),
                                     Text('id: ${tugas.id}', style: AppTextStyles.medBody),
                                     Text('Rp. ${tugas.money}', style: AppTextStyles.medBody),
                                     Row(
