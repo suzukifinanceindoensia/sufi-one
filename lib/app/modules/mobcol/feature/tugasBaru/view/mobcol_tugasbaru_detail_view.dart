@@ -61,7 +61,6 @@ class MobcolTugasbaruDetailView extends StatelessWidget {
                   ElevatedButton(
                     style: MobcolAppButtonStyle.goodButtonStyle(),
                     onPressed: (){
-                      Get.offAndToNamed(MobcolRoutes.mobileCollectionTugasBaru);
                       Get.toNamed(MobcolRoutes.mobileCollectionDetailCust, arguments: tugas);
                     },
                     child: FractionallySizedBox(widthFactor: 1,child: Text("View Customer Detail", style: AppTextStyles.buttonFont, textAlign: TextAlign.center,),),
@@ -101,7 +100,6 @@ class MobcolTugasbaruDetailView extends StatelessWidget {
               ElevatedButton(
                 style: MobcolAppButtonStyle.goodButtonStyle(),
                 onPressed: (){
-                  Get.offAndToNamed(MobcolRoutes.mobileCollectionTugasBaru);
                   Get.toNamed(MobcolRoutes.mobileCollectionKunjungan, arguments: tugas);
                 },
                 child: FractionallySizedBox(widthFactor: 1,child: Text("START", style: AppTextStyles.buttonFont, textAlign: TextAlign.center,),),
