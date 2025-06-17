@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_button_style.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/profile_mobcol.dart';
@@ -132,7 +131,7 @@ class MobcolTugasBelumSelesaiDetailView extends StatelessWidget {
               ElevatedButton(
                 style: MobcolAppButtonStyle.goodButtonStyle(),
                 onPressed: (){
-                  Get.offAndToNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai);
+                  Get.back();
                   //Get.toNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai, arguments: tugas);
                 },
                 child: FractionallySizedBox(

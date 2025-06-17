@@ -3,8 +3,7 @@ import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/uploadBukti/controller/mobcol_uploadbukti_view.dart';
 import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_showtask.dart';
-import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_sidebar.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class MobcolUploadBuktiView extends GetView<MobcolUploadBuktiController> {
@@ -13,10 +12,7 @@ class MobcolUploadBuktiView extends GetView<MobcolUploadBuktiController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: const Drawer(
-        child: MobcolSidebar(),
-      ),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: Column(
         children: [
           Padding(
@@ -39,7 +35,6 @@ class MobcolUploadBuktiView extends GetView<MobcolUploadBuktiController> {
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                       child: GestureDetector(
                         onTap: () {
-                          Get.offAndToNamed(MobcolRoutes.mobileCollectionUploadBukti);
                           Get.toNamed(MobcolRoutes.mobileCollectionUploadBuktiDetail, arguments: tugas);
                         },
                         child: Mobcol_showtask(
