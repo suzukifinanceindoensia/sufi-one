@@ -13,7 +13,6 @@ import 'package:sufi_one/app/modules/public/login/bindings/forgot_password_bindi
 
 // Homepage
 import 'package:sufi_one/app/modules/public/homepage/splash/splash_view.dart';
-import 'package:sufi_one/app/modules/public/homepage/views/home_view.dart';
 import 'package:sufi_one/app/modules/public/homepage/views/homepage_cust_view.dart';
 import 'package:sufi_one/app/modules/public/homepage/views/promo_view.dart';
 import 'package:sufi_one/app/modules/public/homepage/bindings/homepage_cust_binding.dart';
@@ -51,7 +50,6 @@ import 'package:sufi_one/app/services/main_navigation/main_navigation_binding.da
 
 class HomeRoutes {
   static const splash = '/';
-  static const publicHome = '/public/home';
   static const homepageCust = '/public/homepage/homepage_cust_view';
 
   static const login = '/public/profile_page/login';
@@ -82,7 +80,6 @@ class HomeRoutes {
     GetPage(name: splash, page: () => SplashPage(), binding: AuthBinding()),
 
     // Home
-    GetPage(name: publicHome, page: () => PublicHomePage()),
     GetPage(
       name: homepageCust,
       page: () => const HomepageCustView(),

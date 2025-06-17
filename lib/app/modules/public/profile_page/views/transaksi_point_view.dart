@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sufi_one/app/modules/public/profile_page/controllers/profile_page_controller.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
-import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 

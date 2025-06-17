@@ -99,13 +99,6 @@ final List<SidebarItemData> _sidebarItems = [
       Get.toNamed(LocationRoutes.trackLocation);
     },
   ),
-  SidebarItemData(
-    icon: const Icon(Icons.home_work, color: AppColors.bg1),
-    title: 'login/register page',
-    onTap: () {
-      Get.toNamed('/public/home');
-    },
-  ),
 ];
 
 class SidebarItem extends StatelessWidget {
