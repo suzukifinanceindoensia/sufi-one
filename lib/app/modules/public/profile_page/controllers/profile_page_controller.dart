@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/models/user_model.dart';
 import 'package:sufi_one/app/controllers/auth_controller.dart';
+import 'package:sufi_one/app/modules/public/login/controllers/login_controller.dart';
 
 class ProfilePageController extends GetxController {
   final AuthController _authController = Get.find<AuthController>();
@@ -220,5 +221,18 @@ class ProfilePageController extends GetxController {
     confirmPasswordController.clear();
 
     isPasswordChange.value = false;
+  }
+
+  void handleLogout() {
+    final authController = Get.find<AuthController>();
+    authController.logout();
+
+    // Tambahkan delay untuk memastikan UI stabil sebelum navigasi
+    Future.delayed(Duration(milliseconds: 600), () {
+      // Register LoginController jika belum ada
+      if (!Get.isRegistered<LoginController>()) {
+        Get.lazyPut(() => LoginController(), fenix: true);
+      }
+    });
   }
 }

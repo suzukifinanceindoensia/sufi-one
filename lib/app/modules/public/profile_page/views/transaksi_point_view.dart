@@ -46,7 +46,7 @@ class TransaksiPointView extends GetView<ProfilePageController> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: SuzukiFinanceAppBarWObutton(),
-      bottomNavigationBar: BottomNavbar(selectedIndex: 3),
+      //  bottomNavigationBar: BottomNavbar(selectedIndex: 3),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
         child: Column(

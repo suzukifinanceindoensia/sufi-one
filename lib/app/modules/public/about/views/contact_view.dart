@@ -16,7 +16,7 @@ class ContactView extends StatefulWidget {
 }
 
 class _ContactViewState extends State<ContactView> {
-  final controller = Get.find<ContactController>();
+  ContactController get controller => Get.find<ContactController>();
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +141,7 @@ class _ContactViewState extends State<ContactView> {
             ),
           ),
         ),
-        bottomNavigationBar: BottomNavbar(selectedIndex: 2),
+        //  bottomNavigationBar: BottomNavbar(selectedIndex: 2),
       );
     });
   }

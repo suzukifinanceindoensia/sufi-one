@@ -45,6 +45,10 @@ import 'package:sufi_one/app/modules/public/cabang/bindings/cabang_binding.dart'
 // WebView
 import 'package:sufi_one/app/services/generic_webview.dart';
 
+// main navigation
+import 'package:sufi_one/app/services/main_navigation/MainNavigationView.dart';
+import 'package:sufi_one/app/services/main_navigation/main_navigation_binding.dart';
+
 class HomeRoutes {
   static const splash = '/';
   static const publicHome = '/public/home';
@@ -71,6 +75,8 @@ class HomeRoutes {
 
   static const cabang = '/public/cabang';
   static const genericWebView = '/public/webview';
+
+  static const mainnavigation = '/public/main_navigation';
 
   static final routes = [
     GetPage(name: splash, page: () => SplashPage(), binding: AuthBinding()),
@@ -160,5 +166,12 @@ class HomeRoutes {
 
     // WebView
     GetPage(name: genericWebView, page: () => const GenericWebView()),
+
+    // main navigation
+    GetPage(
+      name: mainnavigation,
+      page: () => MainNavigationView(),
+      binding: MainNavigationBinding(),
+    ),
   ];
 }

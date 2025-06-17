@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sufi_one/app/modules/public/home_routes.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/routes/app_routes.dart';
@@ -40,7 +41,7 @@ class _PublicHomePageState extends State<PublicHomePage> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Get.toNamed('/public/homepage_cust_view');
+                Get.toNamed(HomeRoutes.mainnavigation);
               },
               child: Text('Browse Catalog'),
             ),

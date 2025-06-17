@@ -89,7 +89,7 @@ class _AboutViewState extends State<AboutView> {
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavbar(selectedIndex: 1),
+        //  bottomNavigationBar: BottomNavbar(selectedIndex: 1),
       );
     });
   }

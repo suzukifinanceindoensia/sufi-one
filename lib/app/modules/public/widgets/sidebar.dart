@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:sufi_one/app/modules/locationTest/location_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
-import 'package:sufi_one/app/modules/public/home_routes.dart';
 import 'package:sufi_one/app/modules/zeus/zeus_route.dart';
 import 'package:sufi_one/app/routes/app_routes.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/services/checking_installed_app.dart';
+import 'package:sufi_one/app/services/main_navigation/main_nav_controller.dart';
+import 'package:sufi_one/app/services/main_navigation/MainNavigationView.dart';
 
 class AppSidebar extends StatelessWidget {
   const AppSidebar({super.key});
@@ -61,7 +62,10 @@ final List<SidebarItemData> _sidebarItems = [
     title: 'Home',
     onTap: () {
       // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
-      Get.offNamed(HomeRoutes.homepageCust);
+      final navController = Get.find<MainNavigationController>();
+      navController.changeTabIndex(0); // Pastikan kembali ke tab Home
+      Get.offAll(() => MainNavigationView());
+      // Reset stack & kembali ke MainNavigationView // mengubah hompage menjadi main_navigation agar tidak rebuild ulang
     },
   ),
   SidebarItemData(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/profile_page/controllers/profile_page_controller.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
-import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
@@ -35,7 +34,6 @@ class _UbahPasswordFormState extends State<_UbahPasswordForm> {
     return Scaffold(
       backgroundColor: AppColors.bg1,
       appBar: SuzukiFinanceAppBarWObutton(),
-      bottomNavigationBar: BottomNavbar(selectedIndex: 3),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(32.0),
         child: Form(

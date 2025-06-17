@@ -4,7 +4,6 @@ import 'package:sufi_one/app/modules/public/login/controllers/login_controller.d
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
-import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
@@ -180,7 +179,6 @@ class LoginPage extends GetView<LoginController> {
             ),
           ),
         ),
-        bottomNavigationBar: BottomNavbar(selectedIndex: 3),
       );
     });
   }

@@ -1,58 +1,74 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/public/home_routes.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
-import 'package:get_storage/get_storage.dart';
 
-class BottomNavbar extends StatelessWidget {
+class BottomNavbar extends StatefulWidget {
   final int selectedIndex;
-  final box = GetStorage();
+  final void Function(int)? onItemTapped;
 
-  BottomNavbar({super.key, required this.selectedIndex});
+  const BottomNavbar({
+    super.key,
+    required this.selectedIndex,
+    this.onItemTapped,
+  });
 
-  void _onItemTapped(int index) {
-    if (index == selectedIndex) return;
+  @override
+  State<BottomNavbar> createState() => _BottomNavbarState();
+}
 
-    switch (index) {
-      case 0:
-        Get.offAllNamed(HomeRoutes.homepageCust);
-        break;
-      case 1:
-        Get.offAllNamed(HomeRoutes.about);
-        break;
-      case 2:
-        Get.offAllNamed(HomeRoutes.contact);
-        break;
-      case 3:
-        final isLoggedIn = box.hasData('user');
-        if (isLoggedIn) {
-          Get.offAllNamed(HomeRoutes.profilePage);
-        } else {
-          Get.toNamed(HomeRoutes.login);
-        }
-        break;
+class _BottomNavbarState extends State<BottomNavbar>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _tabController = TabController(
+      length: 4,
+      vsync: this,
+      initialIndex: widget.selectedIndex,
+    );
+
+    _tabController.addListener(() {
+      if (_tabController.indexIsChanging) {
+        widget.onItemTapped?.call(_tabController.index); // Panggil callback
+      }
+    });
+  }
+
+  @override
+  void didUpdateWidget(covariant BottomNavbar oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (widget.selectedIndex != _tabController.index) {
+      _tabController.index = widget.selectedIndex;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return ConvexAppBar(
+      controller: _tabController,
       style: TabStyle.reactCircle,
-      height: 50, // Tinggi bottom bar (default 50)
-      curveSize: 100, // Ukuran lengkungan bubble (default 80)
+      height: 50,
+      curveSize: 100,
       backgroundColor: AppColors.navIcon,
       activeColor: AppColors.bg1,
       color: AppColors.bg2,
       elevation: 10,
       items: const [
-        TabItem(icon: Icons.home, title: 'Home'),
-        TabItem(icon: Icons.perm_device_information, title: 'About'),
-        TabItem(icon: Icons.contact_support, title: 'Support'),
-        TabItem(icon: Icons.person, title: 'Profile'),
+        TabItem(icon: Icons.home, title: 'Home'), // index 0
+        TabItem(icon: Icons.perm_device_information, title: 'About'), // index 1
+        TabItem(icon: Icons.contact_support, title: 'Support'), // index 2
+        TabItem(icon: Icons.person, title: 'Profile'), // index 3
       ],
-      initialActiveIndex: selectedIndex,
-      onTap: _onItemTapped,
     );
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose(); // mencegah memory leak
+    super.dispose();
   }
 }

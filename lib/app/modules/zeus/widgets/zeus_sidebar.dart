@@ -122,7 +122,9 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.home_work, color: Colors.white),
     title: 'homepage',
     onTap: () {
-      Get.offAllNamed(HomeRoutes.homepageCust);
+      Get.offAllNamed(
+        HomeRoutes.mainnavigation,
+      ); // perubahan homepage ke main_navigation
     },
   ),
 ];
