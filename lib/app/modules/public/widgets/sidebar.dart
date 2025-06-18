@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/services/checking_installed_app.dart';
 import 'package:sufi_one/app/services/main_navigation/main_nav_controller.dart';
-import 'package:sufi_one/app/services/main_navigation/MainNavigationView.dart';
 
 class AppSidebar extends StatelessWidget {
   const AppSidebar({super.key});
@@ -61,11 +60,8 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.home, color: AppColors.bg1),
     title: 'Home',
     onTap: () {
-      // CheckingInstalledAppService().checkInstalledApps(); // Scan aplikasi
       final navController = Get.find<MainNavigationController>();
-      navController.changeTabIndex(0); // Pastikan kembali ke tab Home
-      Get.offAll(() => MainNavigationView());
-      // Reset stack & kembali ke MainNavigationView // mengubah hompage menjadi main_navigation agar tidak rebuild ulang
+      navController.changeTabIndex(0);
     },
   ),
   SidebarItemData(

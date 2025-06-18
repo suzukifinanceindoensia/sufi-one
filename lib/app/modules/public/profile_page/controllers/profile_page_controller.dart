@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/models/user_model.dart';
 import 'package:sufi_one/app/controllers/auth_controller.dart';
-import 'package:sufi_one/app/modules/public/login/controllers/login_controller.dart';
+import 'package:sufi_one/app/services/main_navigation/main_nav_controller.dart';
 
 class ProfilePageController extends GetxController {
   final AuthController _authController = Get.find<AuthController>();
@@ -223,16 +223,22 @@ class ProfilePageController extends GetxController {
     isPasswordChange.value = false;
   }
 
+  //* Setelah logout: menghapus data user, reset tab ke Home, dan bersihkan controller profil.
+  //   ProfileWrapper otomatis ganti tampilan ke LoginPage tanpa navigasi ulang.
+  //   Navigation tetap stabil—tanpa opsi back ke state lama, tanpa crash. *//
+
   void handleLogout() {
     final authController = Get.find<AuthController>();
-    authController.logout();
+    final mainNavController = Get.find<MainNavigationController>();
 
-    // Tambahkan delay untuk memastikan UI stabil sebelum navigasi
-    Future.delayed(Duration(milliseconds: 600), () {
-      // Register LoginController jika belum ada
-      if (!Get.isRegistered<LoginController>()) {
-        Get.lazyPut(() => LoginController(), fenix: true);
-      }
-    });
+    authController.logout(); // akan clear user.value
+
+    // Reset tab ke Home
+    mainNavController.changeTabIndex(0);
+
+    // Hapus controller profiling jika masih ada
+    if (Get.isRegistered<ProfilePageController>()) {
+      Get.delete<ProfilePageController>();
+    }
   }
 }

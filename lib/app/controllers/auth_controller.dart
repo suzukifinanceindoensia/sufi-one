@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:sufi_one/app/models/user_model.dart';
 import 'package:sufi_one/app/services/auth_service.dart';
-import 'package:sufi_one/app/services/main_navigation/main_nav_controller.dart';
 
 class AuthController extends GetxController {
   final AuthService _authService =
@@ -70,9 +69,6 @@ class AuthController extends GetxController {
     // Hapus data login dari penyimpanan (simulasi logout)
     _authService.logout();
     user.value = null;
-    final navController = Get.find<MainNavigationController>();
-    // setelah log out Reset tab navigasi ke index 0 (Homepage)
-    navController.changeTabIndex(0);
   }
 
   bool get isLoggedIn => user.value != null;

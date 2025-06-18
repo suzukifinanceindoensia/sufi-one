@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/public/home_routes.dart';
+import 'package:sufi_one/app/services/main_navigation/main_nav_controller.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
@@ -88,10 +89,13 @@ final List<SidebarItemData> _sidebarItems = [
     },
   ),
   SidebarItemData(
-    icon: const Icon(Icons.keyboard_backspace_sharp, color: Colors.white),
-    title: 'Kembali',
+    icon: Icon(Icons.home, color: Colors.white),
+    title: 'Home Page',
     onTap: () {
-      Get.offNamed(HomeRoutes.mainnavigation);
+      final navController = Get.find<MainNavigationController>();
+      navController.changeTabIndex(0);
+      Get.until((route) => route.settings.name == HomeRoutes.mainnavigation);
+      // navigasi MainNavigationView tanpa memicu offAllNamed, menghindari loop atau rebuild berlebih.
     },
   ),
 ];
