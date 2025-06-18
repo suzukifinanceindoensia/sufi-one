@@ -14,15 +14,15 @@ class MobcolDashboardController extends GetxController {
   late final TugasBelumSelesaiService _tugasBelumSelesaiService;
   late final UploadBuktiService _uploadBuktiService;
 
-  MobcolDashboardController({
-    required AllTugasBaruService allTugasBaruService,
-    required TugasSelesaiService tugasSelesaiService,
-    required TugasBelumSelesaiService tugasBelumSelesaiService,
-    required UploadBuktiService uploadBuktiService,
-  })  : _allTugasBaruService = allTugasBaruService,
-        _tugasSelesaiService = tugasSelesaiService,
-        _tugasBelumSelesaiService = tugasBelumSelesaiService,
-        _uploadBuktiService = uploadBuktiService;
+  // MobcolDashboardController({
+  //   required AllTugasBaruService allTugasBaruService,
+  //   required TugasSelesaiService tugasSelesaiService,
+  //   required TugasBelumSelesaiService tugasBelumSelesaiService,
+  //   required UploadBuktiService uploadBuktiService,
+  // })  : _allTugasBaruService = allTugasBaruService,
+  //       _tugasSelesaiService = tugasSelesaiService,
+  //       _tugasBelumSelesaiService = tugasBelumSelesaiService,
+  //       _uploadBuktiService = uploadBuktiService;
 
   RxList<AllTugasBaruModel> listTugasBaru = <AllTugasBaruModel>[].obs;
   RxList<TugasBelumSelesaiModel> listTugasBelumSelesai = <TugasBelumSelesaiModel>[].obs;
@@ -46,6 +46,10 @@ class MobcolDashboardController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    _allTugasBaruService =  Get.find<AllTugasBaruService>();
+    _tugasSelesaiService = Get.find<TugasSelesaiService>();
+    _tugasBelumSelesaiService = Get.find<TugasBelumSelesaiService>();
+    _uploadBuktiService = Get.find<UploadBuktiService>();
     _fetchInitialData();
     ever(listTugasBaru, (_) => countTugasBaru.value = listTugasBaru.length);
     ever(listTugasBelumSelesai, (_) => countTugasBelumSelesai.value = listTugasBelumSelesai.length);
