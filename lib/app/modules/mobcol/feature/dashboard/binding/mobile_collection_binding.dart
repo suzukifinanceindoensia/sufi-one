@@ -30,10 +30,10 @@ class MobcolDashboardBinding extends Bindings {
     // });
     Get.lazyPut<MobcolDashboardController>(
       () => MobcolDashboardController(
-        allTugasBaruService: Get.find<AllTugasBaruService>(),
-        tugasBelumSelesaiService: Get.find<TugasBelumSelesaiService>(),
-        tugasSelesaiService: Get.find<TugasSelesaiService>(),
-        uploadBuktiService: Get.find<UploadBuktiService>(),
+        // allTugasBaruService: Get.find<AllTugasBaruService>(),
+        // tugasBelumSelesaiService: Get.find<TugasBelumSelesaiService>(),
+        // tugasSelesaiService: Get.find<TugasSelesaiService>(),
+        // uploadBuktiService: Get.find<UploadBuktiService>(),
       ),
     );
   }
