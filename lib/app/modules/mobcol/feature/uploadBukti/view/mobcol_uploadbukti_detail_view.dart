@@ -21,7 +21,7 @@ class MobcolUploadbuktiDetailView extends GetView<MobcolUploadbuktiDetailControl
         child: Column(
           children: [
             ProfileMobcol(
-              image: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
+                imageroute: "res/images/mobcol/blankprofile.jpg",
               name: "${tugas.name}",
               username: "${tugas.email}",
               profession: "Id : ${tugas.id}",

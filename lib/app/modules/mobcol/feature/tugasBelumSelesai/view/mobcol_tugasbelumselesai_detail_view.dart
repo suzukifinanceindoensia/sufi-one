@@ -22,7 +22,7 @@ class MobcolTugasBelumSelesaiDetailView extends StatelessWidget {
           child: Column(
             children: [
               ProfileMobcol(
-                image: 'https://i.pinimg.com/736x/25/78/61/25786134576ce0344893b33a051160b1.jpg',
+                imageroute: "res/images/mobcol/blankprofile.jpg",
                 name: tugas.name ?? '', // Gunakan properti model
                 username: tugas.email ?? '', // Gunakan properti model
                 profession: '',
