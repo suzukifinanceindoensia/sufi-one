@@ -6,7 +6,7 @@ import 'package:sufi_one/app/modules/mobcol/services/tugasBelumSelesai_service.d
 class MobcolTugasbelumselesaiController extends GetxController {
   final TextEditingController searchController = TextEditingController();
   final RxString searchText = ''.obs;
-  final TugasBelumSelesaiService _tugasBelumSelesaiService = Get.find<TugasBelumSelesaiService>();
+  late final TugasBelumSelesaiService _tugasBelumSelesaiService;
   final RxList<TugasBelumSelesaiModel> allTugasBelumSelesai = <TugasBelumSelesaiModel>[].obs;
   final RxList<TugasBelumSelesaiModel> filteredTugasBelumSelesai = <TugasBelumSelesaiModel>[].obs;
   final RxBool isLoading = true.obs;
@@ -30,6 +30,7 @@ class MobcolTugasbelumselesaiController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    _tugasBelumSelesaiService = Get.find<TugasBelumSelesaiService>();
     fetchTugasBelumSelesai();
     searchController.addListener(_onSearchChanged);
   }

@@ -26,7 +26,7 @@ class MobcolTugasbaruDetailView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ProfileMobcol(
-                image: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
+                imageroute: "res/images/mobcol/blankprofile.jpg",
                 name: tugas.name ?? '', // Akses properti model
                 username: tugas.email ?? '', // Akses properti model
                 profession: "Id : ${tugas.id ?? ''}", // Akses properti model

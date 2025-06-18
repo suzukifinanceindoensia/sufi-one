@@ -5,8 +5,7 @@ import 'package:sufi_one/app/modules/mobcol/models/uploadBukti_model.dart';
 import 'package:sufi_one/app/modules/mobcol/services/uploadBukti_service.dart';
 
 class MobcolUploadBuktiController extends GetxController {
-  final UploadBuktiService _allUploadBuktiService = Get.find<UploadBuktiService>();
-
+  late final UploadBuktiService _allUploadBuktiService;
   final TextEditingController searchController = TextEditingController();
   final RxString searchText = ''.obs;
   final RxList<AllUploadBuktiModel> alluploadbukti = <AllUploadBuktiModel>[].obs;
@@ -22,6 +21,7 @@ class MobcolUploadBuktiController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    _allUploadBuktiService = Get.find<UploadBuktiService>();
     _loadAllUploadBukti();
     searchController.addListener(_onSearchChanged);
   }

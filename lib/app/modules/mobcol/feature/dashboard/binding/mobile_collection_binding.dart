@@ -28,6 +28,13 @@ class MobcolDashboardBinding extends Bindings {
     //   await Future.delayed(Duration(seconds: 0));
     //   return UploadBuktiService();
     // });
-    Get.lazyPut<MobcolDashboardController>(() => MobcolDashboardController());
+    Get.lazyPut<MobcolDashboardController>(
+      () => MobcolDashboardController(
+        allTugasBaruService: Get.find<AllTugasBaruService>(),
+        tugasBelumSelesaiService: Get.find<TugasBelumSelesaiService>(),
+        tugasSelesaiService: Get.find<TugasSelesaiService>(),
+        uploadBuktiService: Get.find<UploadBuktiService>(),
+      ),
+    );
   }
 }

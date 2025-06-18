@@ -20,7 +20,7 @@ class MobcolTugasselesaiDetailView extends StatelessWidget {
           child: Column(
             children: [
               ProfileMobcol(
-                image: "https://i.pinimg.com/236x/ea/6e/00/ea6e0069abf7777c75f59fbd2714528a.jpg", 
+                imageroute: "res/images/mobcol/blankprofile.jpg", 
                 name: "${tugas.name}", 
                 username: "${tugas.email}", 
                 profession: "${tugas.id}", 

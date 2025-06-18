@@ -4,7 +4,7 @@ import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class MobcolImageWithLabel extends StatelessWidget {
   final String text;
-  final String imageUrl;
+  final String imageRoute;
   final double heightin;
   final String coordinate;
   final double acuracy;
@@ -15,7 +15,7 @@ class MobcolImageWithLabel extends StatelessWidget {
     required this.coordinate,
     required this.acuracy,
     required this.text,
-    required this.imageUrl,
+    required this.imageRoute,
   });
 
   @override
@@ -46,7 +46,7 @@ class MobcolImageWithLabel extends StatelessWidget {
                 border: Border.all(color: Colors.black, width: 8),
                 color: AppColors.bg2,
                 image: DecorationImage(
-                  image: NetworkImage(imageUrl),
+                  image: AssetImage(imageRoute),
                   fit: BoxFit.cover,
                 ),
               ),
