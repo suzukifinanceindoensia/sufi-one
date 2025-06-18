@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
-import 'package:sufi_one/app/modules/public/homepage/controllers/homepage_cust_controller.dart';
 import 'package:sufi_one/app/modules/public/homepage/controllers/homepage_cust_controller.dart';
 import 'package:sufi_one/app/controllers/auth_controller.dart';
 
