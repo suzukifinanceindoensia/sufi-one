@@ -5,14 +5,12 @@ import 'package:sufi_one/app/theme/fontstyle.dart';
 class ZeusMenuCreate2 extends StatelessWidget {
   final String image;
   final String menuTitle;
-  final int itemCount;
   final VoidCallback? onTap;
 
   const ZeusMenuCreate2({
     super.key,
     required this.image,
     required this.menuTitle,
-    required this.itemCount,
     this.onTap,
   });
 
@@ -49,7 +47,7 @@ class ZeusMenuCreate2 extends StatelessWidget {
                   },
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 20),
               Text(
                 menuTitle,
                 style: AppTextStyles.bigBody.copyWith(
@@ -61,22 +59,10 @@ class ZeusMenuCreate2 extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
               ),
-              const SizedBox(height: 4),
-              Text(
-                itemCount.toString(),
-                style: AppTextStyles.MobcolNum.copyWith(
-                  color: AppColors.bg3,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
             ],
           ),
         ),
       ),
     );
   }
-
-  // Removed @override Size get preferredSize because this is not an AppBar widget
-  // (You might have this commented out already)
 }

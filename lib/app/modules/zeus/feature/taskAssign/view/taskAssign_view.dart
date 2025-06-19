@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/zeus/feature/taskAssign/controller/taskAssign_controller.dart';
-import 'package:sufi_one/app/modules/zeus/widgets/profile_zeus.dart';
 import 'package:sufi_one/app/modules/zeus/widgets/taskAssignpopup.dart';
 import 'package:sufi_one/app/modules/zeus/widgets/zeus_sidebar.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
@@ -21,13 +20,6 @@ class TaskAssignView extends GetView<TaskAssignController> {
       ),
       body: Column(
         children: [
-          ProfileCardZeus(
-            image: "res/images/mobcol/blankprofile.jpg",
-            name: "John Doe",
-            username: "john.doe",
-            profession: "Software Engineer",
-            borders: 0,
-          ),
           Padding(
             padding: const EdgeInsets.all(15),
             child: TextField(
