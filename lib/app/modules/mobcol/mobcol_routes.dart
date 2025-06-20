@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/dashboard/binding/mobile_collection_binding.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/dashboard/view/mobile_collection_view.dart';
-import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/binding/mobcol_detailcust_controller.dart';
+import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/binding/mobcol_detailcust_binding.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/binding/mobcol_kunjungan_binding.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/binding/mobcol_tugasbaru_binding.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/tugasBaru/view/mobcol_detailcust_view.dart';
