@@ -4,7 +4,7 @@ import 'package:sufi_one/app/modules/mobcol/models/tugasSelesai_model.dart';
 import 'package:sufi_one/app/modules/mobcol/services/tugasSelesai_service.dart';
 
 class MobcolTugasSelesaiController extends GetxController {
-  final TugasSelesaiService _allTugasSelesaiService = Get.find<TugasSelesaiService>();
+  late final TugasSelesaiService _allTugasSelesaiService;
   final TextEditingController searchController = TextEditingController();
   final RxString searchText = ''.obs;
   final RxList<AllTugasSelesaiModel> alltugasselesai = <AllTugasSelesaiModel>[].obs;
@@ -30,6 +30,7 @@ class MobcolTugasSelesaiController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    _allTugasSelesaiService = Get.find<TugasSelesaiService>();
     _loadAllTugasSelesai();
     searchController.addListener(_onSearchChanged);
   }

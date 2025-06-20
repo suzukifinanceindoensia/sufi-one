@@ -3,8 +3,7 @@ import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/tugasBelumSelesai/controller/mobcol_tugasbelumselesai_controller.dart';
 import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_showtask.dart';
-import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_sidebar.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/modules/mobcol/models/tugasBelumSelesai_model.dart'; // Pastikan import model ini ada
 
@@ -14,10 +13,7 @@ class MobcolTugasbelumselesaiView extends GetView<MobcolTugasbelumselesaiControl
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: const Drawer(
-        child: MobcolSidebar(),
-      ),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: Column(
         children: [
           Padding(
@@ -81,7 +77,7 @@ class MobcolTugasbelumselesaiView extends GetView<MobcolTugasbelumselesaiControl
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width: 240,
                                     child: Row(
                                       children: [

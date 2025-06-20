@@ -57,47 +57,42 @@ class MobcolDetailCustView extends GetView<MobcolDetailCustController> {
                           MobcolImageWithLabel(
                               acuracy: 10,
                               heightin: 140,
-                              coordinate:
-                                  "${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
+                              coordinate:"${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
                               text: "Foto Identitas Penjamin",
-                              imageUrl:
-                                  "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg"),
+                              imageRoute:"res/images/mobcol/error.jpg"
+                              ),
                           const Divider(height: 40),
                           MobcolImageWithLabel(
                               acuracy: 10,
                               heightin: 140,
-                              coordinate:
-                                  "${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
+                              coordinate: "${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
                               text: "Foto Identitas Pemohon",
-                              imageUrl:
-                                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi4pe2RpgQfpfraVhi8pGlvNn0bOoBq55w0w&s"),
+                              imageRoute:"res/images/mobcol/error.jpg"
+                              ),
                           const Divider(height: 40),
                           MobcolImageWithLabel(
                               acuracy: 10,
                               heightin: 140,
-                              coordinate:
-                                  "${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
+                              coordinate:"${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
                               text: "Foto KK Pemohon",
-                              imageUrl:
-                                  "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c9a27e0a-52f7-4cec-a932-b6246308a58e/df4kefl-5d4ebf8d-9b50-4e5c-9f1b-d2a81ffa9943.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2M5YTI3ZTBhLTUyZjctNGNlYy1hOTMyLWI2MjQ2MzA4YTU4ZVwvZGY0a2VmbC01ZDRlYmY4ZC05YjUwLTRlNWMtOWYxYi1kMmE4MWZmYTk5NDMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.azFyQsaeN08D6wTzU1ArBTzVqp9hqTzxzAb0mtX9d0E"),
+                              imageRoute:"res/images/mobcol/error.jpg"
+                              ),
                           const Divider(height: 40),
                           MobcolImageWithLabel(
                               acuracy: 10,
                               heightin: 140,
-                              coordinate:
-                                  "${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
+                              coordinate:"${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
                               text: "Foto KK Penjamin",
-                              imageUrl:
-                                  "https://i.ytimg.com/vi/9sSuELci2cc/maxresdefault.jpg"),
+                              imageRoute:"res/images/mobcol/error.jpg"
+                              ),
                           const Divider(height: 40),
                           MobcolImageWithLabel(
                               acuracy: 10,
                               heightin: 140,
-                              coordinate:
-                                  "${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
+                              coordinate:"${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
                               text: "Foto NPWP",
-                              imageUrl:
-                                  "https://images7.alphacoders.com/121/thumb-1920-1210460.jpg"),
+                              imageRoute:"res/images/mobcol/error.jpg"
+                              ),
                         ],
                       ),
                     ),
@@ -111,52 +106,107 @@ class MobcolDetailCustView extends GetView<MobcolDetailCustController> {
                           MobcolImageWithLabel(
                               acuracy: 21,
                               heightin: 180,
-                              coordinate:
-                                  "${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
+                              coordinate:"${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
                               text: "Foto Rumah 1",
-                              imageUrl:
-                                  "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg"),
+                              imageRoute:"res/images/mobcol/error.jpg"
+                              ),
                           const Divider(height: 40),
                           MobcolImageWithLabel(
                               acuracy: 3,
                               heightin: 180,
-                              coordinate:
-                                  "${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
+                              coordinate:"${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
                               text: "Foto Rumah 2",
-                              imageUrl:
-                                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi4pe2RpgQfpfraVhi8pGlvNn0bOoBq55w0w&s"),
+                              imageRoute:"res/images/mobcol/error.jpg"
+                              ),
                           const Divider(height: 40),
                           MobcolImageWithLabel(
                               acuracy: 8,
                               heightin: 180,
-                              coordinate:
-                                  "${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
+                              coordinate:"${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
                               text: "Foto Tempat Usaha 1",
-                              imageUrl:
-                                  "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c9a27e0a-52f7-4cec-a932-b6246308a58e/df4kefl-5d4ebf8d-9b50-4e5c-9f1b-d2a81ffa9943.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2M5YTI3ZTBhLTUyZjctNGNlYy1hOTMyLWI2MjQ2MzA4YTU4ZVwvZGY0a2VmbC01ZDRlYmY4ZC05YjUwLTRlNWMtOWYxYi1kMmE4MWZmYTk5NDMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.azFyQsaeN08D6wTzU1ArBTzVqp9hqTzxzAb0mtX9d0E"),
+                              imageRoute:"res/images/mobcol/error.jpg"
+                              ),
                           const Divider(height: 40),
                           MobcolImageWithLabel(
                               acuracy: 11,
                               heightin: 180,
-                              coordinate:
-                                  "${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
+                              coordinate:"${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
                               text: "Foto Tempat Usaha 2",
-                              imageUrl:
-                                  "https://i.ytimg.com/vi/9sSuELci2cc/maxresdefault.jpg"),
+                              imageRoute:"res/images/mobcol/error.jpg"),
                           const Divider(height: 40),
                           MobcolImageWithLabel(
                               acuracy: 12,
                               heightin: 180,
-                              coordinate:
-                                  "${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
+                              coordinate:"${tugas is Map ? tugas['coordinate'] ?? 'N/A' : 'N/A'}",
                               text: "Foto Tetangga Saat Survey",
-                              imageUrl:
-                                  "https://images7.alphacoders.com/121/thumb-1920-1210460.jpg"),
+                              imageRoute:"res/images/mobcol/error.jpg"),
                         ],
                       ),
                     ),
                   ),
                   // Obyek Pembiayaan Tab
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          MobcolContainer(children: [
+                            Text('BPKB Atas Nama',
+                                style: AppTextStyles.Navybodymed),
+                            Text(
+                              '${tugas is Map ? tugas['name'] ?? 'N/A' : 'N/A'}',
+                              style: AppTextStyles.bigBody,
+                            ),
+                            const Divider(),
+                            Text(
+                              "Harga OTR",
+                              style: AppTextStyles.Navybodymed,
+                            ),
+                            Text('Uang Uang', style: AppTextStyles.bigBody),
+                            const Divider(),
+                            Text(
+                              "Warna",
+                              style: AppTextStyles.Navybodymed,
+                            ),
+                            Text(
+                                '${tugas is Map ? tugas['colorOfCar'] ?? 'N/A' : 'N/A'}',
+                                style: AppTextStyles.bigBody),
+                            const Divider(),
+                            Text(
+                              "Jenis Objek Pembiayaan",
+                              style: AppTextStyles.Navybodymed,
+                            ),
+                            Text('Jenisnya', style: AppTextStyles.bigBody),
+                            const Divider(),
+                            Text(
+                              "Merk Objek Pembiayaan",
+                              style: AppTextStyles.Navybodymed,
+                            ),
+                            Text('Merk Mobil', style: AppTextStyles.bigBody),
+                            const Divider(),
+                            Text("Kondisi", style: AppTextStyles.Navybodymed),
+                            Text(
+                                '${tugas is Map ? tugas['kondisi'] ?? 'N/A' : 'N/A'}',
+                                style: AppTextStyles.bigBody),
+                            const Divider(),
+                            Text('Model Objek Pembiayaan',
+                                style: AppTextStyles.Navybodymed),
+                            Text(
+                                '${tugas is Map ? tugas['typeUnit'] ?? 'N/A' : 'N/A'}',
+                                style: AppTextStyles.bigBody),
+                            const Divider(),
+                            Text('Tipe Objek Pembiayaan',
+                                style: AppTextStyles.Navybodymed),
+                            Text(
+                                '${tugas is Map ? tugas['typeUnit'] ?? 'N/A' : 'N/A'}',
+                                style: AppTextStyles.bigBody),
+                            const SizedBox(height: 15),
+                          ])
+                        ],
+                      ),
+                    ),
+                  ),
+                  // Struktur Kredit
                   Padding(
                     padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                     child: SingleChildScrollView(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_button_style.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/profile_mobcol.dart';
@@ -23,7 +22,7 @@ class MobcolTugasBelumSelesaiDetailView extends StatelessWidget {
           child: Column(
             children: [
               ProfileMobcol(
-                image: 'https://i.pinimg.com/736x/25/78/61/25786134576ce0344893b33a051160b1.jpg',
+                imageroute: "res/images/mobcol/blankprofile.jpg",
                 name: tugas.name ?? '', // Gunakan properti model
                 username: tugas.email ?? '', // Gunakan properti model
                 profession: '',
@@ -132,7 +131,8 @@ class MobcolTugasBelumSelesaiDetailView extends StatelessWidget {
               ElevatedButton(
                 style: MobcolAppButtonStyle.goodButtonStyle(),
                 onPressed: (){
-                  Get.toNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai, arguments: tugas);
+                  Get.back();
+                  //Get.toNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai, arguments: tugas);
                 },
                 child: FractionallySizedBox(
                   widthFactor: 1,

@@ -12,6 +12,29 @@ class MobcolDashboardBinding extends Bindings {
     Get.lazyPut<TugasBelumSelesaiService>(() => TugasBelumSelesaiService());
     Get.lazyPut<TugasSelesaiService>(() => TugasSelesaiService());
     Get.lazyPut<UploadBuktiService>(() => UploadBuktiService());
-    Get.put(MobcolDashboardController());
+    // Get.putAsync<AllTugasBaruService>(() async {
+    //   await Future.delayed(Duration(seconds: 0));
+    //   return AllTugasBaruService();
+    // });
+    // Get.putAsync<TugasBelumSelesaiService>(() async {
+    //   await Future.delayed(Duration(seconds: 0));
+    //   return TugasBelumSelesaiService();
+    // });
+    // Get.putAsync<TugasSelesaiService>(() async {
+    //   await Future.delayed(Duration(seconds: 0));
+    //   return TugasSelesaiService();
+    // });
+    // Get.putAsync<UploadBuktiService>(() async {
+    //   await Future.delayed(Duration(seconds: 0));
+    //   return UploadBuktiService();
+    // });
+    Get.lazyPut<MobcolDashboardController>(
+      () => MobcolDashboardController(
+        // allTugasBaruService: Get.find<AllTugasBaruService>(),
+        // tugasBelumSelesaiService: Get.find<TugasBelumSelesaiService>(),
+        // tugasSelesaiService: Get.find<TugasSelesaiService>(),
+        // uploadBuktiService: Get.find<UploadBuktiService>(),
+      ),
+    );
   }
 }

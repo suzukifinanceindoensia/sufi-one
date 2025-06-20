@@ -3,9 +3,8 @@ import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/dashboard/controllers/mobile_collection_controller.dart';
 import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/menu_creator_mobcol.dart';
-import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_sidebar.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/profile_card_mobcol.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWbackbutton.dart';
 
 class MobcolDashboardView extends StatelessWidget {
   const MobcolDashboardView({super.key});
@@ -14,10 +13,7 @@ class MobcolDashboardView extends StatelessWidget {
   Widget build(BuildContext context) {
     final MobcolDashboardController controller = Get.find<MobcolDashboardController>();
     return Scaffold(
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: Drawer(
-        child: MobcolSidebar(),
-      ),
+      appBar: SuzukiFinanceAppBarWbackbutton(),
       body: Stack(
         children: [
           Positioned(

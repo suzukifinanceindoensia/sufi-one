@@ -5,7 +5,6 @@ import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_button_style.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/profile_mobcol.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbar.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/modules/mobcol/models/tugasBaru_model.dart';
@@ -27,7 +26,7 @@ class MobcolTugasbaruDetailView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ProfileMobcol(
-                image: "https://i.pinimg.com/originals/91/20/d2/9120d2a990a4a0fe4afbe6241376cbae.jpg",
+                imageroute: "res/images/mobcol/blankprofile.jpg",
                 name: tugas.name ?? '', // Akses properti model
                 username: tugas.email ?? '', // Akses properti model
                 profession: "Id : ${tugas.id ?? ''}", // Akses properti model
@@ -45,19 +44,19 @@ class MobcolTugasbaruDetailView extends StatelessWidget {
                   ),
                   const Divider(),
                   Text("Alamat Tagih", style: AppTextStyles.Navybodymed),
-                  Text('${tugas.alamatLengkap ?? ''}', style: AppTextStyles.bigBody), // Akses properti model
+                  Text(tugas.alamatLengkap ?? '', style: AppTextStyles.bigBody), // Akses properti model
                   const Divider(),
                   Text("Nomor Telepon", style: AppTextStyles.Navybodymed,),
-                  Text('${tugas.phoneNumber ?? ''}', style: AppTextStyles.bigBody), // Akses properti model
+                  Text(tugas.phoneNumber ?? '', style: AppTextStyles.bigBody), // Akses properti model
                   const Divider(),
                   Text("Tipe Unit", style: AppTextStyles.Navybodymed),
-                  Text('${tugas.typeUnit ?? ''}', style: AppTextStyles.bigBody), // Akses properti model
+                  Text(tugas.typeUnit ?? '', style: AppTextStyles.bigBody), // Akses properti model
                   const Divider(),
                   Text("Warna Mobil", style: AppTextStyles.Navybodymed),
-                  Text('${tugas.colorOfCar ?? ''}', style: AppTextStyles.bigBody), // Akses properti model
+                  Text(tugas.colorOfCar ?? '', style: AppTextStyles.bigBody), // Akses properti model
                   const Divider(),
                   Text("Nomor Polisi", style: AppTextStyles.Navybodymed),
-                  Text('${tugas.policeNumber ?? ''}', style: AppTextStyles.bigBody), // Akses properti model
+                  Text(tugas.policeNumber ?? '', style: AppTextStyles.bigBody), // Akses properti model
                   const SizedBox(height: 15),
                   ElevatedButton(
                     style: MobcolAppButtonStyle.goodButtonStyle(),

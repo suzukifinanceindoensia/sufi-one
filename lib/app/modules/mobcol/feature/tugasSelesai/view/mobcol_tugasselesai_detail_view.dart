@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_button_style.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_container.dart';
@@ -21,7 +20,7 @@ class MobcolTugasselesaiDetailView extends StatelessWidget {
           child: Column(
             children: [
               ProfileMobcol(
-                image: "https://i.pinimg.com/236x/ea/6e/00/ea6e0069abf7777c75f59fbd2714528a.jpg", 
+                imageroute: "res/images/mobcol/blankprofile.jpg", 
                 name: "${tugas.name}", 
                 username: "${tugas.email}", 
                 profession: "${tugas.id}", 
