@@ -66,6 +66,7 @@ class AuthController extends GetxController {
   /// ----------------------------
 
   void logout() {
+    // Hapus data login dari penyimpanan (simulasi logout)
     _authService.logout();
     user.value = null;
   }

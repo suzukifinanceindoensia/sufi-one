@@ -35,9 +35,12 @@ class PromoView extends GetView<HomepageCustController> {
               padding: const EdgeInsets.only(bottom: 16.0),
               child: GestureDetector(
                 onTap: controller.openPromoWebsite,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(promoImages[index]),
+                child: GestureDetector(
+                  onTap: controller.openPromoWebsite,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.asset(promoImages[index]),
+                  ),
                 ),
               ),
             );

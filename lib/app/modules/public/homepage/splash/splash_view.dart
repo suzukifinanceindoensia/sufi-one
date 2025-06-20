@@ -15,8 +15,8 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 2), () {
-      Get.offNamed(HomeRoutes.homepageCust);
+    Future.delayed(const Duration(seconds: 2), () {
+      Get.offNamed(HomeRoutes.mainnavigation);
     });
   }
 
@@ -24,7 +24,7 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [AppColors.splashStart, AppColors.splashEnd],
             begin: Alignment.topLeft,
@@ -35,19 +35,19 @@ class _SplashPageState extends State<SplashPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(child: SizedBox()),
+              const Expanded(child: SizedBox()),
               FractionallySizedBox(
                 child: Image.asset('res/images/splashscreen.png'),
                 widthFactor: 0.8,
               ),
-              SizedBox(height: 50),
-              CircularProgressIndicator(color: Colors.white),
-              Expanded(child: SizedBox()),
+              const SizedBox(height: 50),
+              const CircularProgressIndicator(color: Colors.white),
+              const Expanded(child: SizedBox()),
               FractionallySizedBox(
                 child: Image.asset('res/images/ojk1.png'),
                 widthFactor: 0.6,
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
             ],
           ),
         ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/public/about/controllers/contact_controller.dart';
-import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
@@ -16,7 +15,7 @@ class ContactView extends StatefulWidget {
 }
 
 class _ContactViewState extends State<ContactView> {
-  final controller = Get.find<ContactController>();
+  ContactController get controller => Get.find<ContactController>();
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +140,7 @@ class _ContactViewState extends State<ContactView> {
             ),
           ),
         ),
-        bottomNavigationBar: BottomNavbar(selectedIndex: 2),
+        //  bottomNavigationBar: BottomNavbar(selectedIndex: 2),
       );
     });
   }

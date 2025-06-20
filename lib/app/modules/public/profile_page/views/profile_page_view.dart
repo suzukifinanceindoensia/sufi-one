@@ -4,7 +4,6 @@ import 'package:sufi_one/app/modules/public/profile_page/controllers/profile_pag
 import 'package:sufi_one/app/modules/public/home_routes.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
-import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/controllers/auth_controller.dart';
@@ -33,7 +32,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavbar(selectedIndex: 3),
+        //  bottomNavigationBar: BottomNavbar(selectedIndex: 3),
       );
     });
   }
@@ -144,11 +143,7 @@ class ProfilePageView extends GetView<ProfilePageController> {
         _buildMenuItem('Atur Ulang Kata Sandi', Icons.lock_reset, () {
           Get.toNamed(HomeRoutes.ubahPassword);
         }),
-        _buildMenuItem('Keluar', Icons.logout, () {
-          final AuthController authController = Get.find<AuthController>();
-          authController.logout();
-          Get.offAllNamed(HomeRoutes.login);
-        }),
+        _buildMenuItem('Keluar', Icons.logout, controller.handleLogout),
       ],
     );
   }

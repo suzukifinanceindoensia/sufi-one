@@ -5,7 +5,6 @@ import 'package:sufi_one/app/modules/public/about/controllers/about_controller.d
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 import 'package:sufi_one/app/controllers/auth_controller.dart';
 
 class AboutView extends StatefulWidget {
@@ -89,7 +88,7 @@ class _AboutViewState extends State<AboutView> {
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavbar(selectedIndex: 1),
+        //  bottomNavigationBar: BottomNavbar(selectedIndex: 1),
       );
     });
   }

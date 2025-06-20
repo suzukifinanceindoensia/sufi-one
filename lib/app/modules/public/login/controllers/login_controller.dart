@@ -63,7 +63,9 @@ class LoginController extends GetxController {
       if (authController.isLoggedIn) {
         // Jika login sukses, navigasi ke halaman profile
         Get.snackbar('Success', 'Login berhasil!');
-        Get.offAllNamed(HomeRoutes.profilePage);
+        Get.offAllNamed(
+          HomeRoutes.splash,
+        ); // setelah login berhasil tampilkan splash untuk load semua data
       }
     } catch (e) {
       // Tampilkan error jika login gagal

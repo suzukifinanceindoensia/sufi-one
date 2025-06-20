@@ -13,7 +13,6 @@ import 'package:sufi_one/app/modules/public/login/bindings/forgot_password_bindi
 
 // Homepage
 import 'package:sufi_one/app/modules/public/homepage/splash/splash_view.dart';
-import 'package:sufi_one/app/modules/public/homepage/views/home_view.dart';
 import 'package:sufi_one/app/modules/public/homepage/views/homepage_cust_view.dart';
 import 'package:sufi_one/app/modules/public/homepage/views/promo_view.dart';
 import 'package:sufi_one/app/modules/public/homepage/bindings/homepage_cust_binding.dart';
@@ -45,9 +44,12 @@ import 'package:sufi_one/app/modules/public/cabang/bindings/cabang_binding.dart'
 // WebView
 import 'package:sufi_one/app/services/generic_webview.dart';
 
+// main navigation
+import 'package:sufi_one/app/services/main_navigation/MainNavigationView.dart';
+import 'package:sufi_one/app/services/main_navigation/main_navigation_binding.dart';
+
 class HomeRoutes {
   static const splash = '/';
-  static const publicHome = '/public/home';
   static const homepageCust = '/public/homepage/homepage_cust_view';
 
   static const login = '/public/profile_page/login';
@@ -72,11 +74,12 @@ class HomeRoutes {
   static const cabang = '/public/cabang';
   static const genericWebView = '/public/webview';
 
+  static const mainnavigation = '/public/main_navigation';
+
   static final routes = [
     GetPage(name: splash, page: () => SplashPage(), binding: AuthBinding()),
 
     // Home
-    GetPage(name: publicHome, page: () => PublicHomePage()),
     GetPage(
       name: homepageCust,
       page: () => const HomepageCustView(),
@@ -160,5 +163,12 @@ class HomeRoutes {
 
     // WebView
     GetPage(name: genericWebView, page: () => const GenericWebView()),
+
+    // main navigation
+    GetPage(
+      name: mainnavigation,
+      page: () => MainNavigationView(),
+      binding: MainNavigationBinding(),
+    ),
   ];
 }

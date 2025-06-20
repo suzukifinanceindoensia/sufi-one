@@ -4,9 +4,7 @@ import 'package:sufi_one/app/modules/public/homepage/controllers/homepage_cust_c
 import 'package:sufi_one/app/modules/public/home_routes.dart';
 import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/public/widgets/sidebar.dart';
-import 'package:sufi_one/app/modules/public/widgets/bottomnavbar.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
-import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/controllers/auth_controller.dart';
 
 class HomepageCustView extends StatefulWidget {
@@ -86,7 +84,6 @@ class _HomepageCustViewState extends State<HomepageCustView> {
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavbar(selectedIndex: 0),
       );
     });
   }

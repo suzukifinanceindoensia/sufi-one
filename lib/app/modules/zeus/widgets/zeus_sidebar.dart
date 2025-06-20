@@ -3,6 +3,7 @@ import 'package:sufi_one/app/modules/zeus/zeus_route.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:get/get.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
+import 'package:sufi_one/app/services/main_navigation/main_nav_controller.dart';
 import 'package:sufi_one/app/modules/public/home_routes.dart';
 
 class ZeusSidebar extends StatelessWidget {
@@ -119,10 +120,13 @@ final List<SidebarItemData> _sidebarItems = [
     },
   ),
   SidebarItemData(
-    icon: const Icon(Icons.home_work, color: Colors.white),
-    title: 'homepage',
+    icon: Icon(Icons.home, color: Colors.white),
+    title: 'Home Page',
     onTap: () {
-      Get.offAllNamed(HomeRoutes.homepageCust);
+      final navController = Get.find<MainNavigationController>();
+      navController.changeTabIndex(0);
+      Get.until((route) => route.settings.name == HomeRoutes.mainnavigation);
+      // navigasi MainNavigationView tanpa memicu offAllNamed, menghindari loop atau rebuild berlebih.
     },
   ),
 ];

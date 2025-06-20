@@ -102,7 +102,7 @@ class RegisterController extends GetxController {
 
         if (Get.find<AuthController>().isLoggedIn) {
           clearForm(); // Bersihkan form jika berhasil
-          Get.offAllNamed(HomeRoutes.profilePage); // Arahkan ke halaman profile
+          Get.offAllNamed(HomeRoutes.splash);
         }
       } catch (e) {
         // Tampilkan error jika gagal
