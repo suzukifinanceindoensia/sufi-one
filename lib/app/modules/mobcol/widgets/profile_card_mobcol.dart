@@ -26,7 +26,7 @@ class ProfileCardMobcol extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [AppColors.splashStart, AppColors.bg3],
+            colors: [AppColors.navIcon, AppColors.bg2],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),

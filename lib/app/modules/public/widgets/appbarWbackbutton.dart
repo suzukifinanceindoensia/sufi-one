@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
+import 'package:get/get.dart'; 
 
-class SuzukiFinanceAppBarWObutton extends StatelessWidget
+class SuzukiFinanceAppBarWbackbutton extends StatelessWidget
     implements PreferredSizeWidget {
-  const SuzukiFinanceAppBarWObutton({
+  const SuzukiFinanceAppBarWbackbutton({
     super.key,
-    this.title = const Text('Register'),
   });
-
-  final Widget title;
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +15,18 @@ class SuzukiFinanceAppBarWObutton extends StatelessWidget
       centerTitle: false,
       toolbarHeight: 50,
       automaticallyImplyLeading: false,
+      leading: IconButton(
+        //icon: const Icon(Icons.arrow_back_ios_new),
+        icon: const Icon(Icons.arrow_back_sharp),
+        color: Colors.white,
+        onPressed: () {
+          Get.back();
+        },
+      ),
       title: Row(
         children: [
-          // Logo Suzuki
           Image.asset(
-            'res/images/splashscreen2.png', // Ganti dengan logo Suzuki kamu
+            'res/images/splashscreen2.png',
             height: 35,
           ),
           const SizedBox(width: 12),

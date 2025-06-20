@@ -56,13 +56,14 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.dashboard, color: Colors.white),
     title: 'Dashboard',
     onTap: () {
-      Get.offNamed(MobcolRoutes.mobileCollection);
+      Get.offAndToNamed(MobcolRoutes.mobileCollection);
     },
   ),
   SidebarItemData(
     icon: const Icon(Icons.add_box_outlined, color: Colors.white),
     title: 'Tugas Baru',
     onTap: () {
+      Get.offAndToNamed(MobcolRoutes.mobileCollection);
       Get.toNamed(MobcolRoutes.mobileCollectionTugasBaru);
     },
   ),
@@ -70,28 +71,32 @@ final List<SidebarItemData> _sidebarItems = [
     icon: const Icon(Icons.warning_amber_outlined, color: Colors.white),
     title: 'Tugas Belum Selesai',
     onTap: () {
-      Get.offNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai);
+      Get.offAndToNamed(MobcolRoutes.mobileCollection);
+      Get.toNamed(MobcolRoutes.mobileCollectionTugasBelumSelesai);
     },
   ),
   SidebarItemData(
     icon: const Icon(Icons.upload, color: Colors.white),
     title: 'Upload Bukti Pembayaran',
     onTap: () {
-      Get.offNamed(MobcolRoutes.mobileCollectionUploadBukti);
+      Get.offAndToNamed(MobcolRoutes.mobileCollection);
+      Get.toNamed(MobcolRoutes.mobileCollectionUploadBukti);
     },
   ),
   SidebarItemData(
     icon: const Icon(Icons.upload, color: Colors.white),
     title: 'Tugas Selesai',
     onTap: () {
-      Get.offNamed(MobcolRoutes.mobileCollectionTugasSelesai);
+      Get.offAndToNamed(MobcolRoutes.mobileCollection);
+      Get.toNamed(MobcolRoutes.mobileCollectionTugasSelesai);
     },
   ),
   SidebarItemData(
     icon: const Icon(Icons.keyboard_backspace_sharp, color: Colors.white),
     title: 'Kembali',
     onTap: () {
-      Get.offNamed(HomeRoutes.homepageCust);
+      Get.offAndToNamed(MobcolRoutes.mobileCollection);
+      Get.toNamed(HomeRoutes.homepageCust);
     },
   ),
 ];

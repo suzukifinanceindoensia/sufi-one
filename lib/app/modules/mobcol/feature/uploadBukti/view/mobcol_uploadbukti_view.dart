@@ -3,8 +3,7 @@ import 'package:get/get.dart';
 import 'package:sufi_one/app/modules/mobcol/feature/uploadBukti/controller/mobcol_uploadbukti_view.dart';
 import 'package:sufi_one/app/modules/mobcol/mobcol_routes.dart';
 import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_showtask.dart';
-import 'package:sufi_one/app/modules/mobcol/widgets/mobcol_sidebar.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 
 class MobcolUploadBuktiView extends GetView<MobcolUploadBuktiController> {
@@ -13,10 +12,7 @@ class MobcolUploadBuktiView extends GetView<MobcolUploadBuktiController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: const Drawer(
-        child: MobcolSidebar(),
-      ),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: Column(
         children: [
           Padding(
@@ -49,25 +45,25 @@ class MobcolUploadBuktiView extends GetView<MobcolUploadBuktiController> {
                                   children: [
                                     Row(
                                       children: [
-                                        Text("${tugas.name}", style: AppTextStyles.Navybodymed),
+                                        Text(tugas.name, style: AppTextStyles.Navybodymed),
                                         Expanded(child: SizedBox()),
                                         Text("${tugas.progress}", style: AppTextStyles.Navybodymed),
                                       ],
                                     ),
-                                    Text('${tugas.id}', style: AppTextStyles.medBody),
+                                    Text(tugas.id, style: AppTextStyles.medBody),
                                     Text('Tanggal Go live ${tugas.dateTime.day}-${tugas.dateTime.month}-${tugas.dateTime.year}', style: AppTextStyles.medBody),
                                     Text('Email : ${tugas.email}', style: AppTextStyles.medBody),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Container(
+                                        SizedBox(
                                           width: 100,
                                           child: Text("kel. ${tugas.kelurahan}", 
                                             style: AppTextStyles.medBody, 
                                             softWrap: true,
                                             textAlign: TextAlign.left,),
                                         ),
-                                        Container(
+                                        SizedBox(
                                           width: 100,
                                           child: Text("kel. ${tugas.kecamatan}", 
                                             style: AppTextStyles.medBody, 
