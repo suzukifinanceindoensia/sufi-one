@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/modules/zeus/feature/taskAssign/controller/taskAssign_controller.dart';
 import 'package:sufi_one/app/modules/zeus/widgets/taskAssignpopup.dart';
-import 'package:sufi_one/app/modules/zeus/widgets/zeus_sidebar.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 
@@ -14,10 +13,7 @@ class TaskAssignView extends GetView<TaskAssignController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bg1,
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: const Drawer(
-        child: ZeusSidebar(),
-      ),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: Column(
         children: [
           Padding(

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/modules/public/widgets/buttonStyle.dart';
 import 'package:sufi_one/app/modules/zeus/feature/collectionTrack/controller/fotonopol_controller.dart';
-import 'package:sufi_one/app/modules/zeus/widgets/zeus_sidebar.dart';
 import 'package:sufi_one/app/modules/zeus/zeus_route.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'dart:io';
@@ -17,10 +16,7 @@ class FotoNopolView extends GetView<FotoNopolController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bg1,
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: Drawer(
-        child: ZeusSidebar(),
-      ),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(25),
         child: Column(

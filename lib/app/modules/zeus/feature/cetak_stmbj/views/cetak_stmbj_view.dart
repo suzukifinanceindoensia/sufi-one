@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
-import 'package:sufi_one/app/modules/zeus/widgets/zeus_sidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/theme/fontstyle.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
 import 'package:sufi_one/app/modules/zeus/feature/cetak_stmbj/controllers/cetak_stmbj_controller.dart';
@@ -15,8 +14,7 @@ class CetakStmbjView extends GetView<CetakStmbjController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bg1,
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: const Drawer(child: ZeusSidebar()),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: Column(
         children: [
           Container(

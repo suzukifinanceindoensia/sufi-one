@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWbackbutton.dart';
 import 'package:sufi_one/app/modules/zeus/feature/dashboard/controller/zeusdashboard_controller.dart';
-import 'package:sufi_one/app/modules/zeus/widgets/zeus_sidebar.dart'; 
 import 'package:sufi_one/app/modules/zeus/widgets/zeusmenucreate2.dart';
 import 'package:sufi_one/app/modules/zeus/zeus_route.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
@@ -59,10 +58,7 @@ class ZeusDashboardView extends GetView<ZeusDashboardController> {
 
     return Scaffold(
       backgroundColor: AppColors.bg1,
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: const Drawer(
-        child: ZeusSidebar(),
-      ),
+      appBar: SuzukiFinanceAppBarWbackbutton(),
       body: SingleChildScrollView(
         child: Column(
           children: [
