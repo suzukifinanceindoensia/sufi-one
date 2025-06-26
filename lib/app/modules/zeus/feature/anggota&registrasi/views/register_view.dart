@@ -56,7 +56,7 @@ class RegisterView extends StatelessWidget {
                   final file = controller.imageFile.value;
                   final isExist = file != null && file.existsSync();
                   return isExist
-                      ? Image.file(file!, height: 350, fit: BoxFit.contain)
+                      ? Image.file(file, height: 350, fit: BoxFit.contain)
                       : Image.asset(
                         'res/images/zeus/ktp_placeholder.png',
                         height: 300,
