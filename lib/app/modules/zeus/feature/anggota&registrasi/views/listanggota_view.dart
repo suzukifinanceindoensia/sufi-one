@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/zeus/widgets/zeus_sidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/zeus/feature/anggota&registrasi/controllers/registrasi_controller.dart';
 
 class ListAnggotaView extends GetView<RegistrasiController> {
@@ -12,8 +11,7 @@ class ListAnggotaView extends GetView<RegistrasiController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bg1,
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: const Drawer(child: ZeusSidebar()),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

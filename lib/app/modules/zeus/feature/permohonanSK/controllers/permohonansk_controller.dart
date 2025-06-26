@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'dart:async';
-import 'package:sufi_one/app/modules/zeus/zeus_route.dart';
 
 class PermohonanSkController extends GetxController {
   var isLoading = false.obs;

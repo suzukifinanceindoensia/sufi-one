@@ -6,6 +6,10 @@ class ZeusDashboardBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut<ZeusDashboardController>(() => ZeusDashboardController());
-    Get.lazyPut<ZeushomeService>(() => ZeushomeService());
+    //Get.lazyPut<ZeushomeService>(() => ZeushomeService());
+    Get.putAsync<ZeushomeService>(() async {
+      await Future.delayed(Duration(seconds: 2));
+      return ZeushomeService();
+    });
   }
 }

@@ -6,6 +6,10 @@ class FotoNopolBingding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut<FotoNopolController>(() => FotoNopolController());
-    Get.lazyPut<ZeushomeService>(() => ZeushomeService());
+    //Get.lazyPut<ZeushomeService>(() => ZeushomeService());
+    Get.putAsync<ZeushomeService>(() async {
+      await Future.delayed(Duration(seconds: 2));
+      return ZeushomeService();
+    });
   }
 }

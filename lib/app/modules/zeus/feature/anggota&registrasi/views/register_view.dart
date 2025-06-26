@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sufi_one/app/modules/zeus/widgets/zeus_sidebar.dart';
+import 'package:sufi_one/app/modules/public/widgets/appbarWObutton.dart';
 import 'package:sufi_one/app/theme/color_constant.dart';
-import 'package:sufi_one/app/modules/public/widgets/appbarWsidebar.dart';
 import 'package:sufi_one/app/modules/zeus/feature/anggota&registrasi/controllers/registrasi_controller.dart';
 
 class RegisterView extends StatelessWidget {
@@ -28,8 +27,7 @@ class RegisterView extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.bg1,
-      appBar: SuzukiFinanceAppBarWsidebar(),
-      drawer: const Drawer(child: ZeusSidebar()),
+      appBar: SuzukiFinanceAppBarWObutton(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32.0),
         child: Center(
@@ -58,7 +56,7 @@ class RegisterView extends StatelessWidget {
                   final file = controller.imageFile.value;
                   final isExist = file != null && file.existsSync();
                   return isExist
-                      ? Image.file(file!, height: 350, fit: BoxFit.contain)
+                      ? Image.file(file, height: 350, fit: BoxFit.contain)
                       : Image.asset(
                         'res/images/zeus/ktp_placeholder.png',
                         height: 300,

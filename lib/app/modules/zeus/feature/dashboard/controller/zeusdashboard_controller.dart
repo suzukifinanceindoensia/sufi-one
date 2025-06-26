@@ -30,21 +30,42 @@ class ZeusDashboardController extends GetxController {
     try {
       final List<ZeushomeModel> data = await _zeushomeService.getAllTugasBaruFromJson();
       _originalAllTasks.assignAll(data);
-      allTasks.assignAll(data);
+      allTasks.assignAll(data); 
     } catch (e) {
       errorMessage.value = 'Failed to load tasks: $e';
       print('Error fetching tasks: $e');
+      Get.snackbar(
+        'Error',
+        'Failed to load dashboard data: $e',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red.withOpacity(0.8),
+        colorText: Colors.white,
+        duration: const Duration(seconds: 3),
+      );
     } finally {
       isLoading.value = false;
     }
   }
+  Future<void> refreshDashboardData() async {
+    print('Initiating dashboard data refresh...');
+    await fetchTasks();
+    print('Dashboard data refresh complete.');
+    Get.snackbar(
+      'Refresh',
+      'Dashboard data is being refreshed!',
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.green.withOpacity(0.8), 
+      colorText: Colors.white,
+      duration: const Duration(seconds: 2),
+    );
+  }
 
   void filterTasks(String query) {
     if (query.isEmpty) {
-      allTasks.assignAll(_originalAllTasks);
+      allTasks.assignAll(_originalAllTasks); 
     } else {
+      final lowerCaseQuery = query.toLowerCase();
       final filteredList = _originalAllTasks.where((task) {
-        final lowerCaseQuery = query.toLowerCase();
         return task.platNomor.toLowerCase().contains(lowerCaseQuery) ||
                task.tipeMobil.toLowerCase().contains(lowerCaseQuery);
       }).toList();
@@ -56,8 +77,7 @@ class ZeusDashboardController extends GetxController {
     print('Initiating SKMBJ request for Plat Nomor: $platNomor');
 
     try {
-      await Future.delayed(const Duration(seconds: 1)); 
-
+      await Future.delayed(const Duration(seconds: 1));
       Get.snackbar(
         'SKMBJ Request Sent',
         'Request for Plat Nomor "$platNomor" has been submitted successfully.',
